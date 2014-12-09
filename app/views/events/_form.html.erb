@@ -9,7 +9,7 @@
   </div>      
     <div class="field">
     <%= f.label :time %><br />
-    <%= f.datetime_field :time %>
+    <%= f.datetime_select :time, :minute_step => 5 %>
   </div>
   <div class="field">
     <%= f.label :capacity %><br />
