@@ -28,6 +28,8 @@ gem 'spring',        group: :development
 
 gem 'sorcery'
 gem 'cancancan', '~> 1.9'
+gem 'carrierwave'
+gem 'rmagick', '~> 2.13.4'
 
 group :development, :test do
 	gem 'pry-rails'
