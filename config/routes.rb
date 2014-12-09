@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   resources :users do
     resources :events
+    resources :commitments, only: [:destroy, :update, :create]
   end
   resources :friendships 
   resources :user_sessions, only: [:destroy, :new, :create]
