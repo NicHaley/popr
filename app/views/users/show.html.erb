@@ -6,9 +6,11 @@
 
 <ul>
 	<% @user.friendships.each do |friendship| %>
-	<li>
-		<%= friendship.friend.first_name %> <%= friendship.friend.last_name %>
-		<%= link_to "remove", friendship, method: :delete %>
-	</li>
+	<% if friendship.confirm %>
+		<li>
+			<%= friendship.friend.first_name %> <%= friendship.friend.last_name %>
+			<%= link_to "remove", friendship, method: :delete %>
+		</li>
+	<% end %>
 	<% end %>
 </ul>
