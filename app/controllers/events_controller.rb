@@ -1,8 +1,12 @@
 class EventsController < ApplicationController
   before_filter :set_event, only: [:show, :edit, :update, :destroy]
 
-  def index
+  def all_events
     @events = Event.all
+  end
+
+  def index
+    @events = Event.where(host_id: current_user.id)
   end
 
   def show
@@ -10,12 +14,15 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @user = User.find(params[:user_id])
   end
 
   def create
     @event = Event.new(event_params)
+    @event.host_id = current_user.id
+    @user = User.find(params[:user_id])
     if @event.save
-      redirect_to event_path(@event), notice: "Event successfully created!"
+      redirect_to user_event_path(@user ,@event), notice: "Event successfully created!"
     else
       render 'new', notice: "Error creating event."
     end
@@ -39,7 +46,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:time, :address, :longitude, :latitude, :description, :title, :capacity)
+    params.require(:event).permit(:time, :address, :longitude, :latitude, :description, :title, :capacity, :host_id)
   end
 
   def set_event
