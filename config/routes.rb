@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-
   root "users#index"
   
   resources :users do
     resources :events
+    resources :movie_interests
     resources :commitments, only: [:destroy, :update, :create]
   end
   resources :friendships 

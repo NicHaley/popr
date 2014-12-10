@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :hosted_events, class_name: "Event"
   has_many :comments, through: :events
   has_many :commitments
-  has_many :movies
+  has_many :movie_interests
 
   mount_uploader :avatar, AvatarUploader
 
