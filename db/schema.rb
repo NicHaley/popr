@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20141209231027) do
     t.string   "title"
     t.integer  "capacity"
     t.integer  "host_id"
+    
     t.datetime "created_at"
     t.datetime "updated_at"
   end

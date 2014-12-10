@@ -10,8 +10,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @commitment = Commitment.new
-    @commitment.user_id = current_user.id
   end
 
   def new
