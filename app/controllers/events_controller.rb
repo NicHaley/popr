@@ -10,10 +10,13 @@ class EventsController < ApplicationController
   end
 
   def show
+    @commitment = Commitment.new
+    @commitment.user_id = current_user.id
   end
 
   def new
     @event = Event.new
+    # @commitment = Commitment.new
     @user = User.find(params[:user_id])
   end
 
@@ -21,6 +24,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.host_id = current_user.id
     @user = User.find(params[:user_id])
+    # @commitment = Commitment.new
     if @event.save
       redirect_to user_event_path(@user ,@event), notice: "Event successfully created!"
     else

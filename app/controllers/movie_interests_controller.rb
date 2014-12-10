@@ -2,7 +2,7 @@ class MovieInterestsController < ApplicationController
   before_filter :set_movie_interest, only: [:show, :edit, :update, :destroy]
 
   def index
-    @movie_interests = MovieInterests.where(user_id: current_user.id)
+    @movie_interests = MovieInterest.where(user_id: current_user.id)
   end
   
   def show
@@ -19,6 +19,7 @@ class MovieInterestsController < ApplicationController
       redirect_to user_movie_interests_path(@user), notice: "Movie interest created!"
     else
       render 'new', notice: 'Error creating movie interest'
+    end
   end
 
   def edit

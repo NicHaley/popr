@@ -3,4 +3,9 @@ class Event < ActiveRecord::Base
   belongs_to :host, class_name: "User", foreign_key: "host_id"
   has_many :comments
   has_many :commitments
+
+  	def available(party_size)
+		confirmed = commitments.sum(party_size)
+		party_size <= (capacity - confirmed)
+	end
 end

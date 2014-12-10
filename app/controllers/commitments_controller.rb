@@ -3,6 +3,9 @@ class CommitmentsController < ApplicationController
     @commitment = Commitment.new(commitment_params)
     @user = User.find(params[:user_id])
     @event = Event.find(params[:event_id])
+    @commitment.event_id = @event.id
+    @commitment.user_id = @user.id
+
     if @commitment.save
       redirect_to user_event_path(@user, @event), notice: "POP POP"
     else
