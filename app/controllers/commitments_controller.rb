@@ -9,7 +9,7 @@ class CommitmentsController < ApplicationController
     if @commitment.save
       redirect_to user_event_path(@user, @event), notice: "POP POP"
     else
-      render 'new', notice: "Error joining event, try again!"
+      redirect_to user_event_path(@user, @event), notice: "Error joining event, try again!"
     end
   end
 
