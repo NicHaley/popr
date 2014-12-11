@@ -19,6 +19,11 @@
     <%= f.label :address %><br />
     <%= f.text_field :address %>
   </div>  
+
+  <div class="field">
+    <%= f.hidden_field :rt_id, value: "" %>
+  </div> 
+
   <div class="actions">
     <%= f.submit %>
   </div>

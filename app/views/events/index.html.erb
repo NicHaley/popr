@@ -1,1 +1,6 @@
 
+<h1>Events</h1>
+<% @events.each do |event| %>
+  <p>Event name: <%= event.title %></p>
+  <p>Host: <%= event.host.first_name %></p>
+<% end %>

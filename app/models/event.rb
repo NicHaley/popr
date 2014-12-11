@@ -9,8 +9,12 @@ class Event < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  	def available(party_size)
-		confirmed = commitments.sum(party_size)
-		party_size <= (capacity - confirmed)
-	end
+
+  # Function to verify if requested party size of commitment being made
+  # falls within the event capacity set by the host.
+
+  def is_available?(party_size)
+    confirmed = self.commitments.sum(:party_size)
+    self.capacity - (confirmed + party_size) >= 0
+  end
 end
