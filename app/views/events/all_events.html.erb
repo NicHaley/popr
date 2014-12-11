@@ -1,0 +1,18 @@
+<h1>Events</h1>
+
+<%= form_tag events_path, method: :get do %>
+	<%= label_tag :search, 'Find events nearby' %>
+	<%= text_field_tag :search %>
+	<%= submit_tag 'Submit'%>
+<% end %>
+
+
+<button id="current-location">Find Nearby Events</button>
+
+<section id="events">
+	<%= render 'event' %>
+</section>
+
+<% if current_user %>
+	<p><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></p>
+<% end %>
