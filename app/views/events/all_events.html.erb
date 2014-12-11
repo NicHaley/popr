@@ -13,6 +13,12 @@
 	<%= render 'event' %>
 </section>
 
+<div id="map-container">	
+	<div id="map-canvas"></div>
+</div>
+
+
+
 <% if current_user %>
 	<p><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></p>
 <% end %>
