@@ -17,8 +17,10 @@
   <% if @event.commitments %>
     <% @event.commitments.each do |commitment| %>
       <% if commitment.id %>
-        <p><%= commitment.user.first_name %> <i><%= commitment.guests %></i></p>
-        <%= image_tag commitment.user.avatar_url(:thumb) %> 
+        <%= link_to user_path(commitment.user) do %>
+          <p><%= commitment.user.first_name %> <i><%= commitment.guests %></i></p>
+          <%= image_tag commitment.user.avatar_url(:thumb) %> 
+        <% end %>  
       <% end %>  
     <% end %>
   <% end %>
