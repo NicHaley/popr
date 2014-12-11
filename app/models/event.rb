@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   has_many :commitments
 
   geocoded_by :address
-  after_validation :geocode
+  after_validation :geocode, if: :address_changed?
 
   	def available(party_size)
 		confirmed = commitments.sum(party_size)
