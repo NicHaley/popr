@@ -2,6 +2,7 @@
   <legend>Event:</legend>
   <h1>Title: <%= @event.title %></h1>
   <h3>Hosted by: <%= @event.host.first_name %> <%= @event.host.last_name %></h3>
+  <h4>Description: <%= @event.description %></h4>
   <%= image_tag @event.host.avatar_url(:thumb) %>
 </fieldset>
 <fieldset>
@@ -16,7 +17,7 @@
   <% if @event.commitments %>
     <% @event.commitments.each do |commitment| %>
       <% if commitment.id %>
-        <p><%= commitment.user.first_name %> <i>+<%= commitment.guests %></i></p>
+        <p><%= commitment.user.first_name %> <i><%= commitment.guests %></i></p>
         <%= image_tag commitment.user.avatar_url(:thumb) %> 
       <% end %>  
     <% end %>
@@ -29,16 +30,16 @@
 <!-- correct user and event; the assignment happens in the commitments        -->
 <!-- controller create action.                                                -->
 <%= form_for([@event, @commitment], url: user_commitments_path(user_id: current_user.id, event_id: params[:id])) do |f| %>
-<% if @commitment.errors.any? %>
+<% if params[:commitment_errors] %>
 <!-- For some reason, the errors are not being displayed -->
 <!-- The validations are for party size being a number>0 -->
 <!-- and that the event capacity is not exceeded -->
 <div id="error_explanation">
-  <h2><%= pluralize(@commitment.errors.count, "error") %> prohibited this commitment from being saved:</h2>
+  <h2><%= pluralize(params[:commitment_errors].count, "error") %> prohibited this commitment from being saved:</h2>
 
   <ul>
-    <% @commitment.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+    <% params[:commitment_errors].each do |message| %>
+    <li><%= message[1][0] %></li>
     <% end %>
   </ul>
 </div>

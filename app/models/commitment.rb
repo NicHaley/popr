@@ -18,7 +18,7 @@ class Commitment < ActiveRecord::Base
   def guests
     if party_size
       if party_size > 1
-        party_size - 1
+        "+ " + (party_size - 1).to_s
       end
     end
   end
