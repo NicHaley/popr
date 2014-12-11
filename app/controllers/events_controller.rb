@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     @events = if params[:search]
       Event.near(params[:search])
     elsif params[:latitude] && params[:longitude]
-      Event.near([params[:latitude], params[:longitude]], 1, unit: :km)
+      Event.near([params[:latitude], params[:longitude]], 10, unit: :km)
     else
       Event.all 
     end
