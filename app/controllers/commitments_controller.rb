@@ -1,8 +1,12 @@
 class CommitmentsController < ApplicationController
   def create
     @commitment = Commitment.new(commitment_params)
+    # We can grab user_id and event_id because we passed them into the params
+    # in the new commitment form (in the event show page).
     @user = User.find(params[:user_id])
     @event = Event.find(params[:event_id])
+    # Ensuring the instantiated commitment is attributed to the correct event 
+    # and the correct user (the current_user)
     @commitment.event_id = @event.id
     @commitment.user_id = @user.id
 
