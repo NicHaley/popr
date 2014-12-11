@@ -67,6 +67,6 @@ class EventsController < ApplicationController
   end
 
   def set_event
-    @event = Event.find(params[:id]) 
+    @event = User.find(params[:user_id]).hosted_events.where(events: {id: params[:id]}).first  
   end
 end
