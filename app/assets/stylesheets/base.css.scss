@@ -1,0 +1,69 @@
+$search-bg: #f2f3f9;
+$search-hover: #62669a;
+$search-text-color: black;
+$search-width: 500px;
+
+#movie-title {
+	color: $search-text-color;
+	display: inline;
+	vertical-align: top;
+	margin-left: 5px;
+}
+
+#movie-title-cont {
+	width: 400px;
+	height: 60px;
+	display: inline;
+}
+
+.movie-click:hover {
+	background-color: $search-hover;
+	#movie-title{
+		color: white;
+	}
+}
+
+.search-results {
+	background-color: $search-bg;
+	width: $search-width;
+}
+
+#search-block {
+	width: $search-width;
+}
+
+#img-thumb {
+	display: inline-block;
+}
+
+#search {
+	width: ($search-width - 5px);
+}
+
+input:focus {
+    outline:none;
+}
+
+h1 {
+	font-size: 60px;
+}
+
+h2 {
+	font-size: 50px;
+}
+
+h3 {
+	font-size: 40px;
+}
+
+h4 {
+	font-size: 30px;
+}
+
+h5 {
+	font-size: 16px;
+}
+
+h6 {
+	font-size: 12px;
+}
