@@ -7,8 +7,17 @@
 </fieldset>
 <fieldset>
   <legend>Movie:</legend>
-  <h3>Title: <%= @event.rt_id %></h3>
-  <h4>Description:</h4>
+  <h3>Title: <%= @movie.title %></h3>
+  <h4>Year: <%= @movie.year %></h4>
+  <%= image_tag @movie.poster %>
+  <p><b>Cast:</b> <% @movie.cast.each do |actor| %>
+    <i><%= actor["name"] %> /</i> 
+  <% end %></p>
+  <p><b>Critics Rating:</b> <%= @movie.rating[0] %> <b><%= @movie.rating[1] %>%</b> </p>
+  <p><b>Synopsis:</b> <%= @movie.synopsis %></p>
+  <% if @movie.consensus != "" %>
+    <p><b>Critics Consensus:</b> <%= @movie.consensus %></p>
+  <% end %>
 </fieldset>
 <fieldset>
   <legend>Who's going:</legend>

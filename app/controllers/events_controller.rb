@@ -27,6 +27,8 @@ class EventsController < ApplicationController
   def show
     @commitment = @event.commitments.build
     @commitment.user_id = current_user.id
+    @movie = Movie.find_movie(@event.rt_id)
+    
   end
 
   def new
