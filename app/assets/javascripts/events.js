@@ -20,12 +20,27 @@ function geolocationError(){
 	$("#current-location").after($locationError)
 }
 
-$(document).on('ready page:load', function(){
-	$('#current-location').on('click', function(){
-		if("geolocation" in navigator) {
-			navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
-		} else {
-			alert("Error!");
-		}
-	});
+$(document).ready(function() {
+	
+	if("geolocation" in navigator) {
+		navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, {timeout: 10000});
+	} else {
+		alert("Error!");
+	}
+
 });
+
+
+
+
+// $(document).on('ready page:load', function(){
+// 	$('#current-location').on('click', function(){
+// 		if("geolocation" in navigator) {
+// 			navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
+// 		} else {
+// 			alert("Error!");
+// 		}
+// 	});
+// });
+
+

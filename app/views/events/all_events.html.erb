@@ -1,5 +1,9 @@
 <h1>Events</h1>
 
+<% if current_user %>
+	<p><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></p>
+<% end %>
+
 <%= form_tag events_path, method: :get do %>
 	<%= label_tag :search, 'Find events nearby' %>
 	<%= text_field_tag :search %>
@@ -14,11 +18,12 @@
 </section>
 
 <div id="map-container">	
-	<div id="map-canvas"></div>
+	<%= content_tag "div", "", id: 'map-canvas' , data: {latitude: :latitude, longitude: :longitude} %>
 </div>
 
 
 
-<% if current_user %>
-	<p><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></p>
+<%= javascript_tag do %>
+	
 <% end %>
+	

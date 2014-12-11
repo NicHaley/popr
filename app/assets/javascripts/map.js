@@ -1,9 +1,12 @@
 window.myMap = {};
 
 myMap.init = function() {
+	var latitude = $('#map-canvas').data('latitude');
+	var longitude = $('#map-canvas').data('longitude');
+
 	var options = {
 		zoom: 14,
-		center: new google.maps.LatLng(43.6426, -79.3871),
+		center: new google.maps.LatLng(latitude, longitude),
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
 
