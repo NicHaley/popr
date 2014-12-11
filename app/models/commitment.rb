@@ -15,4 +15,12 @@ class Commitment < ActiveRecord::Base
     end
   end
 
+  def guests
+    if party_size
+      if party_size > 1
+        party_size - 1
+      end
+    end
+  end
+
 end
