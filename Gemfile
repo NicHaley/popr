@@ -32,6 +32,8 @@ gem 'carrierwave'
 gem 'rmagick', '~> 2.13.4'
 gem 'figaro'
 
+gem 'geocoder'
+
 group :development, :test do
 	gem 'pry-rails'
 	gem 'better_errors'

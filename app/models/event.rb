@@ -4,6 +4,9 @@ class Event < ActiveRecord::Base
   has_many :comments
   has_many :commitments
 
+  geocoded_by :address
+  after_validation :geocode
+
   	def available(party_size)
 		confirmed = commitments.sum(party_size)
 		party_size <= (capacity - confirmed)
