@@ -20,7 +20,7 @@ $(function() {
   });
 
   $(".search_results").on('click', ".movie-click", function(){
-    console.log(this);
+    $('#event_rt_id').val($(this).data("movie"));
   });
 
 });
@@ -32,7 +32,7 @@ function searchCallback(data) {
   var movies = data.movies;
   $.each(movies, function(index, movie) {
     if (index < 5) {
-    $(".search_results").append('<div data=' + movie.id + ' class="movie-click">' + '<h1>' + movie.title + '</h1>' + '<img src="' + movie.posters.thumbnail + '" />' + '</div>');
+    $(".search_results").append('<div data-movie=' + movie.id + ' class="movie-click">' + '<h1>' + movie.title + '</h1>' + '<img src="' + movie.posters.thumbnail + '" />' + '</div>');
    }
   });
 };
