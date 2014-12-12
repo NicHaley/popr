@@ -32,8 +32,13 @@ function searchCallback(data) {
   var movies = data.movies;
   $.each(movies, function(index, movie) {
     if (index < 5) {
-      $(".search-results").append('<div data-movie=' + movie.id + ' class="movie-click">' + '<img height="50" id="img-thumb" src="' + movie.posters.thumbnail + '" />' + '<div id="movie-title-cont">' + '<h5 id="movie-title">' + movie.title + ' (' + movie.year + ')' + '</h5>' + '</div>' + '</div>');
-      // +  '<h6>' + movie.abridged_cast[0]["name"] + '</h6>' 
+      $(".search-results").append('<div data-movie=' + movie.id + ' class="movie-click">' 
+        + '<img height="50" id="img-thumb" src="' + movie.posters.thumbnail + '" />' 
+        + '<div id="movie-title-cont">' + '<h5 class="movie-title">' + movie.title 
+        + ' (' + movie.year + ')' + '</h5>' + '</div>' + '</div>');
+      for(var i = 0; i < movie.abridged_cast.length; i++) {
+        $(".search-results").append('<i>' + movie.abridged_cast[i]["name"] + ' / ' + '</i>');
+      }
     }
   });
 };

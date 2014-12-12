@@ -3,7 +3,7 @@ $search-hover: #62669a;
 $search-text-color: black;
 $search-width: 500px;
 
-#movie-title {
+.movie-title {
 	color: $search-text-color;
 	display: inline;
 	vertical-align: top;
@@ -38,6 +38,14 @@ $search-width: 500px;
 
 #search {
 	width: ($search-width - 5px);
+}
+
+#movie-poster {
+	width: 275px;
+	height: 350px;
+	background-color: $search-bg;
+	display: inline-block;
+	float: left;
 }
 
 input:focus {
