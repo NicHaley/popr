@@ -4,7 +4,10 @@ class Commitment < ActiveRecord::Base
 
   validates :party_size, :numericality => { :only_integer => true, :greater_than => 0}
   validate :event_must_be_within_capacity
+  # validates :user_id, uniqueness: { scope: :event_id,
+  #   message: "can't commit to an event more than once" }
 
+  
   # Validation medthod that calls the is_available? method from the event model
   # If a guest attempts to make a commitment that will exceed capacity of the event,
   # the validation fails

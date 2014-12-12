@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root "users#index"
   
   resources :users do
-    resources :events
+    resources :events #do
+      #post :commit
+    #end
     resources :movie_interests
     resources :commitments, only: [:destroy, :update, :create]
   end

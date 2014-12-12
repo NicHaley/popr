@@ -1,0 +1,25 @@
+<%= form_for([@event, @commitment], url: user_commitments_path(user_id: current_user.id, event_id: params[:id])) do |f| %>
+
+<% if params[:commitment_errors] %>
+
+<div id="error_explanation">
+  <h2><%= pluralize(params[:commitment_errors].count, "error") %> prohibited this commitment from being saved:</h2>
+
+  <ul>
+    <% params[:commitment_errors].each do |message| %>
+    <li><%= message[1][0] %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+<div class="field">
+ <%= f.label :party_size %><br />
+ <%= f.number_field :party_size %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Join!"%>
+</div>
+<% end %>
