@@ -1,9 +1,16 @@
+$(document).ready(function() {
+	
+	if("geolocation" in navigator) {
+		navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
+	} else {
+		alert("Error!");
+	}
+
+});
+
 function geolocationSuccess(position){
 	var latitude = position.coords.latitude;
 	var longitude = position.coords.longitude;
-
-	$('#map-canvas').data('latitude', latitude);
-	$('#map-canvas').data('longitude', longitude);
 
 	$('.location-error').hide();
 
@@ -25,15 +32,6 @@ function geolocationError(){
 	$("#current-location").after($locationError)
 }
 
-$(document).ready(function() {
-	
-	if("geolocation" in navigator) {
-		navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
-	} else {
-		alert("Error!");
-	}
-
-});
 
 
 
