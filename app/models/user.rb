@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :hosted_events, class_name: "Event"
+  has_many :hosted_events, class_name: "Event", foreign_key: 'host_id'   
   has_many :comments, through: :events
   has_many :commitments
   has_many :movie_interests

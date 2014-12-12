@@ -15,18 +15,20 @@ class EventsController < ApplicationController
       format.html
       format.js
     end
-    # Finds all events; we'll need to add logic to ensure only events 
-    # of people whom are my friends are displayed 
   end
 
   def index
     # Finds all events hosted by user
+    # Finds all events; we'll need to add logic to ensure only events 
+    # of people whom are my friends are displayed 
     @events = Event.where(host_id: params[:user_id])
   end
 
   def show
     @commitment = @event.commitments.build
     @commitment.user_id = current_user.id
+    @movie = Movie.find_movie(@event.rt_id)
+    
   end
 
   def new
@@ -67,6 +69,10 @@ class EventsController < ApplicationController
   end
 
   def set_event
-    @event = Event.find(params[:id]) 
+    # This setter properly displays only the events which are hosted by user whose ID
+    # is in the params. e.g. /users/1/events/12 ; Event 12 is hosted by User 1.
+    # This query will not allow getting to Event 12 through User 2, i.e.
+    # /users/2/events/12 .
+    @event = User.find(params[:user_id]).hosted_events.where(events: {id: params[:id]}).first  
   end
 end
