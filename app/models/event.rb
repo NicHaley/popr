@@ -17,4 +17,10 @@ class Event < ActiveRecord::Base
     confirmed = self.commitments.sum(:party_size)
     self.capacity - (confirmed + party_size) >= 0
   end
+
+  def attendees
+    @attendees =[]
+    self.commitments.each {|c| @attendees << c.user if c.id}
+    @attendees
+  end
 end
