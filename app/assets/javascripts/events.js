@@ -2,7 +2,11 @@ function geolocationSuccess(position){
 	var latitude = position.coords.latitude;
 	var longitude = position.coords.longitude;
 
+	$('#map-canvas').data('latitude', latitude);
+	$('#map-canvas').data('longitude', longitude);
+
 	$('.location-error').hide();
+
 	$.ajax({
 		url:"/all_events",
 		method: "GET",
@@ -12,6 +16,7 @@ function geolocationSuccess(position){
 		},
 		dataType: 'script'
 	});
+
 }
 
 function geolocationError(){
@@ -23,12 +28,15 @@ function geolocationError(){
 $(document).ready(function() {
 	
 	if("geolocation" in navigator) {
-		navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, {timeout: 10000});
+		navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
 	} else {
 		alert("Error!");
 	}
 
 });
+
+
+
 
 
 

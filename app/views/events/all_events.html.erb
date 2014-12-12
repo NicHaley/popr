@@ -10,20 +10,13 @@
 	<%= submit_tag 'Submit'%>
 <% end %>
 
-
-<button id="current-location">Find Nearby Events</button>
+<!-- <button id="current-location">Find Nearby Events</button> -->
 
 <section id="events">
 	<%= render 'event' %>
 </section>
 
-<div id="map-container">	
-	<%= content_tag "div", "", id: 'map-canvas' , data: {latitude: :latitude, longitude: :longitude} %>
-</div>
+<!-- <div id="map-container"> -->	
+	<%= content_tag "div", "map-canvas", id: 'map-canvas' , data: {latitude: 43.6500, longitude: -79.4000} %>
+<!-- </div> -->
 
-
-
-<%= javascript_tag do %>
-	
-<% end %>
-	

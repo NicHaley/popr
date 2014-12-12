@@ -18,3 +18,8 @@ $(document).on('ready page:load', function() {
 		myMap.init();
 	}
 });
+
+
+
+
+  

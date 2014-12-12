@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   before_filter :set_event, only: [:show, :edit, :update, :destroy]
 
   def all_events
-
     @events = if params[:search]
       Event.near(params[:search])
     elsif params[:latitude] && params[:longitude]
