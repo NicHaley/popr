@@ -1,8 +1,19 @@
+$(document).ready(function() {
+	
+	if("geolocation" in navigator) {
+		navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
+	} else {
+		alert("Error!");
+	}
+
+});
+
 function geolocationSuccess(position){
 	var latitude = position.coords.latitude;
 	var longitude = position.coords.longitude;
 
 	$('.location-error').hide();
+
 	$.ajax({
 		url:"/all_events",
 		method: "GET",
@@ -12,6 +23,7 @@ function geolocationSuccess(position){
 		},
 		dataType: 'script'
 	});
+
 }
 
 function geolocationError(){
@@ -20,12 +32,21 @@ function geolocationError(){
 	$("#current-location").after($locationError)
 }
 
-$(document).on('ready page:load', function(){
-	$('#current-location').on('click', function(){
-		if("geolocation" in navigator) {
-			navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
-		} else {
-			alert("Error!");
-		}
-	});
-});
+
+
+
+
+
+
+
+// $(document).on('ready page:load', function(){
+// 	$('#current-location').on('click', function(){
+// 		if("geolocation" in navigator) {
+// 			navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
+// 		} else {
+// 			alert("Error!");
+// 		}
+// 	});
+// });
+
+
