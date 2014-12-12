@@ -14,7 +14,11 @@
     <i><%= actor["name"] %> /</i> 
   <% end %></p>
   <p><b>Critics Rating:</b> <%= @movie.rating[0] %> <b><%= @movie.rating[1] %>%</b> </p>
-  <p><b>Synopsis:</b> <%= @movie.synopsis %></p>
+  <% if @movie.consensus != "" %>
+    <p><b>Synopsis:</b> <%= @movie.synopsis %></p>
+  <% else %>
+    <p><b>Synopsis:</b> <i>not available</i></p>
+  <% end %>
   <% if @movie.consensus != "" %>
     <p><b>Critics Consensus:</b> <%= @movie.consensus %></p>
   <% end %>
