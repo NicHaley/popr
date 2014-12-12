@@ -49,17 +49,6 @@ myMap.init = function() {
 
 		console.log(latitude);
 		console.log(longitude);
-
-		// $.ajax({
-		// 	url:"/all_events",
-		// 	method: "GET",
-		// 	data: {
-		// 		latitude: latitude,
-		// 		longitude: longitude
-		// 	},
-		// 	dataType: 'script'
-		// });	
-
 	});
 
 	} else {
