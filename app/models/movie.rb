@@ -7,7 +7,7 @@ class Movie
   def initialize(options)
     @title = options['title']
     @year = options['year']
-    @poster = options['posters']['original']
+    @poster = options['posters']['original'].gsub("tmb", "det")
     @synopsis = options['synopsis']
     @consensus = options['critics_consensus']
     @rating = [options["ratings"]["critics_rating"],options["ratings"]["critics_score"]]
