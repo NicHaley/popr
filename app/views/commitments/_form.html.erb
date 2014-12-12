@@ -16,7 +16,7 @@
 
 <div class="field">
  <%= f.label :party_size %><br />
- <%= f.number_field :party_size %>
+ <%= f.number_field :party_size, {min: 1} %>
 </div>
 
 <div class="actions">
