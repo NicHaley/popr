@@ -41,12 +41,7 @@
     <% end %>
   <% end %>
 </fieldset>
-<!-- In the form_for, we specify the url since we are posting to a controller -->
-<!-- other than the one in which we currently are; currently in EVENTS, and   -->
-<!-- posting to COMMITMENTS. We also pass into the params the user_id and     -->
-<!-- event_id in order to be able to associate the new commitment to the      -->
-<!-- correct user and event; the assignment happens in the commitments        -->
-<!-- controller create action.                                                -->
+
 
 <%= render 'commitments/form' %>
 
