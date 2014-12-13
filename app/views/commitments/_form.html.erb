@@ -8,6 +8,9 @@
 
 <% if @event.attendees.include?(current_user) %> 
   <p>You are attending</p>
+  <% if @event.commitments.sum(:party_size) == @event.capacity %>
+    <p>Event is at capacity</p>
+  <% end %>
     <%= form_for([@event, @commitment], url: user_commitment_path(current_user, @commitment, event_id: params[:id])) do |f| %>
 
     <% if params[:commitment_errors] %>
@@ -53,7 +56,7 @@
 
     <div class="field">
      <%= f.label :party_size %><br />
-     <%= f.number_field :party_size, {min: 1, value: 1} %>
+     <%= f.number_field :party_size, {min: 1, max: @event.capacity - @event.commitments.sum(:party_size), value: 1} %>
     </div>
 
     <div class="actions">
