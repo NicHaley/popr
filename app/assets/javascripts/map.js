@@ -1,23 +1,26 @@
 window.myMap = {};
 
+var map;
 
 $(document).on('ready page:load', function() {
-	if ($('#map-canvas').length) {
+	if ("geolocation" in navigator) {
 		//Initialize the map on page load
 		myMap.init();
 
 		// Retrieve the coords of all events
-		// var coords = $('#map-canvas').data('coords');
-		// if (coords){
-		// 	myMap.addMarkers(coords);
-		// }
+		var coords = $('#map-canvas').data('coords');
+		
+		console.log(coords);
+		if (coords){
+			myMap.addMarkers(coords);
+		}
 	}
 });
 
+//Initialize Map
 myMap.init = function() {
 	if(navigator.geolocation){
 
-	var map;
 
 	//Set the default map settings
 	var mapOptions = {
@@ -49,6 +52,17 @@ myMap.init = function() {
 
 		console.log(latitude);
 		console.log(longitude);
+
+		$.ajax({
+			url:"/all_events",
+			method: "GET",
+			data: {
+				latitude: latitude,
+				longitude: longitude
+			},
+			dataType: 'script'
+		});
+
 	});
 
 	} else {
@@ -59,12 +73,15 @@ myMap.init = function() {
 
 //Add markers for other events
 myMap.addMarkers = function(coords){
+	
+	console.log(coords);
+
 	var image = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
 
 	coords.forEach(function(coord){
 		var myMarker = new google.maps.Marker({
 			position: new google.maps.LatLng(coord.latitude, coord.longitude),
-			map: this.canvas,
+			map: map,
 			icon: image
 		});
 	});

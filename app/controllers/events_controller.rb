@@ -2,20 +2,24 @@ class EventsController < ApplicationController
   before_filter :set_event, only: [:show, :edit, :update, :destroy]
 
   def all_events
-    @events = if params[:search]
-      Event.near(params[:search])
-    elsif params[:latitude] && params[:longitude]
-      Event.near([params[:latitude], params[:longitude]], 10, unit: :km)
-    else
-      Event.all 
-    end
+    # @events = if params[:search]
+    #   Event.near(params[:search])
+    # elsif params[:latitude] && params[:longitude]
+    #   Event.near([params[:latitude], params[:longitude]], 10, unit: :km)
+    # else
+    #   Event.all 
+    # end
+
+    @events = Event.all
 
     # Testing variables to set current position and nearby events
+    first_event = Event.first
+    @first_event = Event.near(first_event, 10, units: :km)
     
-    # @current_position = Event.near([params[:latitude], params[:longitude]], 10, unit: :km)
-    # @nearby_events = @current_position.nearbys(1, units: :km)
-    # @nearby_coords = @nearby_events.map {|event| {latitude: event.latitude.to_f, longitude: event.longitude.to_f}}
-
+    # c_position = [params[:latitude], params[:longitude]]
+    # @current_position = Event.near(c_position, 10, units: :km)
+    @nearby_coords = @first_event.map {|event| {latitude: event.latitude.to_f, longitude: event.longitude.to_f}}
+    
     respond_to do |format|
       format.html
       format.js
