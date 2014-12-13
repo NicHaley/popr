@@ -1,13 +1,16 @@
 $search-bg: #f2f3f9;
 $search-hover: #62669a;
 $search-text-color: black;
+
 $search-width: 500px;
+$movie-poster-width: 180px;
+$movie-poster-height: 270px;
 
 .movie-title {
 	color: $search-text-color;
 	display: inline;
 	vertical-align: top;
-	margin-left: 5px;
+
 }
 
 #movie-title-cont {
@@ -16,9 +19,15 @@ $search-width: 500px;
 	display: inline;
 }
 
+.movie-click {
+	clear: left;
+	display: table;
+	width: $search-width;
+}
+
 .movie-click:hover {
 	background-color: $search-hover;
-	#movie-title{
+	.movie-title{
 		color: white;
 	}
 }
@@ -30,10 +39,12 @@ $search-width: 500px;
 
 #search-block {
 	width: $search-width;
+	display: inline-block;
 }
 
 #img-thumb {
 	display: inline-block;
+	margin-right: 7px;
 }
 
 #search {
@@ -41,15 +52,28 @@ $search-width: 500px;
 }
 
 #movie-poster {
-	width: 275px;
-	height: 350px;
+	width: $movie-poster-width;
+	height: $movie-poster-height;
 	background-color: $search-bg;
 	display: inline-block;
 	float: left;
+	margin: 10px;
+	text-align: center;
+}
+
+#movie-poster > i {
+	display: inline-block;
+	font-size: 16px;
+	padding-top: (($movie-poster-height - 16)/ 2);
+}
+
+#selected-poster {
+	width: $movie-poster-width;
+	height: $movie-poster-height;
 }
 
 input:focus {
-    outline:none;
+	outline:none;
 }
 
 h1 {

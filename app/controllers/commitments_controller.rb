@@ -4,16 +4,17 @@ class CommitmentsController < ApplicationController
     # We can grab user_id and event_id because we passed them into the params
     # in the new commitment form (in the event show page).
     @event = Event.find(params[:event_id])
-    @user = @event.host
+    @user = current_user
+    @host = @event.host
     # Ensuring the instantiated commitment is attributed to the correct event 
     # and the correct user (the current_user)
     @commitment.event_id = @event.id
     @commitment.user_id = @user.id
 
     if @commitment.save
-      redirect_to user_event_path(@user, @event), notice: "POP POP"
+      redirect_to user_event_path(@host, @event), notice: "POP POP"
     else
-      redirect_to user_event_path(@user, @event, commitment_errors: @commitment.errors.messages), notice: "Error joining event, try again!"
+      redirect_to user_event_path(@host, @event, commitment_errors: @commitment.errors.messages), notice: "Error joining event, try again!"
     end
   end
 

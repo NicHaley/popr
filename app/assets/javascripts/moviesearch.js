@@ -8,6 +8,25 @@ var query = ""
 
 $(document).on('ready page:load', function() {
 
+  // callback for when we get back the results
+  var searchCallback = function(data) {
+
+    $(".search-results").html('');
+    var movies = data.movies;
+    $.each(movies, function(index, movie) {
+      if (index < 5) {
+        $(".search-results").append('<div data-id=' + movie.id + ' data-poster=' + movie.posters["original"].replace("tmb", "det") + ' class="movie-click">' 
+          + '<img id="img-thumb" align="left" height="50" src="' + movie.posters["thumbnail"] + '" />' 
+          + (movie.ratings["critics_rating"] === "Certified Fresh" ? '<img height="13" src="http://d3biamo577v4eu.cloudfront.net/static/images/trademark/fresh.png" />' : '<img height="13" src="http://d3biamo577v4eu.cloudfront.net/static/images/trademark/rotten.png" />')
+          + '<i> ' + movie.ratings["critics_score"] + '% - </i>'
+          + '<div id="movie-title-cont" >' + '<h5 class="movie-title">' + movie.title 
+          + ' (' + movie.year + ')' + '</h5>' + '</div>' + '</div>');
+      }
+    });
+  };
+
+  searchCallback = jQuery.throttle(300, searchCallback);
+
   $("#search").keyup(function(){
     query = $("#search").val();
 
@@ -20,27 +39,14 @@ $(document).on('ready page:load', function() {
   });
 
   $(".search-results").on('click', ".movie-click", function(){
-    $('#event_rt_id').val($(this).data("movie")).css();
+    $('#event_rt_id').val($(this).data("id"));
+    $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
+    $('#movie-details').html('<i>' +  + '</i>');
+  });
+
+  $("body").on("click", function(){
+    $(".search-results").html('');
   });
 
 });
-
-// callback for when we get back the results
-function searchCallback(data) {
-
-  $(".search-results").html('');
-  var movies = data.movies;
-  $.each(movies, function(index, movie) {
-    if (index < 5) {
-      $(".search-results").append('<div data-movie=' + movie.id + ' class="movie-click">' 
-        + '<img height="50" id="img-thumb" src="' + movie.posters.thumbnail + '" />' 
-        + '<div id="movie-title-cont">' + '<h5 class="movie-title">' + movie.title 
-        + ' (' + movie.year + ')' + '</h5>' + '</div>' + '</div>');
-      for(var i = 0; i < movie.abridged_cast.length; i++) {
-        $(".search-results").append('<i>' + movie.abridged_cast[i]["name"] + ' / ' + '</i>');
-      }
-    }
-  });
-};
-
 
