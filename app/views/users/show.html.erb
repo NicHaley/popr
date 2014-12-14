@@ -14,3 +14,13 @@
 	<% end %>
 	<% end %>
 </ul>
+
+<h2>Wish List</h2>
+
+<ul>
+	<% @user.movie_interests.each do |movie| %>
+		<li>
+			<%=	Movie.find_movie(movie.rt_id).title %>
+		</li>
+	<% end %>
+</ul>

@@ -37,7 +37,8 @@ class MovieInterestsController < ApplicationController
   
   def destroy
     @movie_interest.destroy
-     redirect_to user_movie_interests_path(@user), notice: "Movie interest succesfully deleted."
+    flash[:notice] = "Wished item deleted"
+    redirect_to current_user
   end
 
   private
@@ -45,7 +46,7 @@ class MovieInterestsController < ApplicationController
     params.require(:movie_interest).permit(:rt_id, :event_id, :user_id, :watched, :wished, :user_score)
   end
 
-   def set_movie_interest
+  def set_movie_interest
     @movie_interest = MovieInterest.find(params[:id])
   end
 end

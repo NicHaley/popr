@@ -72,6 +72,10 @@ $movie-poster-height: 270px;
 	height: $movie-poster-height;
 }
 
+#up-vote, #down-vote {
+	display: inline-block;
+}
+
 input:focus {
 	outline:none;
 }

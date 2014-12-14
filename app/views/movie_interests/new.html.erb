@@ -13,6 +13,7 @@
 <div id="movie-cast"></div>
 
 <%= form_for([@user, @movie_interest], remote: true) do |f| %>
+
 	<div class="field">
 		<%= f.hidden_field :wished, value: "true" %>
 		<%= f.hidden_field :rt_id, value: "" %>
