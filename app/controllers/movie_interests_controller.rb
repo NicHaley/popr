@@ -10,13 +10,15 @@ class MovieInterestsController < ApplicationController
 
   def new
     @movie_interest = MovieInterest.new
+    @user = User.find(params[:user_id])
   end
 
   def create
-    @movie_interest = MovieInterest.new(movie_interest_params)
     @user = User.find(params[:user_id])
+    @movie_interest = @user.movie_interests.build(movie_interest_params)
+
     if @movie_interest.save
-      redirect_to user_movie_interests_path(@user), notice: "Movie interest created!"
+      redirect_to root_url, notice: "Movie interest created!"
     else
       render 'new', notice: 'Error creating movie interest'
     end

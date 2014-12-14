@@ -15,7 +15,12 @@ $(document).on('ready page:load', function() {
     var movies = data.movies;
     $.each(movies, function(index, movie) {
       if (index < 5) {
-        $(".search-results").append('<div data-id=' + movie.id + ' data-poster=' + movie.posters["original"].replace("tmb", "det") + ' class="movie-click">' 
+        $(".search-results").append('<div data-year="' + movie.year 
+          + '" data-consensus=' + movie.abridged_cast
+          + '" data-id="' + movie.id 
+          + '" data-title="' + movie.title 
+          + '" + data-poster="' + movie.posters["original"].replace("tmb", "det") + '" class="movie-click">' 
+
           + '<img id="img-thumb" align="left" height="50" src="' + movie.posters["thumbnail"] + '" />' 
           + (movie.ratings["critics_rating"] === "Certified Fresh" ? '<img height="13" src="http://d3biamo577v4eu.cloudfront.net/static/images/trademark/fresh.png" />' : '<img height="13" src="http://d3biamo577v4eu.cloudfront.net/static/images/trademark/rotten.png" />')
           + '<i> ' + movie.ratings["critics_score"] + '% - </i>'
@@ -39,9 +44,18 @@ $(document).on('ready page:load', function() {
   });
 
   $(".search-results").on('click', ".movie-click", function(){
-    $('#event_rt_id').val($(this).data("id"));
-    $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
-    $('#movie-details').html('<i>' +  + '</i>');
+    if ($("body").data("controller") == "events") {
+      $('#event_rt_id').val($(this).data("id"));
+      $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
+    }
+    else if ($("body").data("controller") == "movie_interests"){
+      $('#movie_interest_rt_id').val($(this).data("id"));
+      $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
+      $('#movie-title').html('<h5>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h5>');
+      // for (var i = 0; i < $(this).data("cast").length; i++) {
+      //   $('#movie-cast').html('<h5>' + ($(this).data("cast")["name"][i]) + '</h5>');
+      // }
+    }
   });
 
   $("body").on("click", function(){

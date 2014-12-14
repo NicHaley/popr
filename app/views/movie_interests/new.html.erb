@@ -1,2 +1,23 @@
-<h1>MovieInterests#new</h1>
-<p>Find me in app/views/movie_interests/new.html.erb</p>
+<h1>Explore Movies</h1>
+
+<div id="search-block">
+	<input type="text" id="search">
+	<div class="search-results"></div>
+</div>
+
+<div id="movie-poster">
+	<i>No Movie Selected</i>
+</div>
+
+<div id="movie-title"></div>
+<div id="movie-cast"></div>
+
+<%= form_for([@user, @movie_interest], remote: true) do |f| %>
+	<div class="field">
+		<%= f.hidden_field :wished, value: "true" %>
+		<%= f.hidden_field :rt_id, value: "" %>
+	</div> 
+	<div class="actions">
+		<%= f.submit "Wish" %>
+	</div>
+<% end %>
