@@ -42,7 +42,7 @@ class MovieInterestsController < ApplicationController
 
   private
   def movie_interest_params
-    params.require(:movie_interest).permit(:rt_id, :event_id, :user_id, :watched?, :wished?, :user_score)
+    params.require(:movie_interest).permit(:rt_id, :event_id, :user_id, :watched, :wished, :user_score)
   end
 
    def set_movie_interest

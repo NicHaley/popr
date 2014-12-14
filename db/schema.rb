@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210232001) do
+ActiveRecord::Schema.define(version: 20141214175011) do
 
   create_table "commitments", force: true do |t|
     t.integer  "event_id"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20141210232001) do
     t.integer  "rt_id"
     t.integer  "event_id"
     t.integer  "user_id"
-    t.boolean  "watched?"
-    t.boolean  "wished?"
+    t.boolean  "watched"
+    t.boolean  "wished"
     t.integer  "user_score"
     t.datetime "created_at"
     t.datetime "updated_at"
