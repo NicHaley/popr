@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20141215174218) do
     t.integer  "user_score"
     t.string   "review"
     t.integer  "rt_id"
-    t.integer  "event_id"
+    t.integer  "event_id"   #May not require this column
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

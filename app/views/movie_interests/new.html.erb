@@ -22,3 +22,22 @@
 		<%= f.submit "Wish" %>
 	</div>
 <% end %>
+
+<h5>Write a Review</h5>
+
+<%= form_for([@user, @rating], url: user_ratings_path(current_user, @rating), :remote => true) do |f| %>		
+
+	<div class="field">
+    <%= f.label :review %><br />
+    <%= f.text_area :review, :size => "45x5" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h5>User Review</h5>
+
+<div id="review-list">
+	<%= render :partial => "ratings" %>
+</div>
