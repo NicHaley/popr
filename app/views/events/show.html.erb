@@ -1,9 +1,9 @@
 <fieldset>
+  <%= image_tag @event.host.avatar_url(:thumb) %>
   <legend>Event:</legend>
   <h1>Title: <%= @event.title %></h1>
   <h3>Hosted by: <%= @event.host.first_name %> <%= @event.host.last_name %></h3>
   <h4>Description: <%= @event.description %></h4>
-  <%= image_tag @event.host.avatar_url(:thumb) %>
 </fieldset>
 <fieldset>
   <legend>Movie:</legend>

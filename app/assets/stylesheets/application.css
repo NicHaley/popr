@@ -18,8 +18,8 @@
 
 #map-container {
    height: 600px;
-   width: 75%;
-   border-radius: 16px 16px;
+   width: 95%;
+   border-radius: 22px 22px;
    border-color: #fff;
    border-style: solid;
    box-shadow: 2px 2px 10px #B1B1B1;
@@ -29,4 +29,32 @@
  #map-canvas {
    height: 584px;
    width: 100%;
+   border-radius: 16px 16px;
+ }
+
+
+#map-section {
+   width: 70%;
+   float:left;
+}
+
+#map-container .event ul {
+   list-style-type: none;
+   padding: 0;
+}
+
+.event fieldset {
+   border-radius: 12px 12px;
+}
+
+#avatar-thumb {
+   width: 50px;
+   height: 50px;
+   border-radius: 150px;
+}
+
+ #side-bar {
+   width: 30%;
+   height: 600px;
+   float: right;
  }
