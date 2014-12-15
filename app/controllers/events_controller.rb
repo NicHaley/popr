@@ -4,24 +4,19 @@ class EventsController < ApplicationController
   def all_events
    
     @events = if params[:search_location]
-      Event.near(params[:search_location], 10, units: :km)
+      Event.near(params[:search_location], 1, units: :km)
     elsif params[:latitude] && params[:longitude]
       Event.near([params[:latitude], params[:longitude]], 10, units: :km)
     else
       Event.all 
     end
-
-    # Testing variables to set current position and nearby events
-    # first_event = Event.first
-    # @first_event = Event.near(first_event, 10, units: :km)
     
     c_position = [params[:latitude], params[:longitude]]
+    
     @current_position = Event.near(c_position, 10, units: :km)
+
     @nearby_coords = @current_position.map {|event| {latitude: event.latitude.to_f, longitude: event.longitude.to_f}}
     
-    unless @nearby_coords.blank?
-      #binding.pry
-    end
     respond_to do |format|
       format.html
       format.js

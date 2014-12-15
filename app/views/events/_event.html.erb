@@ -1,10 +1,10 @@
 <section class="event">
 	<% @events.each do |event| %>
-	<br>
+		<br>
 			<%= image_tag("#{event.host.avatar.thumb}", id: "avatar-thumb")%>
 			<b>Hosted by: <%= event.host.first_name %> <%= event.host.last_name %></b>
 		<fieldset>
-			<legend><b><%= event.title %>&nbsp;(<%=event.commitments.sum(:party_size)%>/<%= event.capacity%>)</b></legend>
+			<legend><b><%= link_to(event.title, user_event_path(event.host_id, event.id)) %>&nbsp;(<%=event.commitments.sum(:party_size)%>/<%= event.capacity%>)</b></legend>
 			<p><%= event.description %></p>
 			<p>Showing:</p>
 			<p><%= Movie.find_movie(event.rt_id).title %></p> 
