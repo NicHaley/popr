@@ -1,12 +1,12 @@
 <% @event.comments.each do |comment| %>
   <% if comment.id %>
     <div class="comment">
-      <div class="poster">
-        Posted by <%= comment.user.first_name %> on <%= comment.created_at %>
-      </div>
       <p class="comment">
         <%= comment.content %>
       </p>
+      <div class="poster">
+        <em>Posted by <%= comment.user.first_name %> on <%= comment.created_at %></em>
+      </div>
     </div>
   <% end %>  
 <% end %>
