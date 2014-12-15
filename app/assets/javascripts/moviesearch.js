@@ -33,12 +33,12 @@ $(document).on('ready page:load', function() {
 
       }
     });
-  };
+};
 
-  searchCallback = jQuery.throttle(300, searchCallback);
+searchCallback = jQuery.throttle(300, searchCallback);
 
-  $("#search").keyup(function(){
-    query = $("#search").val();
+$("#search").keyup(function(){
+  query = $("#search").val();
 
     // send off the query
     $.ajax({
@@ -48,24 +48,23 @@ $(document).on('ready page:load', function() {
     });
   });
 
-  $(".search-results").on('click', ".movie-click", function(){
-    if ($("body").data("controller") == "events") {
-      $('#event_rt_id').val($(this).data("id"));
-      $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
-    }
-    else if ($("body").data("controller") == "movie_interests"){
-      $('#movie_interest_rt_id').val($(this).data("id"));
-      $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
-      $('#movie-title').html('<h5>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h5>');
-      // for (var i = 0; i < $(this).data("cast").length; i++) {
-      //   $('#movie-cast').html('<h5>' + ($(this).data("cast")["name"][i]) + '</h5>');
-      // }
-    }
-  });
+$(".search-results").on('click', ".movie-click", function(){
+  if ($("body").data("controller") == "events") {
+    $('#event_rt_id').val($(this).data("id"));
+    $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
+  }
+  else if ($("body").data("controller") == "movie_interests"){
+    $('#movie_interest_rt_id').val($(this).data("id"));
+    $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
+    $('.movie-title').html('<h3>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h3>');
+    $('.movie-cast').html('<i>' + 'Cast - ' + $(this).data("cast") + '</i>');
+    $('.movie-score').html('<img height="60" src="' + $(this).data("icon") + '" />' + '<i>' + $(this).data("critics_score") + '</i>' );
+  }
+});
 
-  $("body").on("click", function(){
-    $(".search-results").html('');
-  });
+$("body").on("click", function(){
+  $(".search-results").html('');
+});
 
 });
 

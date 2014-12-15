@@ -7,10 +7,11 @@
 
 <div id="movie-poster">
 	<i>No Movie Selected</i>
-</div>
+</div><br />
 
-<div id="movie-title"></div>
-<div id="movie-cast"></div>
+<div class="movie-title"></div><br />
+<div class="movie-score"></div><br />
+<div class="movie-cast"></div>
 
 <%= form_for([@user, @movie_interest], remote: true) do |f| %>
 
@@ -30,7 +31,11 @@
 			 data-cast="{{cast}}" 
 			 data-id="{{id}}" 
 			 data-title="{{title}}"
-			 data-poster="{{posterOri}}" 
+			 data-poster="{{posterOri}}"
+			 data-icon = "{{icon}}"
+			 data-critics_rating = "{{critics_rating}}" 
+			 data-critics_score = "{{critics_score}}"
+
 			 class="movie-click">
 
 			 <img id="img-thumb" 
@@ -39,12 +44,5 @@
 			 			src="{{posterThumb}}" />
 
 			 	<i> <img height="13" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
-		
  	</div>
-</script>
-
-<script id="movie_info" type="x-tmpl-mustache">
-
-	<div id="movie-poster"><img id="selected-poster" src=""></div>
-
 </script>
