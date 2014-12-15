@@ -22,3 +22,29 @@
 		<%= f.submit "Wish" %>
 	</div>
 <% end %>
+
+
+<script id="menu_info" type="x-tmpl-mustache">
+
+	<div data-year="{{year}}" 
+			 data-cast="{{cast}}" 
+			 data-id="{{id}}" 
+			 data-title="{{title}}"
+			 data-poster="{{posterOri}}" 
+			 class="movie-click">
+
+			 <img id="img-thumb" 
+			 			align="left" 
+			 			height="50" 
+			 			src="{{posterThumb}}" />
+
+			 	<i> <img height="13" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
+		
+ 	</div>
+</script>
+
+<script id="movie_info" type="x-tmpl-mustache">
+
+	<div id="movie-poster"><img id="selected-poster" src=""></div>
+
+</script>

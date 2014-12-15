@@ -15,17 +15,22 @@ $(document).on('ready page:load', function() {
     var movies = data.movies;
     $.each(movies, function(index, movie) {
       if (index < 5) {
-        $(".search-results").append('<div data-year="' + movie.year 
-          + '" data-consensus=' + movie.abridged_cast
-          + '" data-id="' + movie.id 
-          + '" data-title="' + movie.title 
-          + '" + data-poster="' + movie.posters["original"].replace("tmb", "det") + '" class="movie-click">' 
+        var movie_data = {
+          id:               movie.id,
+          posterThumb:      movie.posters["thumbnail"],
+          posterOri:        movie.posters["original"].replace("tmb", "det"),
+          year:             movie.year,
+          critics_rating:   movie.ratings["critics_rating"],
+          critics_score:    (movie.ratings["critics_score"] >= 0 ? movie.ratings["critics_score"] + "%" : "No Score"),
+          icon:             (movie.ratings["critics_rating"] === "Certified Fresh" ? "http://d3biamo577v4eu.cloudfront.net/static/images/trademark/fresh.png" : movie.ratings["critics_rating"] === "Rotten" ? "http://d3biamo577v4eu.cloudfront.net/static/images/trademark/rotten.png" : ""),
+          cast:             movie.abridged_cast.map(function(obj){ return obj.name }).join(", "),
+          title:            movie.title
 
-          + '<img id="img-thumb" align="left" height="50" src="' + movie.posters["thumbnail"] + '" />' 
-          + (movie.ratings["critics_rating"] === "Certified Fresh" ? '<img height="13" src="http://d3biamo577v4eu.cloudfront.net/static/images/trademark/fresh.png" />' : movie.ratings["critics_rating"] === "Rotten" ? '<img height="13" src="http://d3biamo577v4eu.cloudfront.net/static/images/trademark/rotten.png" />' : '<i>' + "" +'</i>')
-          + (movie.ratings["critics_score"] >= 0 ? '<i> ' + movie.ratings["critics_score"] + '% - </i>' : '<i> ' + "No Score" + ' - </i>')
-          + '<div id="movie-title-cont" >' + '<h5 class="movie-title">' + movie.title 
-          + ' (' + movie.year + ')' + '</h5>' + '</div>' + '</div>');
+        }
+        var template = $('#menu_info').html()
+        var rendered = Mustache.render(template, movie_data);
+        $(".search-results").append(rendered) 
+
       }
     });
   };

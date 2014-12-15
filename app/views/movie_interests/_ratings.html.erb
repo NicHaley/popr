@@ -1,0 +1,7 @@
+<% @user.ratings.each do |rating| %>
+  <p>
+  	<% if rating.id != nil %>
+  		<strong><%= rating.review %></strong><br>
+  	<% end %>
+  </p>
+<% end %><br>

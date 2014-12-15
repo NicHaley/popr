@@ -13,12 +13,6 @@ $movie-poster-height: 270px;
 
 }
 
-#movie-title-cont {
-	width: 400px;
-	height: 60px;
-	display: inline;
-}
-
 .movie-click {
 	clear: left;
 	display: table;
@@ -27,7 +21,7 @@ $movie-poster-height: 270px;
 
 .movie-click:hover {
 	background-color: $search-hover;
-	.movie-title{
+	#movie-title{
 		color: white;
 	}
 }
