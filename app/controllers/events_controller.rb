@@ -3,13 +3,13 @@ class EventsController < ApplicationController
 
   def all_events
     @events = if params[:search]
-      Event.near(params[:search], 5, units: :km)
-    # elsif params[:latitude] && params[:longitude]
-    #   Event.near([params[:latitude], params[:longitude]], 10, unit: :km)
+      Event.near(params[:search], 1, units: :km)
+    elsif params[:latitude] && params[:longitude]
+      Event.near([params[:latitude], params[:longitude]], 1, unit: :km)
     else
       Event.all 
     end
-    
+
     # Testing variables to set current position and nearby events
     # first_event = Event.first
     # @first_event = Event.near(first_event, 10, units: :km)

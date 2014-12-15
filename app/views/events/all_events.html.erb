@@ -1,4 +1,4 @@
-<h1>Events</h1>
+<h3>Events</h3>
 
 <% if current_user %>
 	<p><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></p>
@@ -12,15 +12,15 @@
 
 <!-- <button id="current-location">Find Nearby Events</button> -->
 
-<div id="side-bar">
+<div id="side-bar" style="overflow: scroll">
 	<ul>
 		<%= render 'event' %>
 	</ul>
 </div>
 
 
-<div id="map-section" style="overflow: scroll">
-	<section id="map-container">	
+<div id="map-section">
+	<div id="map-container">	
 		<%= render 'map' %>
-	</section>
+	</div>
 </div>
