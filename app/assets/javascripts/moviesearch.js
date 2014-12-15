@@ -15,25 +15,30 @@ $(document).on('ready page:load', function() {
     var movies = data.movies;
     $.each(movies, function(index, movie) {
       if (index < 5) {
-        $(".search-results").append('<div data-year="' + movie.year 
-          + '" data-cast=' + movie.abridged_cast
-          + '" data-id="' + movie.id 
-          + '" data-title="' + movie.title 
-          + '" + data-poster="' + movie.posters["original"].replace("tmb", "det") + '" class="movie-click">' 
 
-          + '<img id="img-thumb" align="left" height="50" src="' + movie.posters["thumbnail"] + '" />' 
-          + (movie.ratings["critics_rating"] === "Certified Fresh" ? '<img height="13" src="http://d3biamo577v4eu.cloudfront.net/static/images/trademark/fresh.png" />' : movie.ratings["critics_rating"] === "Rotten" ? '<img height="13" src="http://d3biamo577v4eu.cloudfront.net/static/images/trademark/rotten.png" />' : '<i>' + "" +'</i>')
-          + (movie.ratings["critics_score"] >= 0 ? '<i> ' + movie.ratings["critics_score"] + '% - </i>' : '<i> ' + "No Score" + ' - </i>')
-          + '<div id="movie-title-cont" >' + '<h5 class="movie-title">' + movie.title 
-          + ' (' + movie.year + ')' + '</h5>' + '</div>' + '</div>');
+        var movie_data = {
+          id:               movie.id,
+          posterThumb:      movie.posters["thumbnail"],
+          posterOri:        movie.posters["original"].replace("tmb", "det"),
+          year:             movie.year,
+          critics_rating:   movie.ratings["critics_rating"],
+          critics_score:    (movie.ratings["critics_score"] >= 0 ? movie.ratings["critics_score"] + "%" : "No Score"),
+          icon:             (movie.ratings["critics_rating"] === "Certified Fresh" ? "http://d3biamo577v4eu.cloudfront.net/static/images/trademark/fresh.png" : movie.ratings["critics_rating"] === "Rotten" ? "http://d3biamo577v4eu.cloudfront.net/static/images/trademark/rotten.png" : ""),
+          cast:             movie.abridged_cast.map(function(obj){ return obj.name }).join(", "),
+          title:            movie.title
+
+        }
+        var template = $('#menu_info').html()
+        var rendered = Mustache.render(template, movie_data);
+        $(".search-results").append(rendered) 
       }
     });
-  };
+};
 
-  searchCallback = jQuery.throttle(300, searchCallback);
+searchCallback = jQuery.throttle(300, searchCallback);
 
-  $("#search").keyup(function(){
-    query = $("#search").val();
+$("#search").keyup(function(){
+  query = $("#search").val();
 
     // send off the query
     $.ajax({
@@ -43,24 +48,23 @@ $(document).on('ready page:load', function() {
     });
   });
 
-  $(".search-results").on('click', ".movie-click", function(){
-    if ($("body").data("controller") == "events") {
-      $('#event_rt_id').val($(this).data("id"));
-      $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
-    }
-    else if ($("body").data("controller") == "movie_interests"){
-      $('#movie_interest_rt_id').val($(this).data("id"));
-      $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
-      $('#movie-title').html('<h5>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h5>');
-      // for (var i = 0; i < $(this).data("cast").length; i++) {
-      //   $('#movie-cast').html('<h5>' + ($(this).data("cast")["name"][i]) + '</h5>');
-      // }
-    }
-  });
+$(".search-results").on('click', ".movie-click", function(){
+  if ($("body").data("controller") == "events") {
+    $('#event_rt_id').val($(this).data("id"));
+    $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
+  }
+  else if ($("body").data("controller") == "movie_interests"){
+    $('#movie_interest_rt_id').val($(this).data("id"));
+    $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
+    $('.movie-title').html('<h3>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h3>');
+    $('.movie-cast').html('<i>' + 'Cast - ' + $(this).data("cast") + '</i>');
+    $('.movie-score').html('<img height="60" src="' + $(this).data("icon") + '" />' + '<i>' + $(this).data("critics_score") + '</i>' );
+  }
+});
 
-  $("body").on("click", function(){
-    $(".search-results").html('');
-  });
+$("body").on("click", function(){
+  $(".search-results").html('');
+});
 
 });
 
