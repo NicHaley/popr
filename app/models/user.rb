@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :comments, through: :events
   has_many :commitments
   has_many :movie_interests
+  has_many :ratings
 
   mount_uploader :avatar, AvatarUploader
 

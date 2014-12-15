@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214175011) do
+ActiveRecord::Schema.define(version: 20141215174218) do
 
   create_table "commitments", force: true do |t|
     t.integer  "event_id"
@@ -47,9 +47,17 @@ ActiveRecord::Schema.define(version: 20141214175011) do
     t.integer  "rt_id"
     t.integer  "event_id"
     t.integer  "user_id"
-    t.boolean  "watched"
     t.boolean  "wished"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ratings", force: true do |t|
     t.integer  "user_score"
+    t.string   "review"
+    t.integer  "rt_id"
+    t.integer  "event_id"   #May not require this column
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

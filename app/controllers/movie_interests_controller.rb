@@ -11,6 +11,7 @@ class MovieInterestsController < ApplicationController
   def new
     @movie_interest = MovieInterest.new
     @user = User.find(params[:user_id])
+    @rating = @user.ratings.build
   end
 
   def create

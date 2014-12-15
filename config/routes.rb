@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :events 
     resources :movie_interests
+    resources :ratings, only:  [:show, :create, :destroy]
     resources :commitments, only: [:destroy, :update, :create]
   end
   resources :friendships 
