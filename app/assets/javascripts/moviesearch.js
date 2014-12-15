@@ -16,7 +16,7 @@ $(document).on('ready page:load', function() {
     $.each(movies, function(index, movie) {
       if (index < 5) {
         $(".search-results").append('<div data-year="' + movie.year 
-          + '" data-consensus=' + movie.abridged_cast
+          + '" data-cast=' + movie.abridged_cast
           + '" data-id="' + movie.id 
           + '" data-title="' + movie.title 
           + '" + data-poster="' + movie.posters["original"].replace("tmb", "det") + '" class="movie-click">' 

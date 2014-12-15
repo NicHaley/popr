@@ -21,6 +21,7 @@
 	<% @user.movie_interests.each do |movie| %>
 		<li>
 			<%=	Movie.find_movie(movie.rt_id).title %>
+			<%= link_to "remove", user_movie_interest_path(@user,movie), method: :delete %>
 		</li>
 	<% end %>
 </ul>
