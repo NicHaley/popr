@@ -5,7 +5,11 @@
         <%= comment.content %>
       </p>
       <div class="poster">
-        <em>Posted by <%= comment.user.first_name %> on <%= comment.created_at %></em>
+        <% if comment.user == @event.host %>
+          <b><em>Posted by <%= comment.user.first_name %> on <%= comment.created_at %></em></b>
+        <% else %>  
+          <em>Posted by <%= comment.user.first_name %> on <%= comment.created_at %></em>
+        <% end %>  
       </div>
     </div>
   <% end %>  
