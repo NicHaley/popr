@@ -53,7 +53,7 @@
 
   <%= form_for([@event.host, @event, @comment], :remote => true) do |f| %>
   <div id="comment-form-errors">
-    <%#= render :partial => "comment_form_errors" %>
+    <%= render :partial => "comment_form_errors" %>
   </div>
 
   <div class="field">
