@@ -2,7 +2,14 @@
   <%= image_tag @event.host.avatar_url(:thumb) %>
   <legend>Event:</legend>
   <h1>Title: <%= @event.title %></h1>
+  <% if @event.attendees.include?(current_user) %>
+    <%= image_tag "star.png" %>
+  <% end %>
   <h3>Hosted by: <%= @event.host.first_name %> <%= @event.host.last_name %></h3>
+<<<<<<< HEAD
+=======
+  <%= image_tag @event.host.avatar_url(:thumb) %>
+>>>>>>> show-event
   <h4>Description: <%= @event.description %></h4>
 </fieldset>
 <fieldset>
@@ -38,35 +45,7 @@
     <% end %>
   <% end %>
 </fieldset>
-<!-- In the form_for, we specify the url since we are posting to a controller -->
-<!-- other than the one in which we currently are; currently in EVENTS, and   -->
-<!-- posting to COMMITMENTS. We also pass into the params the user_id and     -->
-<!-- event_id in order to be able to associate the new commitment to the      -->
-<!-- correct user and event; the assignment happens in the commitments        -->
-<!-- controller create action.                                                -->
-<%= form_for([@event, @commitment], url: user_commitments_path(user_id: current_user.id, event_id: params[:id])) do |f| %>
-<% if params[:commitment_errors] %>
-<!-- For some reason, the errors are not being displayed -->
-<!-- The validations are for party size being a number>0 -->
-<!-- and that the event capacity is not exceeded -->
-<div id="error_explanation">
-  <h2><%= pluralize(params[:commitment_errors].count, "error") %> prohibited this commitment from being saved:</h2>
 
-  <ul>
-    <% params[:commitment_errors].each do |message| %>
-    <li><%= message[1][0] %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
 
-<div class="field">
- <%= f.label :party_size %><br />
- <%= f.number_field :party_size %>
-</div>
-
-<div class="actions">
-  <%= f.submit %>
-</div>
-<% end %>
+<%= render 'commitments/form' %>
 

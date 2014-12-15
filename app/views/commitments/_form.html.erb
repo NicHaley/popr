@@ -1,0 +1,70 @@
+<!-- In the form_for, we specify the url since we are posting to a controller -->
+<!-- other than the one in which we currently are; currently in EVENTS, and   -->
+<!-- posting to COMMITMENTS. We also pass into the params the user_id and     -->
+<!-- event_id in order to be able to associate the new commitment to the      -->
+<!-- correct user and event; the assignment happens in the commitments        -->
+<!-- controller create action.                                                -->
+  
+
+<% if @event.attendees.include?(current_user) %> 
+  <p>You are attending</p>
+  <% if @event.commitments.sum(:party_size) == @event.capacity %>
+    <p>Event is at capacity</p>
+  <% end %>
+    <%= form_for([@event, @commitment], url: user_commitment_path(current_user, @commitment, event_id: params[:id])) do |f| %>
+
+    <% if params[:commitment_errors] %>
+
+    <div id="error_explanation">
+      <h2><%= pluralize(params[:commitment_errors].count, "error") %> prohibited this commitment from being saved:</h2>
+
+      <ul>
+        <% params[:commitment_errors].each do |message| %>
+        <li><%= message[1][0] %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+
+    <div class="field">
+     <%= f.label :party_size %><br />
+     <%= f.number_field :party_size, {min: 1, value: @commitment.party_size, max: (@event.capacity - @event.commitments.sum(:party_size) + @commitment.party_size)} %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update!"%>
+    </div>
+    <% end %>
+    <%= button_to "Cancel", user_commitment_path(current_user, @commitment), method: :delete %>   
+<% else %>
+  <% if @event.commitments.sum(:party_size) != @event.capacity %>   
+    <%= form_for([@event, @commitment], url: user_commitments_path(user_id: current_user.id, event_id: params[:id])) do |f| %>
+
+    <% if params[:commitment_errors] %>
+
+    <div id="error_explanation">
+      <h2><%= pluralize(params[:commitment_errors].count, "error") %> prohibited this commitment from being saved:</h2>
+
+      <ul>
+        <% params[:commitment_errors].each do |message| %>
+        <li><%= message[1][0] %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+
+    <div class="field">
+     <%= f.label :party_size %><br />
+     <%= f.number_field :party_size, {min: 1, max: @event.capacity - @event.commitments.sum(:party_size), value: 1} %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Join!"%>
+    </div>
+    <% end %>
+  <% else %>
+    <p>Event is full!</p>
+  <% end %>
+<% end %>

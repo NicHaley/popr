@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   has_many :commitments
 
   validates :title, :presence => true
-
+  
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
@@ -16,5 +16,11 @@ class Event < ActiveRecord::Base
   def is_available?(party_size)
     confirmed = self.commitments.sum(:party_size)
     self.capacity - (confirmed + party_size) >= 0
+  end
+
+  def attendees
+    @attendees =[]
+    self.commitments.each {|c| @attendees << c.user if c.id}
+    @attendees
   end
 end

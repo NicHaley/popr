@@ -4,8 +4,10 @@ class CommitmentsController < ApplicationController
     # We can grab user_id and event_id because we passed them into the params
     # in the new commitment form (in the event show page).
     @event = Event.find(params[:event_id])
+
     @user = current_user
     @host = @event.host
+
     # Ensuring the instantiated commitment is attributed to the correct event 
     # and the correct user (the current_user)
     @commitment.event_id = @event.id
@@ -26,10 +28,14 @@ class CommitmentsController < ApplicationController
 
   def update
     @commitment = Commitment.find(params[:id])
-    if @commitment.update_attributes(commitment_params) 
-      redirect_to commitment_path(@commitment), notice: "Event successfully modified!"
+    @event = Event.find(params[:event_id])
+    @commitment.event_id = @event.id
+    @commitment.user_id = current_user.id
+    @host = @commitment.event.host
+    if @commitment.update_attribute(:party_size, commitment_params[:party_size]) 
+      redirect_to user_event_path(@host, @commitment.event), notice: "Party size successfully modified!"
     else
-      render 'edit', notice: "Error, try again!"
+      redirect_to user_event_path(@host, @commitment.event), notice: "Error, try again!"
     end
   end
   private

@@ -32,10 +32,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @commitment = @event.commitments.build
-    @commitment.user_id = current_user.id
+    @commitment = current_user.commitments.find_or_initialize_by(event: @event)
     @movie = Movie.find_movie(@event.rt_id)
-    
   end
 
   def new
@@ -53,6 +51,7 @@ class EventsController < ApplicationController
       render 'new', notice: "Error creating event."
     end
   end
+
 
   def edit
   end
