@@ -20,6 +20,17 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+
+    respond_to do |format|
+      if @comment.destroy
+        format.html { redirect_to user_event_path(@event.host, @event), notice: 'Comment deleted' }
+        format.js {}
+      else
+        format.html { redirect_to user_event_path(@event.host, @event), notice: 'Failed, try again!' }
+        format.js {}
+      end
+    end
   end
 
   private

@@ -2,7 +2,8 @@
   <% if comment.id %>
     <div class="comment">
       <p class="comment">
-        <%= comment.content %>
+        <%= comment.content %> 
+        <%= button_to "[X]", user_event_comment_path(@event.host, @event, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
       </p>
       <div class="poster">
         <% if comment.user == @event.host %>
