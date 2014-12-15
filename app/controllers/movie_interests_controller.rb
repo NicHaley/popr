@@ -17,10 +17,12 @@ class MovieInterestsController < ApplicationController
     @user = User.find(params[:user_id])
     @movie_interest = @user.movie_interests.build(movie_interest_params)
 
-    if @movie_interest.save
-      redirect_to root_url, notice: "Movie interest created!"
-    else
-      render 'new', notice: 'Error creating movie interest'
+    respond_to do |format|
+      if @movie_interest.save
+        format.html {redirect_to root_url, notice: "Movie interest created!"}
+      else
+        format.html {render 'new', notice: 'Error creating movie interest'}
+      end
     end
   end
 
