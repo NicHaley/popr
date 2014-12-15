@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_filter :load_event
   def create
-    @comment = current_user.comments.build
+    @comment = current_user.comments.build(comment_params)
     @comment.event_id = @event.id
 
     respond_to do |format|

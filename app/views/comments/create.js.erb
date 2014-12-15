@@ -1,1 +1,1 @@
-alert("I’m responding to your request!");
+$("#comment-list").html("<%= escape_javascript(render(:partial => 'events/comments')) %>");

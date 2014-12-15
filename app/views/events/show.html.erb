@@ -46,11 +46,14 @@
 </fieldset>
 <fieldset>
   <legend>Comments:</legend>
+  <div id="comment-list">
+    <%= render :partial => "comments" %>
+  </div>
   <h4>Add Comment</h4>
 
   <%= form_for([@event.host, @event, @comment], :remote => true) do |f| %>
-  <div id="review-form-errors">
-    <%#= render :partial => "review_form_errors" %>
+  <div id="comment-form-errors">
+    <%#= render :partial => "comment_form_errors" %>
   </div>
 
   <div class="field">
