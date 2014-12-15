@@ -8,7 +8,7 @@
   <h3>Hosted by: <%= @event.host.first_name %> <%= @event.host.last_name %></h3>
 
   <%= image_tag @event.host.avatar_url(:thumb) %>
->>>>>>> show-event
+
   <h4>Description: <%= @event.description %></h4>
 </fieldset>
 <fieldset>
@@ -43,6 +43,25 @@
       <% end %>  
     <% end %>
   <% end %>
+</fieldset>
+<fieldset>
+  <legend>Comments:</legend>
+  <h4>Add Comment</h4>
+
+  <%= form_for([@event.host, @event, @comment], :remote => true) do |f| %>
+  <div id="review-form-errors">
+    <%#= render :partial => "review_form_errors" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
 </fieldset>
 
 
