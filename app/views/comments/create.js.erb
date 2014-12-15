@@ -1,4 +1,3 @@
-$("#comment-list").html("<%= escape_javascript(render(:partial => 'events/comments')) %>");
 <% if @comment.errors.present? %>
   $("#comment-form-errors").html("<%= escape_javascript(render(:partial => '/events/comment_form_errors')) %>");
 <% else %>

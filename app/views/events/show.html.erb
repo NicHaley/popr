@@ -61,7 +61,7 @@
     <%= f.text_area :content %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Comment", id: "submit-comment" %>
   </div>
 
 <% end %>
@@ -74,12 +74,12 @@
   $(function() {
      $("#new_comment")
         .on('ajax:beforeSend', function() { // set this code to happen just before the ajax request is made
-          $("input[type='submit']") // make changes to the submit button
+          $("#submit-comment") // make changes to the submit button
             .val('Saving...') // change the text on the button
             .attr('disabled', 'disabled'); // disable the button
         })
         .on('ajax:complete', function() {
-          $("input[type='submit']")
+          $("#submit-comment")
             .val('Create Comment')
             .removeAttr('disabled');
         });
