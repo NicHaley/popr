@@ -18,7 +18,7 @@
 
 #map-container {
    height: 600px;
-   width: 75%;
+   width: 95%;
    border-radius: 16px 16px;
    border-color: #fff;
    border-style: solid;
@@ -29,4 +29,21 @@
  #map-canvas {
    height: 584px;
    width: 100%;
+ }
+
+
+#map-section {
+   width: 70%;
+   float:left;
+   height: 500px;
+}
+
+#map-container .event ul {
+   list-style-type: none;
+   padding: 0;
+}
+
+ #side-bar {
+   width: 30%;
+   float: right;
  }

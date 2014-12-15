@@ -1,5 +1,10 @@
-<!-- <section class="event">
+<section class="event">
 	<% @events.each do |event| %>
-	<%= link_to event.title, root_url %>
+		<li>
+			<%= image_tag("#{event.host.avatar.thumb}")%>
+			<h4><%= event.title %>&nbsp;(<%=event.commitments.sum(:party_size)%>/<%= event.capacity%>)</h4>
+			<b>Hosted by: <%= event.host.first_name %> <%= event.host.last_name %></b>
+			<%= event.description %>
+		</li>
 	<% end %>
-</section> -->
+</section>

@@ -12,11 +12,15 @@
 
 <!-- <button id="current-location">Find Nearby Events</button> -->
 
-<section id="events">
-	<%= render 'event' %>
-</section>
+<div id="side-bar">
+	<ul>
+		<%= render 'event' %>
+	</ul>
+</div>
 
-<section id="map-container">	
-	<%= render 'map' %>
-</section>
 
+<div id="map-section" style="overflow: scroll">
+	<section id="map-container">	
+		<%= render 'map' %>
+	</section>
+</div>

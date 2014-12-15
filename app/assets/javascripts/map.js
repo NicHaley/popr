@@ -2,18 +2,20 @@ window.myMap = {};
 
 var map;
 
+
 $(document).on('ready page:load', function() {
+
 	if ("geolocation" in navigator) {
 		//Initialize the map on page load
 		myMap.init();
 
 		// Retrieve the coords of all events
 		var coords = $('#map-canvas').data('coords');
-		
-		console.log(coords);
+
 		if (coords){
 			myMap.addMarkers(coords);
 		}
+
 	}
 });
 
@@ -50,9 +52,6 @@ myMap.init = function() {
 		var latitude = position.coords.latitude;
 		var longitude = position.coords.longitude;	
 
-		console.log(latitude);
-		console.log(longitude);
-
 		$.ajax({
 			url:"/all_events",
 			method: "GET",
@@ -69,12 +68,12 @@ myMap.init = function() {
 	  	//Browser does not support geolocation
 	  	document.getElementById('map-canvas').innerHTML = 'No Geolocation Support.';
 	}
+
 };
+
 
 //Add markers for other events
 myMap.addMarkers = function(coords){
-	
-	console.log(coords);
 
 	var image = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
 
