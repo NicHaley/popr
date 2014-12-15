@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :users do
     resources :events do
-      resources :comments [:destroy, :update, :create]
+      resources :comments, only: [:destroy, :update, :create]
     end
     resources :movie_interests
     resources :commitments, only: [:destroy, :update, :create]
