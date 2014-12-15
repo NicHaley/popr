@@ -2,10 +2,12 @@
 	<% @events.each do |event| %>
 	<br>
 			<%= image_tag("#{event.host.avatar.thumb}", id: "avatar-thumb")%>
+			<b>Hosted by: <%= event.host.first_name %> <%= event.host.last_name %></b>
 		<fieldset>
 			<legend><b><%= event.title %>&nbsp;(<%=event.commitments.sum(:party_size)%>/<%= event.capacity%>)</b></legend>
-			<b>Hosted by: <%= event.host.first_name %> <%= event.host.last_name %></b>
 			<p><%= event.description %></p>
+			<p>Showing:</p>
+			<p><%= Movie.find_movie(event.rt_id).title %></p> 
 			<br>
 		</fieldset>
 	<% end %>

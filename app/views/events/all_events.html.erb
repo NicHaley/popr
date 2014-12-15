@@ -5,14 +5,17 @@
 <% end %>
 
 <%= form_tag events_path, method: :get do %>
-	<%= label_tag :search, 'Find events nearby' %>
-	<%= text_field_tag :search %>
+	<%= label_tag :search_location, 'Find events nearby' %>
+	<%= text_field_tag :search_location %>
 	<%= submit_tag 'Submit'%>
 <% end %>
 
-<!-- <button id="current-location">Find Nearby Events</button> -->
 
 <div id="side-bar" style="overflow: scroll">
+	<%= form_tag events_path, method: :get do %>
+		<%= label_tag :search_friend, 'Find friends' %><br>
+		<%= text_field_tag :search_friend %>
+	<% end %>
 	<ul>
 		<%= render 'event' %>
 	</ul>
