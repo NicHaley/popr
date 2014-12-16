@@ -8,6 +8,9 @@
 			<p><%= event.description %></p>
 			<p>Showing:</p>
 			<p><%= Movie.find_movie(event.rt_id).title %></p> 
+			<% if @attending %>
+				You're attending!
+			<% end %>
 			<br>
 		</fieldset>
 	<% end %>
