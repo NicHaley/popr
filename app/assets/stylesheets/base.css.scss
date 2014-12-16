@@ -1,8 +1,9 @@
 $search-bg: #f2f3f9;
 $search-hover: #62669a;
 $search-text-color: black;
+$movie-info-bg: #d5d8ea;
 
-$search-width: 500px;
+$search-width: 800px;
 $movie-poster-width: 180px;
 $movie-poster-height: 270px;
 
@@ -10,13 +11,13 @@ $movie-poster-height: 270px;
 	color: $search-text-color;
 	display: inline;
 	vertical-align: top;
-
 }
 
 .movie-click {
 	clear: left;
 	display: table;
 	width: $search-width;
+	text-align: left;
 }
 
 .movie-click:hover {
@@ -29,20 +30,24 @@ $movie-poster-height: 270px;
 .search-results {
 	background-color: $search-bg;
 	width: $search-width;
+	position: absolute;
+	z-index: 10;
 }
 
-#search-block {
-	width: $search-width;
-	display: inline-block;
-}
-
-#img-thumb {
+.img-thumb {
 	display: inline-block;
 	margin-right: 7px;
 }
 
+#search-block {
+	width: $search-width;
+	text-align: center;
+	display: inline-block;
+}
+
 #search {
 	width: ($search-width - 5px);
+	text-align: center;
 }
 
 #movie-poster {
@@ -70,6 +75,32 @@ $movie-poster-height: 270px;
 	display: inline-block;
 }
 
+#score-text {
+	font-size: 45px;
+}
+
+.movie-info {
+	display: inline-block;
+	text-align: center;
+	width: $search-width;
+	background-color: $movie-info-bg;
+	position: relative;
+}
+
+.movie-text {
+	text-align: left;
+}
+
+.movie-explore-field {
+	display: inline-block;
+	text-align: center;
+}
+
+.new-event {
+	text-align: left;
+	margin-top: 20px;
+}
+
 input:focus {
 	outline:none;
 }
@@ -84,10 +115,12 @@ h2 {
 
 h3 {
 	font-size: 40px;
+	margin: 0px;
 }
 
 h4 {
 	font-size: 30px;
+	margin: 0px;
 }
 
 h5 {
