@@ -1,0 +1,19 @@
+<% @event.comments.each do |comment| %>
+  <% if comment.id %>
+    <div class="comment">
+      <p class="comment">
+        <%= comment.content %>
+        <% if current_user == comment.user %> 
+          <%= button_to "[X]", user_event_comment_path(@event.host, @event, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+        <% end %>  
+      </p>
+      <div class="poster">
+        <% if comment.user == @event.host %>
+          <b><em>Posted by <%= comment.user.first_name %> on <%= comment.created_at %></em></b>
+        <% else %>  
+          <em>Posted by <%= comment.user.first_name %> on <%= comment.created_at %></em>
+        <% end %>  
+      </div>
+    </div>
+  <% end %>  
+<% end %>

@@ -44,7 +44,44 @@
     <% end %>
   <% end %>
 </fieldset>
+<fieldset>
+  <legend>Comments:</legend>
+  <div id="comment-list">
+    <%= render :partial => "comments" %>
+  </div>
+  <h4>Add Comment</h4>
+
+  <%= form_for([@event.host, @event, @comment], :remote => true) do |f| %>
+  <div id="comment-form-errors">
+    <%= render :partial => "comment_form_errors" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Comment", id: "submit-comment" %>
+  </div>
+
+<% end %>
+</fieldset>
 
 
 <%= render 'commitments/form' %>
 
+<script type="text/javascript">
+  $(function() {
+     $("#new_comment")
+        .on('ajax:beforeSend', function() { // set this code to happen just before the ajax request is made
+          $("#submit-comment") // make changes to the submit button
+            .val('Saving...') // change the text on the button
+            .attr('disabled', 'disabled'); // disable the button
+        })
+        .on('ajax:complete', function() {
+          $("#submit-comment")
+            .val('Create Comment')
+            .removeAttr('disabled');
+        });
+  });
+</script>
