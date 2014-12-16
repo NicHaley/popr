@@ -23,8 +23,10 @@ $(document).on('ready page:load', function() {
           year:             movie.year,
           critics_rating:   movie.ratings["critics_rating"],
           critics_score:    (movie.ratings["critics_score"] >= 0 ? movie.ratings["critics_score"] + "%" : "No Score"),
-          icon:             (movie.ratings["critics_rating"] === "Certified Fresh" ? "http://d3biamo577v4eu.cloudfront.net/static/images/trademark/fresh.png" : movie.ratings["critics_rating"] === "Rotten" ? "http://d3biamo577v4eu.cloudfront.net/static/images/trademark/rotten.png" : ""),
+          icon:             (movie.ratings["critics_rating"] === "Certified Fresh" ? "http://d3biamo577v4eu.cloudfront.net/static/images/trademark/fresh.png" : movie.ratings["critics_rating"] === "Rotten" ? "http://d3biamo577v4eu.cloudfront.net/static/images/trademark/rotten.png" : "http://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Icon-round-Question_mark.svg/200px-Icon-round-Question_mark.svg.png"),
           cast:             movie.abridged_cast.map(function(obj){ return obj.name }).join(", "),
+          mpaa_rating:      movie.mpaa_rating,
+          runtime:          movie.runtime,
           title:            movie.title
 
         }
@@ -33,12 +35,19 @@ $(document).on('ready page:load', function() {
         $(".search-results").append(rendered) 
       }
     });
-};
+  };
 
-searchCallback = jQuery.throttle(300, searchCallback);
+  // Need to get data from the second AJAX request (genres and directors)
+  function searchCallback2(data) {
+    $('.movie-genre').html('<i>' + '<strong>Genres - </strong>' + data.genres.map(function(obj){ return obj }).join(", ") + '</i>');
+    $('.movie-director').html('<i>' + '<strong>Directed By - </strong>' + data.abridged_directors.map(function(obj){ return obj.name }).join(", ") + '</i>');
+  }
 
-$("#search").keyup(function(){
-  query = $("#search").val();
+  searchCallback = jQuery.throttle(300, searchCallback);
+
+  // AJAX REQUEST 1
+  $("#search").keyup(function(){
+    query = $("#search").val();
 
     // send off the query
     $.ajax({
@@ -48,23 +57,42 @@ $("#search").keyup(function(){
     });
   });
 
+  // AJAX REQUEST 2
+  $(".search-results").on('click', ".movie-click", function(){
+    var baseUrl2 = "http://api.rottentomatoes.com/api/public/v1.0/movies/"
+    var movieId = $(this).data("id");
+    var moviesSearchUrl2 = baseUrl2 + movieId + ".json?apikey=" + apikey;
+
+    $.ajax({
+      url: moviesSearchUrl2,
+      dataType: "jsonp",
+      success: searchCallback2
+    });
+  });
+
+
 $(".search-results").on('click', ".movie-click", function(){
   if ($("body").data("controller") == "events") {
     $('#event_rt_id').val($(this).data("id"));
     $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
   }
   else if ($("body").data("controller") == "movie_interests"){
+    $('.review-hide').show();
+    $('.wish-hide').show();
     $('#movie_interest_rt_id').val($(this).data("id"));
+    $('#rating_rt_id').val($(this).data("id"));
     $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
-    $('.movie-title').html('<h3>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h3>');
-    $('.movie-cast').html('<i>' + 'Cast - ' + $(this).data("cast") + '</i>');
-    $('.movie-score').html('<img height="60" src="' + $(this).data("icon") + '" />' + '<i>' + $(this).data("critics_score") + '</i>' );
+    $('.movie-title').html('<h4>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h4>');
+    $('.movie-cast').html('<i>' + '<strong>Cast - </strong>' + $(this).data("cast") + '</i>');
+    $('.movie-score').html('<img height="50" src="' + $(this).data("icon") + '" />' + '<i id="score-text"><strong> ' + $(this).data("critics_score") + '</strong></i>' );
+    $('.movie-mpaa_rating').html('<i>' + '<strong>Rated - </strong>' + $(this).data("mpaa_rating") + '</i>');
+    $('.movie-runtime').html('<i>' + '<strong>Runtime - </strong>' + $(this).data("runtime") + ' minutes' + '</i>');
   }
 });
 
-$("body").on("click", function(){
-  $(".search-results").html('');
-});
+  $("body").on("click", function(){
+    $(".search-results").html('');
+  });
 
 });
 

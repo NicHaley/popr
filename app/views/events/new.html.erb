@@ -1,31 +1,33 @@
 <h1>New Events</h1>
 
-<div id="movie-poster">
-	<i>No Movie Selected</i>
-</div>
+<div class="movie-explore-field">
+	<div id="search-block">
+		<input type="text" id="search" placeholder="Search for movies and TV shows...">
+		<div class="search-results"></div>
+	</div>
+	
+	<div class="movie-info">
+		<div id="movie-poster">
+			<i>No Movie Selected</i>
+		</div>
 
-<%= render 'form' %>
-
-<div id="search-block">
-	<input type="text" id="search">
-	<div class="search-results"></div>
+		<div class="new-event" class="action">
+			<%= render 'form' %>
+		</div>
+	</div>
 </div>
 
 <script id="menu_info" type="x-tmpl-mustache">
 
-	<div data-year="{{year}}" 
-			 data-cast="{{cast}}" 
-			 data-id="{{id}}" 
-			 data-title="{{title}}"
-			 data-poster="{{posterOri}}" 
+	<div data-id="{{id}}" 
+			 data-poster="{{posterOri}}"
+
 			 class="movie-click">
 
-			 <img id="img-thumb" 
+			 <img class="img-thumb" 
 			 			align="left" 
-			 			height="50" 
+			 			height="58" 
 			 			src="{{posterThumb}}" />
 
-			 	<i> <img height="13" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
-		
+			 	<i> <img height="16" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
  	</div>
-</script>

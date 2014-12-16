@@ -1,23 +1,23 @@
 <%= form_for [@user, @event] do |f|%>
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :size => 90 %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.text_field :description, :size => 90 %>
   </div>      
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, :size => 90 %>
+  </div>
     <div class="field">
     <%= f.label :time %><br />
     <%= f.datetime_select :time, :minute_step => 5 %>
   </div>
   <div class="field">
     <%= f.label :capacity %><br />
-    <%= f.number_field :capacity %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
+    <%= f.number_field :capacity, :size => 90 %>
   </div><br />
 
   <div class="field">

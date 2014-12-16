@@ -9,7 +9,6 @@ class Event < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-
   # Function to verify if requested party size of commitment being made
   # falls within the event capacity set by the host.
 
@@ -23,4 +22,13 @@ class Event < ActiveRecord::Base
     self.commitments.each {|c| @attendees << c.user if c.id}
     @attendees
   end
+
+  validate :ensure_dates
+
+  def ensure_dates
+    if(time <= Time.now)
+      errors.add(:time, "is in the past")
+    end
+  end
+
 end

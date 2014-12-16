@@ -1,0 +1,15 @@
+.rating_bar {
+	width: 120px;
+	height: 24px;
+	background: url("starRatings.png");
+	background-repeat: repeat-x;
+	background-position: 0 0;
+	text-align: left;
+}
+
+.rating {
+	height: 24px;
+	background: url("starRatings.png");
+	background-position: 0 -24px;
+	background-repeat: repeat-x;
+}
