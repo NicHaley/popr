@@ -20,5 +20,13 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
+  def is_friend?(user)
+    if self.friendships.find_by(friend_id: user.id)
+      self.friendships.find_by(friend_id: user.id).confirm
+    else
+      false
+    end
+  end
+
 end
 

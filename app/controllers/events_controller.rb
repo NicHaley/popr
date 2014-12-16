@@ -2,20 +2,24 @@ class EventsController < ApplicationController
   before_filter :set_event, only: [:show, :edit, :update, :destroy]
 
   def all_events
-   
+
     @events = if params[:search_location]
-      Event.near(params[:search_location], 1, units: :km)
+      Event.near(params[:search_location],1, units: :km).select{|event|event.host.is_friend?(current_user)}
     elsif params[:latitude] && params[:longitude]
-      Event.near([params[:latitude], params[:longitude]], 10, units: :km)
+      Event.near([params[:latitude], params[:longitude]], 10, units: :km).select{|event|event.host.is_friend?(current_user)}
     else
-      Event.all 
+      Event.all.select{|event|event.host.is_friend?(current_user)} 
     end
     
-    c_position = [params[:latitude], params[:longitude]]
-    
-    @current_position = Event.near(c_position, 10, units: :km)
+    # test_position = [43.7000, -79.4000]
+    # @test_position =  Event.near(test_position, 10, units: :km)
 
-    @nearby_coords = @current_position.map {|event| {latitude: event.latitude.to_f, longitude: event.longitude.to_f}}
+    c_position = [params[:latitude], params[:longitude]]
+
+    @current_position = Event.near(c_position, 5, units: :km)
+
+    @friend_check = @current_position.select{|event| event.host.is_friend?(current_user)}
+    @nearby_coords = @friend_check.map {|event| {latitude: event.latitude.to_f, longitude: event.longitude.to_f}}
     
     respond_to do |format|
       format.html
