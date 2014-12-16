@@ -42,7 +42,7 @@ group :development, :test do
 	gem 'awesome_print'
 	gem 'rspec-rails', '~> 3.0'
 	gem 'jasmine'
-	gem 'factory_girl'
+	gem 'factory_girl_rails'
 end
 
 # Use ActiveModel has_secure_password
