@@ -79,9 +79,9 @@ $(".search-results").on('click', ".movie-click", function(){
   else if ($("body").data("controller") == "movie_interests"){
     $('#movie_interest_rt_id').val($(this).data("id"));
     $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
-    $('.movie-title').html('<h3>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h3>');
+    $('.movie-title').html('<h4>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h4>');
     $('.movie-cast').html('<i>' + '<strong>Cast - </strong>' + $(this).data("cast") + '</i>');
-    $('.movie-score').html('<img height="60" src="' + $(this).data("icon") + '" />' + '<i id="score-text"><strong>' + $(this).data("critics_score") + '</strong></i>' );
+    $('.movie-score').html('<img height="50" src="' + $(this).data("icon") + '" />' + '<i id="score-text"><strong> ' + $(this).data("critics_score") + '</strong></i>' );
     $('.movie-mpaa_rating').html('<i>' + '<strong>Rated - </strong>' + $(this).data("mpaa_rating") + '</i>');
     $('.movie-runtime').html('<i>' + '<strong>Runtime - </strong>' + $(this).data("runtime") + ' minutes' + '</i>');
   }
