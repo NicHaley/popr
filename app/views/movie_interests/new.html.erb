@@ -11,7 +11,11 @@
 
 <div class="movie-title"></div><br />
 <div class="movie-score"></div><br />
+<div class="movie-director"></div>
 <div class="movie-cast"></div>
+<div class="movie-genre"></div>
+<div class="movie-mpaa_rating"></div>
+<div class="movie-runtime"></div>
 
 <%= form_for([@user, @movie_interest], remote: true) do |f| %>
 
@@ -34,6 +38,9 @@
 			 data-icon = "{{icon}}"
 			 data-critics_rating = "{{critics_rating}}" 
 			 data-critics_score = "{{critics_score}}"
+			 data-genre = "{{genre}}"
+			 data-mpaa_rating = "{{mpaa_rating}}"
+			 data-runtime = "{{runtime}}"
 
 			 class="movie-click">
 
