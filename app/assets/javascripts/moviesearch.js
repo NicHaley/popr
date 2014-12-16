@@ -23,7 +23,7 @@ $(document).on('ready page:load', function() {
           year:             movie.year,
           critics_rating:   movie.ratings["critics_rating"],
           critics_score:    (movie.ratings["critics_score"] >= 0 ? movie.ratings["critics_score"] + "%" : "No Score"),
-          icon:             (movie.ratings["critics_rating"] === "Certified Fresh" ? "http://d3biamo577v4eu.cloudfront.net/static/images/trademark/fresh.png" : movie.ratings["critics_rating"] === "Rotten" ? "http://d3biamo577v4eu.cloudfront.net/static/images/trademark/rotten.png" : ""),
+          icon:             (movie.ratings["critics_rating"] === "Certified Fresh" ? "http://d3biamo577v4eu.cloudfront.net/static/images/trademark/fresh.png" : movie.ratings["critics_rating"] === "Rotten" ? "http://d3biamo577v4eu.cloudfront.net/static/images/trademark/rotten.png" : "http://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Icon-round-Question_mark.svg/200px-Icon-round-Question_mark.svg.png"),
           cast:             movie.abridged_cast.map(function(obj){ return obj.name }).join(", "),
           mpaa_rating:      movie.mpaa_rating,
           runtime:          movie.runtime,
