@@ -1,0 +1,11 @@
+<% if @ratings %>
+	<% @ratings.each do |rating| %>
+	<p>
+		<% if rating.id != nil %>
+			<%= Movie.find_movie(rating.rt_id).title %>
+			<%= rating.review %><br>
+			Created at: <%= rating.created_at %>
+		<% end %>
+	</p>
+	<% end %><br>
+<% end %>

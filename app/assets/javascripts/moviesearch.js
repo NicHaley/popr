@@ -77,7 +77,10 @@ $(".search-results").on('click', ".movie-click", function(){
     $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
   }
   else if ($("body").data("controller") == "movie_interests"){
+    $('.review-hide').show();
+    $('.wish-hide').show();
     $('#movie_interest_rt_id').val($(this).data("id"));
+    $('#rating_rt_id').val($(this).data("id"));
     $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
     $('.movie-title').html('<h4>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h4>');
     $('.movie-cast').html('<i>' + '<strong>Cast - </strong>' + $(this).data("cast") + '</i>');

@@ -101,6 +101,10 @@ $movie-poster-height: 270px;
 	margin-top: 20px;
 }
 
+.review-hide, .wish-hide {
+	display: none;
+}
+
 input:focus {
 	outline:none;
 }

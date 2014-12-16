@@ -22,58 +22,67 @@
 	</div>
 </div>
 
-<%= form_for([@user, @movie_interest], remote: true) do |f| %>
+<div class="wish-hide">
+	<%= form_for([@user, @movie_interest], remote: true) do |f| %>
 
-	<div class="field">
-		<%= f.hidden_field :wished, value: "true" %>
-		<%= f.hidden_field :rt_id, value: "" %>
-	</div> 
-	<div class="actions">
-		<%= f.submit "Wish" %>
-	</div>
-<% end %>
+		<div class="field">
+			<%= f.hidden_field :wished, value: "true" %>
+			<%= f.hidden_field :rt_id, value: "" %>
+		</div> 
+		<div class="actions">
+			<%= f.submit "Wish" %>
+		</div>
+	<% end %>
+</div>
 
 <script id="menu_info" type="x-tmpl-mustache">
 
 	<div data-year="{{year}}" 
-			 data-cast="{{cast}}" 
-			 data-id="{{id}}" 
-			 data-title="{{title}}"
-			 data-poster="{{posterOri}}"
-			 data-icon = "{{icon}}"
-			 data-critics_rating = "{{critics_rating}}" 
-			 data-critics_score = "{{critics_score}}"
-			 data-genre = "{{genre}}"
-			 data-mpaa_rating = "{{mpaa_rating}}"
-			 data-runtime = "{{runtime}}"
+		data-cast="{{cast}}" 
+		data-id="{{id}}" 
+		data-title="{{title}}"
+		data-poster="{{posterOri}}"
+		data-icon = "{{icon}}"
+		data-critics_rating = "{{critics_rating}}" 
+		data-critics_score = "{{critics_score}}"
+		data-genre = "{{genre}}"
+		data-mpaa_rating = "{{mpaa_rating}}"
+		data-runtime = "{{runtime}}"
 
-			 class="movie-click">
+		class="movie-click">
 
-			 <img class="img-thumb" 
-			 			align="left" 
-			 			height="58" 
-			 			src="{{posterThumb}}" />
+		<img class="img-thumb" 
+			align="left" 
+			height="58" 
+			src="{{posterThumb}}" />
 
-			 	<i> <img height="16" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
- 	</div>
+		<i> <img height="16" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
+	</div>
 </script>
 
+<div class="review-hide">
+	<h5>Write a Review</h5>
 
-<h5>Write a Review</h5>
-
-<%= form_for([@user, @rating], url: user_ratings_path(current_user, @rating), :remote => true) do |f| %>		
-
+	<%= form_for([@user, @rating], url: user_ratings_path(current_user, @rating), :remote => true) do |f| %>		
 	<div class="field">
-    <%= f.label :review %><br />
-    <%= f.text_area :review, :size => "45x5" %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<h5>User Review</h5>
-
-<div id="review-list">
-	<%= render :partial => "ratings" %>
+		<%= f.label :user_score %>
+		<%= f.radio_button :user_score, 1, id: "rating-1" %>
+		<%= f.radio_button :user_score, 2, id: "rating-2" %>
+		<%= f.radio_button :user_score, 3, id: "rating-3" %>
+		<%= f.radio_button :user_score, 4, id: "rating-4" %>
+		<%= f.radio_button :user_score, 5, id: "rating-5" %>
+	</div>
+	<div class="field">
+		<%= f.label :review %><br />
+		<%= f.text_area :review, :size => "45x5" %>
+	</div>
+	<div class="field">
+		<%= f.hidden_field :rt_id, value: "" %>
+	</div> 
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+	<% end %>
 </div>
+
+
