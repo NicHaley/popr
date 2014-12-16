@@ -20,9 +20,6 @@ class EventsController < ApplicationController
     @friend_check = @current_position.select{|event| event.host.is_friend?(current_user)}
     @nearby_coords = @friend_check.map {|event| {latitude: event.latitude.to_f, longitude: event.longitude.to_f}}
 
-    #Check whether attending event
-    @attending = @events.select{|event| event.host.is_attending?(current_user)}
-
     respond_to do |format|
       format.html
       format.js

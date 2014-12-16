@@ -6,10 +6,12 @@
 		<fieldset>
 			<legend><b><%= link_to(event.title, user_event_path(event.host_id, event.id)) %>&nbsp;(<%=event.commitments.sum(:party_size)%>/<%= event.capacity%>)</b></legend>
 			<p><%= event.description %></p>
-			<p>Showing:</p>
-			<p><%= Movie.find_movie(event.rt_id).title %></p> 
-			<% if @attending %>
-				You're attending!
+			<p><b>Showing:&nbsp;</b><%= Movie.find_movie(event.rt_id).title %></p>
+
+			<% if event.attendees.include?(current_user) %>
+				<b>You're attending!</b>
+			<% else %>
+				<b><%= link_to("Join Now!", user_event_path(event.host_id, event.id)) %></b>
 			<% end %>
 			<br>
 		</fieldset>

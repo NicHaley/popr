@@ -28,13 +28,5 @@ class User < ActiveRecord::Base
     end
   end
 
-    def is_attending?(user)
-    if self.commitments.find_by(user_id: user.id)
-      self.commitments.find_by(user_id: user.id).party_size?
-    else
-      false
-    end
-  end
-
 end
 
