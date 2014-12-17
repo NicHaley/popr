@@ -1,5 +1,7 @@
 $(document).on('ready page:load', function() {
 
+
+	alert(gon.genres);
 	var chart = c3.generate({
 		data: {
 			columns: [
