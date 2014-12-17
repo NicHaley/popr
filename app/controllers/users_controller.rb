@@ -43,7 +43,10 @@ class UsersController < ApplicationController
     @events = Event.all.select{|event|event.host.id == @user.id}
     @userCommitments = @user.commitments.all
     @genresList = @user.ratings.all.map{|rating| [] << rating.genres.split(", ").flatten}.flatten
-    gon.genres = @genresList.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
+    print @genresList
+    @testList = @genresList.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
+    print "OUTPUT"
+    print gon.genres = @testList.map{|key, value| [key, value]}
   end
 
   private
