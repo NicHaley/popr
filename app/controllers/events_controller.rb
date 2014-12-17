@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_filter :set_event, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def all_events
 
@@ -63,7 +64,6 @@ class EventsController < ApplicationController
 
   def update
     # @user = User.find(params[:user_id])
-    raise "You bad man" if @event.host != current_user
     # @event.update_attribute(:host_id, current_user.id)
     if @event.update(event_params) 
       redirect_to user_event_path(@event.host, @event), notice: "Event successfully modified!"

@@ -1,5 +1,6 @@
 class RatingsController < ApplicationController
 	before_filter :load_user
+	load_and_authorize_resource
 
 	def show
 		@rating = Rating.find(params[:id])
