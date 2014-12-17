@@ -1,7 +1,15 @@
 class Ability
   include CanCan::Ability
 
+  # Guest user assigned to a nil-valued user.
   def initialize(user)
+    user ||= User.new
+    if user.id.nil?
+        # guest permissions
+    else
+        can :manage, Event, :host_id => user.id
+        can :manage, User,  :id => user.id 
+    end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
@@ -28,5 +36,5 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-  end
+end
 end

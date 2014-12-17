@@ -47,10 +47,10 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.host_id = current_user.id
-    @user = User.find(params[:user_id])
+    @event.host = current_user
+    # @user = User.find(params[:user_id])
     if @event.save
-      redirect_to user_event_path(@user, @event), notice: "Event successfully created!"
+      redirect_to user_event_path(@event.host, @event), notice: "Event successfully created!"
     else
       render 'new', notice: "Error creating event."
     end
@@ -58,11 +58,15 @@ class EventsController < ApplicationController
 
 
   def edit
+    @user = User.find(params[:user_id])
   end
 
   def update
-    if @event.update_attributes(event_params) 
-      redirect_to event_path(@event), notice: "Event successfully modified!"
+    # @user = User.find(params[:user_id])
+    raise "You bad man" if @event.host != current_user
+    # @event.update_attribute(:host_id, current_user.id)
+    if @event.update(event_params) 
+      redirect_to user_event_path(@event.host, @event), notice: "Event successfully modified!"
     else
       render 'edit', notice: "Error, try again!"
     end
@@ -75,7 +79,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:time, :address, :longitude, :latitude, :description, :title, :capacity, :user_id, :rt_id)
+    params.require(:event).permit(:time, :address, :longitude, :latitude, :description, :title, :capacity, :rt_id)
   end
 
   def set_event

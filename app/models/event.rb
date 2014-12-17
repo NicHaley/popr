@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   has_many :commitments
 
   validates :title, :presence => true
+  validate :ensure_dates
   
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -23,7 +24,6 @@ class Event < ActiveRecord::Base
     @attendees
   end
 
-  validate :ensure_dates
 
   def ensure_dates
     if(time <= Time.now)

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_login, only: [:show, :destroy, :edit]
+  load_and_authorize_resource
 
   def new
     @user = User.new
@@ -15,17 +16,17 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = current_user
+    @user = User.find(params[:id])
     @user.destroy
     redirect_to root_path, notice: "User deleted :("
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = current_user
+    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       redirect_to user_path(@user), notice: "Changes successful."
     else
