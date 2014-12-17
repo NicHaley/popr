@@ -32,7 +32,9 @@ class FriendshipsController < ApplicationController
 		@friendship = Friendship.find(params[:id])
 		@friendship.destroy
 		@friendship2 = Friendship.where(friend_id: current_user.id, user_id: params[:friend_id]).first
-		@friendship2.destroy
+		if @friendship2	
+			@friendship2.destroy
+		end	
 		flash[:notice] = "Friend removed"
 		redirect_to current_user
 	end

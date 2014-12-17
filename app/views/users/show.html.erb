@@ -6,7 +6,7 @@
 <% if @user.incoming_friendships != [] %>
 	<h3>Friend Requests</h3>
 	<% @user.incoming_friendships.each do |friendship| %>
-		<%= friendship.user.first_name %> <%= friendship.user.last_name %> <%= link_to "Accept", friendships_path(friend_id: friendship.user.id), method: :post %>
+		<%= friendship.user.first_name %> <%= friendship.user.last_name %> <%= link_to "Accept", friendships_path(friend_id: friendship.user.id), method: :post %> <%= link_to "Reject", friendship_path(friendship), method: :delete %>
 	<% end %>	
 <% end %>
 <hr>
