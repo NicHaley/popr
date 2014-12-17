@@ -46,11 +46,13 @@ class UsersController < ApplicationController
     @ratings = @user.ratings.order(created_at: :desc).limit(5)
     @events = Event.all.select{|event|event.host.id == @user.id}
     @userCommitments = @user.commitments.all
-    @genresList = @user.ratings.all.map{|rating| [] << rating.genres.split(", ").flatten}.flatten
-    print @genresList
-    @testList = @genresList.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
-    print "OUTPUT"
-    print gon.genres = @testList.map{|key, value| [key, value]}
+
+    genresList = @user.ratings.all.map{|rating| [] << rating.genres.split(", ").flatten}.flatten
+    genresHash = genresList.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
+    genresArray = genresHash.map{|key, value| [key, value]}
+    sortedArray = genresArray.sort!{|x,y| y[1] <=> x[1]}
+    gon.genres = sortedArray[0..4] << ["Other", sortedArray[5..-1].inject(0){|sum, x| sum + x[1]}]
+ 
   end
 
   private
