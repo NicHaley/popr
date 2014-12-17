@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :ratings, only:  [:show, :create, :destroy]
     resources :commitments, only: [:destroy, :update, :create]
   end
-  resources :friendships 
+  resources :friendships, only: [:destroy, :create] 
   resources :user_sessions, only: [:destroy, :new, :create]
 
   get 'all_events' => 'events#all_events', :as => :events
