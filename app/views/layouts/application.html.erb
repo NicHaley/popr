@@ -7,7 +7,7 @@
 	<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.secrets.google_maps_api}" %>
 	<%= csrf_meta_tags %>
 </head>
-<body data-controller="<%= controller_name %>">
+<body data-controller="<%= controller_name %>">	
 	<div>
 		<p id="notice"><%= flash[:notice] %></p>
 		<p id="alert"><%= flash[:alert] %></p>

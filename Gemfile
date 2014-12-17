@@ -34,6 +34,7 @@ gem 'figaro'
 gem 'httparty'
 
 gem 'geocoder'
+gem 'jquery-ui-rails'
 
 group :development, :test do
 	gem 'pry-rails'

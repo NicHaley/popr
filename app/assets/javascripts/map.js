@@ -37,17 +37,25 @@ myMap.init = function() {
 			navigator.geolocation.getCurrentPosition(function(position){
 
 				var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				
 				var infoWindow = new google.maps.InfoWindow({
 					map: map,
-					position: pos
+					position: pos,
+					content: 'Testing'
 				});
+
+
 				//Add marker for current position
 				var marker = new google.maps.Marker({
-					position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+					position: pos,
 					map: map
 				});
 
 				map.setCenter(pos);
+
+				google.maps.event.addListener(marker, 'click', function() {
+					infoWindow.open(map,marker);
+				});
 
 				var latitude = position.coords.latitude;
 				var longitude = position.coords.longitude;	

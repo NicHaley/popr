@@ -1,5 +1,10 @@
 <h1>User List</h1>
 
+<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :user_search, params[:user_search], placeholder: "Search Users" %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>
+
 <div>
 	<% @users.each do |user| %>
 		<p>
