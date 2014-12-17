@@ -47,6 +47,11 @@ class UsersController < ApplicationController
     @events = Event.all.select{|event|event.host.id == @user.id}
     @userCommitments = @user.commitments.all
 
+    print totalScore = (@user.ratings.all.inject(0){|sum, rating| sum + rating.user_score}).to_f
+    print maxScore = ((@user.ratings.all.count) * 5).to_f
+    print averageScore = ((totalScore / maxScore).to_f * 100.0).round(1)
+    print gon.average = ["Average Movie Rating", averageScore]
+
     # Favourite Genres
     def pieData(dataList)
       dataHash = dataList.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
