@@ -1,6 +1,11 @@
 class RatingsController < ApplicationController
 	before_filter :load_user
 
+	def index
+		@user = User.find(params[:user_id])
+    	@ratings = @user.ratings.order(created_at: :desc).page(params[:page])
+	end
+
 	def show
 		@rating = Rating.find(params[:id])
 	end

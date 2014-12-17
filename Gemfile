@@ -35,6 +35,7 @@ gem 'httparty'
 gem 'c3-rails'
 gem 'd3-rails'
 gem 'gon'
+gem 'kaminari'
 
 gem 'geocoder'
 gem 'jquery-ui-rails'

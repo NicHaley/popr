@@ -47,28 +47,33 @@ class UsersController < ApplicationController
     @events = Event.all.select{|event|event.host.id == @user.id}
     @userCommitments = @user.commitments.all
 
-    print totalScore = (@user.ratings.all.inject(0){|sum, rating| sum + rating.user_score}).to_f
-    print maxScore = ((@user.ratings.all.count) * 5).to_f
-    print averageScore = ((totalScore / maxScore).to_f * 100.0).round(1)
-    print gon.average = ["Average Movie Rating", averageScore]
+    if @user.ratings.any?
+      print totalScore = (@user.ratings.all.inject(0){|sum, rating| sum + rating.user_score}).to_f
+      print maxScore = ((@user.ratings.all.count) * 5).to_f
+      print averageScore = ((totalScore / maxScore).to_f * 100.0).round(1)
+      print gon.average = ["Average Movie Rating", averageScore]
 
-    # Favourite Genres
-    def pieData(dataList)
-      dataHash = dataList.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
-      dataArray = dataHash.map{|key, value| [key, value]}
-      sortedArray = dataArray.sort!{|x,y| y[1] <=> x[1]}
-      return sortedArray[0..4] << ["Other", sortedArray[5..-1].inject(0){|sum, x| sum + x[1]}]
+      # Favourite Genres
+      def pieData(dataList)
+        dataHash = dataList.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
+        dataArray = dataHash.map{|key, value| [key, value]}
+        sortedArray = dataArray.sort!{|x,y| y[1] <=> x[1]}
+        if sortedArray.length < 5
+          return sortedArray[0..sortedArray.length]
+        else
+          return sortedArray[0..4] << ["Other", sortedArray[5..-1].inject(0){|sum, x| sum + x[1]}]
+        end
+      end
+
+      genreList = @user.ratings.all.map{|rating| [] << rating.genres.split(", ").flatten}.flatten
+      gon.genres = pieData(genreList);
+
+      actorsList = @user.ratings.all.map{|rating| [] << rating.actors.split(", ").flatten}.flatten
+      gon.actors = pieData(actorsList);
+
+      directorsList = @user.ratings.all.map{|rating| [] << rating.directors.split(", ").flatten}.flatten
+      gon.directors = pieData(directorsList);
     end
-
-    genreList = @user.ratings.all.map{|rating| [] << rating.genres.split(", ").flatten}.flatten
-    gon.genres = pieData(genreList);
-
-    actorsList = @user.ratings.all.map{|rating| [] << rating.actors.split(", ").flatten}.flatten
-    gon.actors = pieData(actorsList);
-
-    directorsList = @user.ratings.all.map{|rating| [] << rating.directors.split(", ").flatten}.flatten
-    gon.directors = pieData(directorsList);
-
   end
 
   private

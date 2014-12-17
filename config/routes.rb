@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:destroy, :update, :create]
     end
     resources :movie_interests
-    resources :ratings, only:  [:show, :create, :destroy]
+    resources :ratings, only:  [:show, :create, :destroy, :index]
     resources :commitments, only: [:destroy, :update, :create]
   end
   resources :friendships, only: [:destroy, :create] 
