@@ -39,8 +39,13 @@ $(document).on('ready page:load', function() {
 
   // Need to get data from the second AJAX request (genres and directors)
   function searchCallback2(data) {
-    $('.movie-genre').html('<i>' + '<strong>Genres - </strong>' + data.genres.map(function(obj){ return obj }).join(", ") + '</i>');
-    $('.movie-director').html('<i>' + '<strong>Directed By - </strong>' + data.abridged_directors.map(function(obj){ return obj.name }).join(", ") + '</i>');
+    var genres = data.genres.map(function(obj){ return obj }).join(", ");
+    var directors = data.abridged_directors.map(function(obj){ return obj.name }).join(", ");
+
+    $('.movie-genre').html('<i>' + '<strong>Genres - </strong>' + genres + '</i>');
+    $('.movie-director').html('<i>' + '<strong>Directed By - </strong>' + directors + '</i>');
+    $('#rating_genres').val(genres);
+    $('#rating_directors').val(directors);
   }
 
   searchCallback = jQuery.throttle(300, searchCallback);
@@ -81,6 +86,7 @@ $(".search-results").on('click', ".movie-click", function(){
     $('.wish-hide').show();
     $('#movie_interest_rt_id').val($(this).data("id"));
     $('#rating_rt_id').val($(this).data("id"));
+    $('#rating_actors').val($(this).data("cast"));
     $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
     $('.movie-title').html('<h4>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h4>');
     $('.movie-cast').html('<i>' + '<strong>Cast - </strong>' + $(this).data("cast") + '</i>');

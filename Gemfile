@@ -32,6 +32,8 @@ gem 'carrierwave'
 gem 'rmagick', '~> 2.13.4'
 gem 'figaro'
 gem 'httparty'
+gem 'c3-rails'
+gem "d3-rails"
 
 gem 'geocoder'
 

@@ -25,7 +25,7 @@ class RatingsController < ApplicationController
 
 	private
 	def rating_params
-		params.require(:rating).permit(:user_id, :user_score, :watched, :review, :rt_id)
+		params.require(:rating).permit(:user_id, :user_score, :watched, :review, :rt_id, :actors, :directors, :genres)
 	end
 
 	def load_user
