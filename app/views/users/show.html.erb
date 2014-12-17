@@ -1,8 +1,31 @@
-<h1>Profile</h1>
+<h2>Profile</h2>
 <%= image_tag @user.avatar_url(:profile) %>
 <p> <%= @user.first_name %> <%= @user.last_name %> </p>
 
-<h2>Friends</h2>
+<h4>Hosted Events</h4>
+
+<ul>
+	<% @events.each do |event| %>
+		<% if event.time > Time.now %>
+			<li>
+				<%= event.title %>
+			</li>
+		<% end %>
+	<% end %>
+</ul>
+
+<h4>Joined Events</h4>
+<ul>
+	<% @userCommitments.each do |commitment| %>
+		<% if commitment.event.time > Time.now %>
+			<li>
+				<%= commitment.event.title %>
+			</li>
+		<% end %>
+	<% end %>
+</ul>
+
+<h4>Friends</h4>
 
 <ul>
 	<% @user.friendships.each do |friendship| %>
@@ -15,7 +38,7 @@
 	<% end %>
 </ul>
 
-<h2>Wish List</h2>
+<h4>Wish List</h4>
 
 <ul>
 	<% @user.movie_interests.each do |movie| %>
