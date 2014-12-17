@@ -9,7 +9,7 @@
 	<% if friendship.confirm %>
 		<li>
 			<%= friendship.friend.first_name %> <%= friendship.friend.last_name %>
-			<%= link_to "remove", friendship, method: :delete %>
+			<%= link_to "remove", friendship_path(friendship, friend_id: friendship.friend.id), method: :delete %>
 		</li>
 	<% end %>
 	<% end %>
