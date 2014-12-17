@@ -3,7 +3,13 @@
 <p> <%= @user.first_name %> <%= @user.last_name %> </p>
 
 <h2>Friends</h2>
-
+<% if @user.incoming_friendships != [] %>
+	<h3>Friend Requests</h3>
+	<% @user.incoming_friendships.each do |friendship| %>
+		<%= friendship.user.first_name %> <%= friendship.user.last_name %> <%= link_to "Accept", friendships_path(friend_id: friendship.user.id), method: :post %>
+	<% end %>	
+<% end %>
+<hr>
 <ul>
 	<% @user.friendships.each do |friendship| %>
 	<% if friendship.confirm %>
