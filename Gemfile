@@ -37,6 +37,7 @@ gem 'd3-rails'
 gem 'gon'
 
 gem 'geocoder'
+gem 'jquery-ui-rails'
 
 group :development, :test do
 	gem 'pry-rails'
