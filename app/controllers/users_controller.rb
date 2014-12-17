@@ -47,12 +47,23 @@ class UsersController < ApplicationController
     @events = Event.all.select{|event|event.host.id == @user.id}
     @userCommitments = @user.commitments.all
 
-    genresList = @user.ratings.all.map{|rating| [] << rating.genres.split(", ").flatten}.flatten
-    genresHash = genresList.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
-    genresArray = genresHash.map{|key, value| [key, value]}
-    sortedArray = genresArray.sort!{|x,y| y[1] <=> x[1]}
-    gon.genres = sortedArray[0..4] << ["Other", sortedArray[5..-1].inject(0){|sum, x| sum + x[1]}]
- 
+    # Favourite Genres
+    def pieData(dataList)
+      dataHash = dataList.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
+      dataArray = dataHash.map{|key, value| [key, value]}
+      sortedArray = dataArray.sort!{|x,y| y[1] <=> x[1]}
+      return sortedArray[0..4] << ["Other", sortedArray[5..-1].inject(0){|sum, x| sum + x[1]}]
+    end
+
+    genreList = @user.ratings.all.map{|rating| [] << rating.genres.split(", ").flatten}.flatten
+    gon.genres = pieData(genreList);
+
+    actorsList = @user.ratings.all.map{|rating| [] << rating.actors.split(", ").flatten}.flatten
+    gon.actors = pieData(actorsList);
+
+    directorsList = @user.ratings.all.map{|rating| [] << rating.directors.split(", ").flatten}.flatten
+    gon.directors = pieData(directorsList);
+
   end
 
   private
