@@ -47,6 +47,7 @@ group :development, :test do
 	gem 'rspec-rails', '~> 3.0'
 	gem 'jasmine'
 	gem 'factory_girl_rails'
+  gem 'quiet_assets'
 end
 
 # Use ActiveModel has_secure_password
