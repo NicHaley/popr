@@ -1,0 +1,135 @@
+$search-bg: #f2f3f9;
+$search-hover: #62669a;
+$search-text-color: black;
+
+$search-width: 500px;
+$movie-poster-width: 180px;
+$movie-poster-height: 270px;
+
+.movie-title {
+	color: $search-text-color;
+	display: inline;
+	vertical-align: top;
+
+}
+
+.movie-click {
+	clear: left;
+	display: table;
+	width: $search-width;
+}
+
+.movie-click:hover {
+	background-color: $search-hover;
+	#movie-title{
+		color: white;
+	}
+}
+
+.search-results {
+	background-color: $search-bg;
+	width: $search-width;
+}
+
+#search-block {
+	width: $search-width;
+	display: inline-block;
+}
+
+#img-thumb {
+	display: inline-block;
+	margin-right: 7px;
+}
+
+#search {
+	width: ($search-width - 5px);
+}
+
+#movie-poster {
+	width: $movie-poster-width;
+	height: $movie-poster-height;
+	background-color: $search-bg;
+	display: inline-block;
+	float: left;
+	margin: 10px;
+	text-align: center;
+}
+
+#movie-poster > i {
+	display: inline-block;
+	font-size: 16px;
+	padding-top: (($movie-poster-height - 16)/ 2);
+}
+
+#selected-poster {
+	width: $movie-poster-width;
+	height: $movie-poster-height;
+}
+
+#up-vote, #down-vote {
+	display: inline-block;
+}
+
+input:focus {
+	outline:none;
+}
+
+
+/* Map Styling */
+
+#map-container {
+   height: 600px;
+   width: 95%;
+   border-radius: 22px 22px;
+   border-color: #fff;
+   border-style: solid;
+   box-shadow: 2px 2px 10px #B1B1B1;
+   margin-top: 25px;
+   border-width: 7px;
+ }
+ #map-canvas {
+   height: 584px;
+   width: 100%;
+   border-radius: 16px 16px;
+ }
+
+
+#map-section {
+   width: 70%;
+   float:left;
+}
+
+#map-container .event ul {
+   list-style-type: none;
+   padding: 0;
+}
+
+/* All Events */
+.event fieldset {
+   border-radius: 12px 12px;
+}
+
+#avatar-thumb {
+   width: 50px;
+   height: 50px;
+   border-radius: 150px;
+}
+
+ #side-bar {
+   width: 30%;
+   height: 600px;
+   float: right;
+}
+
+#current-thumb {
+	width: 30px;
+	height: 30px;
+	border-radius: 150px;
+}
+
+#friend-button {
+	border-radius: 20px;
+}
+
+
+

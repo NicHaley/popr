@@ -1,29 +1,29 @@
-<h3>Events</h3>
-
-<% if current_user %>
-	<p><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></p>
-<% end %>
-
-<%= form_tag events_path, method: :get do %>
-	<%= label_tag :search_location, 'Find events nearby' %>
-	<%= text_field_tag :search_location %>
-	<%= submit_tag 'Submit'%>
-<% end %>
-
-
-<div id="side-bar" style="overflow: scroll">
-	<%= form_tag events_path, method: :get do %>
-		<%= label_tag :search_friend, 'Find friends' %><br>
-		<%= text_field_tag :search_friend %>
+<div id="all-event-container">
+	<% if current_user %>
+		<p><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></p>
 	<% end %>
-	<ul>
-		<%= render 'event' %>
-	</ul>
-</div>
+
+	<%= form_tag events_path, method: :get do %>
+		<%= label_tag :search_location, 'Find events nearby' %>
+		<%= text_field_tag :search_location %>
+		<%= submit_tag 'Submit'%>
+	<% end %>
 
 
-<div id="map-section">
-	<div id="map-container">	
-		<%= render 'map' %>
+	<div id="side-bar" style="overflow: scroll">
+		<%= form_tag events_path, method: :get do %>
+			<%= label_tag :search_friend, 'Find friends' %><br>
+			<%= text_field_tag :search_friend %>
+		<% end %>
+		<ul>
+			<%= render 'event' %>
+		</ul>
+	</div>
+
+
+	<div id="map-section">
+		<div id="map-container">	
+			<%= render 'map' %>
+		</div>
 	</div>
 </div>

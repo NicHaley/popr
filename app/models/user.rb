@@ -28,5 +28,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  def incoming_friendships
+    Friendship.where(friend_id: self.id, confirm: false)
+  end
+
+  def self.search(query)
+    where("first_name like ?", "%#{query}%") 
+  end
+  
 end
 
