@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
   before_filter :set_event, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
+  skip_authorize_resource :only => :welcome
+
+  def welcome
+    @user = User.new
+  end
 
   def all_events
 
