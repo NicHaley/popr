@@ -100,5 +100,13 @@ $(".search-results").on('click', ".movie-click", function(){
     $(".search-results").html('');
   });
 
+  $(".review-button").on("click", function(){
+    $(".review-hide").hide();
+  });
+
+  $(".wish-button").on("click", function(){
+    $(".wish-hide").hide();
+  });
+
 });
 
