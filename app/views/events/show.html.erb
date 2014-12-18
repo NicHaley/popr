@@ -2,6 +2,9 @@
   <%= image_tag @event.host.avatar_url(:thumb) %>
   <legend>Event:</legend>
   <h1>Title: <%= @event.title %></h1>
+  <% if !@event.not_passed %>
+    <h4>This event has passed!</h4>
+  <% end %>  
   <h4><i><%=@event.date_details%></i></h4>
   <% if @event.attendees.include?(current_user) %>
     <%= image_tag "star.png" %>
