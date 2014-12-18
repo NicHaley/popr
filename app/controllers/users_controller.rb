@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :require_login, only: [:show, :destroy, :edit]
   load_and_authorize_resource
 
   def new
@@ -38,7 +37,7 @@ class UsersController < ApplicationController
     if params[:user_search]
       @users = User.search(params[:user_search]).order("created_at DESC")
     else
-      @users = User.all.order('created_at DESC')
+      @users = User.select{|u| !u.is_friend?(current_user) && u.id != current_user.id}.sort
   end
   end
 

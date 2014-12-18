@@ -12,28 +12,28 @@ class Ability
   def initialize(user)
     user ||= User.new
     if user.id.nil?
-        can :manage, User,  :id => user.id
-      else
-        can :manage, Event, :host_id => user.id
-        can :manage, User,  :id => user.id
-        can :manage, Commitment, :user_id => user.id 
-        can :manage, Comment, :user_id => user.id
-        can :manage, MovieInterest, :user_id => user.id
-        can :manage, Rating, :user_id => user.id
-        can :manage, Friendship, :user_id => user.id
-        can :read, Event do |ev|
-         ev.host.is_friend?(user)
-       end
-        can :read, User do |us|
-          us.is_friend?(user)
-        end
-        can :read, MovieInterest do |mi|
-          mi.user.is_friend?(user)
-        end   
-        can :read, Rating do |rt|
-          rt.user.is_friend?(user)
-        end             
-      end
+      can :manage, User,  :id => user.id
+    else
+      can :manage, Event, :host_id => user.id
+      can :manage, User,  :id => user.id
+      can :manage, Commitment, :user_id => user.id 
+      can :manage, Comment, :user_id => user.id
+      can :manage, MovieInterest, :user_id => user.id
+      can :manage, Rating, :user_id => user.id
+      can :manage, Friendship, :user_id => user.id
+      can :read, Event do |ev|
+       ev.host.is_friend?(user)
+     end
+     can :read, User do |us|
+      us.is_friend?(user)
+    end
+    can :read, MovieInterest do |mi|
+      mi.user.is_friend?(user)
+    end   
+    can :read, Rating do |rt|
+      rt.user.is_friend?(user)
+    end             
+  end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
