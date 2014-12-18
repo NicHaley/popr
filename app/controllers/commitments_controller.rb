@@ -1,4 +1,6 @@
 class CommitmentsController < ApplicationController
+  load_and_authorize_resource
+  
   def create
     @commitment = Commitment.new(commitment_params)
     # We can grab user_id and event_id because we passed them into the params

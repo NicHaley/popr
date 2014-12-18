@@ -1,4 +1,5 @@
 class FriendshipsController < ApplicationController
+	load_and_authorize_resource
 	def create
 		# Create a new friendship user_id of current_user, and friend_id of params (selected in index.html.erb)
 		@friendship = current_user.friendships.build(friend_id: params[:friend_id])
