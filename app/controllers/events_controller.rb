@@ -5,6 +5,9 @@ class EventsController < ApplicationController
 
   def welcome
     @user = User.new
+    if current_user
+      redirect_to events_path
+    end
   end
 
   def all_events
