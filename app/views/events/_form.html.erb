@@ -18,7 +18,7 @@
   </div>
   <div class="field">
     <%= f.label :capacity %><br />
-    <%= f.number_field :capacity, :size => 90 %>
+    <%= f.number_field :capacity, {min: 1, value: 1} %>
   </div><br />
 
     <div class="input-container">
