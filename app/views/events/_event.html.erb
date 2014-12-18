@@ -5,20 +5,35 @@
 			<div id="event-poster" style="background-image: url(<%= movie.poster %>);">
 			</div>
 			<div id="event-content">
-				<%= image_tag("#{event.host.avatar.thumb}", id: "avatar-thumb")%>
-				<b><%= link_to(event.title, user_event_path(event.host_id, event.id)) %>&nbsp;(<%=event.commitments.sum(:party_size)%>/<%= event.capacity%>)</b>
-				<span id="host-by">Hosted by: <%= event.host.first_name %> <%= event.host.last_name %></span>
-				<p><%= event.description %></p>
-				<p><b>Showing:&nbsp;</b><%= movie.title %></p>
-				<p><b>Friends pop'n in:</b></p>
-				<% event.attendees.each do |a| %>
-				<%= image_tag("#{a.avatar_url(:thumb)}", id: "avatar-thumb") %>
-				<% end %>
-				<% if event.attendees.include?(current_user) %>
-					<b>You're attending!</b>
-				<% else %>
-					<b><%= link_to("Join Now!", user_event_path(event.host_id, event.id)) %></b>
-				<% end %>
+				<div class="row">
+					<div class="large-12 columns" id="event-info">
+						<span id="event-title">
+							<p><b><%= link_to(event.title, user_event_path(event.host_id, event.id)) %>&nbsp;(<%=event.commitments.sum(:party_size)%>/<%= event.capacity%>)</b></p>
+							<p>Hosted by: <%= event.host.first_name %> <%= event.host.last_name %></p>
+							<p><%= event.description %></p>
+						</span>
+						<p><b>Friends pop'n in:</b></p>
+						<% if event.attendees.include?(current_user) %>
+							<b>You're attending!</b>
+						<% else %>
+							<b><%= link_to("Join Now!", user_event_path(event.host_id, event.id)) %></b>
+						<% end %>
+					</div>
+					<div class="large-12 columns" id="event-attendance">
+						<div class = row>
+						<div class="large-8 columns">
+							<% event.attendees.each do |a| %>
+								<%= image_tag("#{a.avatar_url(:thumb)}", id: "avatar-thumb") %></li>
+							<% end %>
+						</div>
+							<div id="image-container" class="large-4 columns">
+								<%= image_tag("popcorn.png", class:"icon") %>
+								<%= image_tag("#{event.host.avatar.thumb}", id: "avatar-thumb", class:"hostImage")%>
+							</div>	
+						</div>			
+					</div>
+				</div>
+				
 			</div>	
 		</div>
 	<% end %>

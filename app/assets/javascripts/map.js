@@ -39,12 +39,9 @@ myMap.init = function() {
 				var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 				
 
-				  var contentString = '<div id="info-window-content">'+
-					'<div id="siteNotice">'+
-					'</div>'+
-					'<h3 id="firstHeading" class="firstHeading">Uluru</h3>'+
-					'<div id="bodyContent">'+
-					'<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+				  var contentString = 
+					'<h3 id="firstHeading" class="firstHeading">popr</h3>'+
+					'<p><b>Welcome!</b> <b>Ayers Rock</b>, is a large ' +
 					'sandstone rock formation in the southern part of the '+
 					'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
 					'south west of the nearest large town, Alice Springs; 450&#160;km '+
@@ -53,9 +50,7 @@ myMap.init = function() {
 					'Heritage Site.</p>'+
 					'<p>Attribution: Uluru, <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
 					'http://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-				    '(last visited June 22, 2009).</p>'+
-				    '</div>'+
-		      		'</div>';
+				    '(last visited June 22, 2009).</p>';
 
 
 				var infoWindow = new google.maps.InfoWindow({
