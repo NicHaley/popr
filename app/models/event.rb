@@ -35,4 +35,8 @@ class Event < ActiveRecord::Base
     self.time.strftime("%A, %B %e, %Y ")
   end
 
+  def not_passed
+    self.time >= Time.now
+  end
+
 end
