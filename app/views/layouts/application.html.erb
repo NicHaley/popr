@@ -9,6 +9,7 @@
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.secrets.google_maps_api}" %>
 	<%= javascript_include_tag "vendor/modernizr" %>
+	<link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
 	<%= csrf_meta_tags %>
 
 </head>
@@ -18,7 +19,7 @@
 	<nav class="top-bar" data-topbar role="navigation">
 	  <ul class="title-area">
 	    <li class="name">
-	      <h1><a href="#">popr</a></h1>
+	      <h1 class="top-title"><a href="#">popr</a></h1>
 	    </li>
 	     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 	    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -45,7 +46,7 @@
 	        </ul>
 	      </li>	
 
-
+			<li id="friend-icon"><a href="#"> <i class="fi-torsos-all"></i></a></li>
 			<li id="friend-button"><a href="#">Invite Friends</a></li>
 			
 			<li id="event-button"><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></li>
@@ -56,7 +57,7 @@
 	    <ul class="left">
 
 	    	<li class="has-dropdown">
-		        <a href="#">Browse</a>
+		        <a href="#">Browse&nbsp;&nbsp;&nbsp;</a>
 		        <ul class="dropdown">
 		          <li><a href="#">Most Recent</a></li>
 		          <li><a href="#">Friends</a></li>
