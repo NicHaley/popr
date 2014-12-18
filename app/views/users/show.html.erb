@@ -11,16 +11,70 @@
 <% end %>
 <hr>
 
+<div id="chart4"></div>
 <div id="chart"></div>
+<div id="chart2"></div>
+<div id="chart3"></div>
 
 <script>
-
 	var chart = c3.generate({
 		bindto: '#chart',
 		data: {
 			columns: gon.genres,
-			type: 'pie'
+			type: 'donut',
+			hide: true,
+  		hide: ['Other']
 		},
+		donut: {
+      title: "Favourite Genres",
+      width: 80
+    }
+	});
+
+	var chart2 = c3.generate({
+		bindto: '#chart2',
+		data: {
+			columns: gon.actors,
+			type: 'donut',
+			hide: true,
+  		hide: ['Other']
+		},
+		donut: {
+      title: "Favourite Actors",
+      width: 80
+    }
+	});
+
+	var chart3 = c3.generate({
+		bindto: '#chart3',
+		data: {
+			columns: gon.directors,
+			type: 'donut',
+			hide: true,
+  		hide: ['Other']
+		},
+		donut: {
+      title: "Favourite Directors",
+      width: 80
+    }
+	});
+
+	var chart4 = c3.generate({
+		bindto: '#chart4',
+    data: {
+        columns: [
+            gon.average
+        ],
+        type: 'gauge',
+    },
+    color: {
+      pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the four color levels for the percentage values.
+      threshold: {
+//            unit: 'value', // percentage is default
+//            max: 200, // 100 is default
+          values: [30, 60, 75, 100]
+      }
+    },
 	});
 
 </script>

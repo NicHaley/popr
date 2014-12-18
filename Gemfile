@@ -33,6 +33,7 @@ gem 'httparty'
 gem 'c3-rails'
 gem 'd3-rails'
 gem 'gon'
+gem 'kaminari'
 
 gem 'geocoder'
 gem 'jquery-ui-rails'
@@ -47,6 +48,7 @@ group :development, :test do
 	gem 'rspec-rails', '~> 3.0'
 	gem 'jasmine'
 	gem 'factory_girl_rails'
+  gem 'quiet_assets'
 end
 
 # Use ActiveModel has_secure_password

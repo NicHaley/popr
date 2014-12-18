@@ -23,16 +23,7 @@
 </div>
 
 <div class="wish-hide">
-	<%= form_for([@user, @movie_interest], remote: true) do |f| %>
-
-		<div class="field">
-			<%= f.hidden_field :wished, value: "true" %>
-			<%= f.hidden_field :rt_id, value: "" %>
-		</div> 
-		<div class="actions">
-			<%= f.submit "Wish" %>
-		</div>
-	<% end %>
+	<%= render 'movie_interests/form' %>
 </div>
 
 <script id="menu_info" type="x-tmpl-mustache">
@@ -61,43 +52,7 @@
 </script>
 
 <div class="review-hide">
-	<h5>Write a Review</h5>
-
-	<%= form_for([@user, @rating], url: user_ratings_path(current_user, @rating), :remote => true) do |f| %>		
-	<div class="field starRating">
-		<div>
-			<div>
-				<div>
-					<div>
-						<%= f.radio_button :user_score, 1, id: "rating1" %>
-						<label for="rating1"><span>1</span></label>
-					</div>
-					<%= f.radio_button :user_score, 2, id: "rating2" %>
-					<label for="rating2"><span>2</span></label>
-				</div>
-					<%= f.radio_button :user_score, 3, id: "rating3" %>
-					<label for="rating3"><span>3</span></label>
-				</div>
-				<%= f.radio_button :user_score, 4, id: "rating4" %>
-				<label for="rating4"><span>4</span></label>
-			</div>
-			<%= f.radio_button :user_score, 5, id: "rating5" %>
-			<label for="rating5"><span>5</span></label>
-	</div>
-	<div class="field">
-		<%= f.label :review %><br />
-		<%= f.text_area :review, :size => "45x5" %>
-	</div>
-	<div class="field">
-		<%= f.hidden_field :rt_id, value: "" %>
-		<%= f.hidden_field :actors, value: "" %>
-		<%= f.hidden_field :directors, value: "" %>
-		<%= f.hidden_field :genres, value: "" %>
-	</div> 
-	<div class="actions">
-		<%= f.submit %>
-	</div>
-	<% end %>
+	<%= render 'ratings/form' %>
 </div>
 
 

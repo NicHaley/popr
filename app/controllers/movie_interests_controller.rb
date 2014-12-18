@@ -1,5 +1,6 @@
 class MovieInterestsController < ApplicationController
   before_filter :set_movie_interest, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     @movie_interests = MovieInterest.where(user_id: current_user.id)
@@ -21,8 +22,10 @@ class MovieInterestsController < ApplicationController
     respond_to do |format|
       if @movie_interest.save
         format.html {redirect_to root_url, notice: "Movie interest created!"}
+        format.js{}
       else
         format.html {render 'new', notice: 'Error creating movie interest'}
+        format.js{}
       end
     end
   end

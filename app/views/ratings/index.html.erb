@@ -1,3 +1,7 @@
+<h4>All Reviews</h4>
+
+<h5><small><%= page_entries_info @ratings %></small></h5>
+
 <% if @ratings %>
 	<% @ratings.each do |rating| %>
 	<p>
@@ -13,3 +17,5 @@
 	</p><br />
 	<% end %>
 <% end %>
+
+<%= paginate @ratings %>
