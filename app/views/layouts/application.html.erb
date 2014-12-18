@@ -1,22 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Popr</title>
 	<%= include_gon %>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.secrets.google_maps_api}" %>
+	<%= javascript_include_tag "vendor/modernizr" %>
 	<%= csrf_meta_tags %>
 
 </head>
 <body data-controller="<%= controller_name %>">	
+
+<div style="border-bottom: 1px solid #e8e8e8;"> 
+	<nav class="top-bar" data-topbar role="navigation">
+	  <ul class="title-area">
+	    <li class="name">
+	      <h1><a href="#">popr</a></h1>
+	    </li>
+	     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+	    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+	  </ul>
+
+	  <section class="top-bar-section">
+	    <!-- Right Nav Section -->
+	    <ul class="right">
+
+	      <li class="has-dropdown">
+	      	<a href="#">
+	      		<% if current_user %>
+							<%= image_tag("#{current_user.avatar.thumb}", id: "current-thumb")%> &nbsp;<%= current_user.first_name%>
+						<% end %>
+					</a>
+
+					<ul class="dropdown">
+						<li><a href="#">My Profile</a></li>
+						<li><a href="#">Events</a></li>
+						<li><a href="#">Movies</a></li>
+						<li><a href="#">Ratings</a></li>
+						<li><a href="#">Reviews</a></li>
+						<li> <%= link_to "Logout", logout_path, method: :post %></li>
+	        </ul>
+	      </li>	
+
+
+			<li id="friend-button"><a href="#">Invite Friends</a></li>
+			
+			<li id="event-button"><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></li>
+
+	    </ul>
+
+	    <!-- Left Nav Section -->
+	    <ul class="left">
+
+	    	<li class="has-dropdown">
+		        <a href="#">Browse</a>
+		        <ul class="dropdown">
+		          <li><a href="#">Most Recent</a></li>
+		          <li><a href="#">Friends</a></li>
+		          <li><a href="#">Distance</a></li>
+		        </ul>
+	      </li>
+
+	    </ul>
+	  </section>
+	</nav>
+</div>
+
+<body data-controller="<%= controller_name %>">
 	<div>
 		<p id="notice"><%= flash[:notice] %></p>
 		<p id="alert"><%= flash[:alert] %></p>
 	</div>
-	<% if current_user %>
-	<p>Signed in as <%= current_user.first_name %> <%= current_user.last_name %> | <%= link_to "Logout", logout_path, method: :post %></p>
-	<% end %>  
+	
+ <% if current_user.incoming_friendships.count > 0 %>
+ 	<%= current_user.incoming_friendships.count %>
+ <% end %>
+
 	<%= yield %>
 
 </body>

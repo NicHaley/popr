@@ -4,9 +4,9 @@ class EventsController < ApplicationController
   def all_events
 
     @events = if params[:search_location]
-      Event.near(params[:search_location], 10, units: :km).select{|event|event.host.is_friend?(current_user)}
+      Event.near(params[:search_location], 20, units: :km).select{|event|event.host.is_friend?(current_user)}
     elsif params[:latitude] && params[:longitude]
-      Event.near([params[:latitude], params[:longitude]], 10, units: :km).select{|event|event.host.is_friend?(current_user)}
+      Event.near([params[:latitude], params[:longitude]], 20, units: :km).select{|event|event.host.is_friend?(current_user)}
     else
       Event.all.select{|event|event.host.is_friend?(current_user)} 
     end

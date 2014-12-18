@@ -1,0 +1,169 @@
+$search-bg: #f2f3f9;
+$search-hover: #62669a;
+$search-text-color: black;
+
+$search-width: 500px;
+$movie-poster-width: 180px;
+$movie-poster-height: 270px;
+
+/* Global Changes */
+#wrapper {
+	width: 100%;
+	margin-top:0;
+}
+
+/* Border Styling */
+.top-bar {
+	border-bottom-width: 2px;
+	border-bottom-color: #F5AA4A;
+}
+
+
+.movie-title {
+	color: $search-text-color;
+	display: inline;
+	vertical-align: top;
+
+}
+
+.movie-click {
+	clear: left;
+	display: table;
+	width: $search-width;
+}
+
+.movie-click:hover {
+	background-color: $search-hover;
+	#movie-title{
+		color: white;
+	}
+}
+
+.search-results {
+	background-color: $search-bg;
+	width: $search-width;
+}
+
+#search-block {
+	width: $search-width;
+	display: inline-block;
+}
+
+#img-thumb {
+	display: inline-block;
+	margin-right: 7px;
+}
+
+#search {
+	width: ($search-width - 5px);
+}
+
+#movie-poster {
+	width: $movie-poster-width;
+	height: $movie-poster-height;
+	background-color: $search-bg;
+	display: inline-block;
+	float: left;
+	margin: 10px;
+	text-align: center;
+}
+
+#movie-poster > i {
+	display: inline-block;
+	font-size: 16px;
+	padding-top: (($movie-poster-height - 16)/ 2);
+}
+
+#selected-poster {
+	width: $movie-poster-width;
+	height: $movie-poster-height;
+}
+
+input:focus {
+	outline:none;
+}
+
+
+/* Map Styling */
+
+#map-container {
+   height: 800px;
+   width: 65%;
+   border-color: #fff;
+   float: left;
+   margin-right:0px;
+ }
+ #map-canvas {
+   height: 800px;
+   width: 100%;
+   margin-right:0px;
+ }
+
+#map-container .event ul {
+   list-style-type: none;
+   padding: 0;
+}
+
+/* All Events */
+#event {
+	background-color: #f7f2f2;
+}
+
+#all-event-container {
+	float: right;
+	width:35%;
+	margin-top:25px;
+	margin-left:0px;
+	padding:0px;
+}
+
+#host-by {
+	font-size: 8pt;
+	display:block;
+}
+
+#event-wrapper {
+	width: 100%;
+	height: 225px;
+	display: inline-block;
+	background-color: #f7f2f2; 
+	overflow: hidden;
+	border-top: 1px solid #e8e8e8;
+}
+
+#event-poster {
+	height: 225px;
+	width: 35%;
+	float: right;
+}
+
+#event-content {
+	height: 225px;
+	width: 65%;
+	background-color: #f7f2f2; 
+	padding: 25px;
+	float:left;
+}
+
+#avatar-thumb {
+   width: 25px;
+   height: 25px;
+   border-radius: 150px;
+}
+
+#side-bar {
+   width: 100%;
+   height: 600px;
+}
+
+/* Top Bar */
+
+#current-thumb {
+	width: 30px;
+	height: 30px;
+	border-radius: 150px;
+}
+
+#friend-button {
+}
+

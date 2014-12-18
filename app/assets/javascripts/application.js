@@ -13,8 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/autocomplete
+//= require foundation
 //= require turbolinks
 //= require mustache
 //= require c3
 //= require d3
 //= require_tree .
+
+$(function(){ $(document).foundation(); });

@@ -35,5 +35,6 @@ class User < ActiveRecord::Base
   def self.search(query)
     where("first_name like ?", "%#{query}%") 
   end
+
 end
 
