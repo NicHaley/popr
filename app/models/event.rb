@@ -31,4 +31,8 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def date_details
+    self.time.strftime("%A, %B %e, %Y ")
+  end
+
 end
