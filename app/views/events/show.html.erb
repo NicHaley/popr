@@ -19,7 +19,7 @@
   <p><b>Cast:</b> <% @movie.cast.each do |actor| %>
     <i><%= actor["name"] %> /</i> 
   <% end %></p>
-  <p><b>Critics Rating:</b> <%= @movie.rating[0] %> <b><%= @movie.rating[1] %>%</b> </p>
+  <p><b>Critics Rating:</b> <%= @movie.rating[0] %> <b><%= @movie.rating[1] >= 0 ? @movie.rating[1] : "-" %>%</b> </p>
   <% if @movie.consensus != "" %>
     <p><b>Synopsis:</b> <%= @movie.synopsis %></p>
   <% else %>
