@@ -1,10 +1,11 @@
-$search-bg: #f2f3f9;
-$search-hover: #62669a;
-$search-text-color: black;
+$search-bg: #fce5e8;
+$search-hover: #BD1E2C;
+$search-bg-highlight: #62669a;
+$search-border: #e599a0;
 
-$search-width: 500px;
-$movie-poster-width: 180px;
-$movie-poster-height: 270px;
+$search-width: 600px;
+$movie-poster-width: 250px;
+$movie-poster-height: 375px;
 
 /* Global Changes */
 #wrapper {
@@ -18,18 +19,18 @@ $movie-poster-height: 270px;
 	border-bottom-color: #F5AA4A;
 }
 
-
-.movie-title {
-	color: $search-text-color;
+#movie-title {
 	display: inline;
 	vertical-align: top;
-
+	font-size: 18px;
 }
 
 .movie-click {
 	clear: left;
+	text-align: left;
 	display: table;
 	width: $search-width;
+	border-bottom: 1px solid $search-border;
 }
 
 .movie-click:hover {
@@ -42,6 +43,12 @@ $movie-poster-height: 270px;
 .search-results {
 	background-color: $search-bg;
 	width: $search-width;
+	position: absolute;
+	z-index: 10;
+}
+
+#search-poster {
+	text-align: center;
 }
 
 #search-block {
@@ -49,13 +56,15 @@ $movie-poster-height: 270px;
 	display: inline-block;
 }
 
-#img-thumb {
+.img-thumb {
 	display: inline-block;
 	margin-right: 7px;
 }
 
 #search {
-	width: ($search-width - 5px);
+	width: ($search-width);
+	margin-bottom: 0px;
+	text-align: center;
 }
 
 #movie-poster {
@@ -63,9 +72,12 @@ $movie-poster-height: 270px;
 	height: $movie-poster-height;
 	background-color: $search-bg;
 	display: inline-block;
-	float: left;
-	margin: 10px;
+	margin: 10px 10px 20px 10px;
 	text-align: center;
+}
+
+#drop-rating {
+	height: 20px;
 }
 
 #movie-poster > i {
@@ -79,29 +91,38 @@ $movie-poster-height: 270px;
 	height: $movie-poster-height;
 }
 
+.movie-explore-field {
+	width: 70%;
+	text-align: center;
+	display: inline-block;
+}
+
+.movie-center {
+	text-align: center;
+}
+
 input:focus {
 	outline:none;
 }
 
-
 /* Map Styling */
 
 #map-container {
-   height: 800px;
-   width: 65%;
-   border-color: #fff;
-   float: left;
-   margin-right:0px;
- }
- #map-canvas {
-   height: 800px;
-   width: 100%;
-   margin-right:0px;
- }
+	height: 800px;
+	width: 65%;
+	border-color: #fff;
+	float: left;
+	margin-right:0px;
+}
+#map-canvas {
+	height: 800px;
+	width: 100%;
+	margin-right:0px;
+}
 
 #map-container .event ul {
-   list-style-type: none;
-   padding: 0;
+	list-style-type: none;
+	padding: 0;
 }
 
 /* All Events */
@@ -146,14 +167,14 @@ input:focus {
 }
 
 #avatar-thumb {
-   width: 25px;
-   height: 25px;
-   border-radius: 150px;
+	width: 25px;
+	height: 25px;
+	border-radius: 150px;
 }
 
 #side-bar {
-   width: 100%;
-   height: 600px;
+	width: 100%;
+	height: 600px;
 }
 
 /* Top Bar */

@@ -1,34 +1,28 @@
 
-<div class="movie-explore-field">
-	<div id="search-block">
-		<input type="text" id="search" placeholder="Search for movies and TV shows...">
-		<div class="search-results"></div>
-	</div>
-	
-	<div class="movie-info">
-		<div id="movie-poster">
-			<i>No Movie Selected</i>
+<div class="movie-center">
+	<div class="movie-explore-field">
+
+		<div id="search-poster">
+			<div id="search-block">
+				<input type="text" id="search" placeholder="Search for a movie...">
+				<div class="search-results"></div>
+			</div><br />
+
+			<div id="movie-poster">
+				<i>No Movie Selected</i>
+			</div><br /><br />
 		</div>
 
-		<div class="new-event" class="action">
-			<%= render 'form' %>
+		<div class="row">
+			<div class="small-8 small-centered columns">
+				<div id="form">
+					<%= render 'form' %>
+				</div>
+			</div>
 		</div>
 	</div>
-
-<div id="new-movie-container">
-	<div id="movie-poster">
-		<i>No Movie Selected</i>
-	</div>
-	<div id="form">
-		<%= render 'form' %>
-	</div>
-
-	<div id="search-block">
-		<input type="text" id="search">
-		<div class="search-results"></div>
-	</div>
-
 </div>
+
 
 <script id="menu_info" type="x-tmpl-mustache">
 
@@ -39,9 +33,9 @@
 
 			 <img class="img-thumb" 
 			 			align="left" 
-			 			height="58" 
+			 			height="80" 
 			 			src="{{posterThumb}}" />
 
-			 	<i> <img height="16" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
+			 	<img id="drop-rating" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
  	</div>
 </script>

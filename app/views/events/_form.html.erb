@@ -1,23 +1,23 @@
 
 <%= form_for [@user, @event] do |f|%>
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title, :size => 90 %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description %>
     <%= f.text_field :description, :size => 90 %>
   </div>      
   <div class="field">
-    <%= f.label :address %><br />
+    <%= f.label :address %>
     <%= f.text_field :address, :size => 90 %>
   </div>
     <div class="field">
-    <%= f.label :time %><br />
+    <%= f.label :time %>
     <%= f.datetime_select :time, :minute_step => 5 %>
   </div>
   <div class="field">
-    <%= f.label :capacity %><br />
+    <%= f.label :capacity %>
     <%= f.number_field :capacity, :size => 90 %>
   </div><br />
 
@@ -26,7 +26,7 @@
     </div> 
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit class: "button expand" %>
     </div><br />
   </fieldset>
 <% end %>
