@@ -8,8 +8,9 @@ class EventsController < ApplicationController
     @user = User.new
     if current_user
       redirect_to events_path
+    else
+      render :layout => false
     end
-    render :layout => false
   end
 
   def all_events
