@@ -1,0 +1,11 @@
+<% if @movie_interest.save 
+     @movie_interest = MovieInterest.new
+%>
+
+$(".wish-button").text("Submitting...");
+setTimeout(function(){ 
+	$(".wish-hide").html("<%= escape_javascript(render(:partial => '/movie_interests/form')) %>")
+	$(".wish-hide").hide(); 
+}, 1000);
+
+<% end %>

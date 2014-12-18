@@ -1,1 +1,11 @@
- $("#review-list").html("<%= j(render(:partial => '/users/ratings')) %>");
+<% if @rating.save 
+     @rating = Rating.new
+%>
+
+$(".review-button").text("Submitting...");
+setTimeout(function(){ 
+	$(".review-hide").html("<%= escape_javascript(render(:partial => '/ratings/form')) %>")
+	$(".review-hide").hide(); 
+}, 1000);
+
+<% end %>

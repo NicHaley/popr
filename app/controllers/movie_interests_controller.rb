@@ -21,8 +21,10 @@ class MovieInterestsController < ApplicationController
     respond_to do |format|
       if @movie_interest.save
         format.html {redirect_to root_url, notice: "Movie interest created!"}
+        format.js{}
       else
         format.html {render 'new', notice: 'Error creating movie interest'}
+        format.js{}
       end
     end
   end
