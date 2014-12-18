@@ -1,3 +1,6 @@
+<% if current_user == @event.host %>
+  <%= link_to "Edit Event", edit_user_event_path(@event.host, @event) %> | <%= link_to "Cancel Event", user_event_path(@event.host, @event), data: { confirm: 'Are you sure?' }, method: :delete%>
+<% end %>  
 <fieldset>
   <%= image_tag @event.host.avatar_url(:thumb) %>
   <legend>Event:</legend>
