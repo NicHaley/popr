@@ -125,7 +125,6 @@ $primary-color: #BD1E2C;
    $gred        : #925F65;
    $tomato      : #BD1E2C;
 
-
 // We use these to control various global styles
    $body-bg: $ghost;
    $body-font-color: $charcoal;
@@ -238,7 +237,7 @@ $primary-color: #BD1E2C;
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: $font-weight-normal;
 // $paragraph-font-size: 1rem;
-// $paragraph-line-height: 0;
+   $paragraph-line-height: 1.0;
 // $paragraph-margin-bottom: rem-calc(20);
 // $paragraph-aside-font-size: rem-calc(14);
 // $paragraph-aside-line-height: 1.35;
@@ -1373,7 +1372,7 @@ $form-label-bottom-margin: 1.5;
 
 // Controlling the styles for the title in the top bar
 // $topbar-title-weight: $font-weight-normal;
-// $topbar-title-font-size: rem-calc(17);
+   $topbar-title-font-size: rem-calc(30);
 
 // Style the top bar dropdown elements
 // $topbar-dropdown-bg: $oil;
@@ -1385,7 +1384,7 @@ $form-label-bottom-margin: 1.5;
 // $topbar-dropdown-toggle-alpha: 0.4;
 
 // Set the link colors and styles for top-level nav
-   $topbar-link-color: $charcoal;
+   $topbar-link-color: $ghost;
    $topbar-link-color-hover: $vapor;
 // $topbar-link-color-active: $white;
 // $topbar-link-color-active-hover: $white;
@@ -1416,8 +1415,8 @@ $form-label-bottom-margin: 1.5;
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: rem-calc(13);
 // $topbar-menu-link-weight: $font-weight-bold;
-   $topbar-menu-link-color: $charcoal;
-   $topbar-menu-icon-color: $charcoal;
+   $topbar-menu-link-color: $vapor;
+   $topbar-menu-icon-color: $vapor;
 // $topbar-menu-link-color-toggled: $jumbo;
 // $topbar-menu-icon-color-toggled: $jumbo;
 
