@@ -39,18 +39,22 @@
 					<ul class="dropdown">
 						<li><%= link_to 'My Profile', user_path(current_user) %></li>
 						<li><%= link_to 'Events', new_user_event_path(user_id: current_user.id) %></li>
-						<li><%= link_to 'Movies', new_user_movie_interest_path(current_user, current_user) %></li>
-						<li><%= link_to 'Ratings', users_path(current_user.id) %></li>
-						<li><%= link_to 'Reviews', users_path(current_user.id) %></li>
+						<li><%= link_to 'Explore', new_user_movie_interest_path(current_user, current_user) %></li>
 						<li> <%= link_to "Logout", logout_path, method: :post %></li>
 	        </ul>
 	      </li>	
 
-			<li id="friend-icon"><a href="#"> <i class="fi-torsos-all"></i></a></li>
+			<li id="friend-request">
+				<div id="friend-container">
+					<%= image_tag("friend_request.png", id:"friend-icon")%>
+					 <% if current_user.incoming_friendships.count > 0 %>
+ 						<div id="friend-number">+<%= current_user.incoming_friendships.count %></div>
+ 					 <% end %>
+				<div>
+			</li>
 			<li id="friend-button"><%= link_to 'Invite Friends', users_path %></li>
 			
 			<li id="event-button"><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></li>
-
 	    </ul>
 
 	    <!-- Left Nav Section -->
@@ -77,10 +81,6 @@
 		<p id="alert"><%= flash[:alert] %></p>
 	</div>
 	
- <% if current_user.incoming_friendships.count > 0 %>
- 	<%= current_user.incoming_friendships.count %>
- <% end %>
-
 	<%= yield %>
 
 </body>

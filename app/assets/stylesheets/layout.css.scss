@@ -286,6 +286,31 @@ input:focus {
 
 /* Top Bar */
 
+#friend-icon {
+	margin-top:10px;
+	width: 30px;
+	height: 30px;
+	background-color: #BD1E2C;
+}
+
+#friend-request {
+	background-color: #BD1E2C;
+}
+
+#friend-number {
+	color: white;
+	font-size: 8pt;
+	position: relative;
+	left: 15px;
+	top: -5px;
+}
+
+#friend-container {
+	position: relative;
+	height: 45px;
+	width: 45px;
+}
+
 #current-thumb {
 	width: 30px;
 	height: 30px;
