@@ -1,29 +1,49 @@
-<h1>Explore Movies</h1>
+<div class="movie-center">
+	<div class="movie-explore-field">
 
-<div class="movie-explore-field">
-	<div id="search-block">
-		<input type="text" id="search" placeholder="Search for movies and TV shows...">
-		<div class="search-results"></div>
-	</div>
+	<div class="search-window">
+		<div id="search-poster">
+			<div id="search-block">
+				<input type="text" id="search" placeholder="Search for movies">
+				<div class="search-results"></div>
+			</div><br />
 
-	<div class="movie-info">
-		<div id="movie-poster">
-			<i>No Movie Selected</i>
-		</div>
-		<div class="movie-text">
-			<div class="movie-title"></div><br />
-			<div class="movie-score"></div><br />
-			<div class="movie-director"></div>
-			<div class="movie-cast"></div>
-			<div class="movie-genre"></div>
-			<div class="movie-mpaa_rating"></div>
-			<div class="movie-runtime"></div>
+			<div id="movie-poster"></div>
 		</div>
 	</div>
-</div>
 
-<div class="wish-hide">
-	<%= render 'movie_interests/form' %>
+	<div class="form-window">
+		<div id="interest-form">
+			<div class="row">
+				<div class="small-8 small-centered columns" id="movie-content-col">	
+					<div class="movie-text">
+						<div class="movie-title"></div><br />
+						<div class="movie-score"></div><br />
+						<div class="movie-director"></div>
+						<div class="movie-cast"></div>
+						<div class="movie-genre"></div>
+						<div class="movie-mpaa_rating"></div>
+						<div class="movie-runtime"></div>
+					</div><br />
+				</div>
+			</div>
+				<div class="row">
+					<div class="small-10 small-centered columns">
+						<div class="review-hide">
+							<%= render 'ratings/form' %>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-10 small-centered columns">
+						<div class="wish-hide">
+							<%= render 'movie_interests/form' %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script id="menu_info" type="x-tmpl-mustache">
@@ -40,19 +60,17 @@
 		data-mpaa_rating = "{{mpaa_rating}}"
 		data-runtime = "{{runtime}}"
 
-		class="movie-click">
+		 class="movie-click">
 
-		<img class="img-thumb" 
-			align="left" 
-			height="58" 
-			src="{{posterThumb}}" />
+			<img class="img-thumb" 
+	 			align="left" 
+	 			height="80" 
+	 			src="{{posterThumb}}" />
 
-		<i> <img height="16" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
-	</div>
+			 	<img id="drop-rating" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
+ 	</div>
 </script>
 
-<div class="review-hide">
-	<%= render 'ratings/form' %>
-</div>
+
 
 

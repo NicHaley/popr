@@ -1,21 +1,28 @@
-<h4>All Reviews</h4>
+<div class="row">
+	<div class="small-8 small-centered columns">	
 
-<h5><small><%= page_entries_info @ratings %></small></h5>
+		<h3 id="rating-center">All Reviews</h3>
 
-<% if @ratings %>
-	<% @ratings.each do |rating| %>
-	<p>
-		<% if rating.id != nil %>
-			<strong><%= Movie.find_movie(rating.rt_id).title %></strong><br /><br />
-			<i><%= rating.review %></i><br />
-			<% width = ((rating.user_score.to_i/5.to_f) * 100.to_i).to_i %>
-			<div class="rating_bar">
-				<div class="rating" style= "width:<%= width %>%"></div>
-			</div><br/>
-			Created at: <%= rating.created_at %>
-		<% end %>
-	</p><br />
-	<% end %>
-<% end %>
+		<h5><small><%= page_entries_info @ratings %></small></h5><br />
+
+		<div id="review-list">
+			<% if @ratings %>
+				<% @ratings.each do |rating| %>
+				<p>
+					<% if rating.id != nil %>
+					<strong><%= Movie.find_movie(rating.rt_id).title %></strong><br /><br />
+					<i><%= rating.review %></i><br />
+					<% width = ((rating.user_score.to_i/5.to_f) * 100.to_i).to_i %>
+					<div class="rating_bar">
+						<div class="rating" style= "width:<%= width %>%"></div>
+					</div><br/>
+					Created at: <%= rating.created_at %>
+					<% end %>
+				</p>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
 
 <%= paginate @ratings %>
