@@ -1,4 +1,8 @@
-<h2>Profile</h2>
+<div class="row" id:"profile-row">
+	<div class="large-3 columns" id="profile-picture"></div>
+	<div class="large-9 columns" id="profile-section"></div>
+</div>
+
 <%= image_tag @user.avatar_url(:profile) %>
 <% if current_user == @user %>
   <%= link_to "Edit Profile", edit_user_path(@user) %> | <%= link_to "Delete Account", user_path(@user), data: { confirm: 'Are you sure?' }, method: :delete%>
@@ -13,6 +17,7 @@
   <% end %>	
   <hr>
 <% end %>
+
 <ul>
   <% @user.friendships.sort{|x,y| x.friend.first_name <=> y.friend.first_name}.each do |friendship| %>
   <% if friendship.confirm %>
@@ -26,33 +31,33 @@
 <hr>
 
 
-<dl class="tabs" data-tab>
-  <dd class="active"><a href="#panel1">Tab 1</a></dd>
-  <dd><a href="#panel2">Tab 2</a></dd>
-  <dd><a href="#panel3">Tab 3</a></dd>
-  <dd><a href="#panel4">Tab 4</a></dd>
-</dl>
-<div class="tabs-content">
-  <div class="content active" id="panel1">
-    <p>This is the first panel of the basic tab example. This is the first panel of the basic tab example.</p>
-  </div>
-  <div class="content" id="panel2">
-    <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
-  </div>
-  <div class="content" id="panel3">
-    <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
-  </div>
-  <div class="content" id="panel4">
-    <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
-  </div>
-</div>
+	<dl class="tabs" data-tab>
+	  <dd class="active"><a href="#panel1">Tab 1</a></dd>
+	  <dd><a href="#panel2">Tab 2</a></dd>
+	  <dd><a href="#panel3">Tab 3</a></dd>
+	  <dd><a href="#panel4">Tab 4</a></dd>
+	</dl>
+	<div class="tabs-content">
+		<div class="content active" id="panel1">
+		    <p>This is the first panel of the basic tab example. This is the first panel of the basic tab example.</p>
+			<div id="chart4"></div>
+		</div>
+		<div class="content" id="panel2">
+		    <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
+			<div id="chart"></div>
+		</div>
+		<div class="content" id="panel3">
+			<p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
+			<div id="chart2"></div>	
+		</div>
+		<div class="content" id="panel4">
+			<p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
+			<div id="chart3"></div>
+		</div>
+	</div>
 
 	
 
-<div id="chart4"></div>
-<div id="chart"></div>
-<div id="chart2"></div>
-<div id="chart3"></div>
 
 <script>
 	var chart = c3.generate({
