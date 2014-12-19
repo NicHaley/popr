@@ -8,17 +8,17 @@
 		<div id="review-list">
 			<% if @ratings %>
 				<% @ratings.each do |rating| %>
-				<p>
+				<div id="review-summary">
 					<% if rating.id != nil %>
-					<strong><%= Movie.find_movie(rating.rt_id).title %></strong><br /><br />
-					<i><%= rating.review %></i><br />
-					<% width = ((rating.user_score.to_i/5.to_f) * 100.to_i).to_i %>
-					<div class="rating_bar">
-						<div class="rating" style= "width:<%= width %>%"></div>
-					</div><br/>
-					Created at: <%= rating.created_at %>
+						<strong><%= Movie.find_movie(rating.rt_id).title %></strong><br /><br />
+						<i><%= rating.review %></i><br />
+						<% width = ((rating.user_score.to_i/5.to_f) * 100.to_i).to_i %><br />
+						<div class="rating_bar">
+							<div class="rating" style= "width:<%= width %>%"></div>
+						</div><br/>
+						<i>Created at: <%= rating.created_at %></i><br /><br /><br />
 					<% end %>
-				</p>
+				</div>
 				<% end %>
 			<% end %>
 		</div>
