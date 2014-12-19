@@ -1,4 +1,4 @@
-<%= form_for([@user, @rating], url: user_ratings_path(current_user, @rating), :remote => true) do |f| %>
+<%= form_for([@user, @rating], :remote => true) do |f| %>
 
 <h5>Write a Review</h5>
 

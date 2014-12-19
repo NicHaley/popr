@@ -33,8 +33,10 @@ class RatingsController < ApplicationController
 
 	def update
 		@rating = Rating.find(params[:id])
-		if @rating.update_attributes(rating_params)
-			format.html {redirect_to users_path(current_user), notice: "Rating successfully updated"}
+		@rating.review = params[:rating][:review]
+		@rating.user_score = params[:rating][:user_score]
+		if @rating.save
+			format.html {redirect_to current_user, notice: "Rating successfully updated"}
 			# format.js {}
 		else
 			format.html {render 'movie_interests/edit'}
