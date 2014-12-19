@@ -17,8 +17,8 @@
     <%= f.datetime_select :time, :minute_step => 5 %>
   </div>
   <div class="field">
-    <%= f.label :capacity %>
-    <%= f.number_field :capacity, :size => 90 %>
+    <%= f.label :capacity %><br />
+    <%= f.number_field :capacity, {min: 1, value: 1} %>
   </div><br />
 
     <div class="input-container">

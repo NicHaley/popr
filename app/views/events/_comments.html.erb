@@ -9,9 +9,9 @@
       </p>
       <div class="poster">
         <% if comment.user == @event.host %>
-          <b><em>Posted by <%= comment.user.first_name %> on <%= comment.created_at %></em></b>
+          <b><em>Posted by <%= comment.user.first_name %> on <%= comment.pretty_date %></em></b>
         <% else %>  
-          <em>Posted by <%= comment.user.first_name %> on <%= comment.created_at %></em>
+          <em>Posted by <%= comment.user.first_name %> on <%= comment.pretty_date %></em>
         <% end %>  
       </div>
     </div>

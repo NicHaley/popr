@@ -25,7 +25,7 @@ class CommitmentsController < ApplicationController
   def destroy
     @commitment = Commitment.find(params[:id])
     @commitment.destroy
-    redirect_to root_path, notice: "party poopr"
+    redirect_to events_path, notice: "party poopr"
   end
 
   def update

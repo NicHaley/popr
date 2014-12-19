@@ -1,12 +1,5 @@
 class Ability
   include CanCan::Ability
-  # def is_friend?(user)
-  #   if self.friendships.find_by(friend_id: user.id)
-  #     self.friendships.find_by(friend_id: user.id).confirm
-  #   else
-  #     false
-  #   end
-  # end
 
   # Guest user assigned to a nil-valued user.
   def initialize(user)

@@ -1,14 +1,28 @@
 <h2>Profile</h2>
 <%= image_tag @user.avatar_url(:profile) %>
+<% if current_user == @user %>
+  <%= link_to "Edit Profile", edit_user_path(@user) %> | <%= link_to "Delete Account", user_path(@user), data: { confirm: 'Are you sure?' }, method: :delete%>
+<% end %>
 <p> <%= @user.first_name %> <%= @user.last_name %> </p>
 
 <h2>Friends</h2>
 <% if @user.incoming_friendships != [] %>
-	<h3>Friend Requests</h3>
-	<% @user.incoming_friendships.each do |friendship| %>
-		<%= friendship.user.first_name %> <%= friendship.user.last_name %> <%= link_to "Accept", friendships_path(friend_id: friendship.user.id), method: :post %> <%= link_to "Reject", friendship_path(friendship), method: :delete %>
-	<% end %>	
+  <h3>Friend Requests</h3>
+  <% @user.incoming_friendships.each do |friendship| %>
+    <%= friendship.user.first_name %> <%= friendship.user.last_name %> <%= link_to "Accept", friendships_path(friend_id: friendship.user.id), method: :post %> <%= link_to "Reject", friendship_path(friendship), data: { confirm: 'Are you sure?' }, method: :delete %>
+  <% end %>	
+  <hr>
 <% end %>
+<ul>
+  <% @user.friendships.sort{|x,y| x.friend.first_name <=> y.friend.first_name}.each do |friendship| %>
+  <% if friendship.confirm %>
+    <li>
+      <%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend) %>
+      <%= link_to "remove", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class: "button tiny", method: :delete %>
+    </li>
+  <% end %>
+ <% end %>
+</ul>
 <hr>
 
 
@@ -47,13 +61,13 @@
 			columns: gon.genres,
 			type: 'donut',
 			hide: true,
-  		hide: ['Other']
-		},
-		donut: {
+      hide: ['Other']
+    },
+    donut: {
       title: "Favourite Genres",
       width: 80
     }
-	});
+  });
 
 	var chart2 = c3.generate({
 		bindto: '#chart2',
@@ -61,13 +75,13 @@
 			columns: gon.actors,
 			type: 'donut',
 			hide: true,
-  		hide: ['Other']
-		},
-		donut: {
+      hide: ['Other']
+    },
+    donut: {
       title: "Favourite Actors",
       width: 80
     }
-	});
+  });
 
 	var chart3 = c3.generate({
 		bindto: '#chart3',
@@ -75,79 +89,67 @@
 			columns: gon.directors,
 			type: 'donut',
 			hide: true,
-  		hide: ['Other']
-		},
-		donut: {
+      hide: ['Other']
+    },
+    donut: {
       title: "Favourite Directors",
       width: 80
     }
-	});
+  });
 
 	var chart4 = c3.generate({
 		bindto: '#chart4',
     data: {
-        columns: [
-            gon.average
-        ],
-        type: 'gauge',
+      columns: [
+      gon.average
+      ],
+      type: 'gauge',
     },
     color: {
       pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the four color levels for the percentage values.
       threshold: {
 //            unit: 'value', // percentage is default
 //            max: 200, // 100 is default
-          values: [30, 60, 75, 100]
-      }
-    },
-	});
+values: [30, 60, 75, 100]
+}
+},
+});
 
 </script>
 
 <h4>Hosted Events</h4>
 
 <ul>
-	<% @events.each do |event| %>
-		<% if event.time > Time.now %>
-			<li>
-				<%= event.title %>
-			</li>
-		<% end %>
-	<% end %>
+	<% @user.hosted_events.each do |event| %>
+  <% if event.not_passed %>
+  <li>
+    <%= link_to event.title, user_event_path(@user, event) %>
+  </li>
+  <% end %>
+  <% end %>
 </ul>
 
 <h4>Joined Events</h4>
 <ul>
-	<% @userCommitments.each do |commitment| %>
-		<% if commitment.event.time > Time.now %>
-			<li>
-				<%= commitment.event.title %>
-			</li>
-		<% end %>
-	<% end %>
+	<% @user.commitments.each do |commitment| %>
+  <% if commitment.event.not_passed %>
+  <li>
+    <%= link_to commitment.event.title, user_event_path(commitment.event.host, commitment.event) %>
+  </li>
+  <% end %>
+  <% end %>
 </ul>
 
-<h4>Friends</h4>
-
-<ul>
-	<% @user.friendships.each do |friendship| %>
-	<% if friendship.confirm %>
-		<li>
-			<%= friendship.friend.first_name %> <%= friendship.friend.last_name %>
-			<%= link_to "remove", friendship_path(friendship, friend_id: friendship.friend.id), method: :delete %>
-		</li>
-	<% end %>
-	<% end %>
-</ul>
 
 <h4>Wish List</h4>
 
 <ul>
 	<% @user.movie_interests.each do |movie| %>
-		<li>
-			<%=	Movie.find_movie(movie.rt_id).title %>
-			<%= link_to "remove", user_movie_interest_path(@user,movie), method: :delete %>
-		</li>
-	<% end %>
+  <li>
+   <%=	Movie.find_movie(movie.rt_id).title %>
+   <%= link_to "remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
+ </li>
+ <% end %>
 </ul>
 
 
