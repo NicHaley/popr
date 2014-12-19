@@ -1,143 +1,148 @@
-
-<div class="row" id:"profile-row">
-	<div class="large-3 small-12 columns" id="profile-picture">
-		<div class="row">
-			<div class="large-12 columns">
-				<%= image_tag @user.avatar_url(:profile), id:"profile-image" %>
-			</div>
-			<div class="large-12 columns">
-				<% if current_user == @user %>
-				  <%= link_to "Edit Profile", edit_user_path(@user) %> | <%= link_to "Delete Account", user_path(@user), data: { confirm: 'Are you sure?' }, method: :delete%>
-				<% end %>
-			</div>
-		</div>
-	</div>
-	<div class="large-1 columns"></div>
-	<div class="large-8 small-12 columns" id="profile-section"></div>
-</div>
-
-<br/>
-
-<div class="row" id:"friend-row">
-	<div class="large-3 small-12 columns" id="friend-section">
-		<div class="row">
-			<div class="large-12 columns">
-				<h4>Friends</h4>
-				<% if @user.incoming_friendships != [] %>
-				  <h3>Friend Requests</h3>
-				  <% @user.incoming_friendships.each do |friendship| %>
-				    <%= friendship.user.first_name %> <%= friendship.user.last_name %> <%= link_to "Accept", friendships_path(friend_id: friendship.user.id), method: :post %> <%= link_to "Reject", friendship_path(friendship), data: { confirm: 'Are you sure?' }, method: :delete %>
-				  <% end %>	
-				  <hr>
-				<% end %>
-
-				<ul>
-				  <% @user.friendships.sort{|x,y| x.friend.first_name <=> y.friend.first_name}.each do |friendship| %>
-				  <% if friendship.confirm %>
-				    <li>
-				      <%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend) %>
-				      <%= link_to "remove", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class: "button tiny", method: :delete %>
-				    </li>
-				  <% end %>
-				 <% end %>
-				</ul>
-			</div>
-			<div class="large-12 columns">
-			</div>
-		</div>
-	</div>
-	<div class="large-1 columns"></div>
-	<div class="large-8 small-12 columns" id="tab-section">
-		<dl class="tabs" data-tab>
-		  <dd class="active"><a href="#panel1" id="left-tab">Ratings</a></dd>
-		  <dd><a href="#panel2">Genres</a></dd>
-		  <dd><a href="#panel3">Actors</a></dd>
-		  <dd><a href="#panel4" id="right-tab">Directors</a></dd>
-		</dl>
-		<div class="tabs-content">
-			<div class="content active" id="panel1">
-				<div id="chart4"></div>
-			</div>
-			<div class="content" id="panel2">
-				<div id="chart"></div>
-			</div>
-			<div class="content" id="panel3">
-				<div id="chart2"></div>	
-			</div>
-			<div class="content" id="panel4">
-				<div id="chart3"></div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<br />
-
-<div class="row" id:"wishlist-row">
-	<div class="large-3 small-12 columns" id="review-section">
-		<div class="row">
-			<div class="large-12 columns">
-				<h4>Recent Reviews</h4>
-				<div id="review-list">
-					<%= render :partial => "ratings" %>
+<div id="container">
+	<div class="row" id:"profile-row">
+		<div class="large-3 small-12 columns" id="profile-picture">
+			<div class="row">
+				<div class="large-12 columns" id="profile-image">
+					<%= image_tag @user.avatar_url(:profile)%>
+				</div>
+				<div class="large-12 columns" id="profile-content">
+					<% if current_user == @user %>
+					  <%= link_to "Edit Profile", edit_user_path(@user) %> | <%= link_to "Delete Account", user_path(@user), data: { confirm: 'Are you sure?' }, method: :delete%>
+					  <p>Joined on: <%=@user.created_at%></p>
+					<% end %>
 				</div>
 			</div>
-			<div class="large-12 columns">
+		</div>
+
+		<div class="large-1 columns"></div>
+
+		<div class="large-8 small-12 columns" id="profile-section">
+			
+		</div>
+	</div>
+
+	<br/>
+
+	<div class="row" id:"friend-row">
+		<div class="large-3 small-12 columns" id="friend-section">
+					<h4>Friends</h4>
+					<% if @user.incoming_friendships != [] %>
+					  <h3>Friend Requests</h3>
+					  <% @user.incoming_friendships.each do |friendship| %>
+					    <%= friendship.user.first_name %> <%= friendship.user.last_name %> <%= link_to "Accept", friendships_path(friend_id: friendship.user.id), method: :post %> <%= link_to "Reject", friendship_path(friendship), data: { confirm: 'Are you sure?' }, method: :delete %>
+					  <% end %>	
+					  <hr>
+					<% end %>
+
+					<ul>
+						<% @user.friendships.sort{|x,y| x.friend.first_name <=> y.friend.first_name}.each do |friendship| %>
+							<% if friendship.confirm %>
+							  <li>
+						      <%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend) %>
+						      <%= link_to "remove", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class: "button tiny", method: :delete %>
+							  </li>
+							<% end %>
+						<% end %>
+					</ul>
+		</div>
+
+		<div class="large-1 columns"></div>
+
+		<div class="large-8 small-12 columns" id="tab-section">
+			<dl class="tabs" data-tab>
+			  <dd class="active"><a href="#panel1" id="left-tab">Ratings</a></dd>
+			  <dd><a href="#panel2" id="center-tab">Genres</a></dd>
+			  <dd><a href="#panel3" id="center-tab">Actors</a></dd>
+			  <dd><a href="#panel4" id="right-tab">Directors</a></dd>
+			</dl>
+			<div class="tabs-content">
+				<div class="content active" id="panel1">
+					<div id="chart4"></div>
+				</div>
+				<div class="content" id="panel2">
+					<div id="chart"></div>
+				</div>
+				<div class="content" id="panel3">
+					<div id="chart2"></div>	
+				</div>
+				<div class="content" id="panel4">
+					<div id="chart3"></div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="large-1 columns"></div>
-	<div class="large-8 small-12 columns" id="wish-section">
-		<h4>Wishlist</h4>
-			<ul id="featured1 inline-list" data-orbit>
-				<% count = 0 %>
-			  <li>
-				<% @user.movie_interests.each do |movie| %>
-					<% count += 1 %>
-					<div>
-					<img src="<%=	Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
-					<% if current_user.id == @user.id %>
-						<%= link_to "remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
+
+	<br />
+
+	<div class="row" id:"wishlist-row">
+		<div class="large-3 small-12 columns" id="review-section">
+			<div class="row">
+				<div class="large-12 columns">
+					<h4>Recent Reviews</h4>
+					<div id="review-list">
+						<%= render :partial => "ratings" %>
 					</div>
-							<% if count % 3 == 0 %>
-							</li>
-							<li>
+				</div>
+				<div class="large-12 columns">
+				</div>
+			</div>
+		</div>
+		<div class="large-1 columns"></div>
+		<div class="large-8 small-12 columns" id="wish-section">
+			<h4>Wishlist</h4>
+				<ul id="featured1 inline-list" data-orbit>
+					<% count = 0 %>
+				  <li>
+					<% @user.movie_interests.each do |movie| %>
+						<% count += 1 %>
+						<% if count % 10 == 0 %>
+							<% return true %>
+						<% else %>
+						<div>
+							<img src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
+							<% if current_user.id == @user.id %>
+								<%= link_to "remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
+						</div>
+								<% if count % 3 == 0 %>
+								</li>
+								<li>
+								<% end %>
 							<% end %>
-					<% end %> 
-			 	<% end %>
-			  </li>
-			</ul>		
+						<% end %> 
+				 	<% end %>
+				  </li>
+				</ul>		
+		</div>
 	</div>
+
+
+	<p> <%= @user.first_name %> <%= @user.last_name %> </p>
+
+
+	<h4>Hosted Events</h4>
+
+	<ul>
+		<% @user.hosted_events.each do |event| %>
+	  <% if event.not_passed %>
+	  <li>
+	    <%= link_to event.title, user_event_path(@user, event) %>
+	  </li>
+	  <% end %>
+	  <% end %>
+	</ul>
+
+	<h4>Joined Events</h4>
+	<ul>
+		<% @user.commitments.each do |commitment| %>
+	  <% if commitment.event.not_passed %>
+	  <li>
+	    <%= link_to commitment.event.title, user_event_path(commitment.event.host, commitment.event) %>
+	  </li>
+	  <% end %>
+	  <% end %>
+	</ul>
+
 </div>
-
-
-<p> <%= @user.first_name %> <%= @user.last_name %> </p>
-
-
-<h4>Hosted Events</h4>
-
-<ul>
-	<% @user.hosted_events.each do |event| %>
-  <% if event.not_passed %>
-  <li>
-    <%= link_to event.title, user_event_path(@user, event) %>
-  </li>
-  <% end %>
-  <% end %>
-</ul>
-
-<h4>Joined Events</h4>
-<ul>
-	<% @user.commitments.each do |commitment| %>
-  <% if commitment.event.not_passed %>
-  <li>
-    <%= link_to commitment.event.title, user_event_path(commitment.event.host, commitment.event) %>
-  </li>
-  <% end %>
-  <% end %>
-</ul>
-
-
 
 
 <script>

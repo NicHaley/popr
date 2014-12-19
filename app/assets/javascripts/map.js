@@ -40,10 +40,8 @@ myMap.init = function() {
 				
 
 				  var contentString = 
-					'<h3 id="firstHeading" class="firstHeading">popr</h3>'+
-					'<p><b>Welcome!</b> <b>Ayers Rock</b>, is a large ' +
-					'sandstone rock formation in the southern part of the '+
-					'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+					'<p><b>Welcome!</b> Popr is a way to connect you with all your friends to enjoy all your favorite movies '+
+					'together with your friends! '+
 					'south west of the nearest large town, Alice Springs; 450&#160;km '+
 					'(280&#160;mi) by road.'+
 					'rock caves and ancient paintings. Uluru is listed as a World '+
