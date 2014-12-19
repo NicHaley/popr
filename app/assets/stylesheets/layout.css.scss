@@ -22,7 +22,7 @@ $movie-poster-height: 375px;
 #movie-title {
 	display: inline;
 	vertical-align: top;
-	font-size: 18px;
+	font-size: 24px;
 }
 
 .movie-click {
@@ -76,7 +76,7 @@ $movie-poster-height: 375px;
 }
 
 #drop-rating {
-	height: 20px;
+	height: 24px;
 }
 
 #movie-poster > i {
@@ -137,12 +137,18 @@ input:focus {
 
 // All reviews
 
-#review-list {
-	border-bottom: 2px solid black;
+#review-list > p {
+	margin: 0px;
+	
 }
 
 #rating-center {
 	text-align: center;
+}
+
+#review-summary {
+	border-top: 2px solid black;
+	padding-top: 10px;
 }
 
 /* Map Styling */
