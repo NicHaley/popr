@@ -8,6 +8,7 @@
 			<div class="rating_bar">
 				<div class="rating" style= "width:<%= width %>%"></div>
 			</div><br/>
+			<%= link_to "Remove", user_rating_path(@user, rating), data: { confirm: 'Are you sure?' }, method: :delete %>
 			Created at: <%= rating.created_at %>
 		<% end %>
 	</p><br />

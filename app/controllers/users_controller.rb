@@ -44,8 +44,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @ratings = @user.ratings.order(created_at: :desc).limit(5)
-    @events = Event.all.select{|event|event.host.id == @user.id}
-    @userCommitments = @user.commitments.all
+
 
     if @user.ratings.any?
       print totalScore = (@user.ratings.all.inject(0){|sum, rating| sum + rating.user_score}).to_f
