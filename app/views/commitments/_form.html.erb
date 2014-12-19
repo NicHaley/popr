@@ -4,10 +4,10 @@
 <!-- event_id in order to be able to associate the new commitment to the      -->
 <!-- correct user and event; the assignment happens in the commitments        -->
 <!-- controller create action.                                                -->
-  
+<div class="large-4 columns panel">  
 <% if @event.host != current_user %>
   <% if @event.attendees.include?(current_user) %> 
-    <p>You are attending</p>
+    <p>You are attending<%= image_tag "Popcorn.svg", id: "avatar-thumb" %></p>
     <% if @event.commitments.sum(:party_size) == @event.capacity %>
       <p>Event is at capacity</p>
     <% end %>
@@ -15,28 +15,29 @@
 
       <% if params[:commitment_errors] %>
 
-      <div id="error_explanation">
-        <h2><%= pluralize(params[:commitment_errors].count, "error") %> prohibited this commitment from being saved:</h2>
+        <div id="error_explanation">
+          <h2><%= pluralize(params[:commitment_errors].count, "error") %> prohibited this commitment from being saved:</h2>
 
-        <ul>
-          <% params[:commitment_errors].each do |message| %>
-          <li><%= message[1][0] %></li>
-          <% end %>
-        </ul>
-      </div>
+          <ul>
+            <% params[:commitment_errors].each do |message| %>
+            <li><%= message[1][0] %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+
+      <% if @event.commitments.sum(:party_size) != @event.capacity %>
+        <div class="field">
+         <%= f.label :party_size %><br />
+         <%= f.number_field :party_size, {min: 1, value: @commitment.party_size, max: (@event.capacity - @event.commitments.sum(:party_size) + @commitment.party_size)} %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Update!", class: "tiny button round"%>
+        </div>
+      <% end %>  
       <% end %>
-
-
-      <div class="field">
-       <%= f.label :party_size %><br />
-       <%= f.number_field :party_size, {min: 1, value: @commitment.party_size, max: (@event.capacity - @event.commitments.sum(:party_size) + @commitment.party_size)} %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Update!"%>
-      </div>
-      <% end %>
-      <%= button_to "Cancel", user_commitment_path(current_user, @commitment), method: :delete %>   
+      <%= link_to "Cancel", user_commitment_path(current_user, @commitment), method: :delete, class: "tiny button round" %>   
   <% else %>
     <% if @event.commitments.sum(:party_size) != @event.capacity %>   
       <%= form_for([@event, @commitment], url: user_commitments_path(user_id: current_user.id, event_id: params[:id])) do |f| %>
@@ -61,7 +62,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Join!"%>
+        <%= f.submit "Join!", class: "tiny button round"%>
       </div>
       <% end %>
     <% else %>
@@ -69,3 +70,4 @@
     <% end %>
   <% end %>
 <% end %>
+</div>

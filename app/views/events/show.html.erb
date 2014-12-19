@@ -1,94 +1,117 @@
-<% if current_user == @event.host %>
-  <%= link_to "Edit Event", edit_user_event_path(@event.host, @event) %> | <%= link_to "Cancel Event", user_event_path(@event.host, @event), data: { confirm: 'Are you sure?' }, method: :delete%>
-<% end %>  
-<fieldset>
-  <%= image_tag @event.host.avatar_url(:thumb) %>
-  <legend>Event:</legend>
-  <h1>Title: <%= @event.title %></h1>
-  <% if !@event.not_passed %>
-    <h4>This event has passed!</h4>
-  <% end %>  
-  <h4><i><%=@event.date_details%></i></h4>
-  <% if @event.attendees.include?(current_user) %>
-    <%= image_tag "star.png" %>
-  <% end %>
-  <h3>Hosted by: <%= @event.host.first_name %> <%= @event.host.last_name %></h3>
-
-  <%= image_tag @event.host.avatar_url(:thumb) %>
-
-  <h4>Description: <%= @event.description %></h4>
-</fieldset>
-<fieldset>
-  <legend>Movie:</legend>
-  <h3>Title: <%= @movie.title %></h3>
-  <h4>Year: <%= @movie.year %></h4>
-  <%= image_tag @movie.poster %>
-  <p><b>Cast:</b> <% @movie.cast.each do |actor| %>
-    <i><%= actor["name"] %> /</i> 
-  <% end %></p>
-  <p><b>Critics Rating:</b> <%= @movie.rating[0] %> <b><%= @movie.rating[1] >= 0 ? @movie.rating[1] : "-" %>%</b> </p>
-  <% if @movie.consensus != "" %>
-    <p><b>Synopsis:</b> <%= @movie.synopsis %></p>
-  <% else %>
-    <p><b>Synopsis:</b> <i>not available</i></p>
-  <% end %>
-  <% if @movie.consensus != "" %>
-    <p><b>Critics Consensus:</b> <%= @movie.consensus %></p>
-  <% end %>
-</fieldset>
-<fieldset>
-  <legend>Who's going:</legend>
-  <p>Capacity: <%= @event.capacity %> </p>
-  <p>Confirmed Guests: <%= @event.commitments.sum(:party_size) %></p>
-  <% if @event.commitments %>
-    <% @event.commitments.each do |commitment| %>
-      <% if commitment.id %>
-        <%= link_to user_path(commitment.user) do %>
-          <p><%= commitment.user.first_name %> <i><%= commitment.guests %></i></p>
-          <%= image_tag commitment.user.avatar_url(:thumb) %> 
-        <% end %>  
-      <% end %>  
-    <% end %>
-  <% end %>
-</fieldset>
-<fieldset>
-  <legend>Comments:</legend>
-  <div id="comment-list">
-    <%= render :partial => "comments" %>
-  </div>
-  <h4>Add Comment</h4>
-
-  <%= form_for([@event.host, @event, @comment], :remote => true) do |f| %>
-  <div id="comment-form-errors">
-    <%= render :partial => "comment_form_errors" %>
+<div class="row">
+  <h1><%= @event.title %></h1>
+  <div class="large-4 columns">
+    <%= image_tag @movie.poster %>
+    <div class="row">
+    <p><% if current_user == @event.host %>
+      <%= link_to "Edit Event", edit_user_event_path(@event.host, @event), class: "tiny button round" %> <%= link_to "Cancel Event", user_event_path(@event.host, @event), data: { confirm: 'Are you sure?' }, method: :delete, class: "tiny button round"%>
+    <% end %></p> 
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Add Comment", id: "submit-comment" %>
-  </div>
+  <div class="large-8 columns panel">
+    <div class="large-8 small-12 columns" id="tab-section">
+      <dl class="tabs" data-tab>
+        <dd class="active"><a href="#event-details" id="left-tab">Event</a></dd>
+        <dd><a href="#movie-details" id="center-tab">Movie</a></dd>
+      </dl>
+      <div class="tabs-content">
+        <div class="content active" id="event-details">
+          <h4>Hosted by: <%= link_to user_path(@event.host) do %>
+            <%= image_tag @event.host.avatar_url(:thumb), id: "avatar-thumb" %> <%= @event.host.first_name %> <%= @event.host.last_name %></h4>
+            <% end %>
+            <h5><%= @event.address %></h5>  
+            <% if !@event.not_passed %>
+            <b><h5>This event has passed!</h5></b>
+            <% end %> 
+            <h5><i><strong><%=@event.date_details%></strong></i></h5>
+            <h5><%= @event.description %></h5>
+            <div class="panel">
+              <p>Capacity: <%= @event.capacity %> </p>
+              <p>Confirmed Guests: <%= @event.commitments.sum(:party_size) %></p>
+            </div>
+            <fieldset>
+              <legend>Who's going:</legend>
+              <% if @event.commitments %>
+                <ul class="small-block-grid-3">
+                <% @event.commitments.each do |commitment| %>
+                  <% if commitment.id %>
+                    <li><p><%= link_to user_path(commitment.user) do %>
+                      <%= commitment.user.first_name %> <i><%= commitment.guests %></i>
+                      <%= image_tag commitment.user.avatar_url(:thumb), id: "avatar-thumb" %></p></li>
+                    <% end %>  
+                  <% end %>  
+                <% end %>
+                </ul>
+              <% end %>
+            </fieldset>          
+          </div>
+          
+          <div class="content" id="movie-details">
+            <h4>Title: <%= @movie.title %></h4>
+            <h5>Year: <%= @movie.year %></h5>
+            <p><b>Cast:</b> <% @movie.cast.each do |actor| %>
+              <i><%= actor["name"] %> /</i> 
+              <% end %></p>
+              <p><b>Critics Rating:</b> <%= @movie.rating[0] %> <b><%= @movie.rating[1] >= 0 ? @movie.rating[1] : "-" %>%</b> </p>
+              <% if @movie.synopsis != "" %>
+              <p><b>Synopsis:</b> <%= @movie.synopsis %></p>
+              <% else %>
+              <p><b>Synopsis:</b> <i>not available</i></p>
+              <% end %>
+              <% if @movie.consensus != "" %>
+              <p><b>Critics Consensus:</b> <%= @movie.consensus %></p>
+              <%else%>
+              <p><b>Critics Consensus:</b> <i>not available</i></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<% end %>
-</fieldset>
 
+ 
 
-<%= render 'commitments/form' %>
+        <div class="row">
+          
+            <%= render 'commitments/form' %>
+          
+        
+          <div class="large-8 columns">        
+              <div id="comment-list">
+                <%= render :partial => "comments" %>
+              </div>
+              <h4>Add Comment</h4>
 
-<script type="text/javascript">
-  $(function() {
-     $("#new_comment")
+              <%= form_for([@event.host, @event, @comment], :remote => true) do |f| %>
+              <div id="comment-form-errors">
+                <%= render :partial => "comment_form_errors" %>
+              </div>
+
+              <div class="field">
+                <%= f.text_area :content %>
+              </div>
+              <div class="actions">
+                <%= f.submit "Add Comment", id: "submit-comment", class: "button radius" %>
+              </div>
+
+              <% end %>
+          </div> 
+        </div>
+
+    </div>
+    <script type="text/javascript">
+      $(function() {
+       $("#new_comment")
         .on('ajax:beforeSend', function() { // set this code to happen just before the ajax request is made
           $("#submit-comment") // make changes to the submit button
             .val('Saving...') // change the text on the button
             .attr('disabled', 'disabled'); // disable the button
-        })
+          })
         .on('ajax:complete', function() {
           $("#submit-comment")
-            .val('Create Comment')
-            .removeAttr('disabled');
+          .val('Create Comment')
+          .removeAttr('disabled');
         });
-  });
-</script>
+      });
+    </script>
