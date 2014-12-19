@@ -3,16 +3,17 @@
 	<p>
 		<% if rating.id != nil %>
 			<strong><%= Movie.find_movie(rating.rt_id).title %></strong><br /><br />
-			<i><%= rating.review %></i><br />
+			<i><%= rating.review %></i><br /><br/>
 			<% width = ((rating.user_score.to_i/5.to_f) * 100.to_i).to_i %>
 			<div class="rating_bar">
 				<div class="rating" style= "width:<%= width %>%"></div>
-			</div><br/>
+			</div><br>
+			<div class="small-caps"><%= rating.created_at %></div>
 			<% if current_user == @user %>
-			<%= link_to "Edit Review", edit_user_rating_path(@user, rating)%>
-			<%= link_to "Remove", user_rating_path(@user, rating), data: { confirm: 'Are you sure?' }, method: :delete %>
+			<%= link_to "Edit", edit_user_rating_path(@user, rating), class:"small-caps"%>
+			<%= link_to "Remove", user_rating_path(@user, rating), data: { confirm: 'Are you sure?' }, class:"small-caps", method: :delete %>
 			<% end %>
-			Created at: <%= rating.created_at %>
+			<hr>
 		<% end %>
 	</p><br />
 	<% end %>

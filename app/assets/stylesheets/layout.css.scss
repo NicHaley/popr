@@ -286,13 +286,47 @@ input:focus {
 
 /* Top Bar */
 
+#friend-list {
+	list-style: none;
+}
+
+#friend-icon {
+	margin-top:10px;
+	width: 30px;
+	height: 30px;
+	background-color: #BD1E2C;
+}
+
+#friend-request {
+	background-color: #BD1E2C;
+}
+
+#friend-number {
+	color: white;
+	font-size: 8pt;
+	position: relative;
+	left: 15px;
+	top: -5px;
+}
+
+#friend-container {
+	position: relative;
+	height: 45px;
+	width: 45px;
+}
+
 #current-thumb {
 	width: 30px;
 	height: 30px;
 	border-radius: 150px;
 }
 
-#friend-button {
+.remove-friend {
+	text-align: left;
+}
+
+#friend-space {
+	line-height: 1.0;
 }
 
 .top-title {
@@ -379,6 +413,7 @@ input:focus {
 }
 
 #profile-section {
+	padding: 25px;
 	height: 400px;
 	border: 1px solid #dedede;
 	background-color: #FEFEFE;
@@ -411,24 +446,37 @@ input:focus {
 }	
 
 #wish-section {
-	height: 300px;
+	padding: 25px;
+	height: 450px;
 	border: 1px solid #dedede;
 	background-color: #FEFEFE;
 	border-radius: 10px;
+}
 
+#slider-caption {
+	position: relative;
 }
 
 #friend-section {
+	padding: 25px;
 	border: 1px solid #dedede;
 	background-color: #FEFEFE;
 	border-radius: 10px;
 }
 
 #review-section {
+	padding: 25px;
 	border: 1px solid #dedede;
 	border-radius: 10px;
 	background-color: #FEFEFE;
 }
 
+.small-caps {
+	font-size: 8pt;
+	line-height: 0.5;
+}
 
+#remove-friend {
+	line-height: 1.0;
+}
 
