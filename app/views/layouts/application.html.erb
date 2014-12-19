@@ -73,6 +73,7 @@
 <body data-controller="<%= controller_name %>">
 	<div>
 		<p id="notice"><%= flash[:notice] %></p>
+		<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
 		<p id="alert"><%= flash[:alert] %></p>
 	</div>
 	

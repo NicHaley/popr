@@ -21,8 +21,10 @@ class RatingsController < ApplicationController
 			else
 				format.html {render 'movie_interests/new'}
 				format.js {}
+				flash.now[:alert] = "Ensure review is filled and star rating is selected."
 			end
 		end
+
 	end
 
 	def destroy
