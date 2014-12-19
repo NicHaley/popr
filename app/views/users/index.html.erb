@@ -1,17 +1,29 @@
-<h1>User List</h1>
+<div class="friend-page">
+	<h3>Find Friends</h3><br />
 
-<%= form_tag(users_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :user_search, params[:user_search], placeholder: "Search Users" %>
-  <%= submit_tag "Search", :name => nil %>
-<% end %>
+	<div class="row">
+		<div class="small-8 small-centered columns">
+			<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+			  <%= text_field_tag :user_search, params[:user_search], placeholder: "Search Users" %>
+			  <%= submit_tag "Search", :name => nil, class: "button tiny" %>
+			<% end %>
+		</div>
+	</div>
 
-<div>
-	<% @users.each do |user| %>
-		<p>
-			<%= user.first_name %> <%= user.last_name %>
-			<%= link_to "Add Friend", friendships_path(friend_id: user.id), method: :post %>
-		</p>
-	<% end %>
+
+	<div class="row">
+		<div class="small-8 small-centered columns" id="user-list">
+			<h4>Users</h4><br />
+			<div>
+				<% @users.each do |user| %>
+					<p>
+						<%= user.first_name %> <%= user.last_name %>
+						<%= link_to "+ Add Friend", friendships_path(friend_id: user.id), method: :post %>
+					</p>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
 
 
