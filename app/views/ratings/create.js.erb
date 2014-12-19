@@ -9,3 +9,5 @@ setTimeout(function(){
 }, 1000);
 
 <% end %>
+
+$("#notice").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
