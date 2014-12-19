@@ -4,7 +4,7 @@ class RatingsController < ApplicationController
 
 	def index
 		@user = User.find(params[:user_id])
-    	@ratings = @user.ratings.order(created_at: :desc).page(params[:page])
+		@ratings = @user.ratings.order(created_at: :desc).page(params[:page])
 	end
 
 	def show
@@ -21,7 +21,25 @@ class RatingsController < ApplicationController
 			else
 				format.html {render 'movie_interests/new'}
 				format.js {}
+				flash.now[:alert] = "Ensure review is filled and star rating is selected."
 			end
+		end
+
+	end
+
+	def edit
+		@rating = Rating.find(params[:id])
+	end
+
+	def update
+		@rating = Rating.find(params[:id])
+		if @rating.update_attributes(rating_params)
+			format.html {redirect_to users_path(current_user), notice: "Rating successfully updated"}
+			# format.js {}
+		else
+			format.html {render 'movie_interests/edit'}
+			# format.js {}
+			flash.now[:alert] = "Ensure review is filled and star rating is selected."
 		end
 	end
 

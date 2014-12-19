@@ -1,5 +1,19 @@
 <%= form_for([@user, @rating], url: user_ratings_path(current_user, @rating), :remote => true) do |f| %>
-<div class="field starRating">
+
+<h5>Write a Review</h5>
+
+	<div class="field starRating">
+			<% if @rating.errors.any? %>
+			<div id="error_explanation">
+			  <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+			  <ul>
+			    <% @rating.errors.full_messages.each do |message| %>
+			    <li><%= message %></li>
+			    <% end %>
+			  </ul>
+			</div>
+			<% end %>		
 	<div>
 		<div>
 			<div>
