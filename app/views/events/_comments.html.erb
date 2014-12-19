@@ -1,16 +1,18 @@
 <% @event.comments.each do |comment| %>
   <% if comment.id %>
-    <div class="comment">
+    <div class="comment panel">
       <p class="comment">
         <%= comment.content %>
         <% if current_user == comment.user %> 
-          <%= button_to "[X]", user_event_comment_path(@event.host, @event, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+          <%= link_to "[X]", user_event_comment_path(@event.host, @event, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "button tiny round" %>
         <% end %>  
       </p>
       <div class="poster">
         <% if comment.user == @event.host %>
+          <%= image_tag @event.host.avatar_url(:thumb), id: "avatar-thumb" %>
           <b><em>Posted by <%= comment.user.first_name %> on <%= comment.pretty_date %></em></b>
         <% else %>  
+          <%= image_tag comment.user.avatar_url(:thumb), id: "avatar-thumb" %>
           <em>Posted by <%= comment.user.first_name %> on <%= comment.pretty_date %></em>
         <% end %>  
       </div>
