@@ -245,12 +245,28 @@ input:focus {
 
 
 #profile-picture {
-	height: 200px;
+	height: 400px;
 	background-color: red;
 }
 
 #profile-section {
-	height: 200px;
+	height: 400px;
 	background-color: blue;
+}
+
+#profile-image {
+	width: 250px;
+}
+
+#right-tab {
+	border-top-right-radius: 10px;
+}
+
+#left-tab {
+	border-top-left-radius: 10px;
+}
+
+#wish-section {
+	height: 300px;
 }
 

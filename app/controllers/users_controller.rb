@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    sleep(0.8)
     @user = User.find(params[:id])
     @ratings = @user.ratings.order(created_at: :desc).limit(5)
 
