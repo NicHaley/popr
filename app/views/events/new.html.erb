@@ -1,22 +1,22 @@
 <div class="movie-center">
-	<h3>Create Event</h3><br />
 	<div class="movie-explore-field">
+		<div class="search-window">
+			<div id="search-poster">
+				<div id="search-block">
+					<input type="text" id="search" placeholder="To create an event first select a movie">
+					<div class="search-results"></div>
+				</div><br />
 
-		<div id="search-poster">
-			<div id="search-block">
-				<input type="text" id="search" placeholder="Search for a movie...">
-				<div class="search-results"></div>
-			</div><br />
-
-			<div id="movie-poster">
-				<i>No Movie Selected</i>
-			</div><br /><br />
+				<div id="movie-poster"></div><br /><br />
+			</div>
 		</div>
 
-		<div class="row">
-			<div class="small-8 small-centered columns">
-				<div id="form">
-					<%= render 'form' %>
+		<div class="form-window">
+			<div id="event-form">
+				<div class="row">
+					<div class="small-10 small-centered columns">
+						<%= render 'form' %>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,42 +1,45 @@
 <div class="movie-center">
-	<h3>Explore Movies</h3><br />
 	<div class="movie-explore-field">
 
-	<div id="search-poster">
-		<div id="search-block">
-			<input type="text" id="search" placeholder="Search for movies and TV shows...">
-			<div class="search-results"></div>
-		</div><br />
-
-		<div id="movie-poster">
-			<i>No Movie Selected</i>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="small-8 small-centered columns" id="movie-content-col">	
-			<div class="movie-text">
-				<div class="movie-title"></div><br />
-				<div class="movie-score"></div><br />
-				<div class="movie-director"></div>
-				<div class="movie-cast"></div>
-				<div class="movie-genre"></div>
-				<div class="movie-mpaa_rating"></div>
-				<div class="movie-runtime"></div>
+	<div class="search-window">
+		<div id="search-poster">
+			<div id="search-block">
+				<input type="text" id="search" placeholder="Search for movies">
+				<div class="search-results"></div>
 			</div><br />
+
+			<div id="movie-poster"></div>
 		</div>
 	</div>
-		<div class="row">
-			<div class="small-8 small-centered columns">
-				<div class="review-hide">
-					<%= render 'ratings/form' %>
+
+	<div class="form-window">
+		<div id="interest-form">
+			<div class="row">
+				<div class="small-8 small-centered columns" id="movie-content-col">	
+					<div class="movie-text">
+						<div class="movie-title"></div><br />
+						<div class="movie-score"></div><br />
+						<div class="movie-director"></div>
+						<div class="movie-cast"></div>
+						<div class="movie-genre"></div>
+						<div class="movie-mpaa_rating"></div>
+						<div class="movie-runtime"></div>
+					</div><br />
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="small-8 small-centered columns">
-				<div class="wish-hide">
-					<%= render 'movie_interests/form' %>
+				<div class="row">
+					<div class="small-10 small-centered columns">
+						<div class="review-hide">
+							<%= render 'ratings/form' %>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-10 small-centered columns">
+						<div class="wish-hide">
+							<%= render 'movie_interests/form' %>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

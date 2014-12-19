@@ -81,15 +81,30 @@ $(document).on('ready page:load', function() {
 $(".search-results").on('click', ".movie-click", function(){
   if ($("body").data("controller") == "events") {
     $('#event_rt_id').val($(this).data("id"));
-    $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
+    $('#movie-poster').hide().html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' ).slideDown(1000);
+    $('.form-window').show();
+
+    setTimeout(function(){
+        $('html, body').animate({
+          scrollTop: $(".form-window").offset().top
+        }, 2000);
+      }, 1000);
+
   }
   else if ($("body").data("controller") == "movie_interests"){
-    $('.review-hide').show();
-    $('.wish-hide').show();
+
+    $('#movie-poster').hide().html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' ).slideDown(1000);
+    $('.form-window').show();
+
+    setTimeout(function(){
+        $('html, body').animate({
+          scrollTop: $(".form-window").offset().top
+        }, 2000);
+      }, 1000);
+
     $('#movie_interest_rt_id').val($(this).data("id"));
     $('#rating_rt_id').val($(this).data("id"));
     $('#rating_actors').val($(this).data("cast"));
-    $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
     $('.movie-title').html('<h4>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h4>');
     $('.movie-cast').html('<i>' + '<strong>Cast - </strong>' + $(this).data("cast") + '</i>');
     $('.movie-score').html('<img height="50" src="' + $(this).data("icon") + '" />' + '<i id="score-text"><strong> ' + $(this).data("critics_score") + '</strong></i>' );
