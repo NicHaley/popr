@@ -15,73 +15,72 @@
 </head>
 <body data-controller="<%= controller_name %>">	
 
-<div style="border-bottom: 1px solid #e8e8e8;"> 
-	<nav class="top-bar" data-topbar role="navigation">
-	  <ul class="title-area">
-	    <li class="name">
-	      <h1 class="top-title"><%= link_to 'popr', root_path %></a></h1>
-	    </li>
-	     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-	    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-	  </ul>
+	<div style="border-bottom: 1px solid #e8e8e8;"> 
+		<nav class="top-bar" data-topbar role="navigation">
+			<ul class="title-area">
+			    <li class="name">
+			    	<h1 class="top-title"><%= link_to 'popr', root_path %></a></h1>
+			    </li>
+			     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+			    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+			</ul>
 
-	  <section class="top-bar-section">
-	    <!-- Right Nav Section -->
-	    <ul class="right">
+			<section class="top-bar-section">
+			    <!-- Right Nav Section -->
+			    <ul class="right">
 
-	      <li class="has-dropdown">
-	      	<a href="#">
-	      		<% if current_user %>
-							<%= image_tag("#{current_user.avatar.thumb}", id: "current-thumb")%> &nbsp;<%= current_user.first_name%>
-						<% end %>
-					</a>
+			      	<li class="has-dropdown">
+				      	<a href="#">
+				      		<% if current_user %>
+								<%= image_tag("#{current_user.avatar.thumb}", id: "current-thumb")%> &nbsp;<%= current_user.first_name%>
+							<% end %>
+						</a>
 
-					<ul class="dropdown">
-						<li><%= link_to 'My Profile', user_path(current_user) %></li>
-						<li><%= link_to 'Events', new_user_event_path(user_id: current_user.id) %></li>
-						<li><%= link_to 'Explore', new_user_movie_interest_path(current_user, current_user) %></li>
-						<li> <%= link_to "Logout", logout_path, method: :post %></li>
-	        </ul>
-	      </li>	
+						<ul class="dropdown">
+							<li><%= link_to 'My Profile', user_path(current_user) %></li>
+							<li><%= link_to 'Explore Movies', new_user_movie_interest_path(user_id: current_user) %></li>
+							<li><%= link_to 'My Reviews', user_ratings_path(current_user.id) %></li>
+							<li><%= link_to "Logout", logout_path, method: :post %></li>
+				        </ul>
+			      	</li>	
 
-			<li id="friend-request">
-				<div id="friend-container">
-					<%= image_tag("friend_request.png", id:"friend-icon")%>
-					 <% if current_user.incoming_friendships.count > 0 %>
- 						<div id="friend-number">+<%= current_user.incoming_friendships.count %></div>
- 					 <% end %>
-				<div>
-			</li>
-			<li id="friend-button"><%= link_to 'Invite Friends', users_path %></li>
-			
-			<li id="event-button"><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></li>
-	    </ul>
+					<li id="friend-request">
+						<div id="friend-container">
+							<%= image_tag("friend_request.png", id:"friend-icon")%>
+							 <% if current_user.incoming_friendships.count > 0 %>
+		 						<div id="friend-number">+<%= current_user.incoming_friendships.count %></div>
+		 					 <% end %>
+						<div>
+					</li>
+					<li id="friend-button"><%= link_to 'Invite Friends', users_path %></li>
+					
+					<li id="event-button"><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></li>
+		   		</ul>
 
-	    <!-- Left Nav Section -->
-	    <ul class="left">
+			    <ul class="left">
 
-	    	<li class="has-dropdown">
-		        <a href="#">Browse&nbsp;&nbsp;&nbsp;</a>
-		        <ul class="dropdown">
-		          <li><a href="#">Most Recent</a></li>
-		          <li><a href="#">Friends</a></li>
-		          <li><a href="#">Distance</a></li>
-		        </ul>
-	      </li>
-
-	    </ul>
-	  </section>
-	</nav>
-</div>
-
-<body data-controller="<%= controller_name %>">
-	<div>
-		<p id="notice"><%= flash[:notice] %></p>
-		<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
-		<p id="alert"><%= flash[:alert] %></p>
+			    	<li class="has-dropdown">
+				        <a href="#">Browse&nbsp;&nbsp;&nbsp;</a>
+				        <ul class="dropdown">
+				          <li><a href="#">Most Recent</a></li>
+				          <li><a href="#">Friends</a></li>
+				          <li><a href="#">Distance</a></li>
+				        </ul>
+			      	</li>
+			    </ul>
+			</section>
+		</nav>
 	</div>
-	
-	<%= yield %>
 
+	<% unless controller.controller_name == "movie_interests" %>
+		<div>
+			<p id="notice"><%= flash[:notice] %></p>
+			<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
+			<p id="alert"><%= flash[:alert] %></p>
+		</div>
+	<% end %>
+		
+
+	<%= yield %>
 </body>
 </html>
