@@ -101,6 +101,15 @@ $movie-poster-height: 375px;
 	text-align: center;
 }
 
+// Movie Interests New
+.movie-score > img {
+	height: 50px;
+}
+
+#score-text {
+	font-size: 22px;
+}
+
 input:focus {
 	outline:none;
 }

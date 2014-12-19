@@ -1,4 +1,4 @@
-<h5>Write a Review</h5>
+<h5>Leave a Review</h5>
 
 <%= form_for([@user, @rating], url: user_ratings_path(current_user, @rating), :remote => true) do |f| %>		
 	<div class="field starRating">
@@ -32,6 +32,6 @@
 		<%= f.hidden_field :genres, value: "" %>
 	</div> 
 	<div class="actions review-button">
-		<%= f.submit "Submit" %>
+		<%= f.submit "Submit Review", class: "button expand" %>
 	</div>
 <% end %>
