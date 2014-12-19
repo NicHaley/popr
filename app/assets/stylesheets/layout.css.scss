@@ -1,7 +1,7 @@
 $search-bg: #fce5e8;
 $search-hover: #BD1E2C;
-$search-bg-highlight: #62669a;
 $search-border: #e599a0;
+$rating-border: #BD1E2C;
 
 $search-width: 80%;
 $movie-poster-width: 250px;
@@ -119,6 +119,16 @@ $movie-poster-height: 375px;
 
 input:focus {
 	outline:none;
+}
+
+// All reviews
+
+#review-list {
+	border-bottom: 2px solid black;
+}
+
+#rating-center {
+	text-align: center;
 }
 
 /* Map Styling */
