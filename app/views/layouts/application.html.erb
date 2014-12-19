@@ -32,15 +32,15 @@
 	      <li class="has-dropdown">
 	      	<a href="#">
 	      		<% if current_user %>
-							<%= image_tag("#{current_user.avatar.thumb}", id: "current-thumb")%> &nbsp;<%= current_user.first_name%>
-						<% end %>
-					</a>
+					<%= image_tag("#{current_user.avatar.thumb}", id: "current-thumb")%> &nbsp;<%= current_user.first_name%>
+				<% end %>
+			</a>
 
-					<ul class="dropdown">
-						<li><%= link_to 'My Profile', user_path(current_user) %></li>
-						<li><%= link_to 'Explore Movies', new_user_movie_interest_path(current_user, current_user) %></li>
-						<li><%= link_to 'My Reviews', user_ratings_path(current_user.id) %></li>
-						<li> <%= link_to "Logout", logout_path, method: :post %></li>
+			<ul class="dropdown">
+				<li><%= link_to 'My Profile', user_path(current_user) %></li>
+				<li><%= link_to 'Explore Movies', new_user_movie_interest_path(user_id: current_user) %></li>
+				<li><%= link_to 'My Reviews', user_ratings_path(current_user.id) %></li>
+				<li><%= link_to "Logout", logout_path, method: :post %></li>
 	        </ul>
 	      </li>	
 
@@ -69,11 +69,13 @@
 </div>
 
 <body data-controller="<%= controller_name %>">
-	<div>
-		<p id="notice"><%= flash[:notice] %></p>
-		<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
-		<p id="alert"><%= flash[:alert] %></p>
-	</div>
+	<% unless controller.controller_name == "movie_interests" %>
+		<div>
+			<p id="notice"><%= flash[:notice] %></p>
+			<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
+			<p id="alert"><%= flash[:alert] %></p>
+		</div>
+	<% end %>
 	
  <% if current_user.incoming_friendships.count > 0 %>
  	<%= current_user.incoming_friendships.count %>
