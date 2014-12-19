@@ -38,10 +38,8 @@
 
 					<ul class="dropdown">
 						<li><%= link_to 'My Profile', user_path(current_user) %></li>
-						<li><%= link_to 'Events', new_user_event_path(user_id: current_user.id) %></li>
-						<li><%= link_to 'Movies', new_user_movie_interest_path(current_user, current_user) %></li>
-						<li><%= link_to 'Ratings', users_path(current_user.id) %></li>
-						<li><%= link_to 'Reviews', users_path(current_user.id) %></li>
+						<li><%= link_to 'Explore Movies', new_user_movie_interest_path(current_user, current_user) %></li>
+						<li><%= link_to 'My Reviews', user_ratings_path(current_user.id) %></li>
 						<li> <%= link_to "Logout", logout_path, method: :post %></li>
 	        </ul>
 	      </li>	

@@ -164,7 +164,7 @@ input:focus {
 // Friend Page
 
 #search-form {
-	border-bottom: 2px solid black;
+	
 	padding-bottom: 20px; 
 }
 
@@ -173,7 +173,9 @@ input:focus {
 }
 
 #user-list {
+	border-top: 2px solid black;
 	margin-top: 20px;
+	padding-top: 30px;
 }
 
 /* Map Styling */
@@ -317,8 +319,8 @@ input:focus {
 
 /* style input field text */
 ::-webkit-input-placeholder {
-   color: #b0b0b0;
-   opacity: .8;
+	color: #b0b0b0;
+	opacity: .8;
 }
 
 /* Input field that looks like a button */
@@ -358,7 +360,7 @@ input:focus {
 	height: 35px;
 	border: none;
 	text-indent: -9999px;
-  	opacity: .25;
+	opacity: .25;
 	background: url(http://helixpowered.com/assets/img/arrow-circle-on-right.svg) no-repeat;
 	background-size: 13px;
 	background-position: 0 1px;
