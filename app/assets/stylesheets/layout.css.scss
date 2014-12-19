@@ -1,9 +1,9 @@
 $search-bg: #fce5e8;
 $search-hover: #BD1E2C;
-$search-bg-highlight: #62669a;
 $search-border: #e599a0;
+$rating-border: #BD1E2C;
 
-$search-width: 600px;
+$search-width: 80%;
 $movie-poster-width: 250px;
 $movie-poster-height: 375px;
 
@@ -29,13 +29,13 @@ $movie-poster-height: 375px;
 	clear: left;
 	text-align: left;
 	display: table;
-	width: $search-width;
+	width: 100%;
 	border-bottom: 1px solid $search-border;
 }
 
 .movie-click:hover {
 	background-color: $search-hover;
-	#movie-title{
+	#movie-title {
 		color: white;
 	}
 }
@@ -62,7 +62,6 @@ $movie-poster-height: 375px;
 }
 
 #search {
-	width: ($search-width);
 	margin-bottom: 0px;
 	text-align: center;
 }
@@ -92,7 +91,7 @@ $movie-poster-height: 375px;
 }
 
 .movie-explore-field {
-	width: 70%;
+	width: 100%;
 	text-align: center;
 	display: inline-block;
 }
@@ -101,8 +100,35 @@ $movie-poster-height: 375px;
 	text-align: center;
 }
 
+// Movie Interests New
+.movie-score > img {
+	height: 50px;
+}
+
+#score-text {
+	font-size: 22px;
+}
+
+.wish-hide, .review-hide {
+	display: none;
+}
+
+#movie-poster-col, #movie-content-col {
+	padding: 0px;
+}
+
 input:focus {
 	outline:none;
+}
+
+// All reviews
+
+#review-list {
+	border-bottom: 2px solid black;
+}
+
+#rating-center {
+	text-align: center;
 }
 
 /* Map Styling */

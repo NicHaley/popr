@@ -37,6 +37,7 @@
 .starRating       input:checked       + label,
 .starRating:hover input:checked:hover + label{
   background : url('stars.png') repeat-x 0 -24px;
+  text-align: center;
 }
 
 .starRating:hover input:checked + label{
