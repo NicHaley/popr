@@ -1,0 +1,2 @@
+$('#review-list').html("<%= j render :partial => 'ratings' %>");
+$('.pagination').replaceWith("<%= j paginate @ratings, :remote => true %>"); 

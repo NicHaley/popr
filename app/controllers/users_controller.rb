@@ -74,6 +74,12 @@ class UsersController < ApplicationController
       directorsList = @user.ratings.all.map{|rating| [] << rating.directors.split(", ").flatten}.flatten
       gon.directors = pieData(directorsList);
     end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   private
