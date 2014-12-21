@@ -4,7 +4,7 @@
 
 $(".review-button").text("Submitting...");
 setTimeout(function(){ 
-	$(".review-hide").html("<%= escape_javascript(render(:partial => '/ratings/form')) %>")
+	$(".review-hide").html("<%= escape_javascript(render(:partial => '/ratings/form_new')) %>")
 	$(".review-hide").hide(); 
 }, 1000);
 

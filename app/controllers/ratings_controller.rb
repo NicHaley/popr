@@ -16,7 +16,7 @@ class RatingsController < ApplicationController
 
 		respond_to do |format|
 			if @rating.save
-				format.html {redirect_to users_path(current_user), notice: "Rating successfully created"}
+				format.html {redirect_to user_path(current_user), notice: "Rating successfully created"}
 				format.js {}
 			else
 				format.html {render 'movie_interests/new'}
@@ -36,11 +36,9 @@ class RatingsController < ApplicationController
 		@rating.review = params[:rating][:review]
 		@rating.user_score = params[:rating][:user_score]
 		if @rating.save
-			format.html {redirect_to current_user, notice: "Rating successfully updated"}
-			# format.js {}
+			redirect_to user_path(@user), notice: "Rating successfully updated"
 		else
-			format.html {render 'movie_interests/edit'}
-			# format.js {}
+			render 'movie_interests/edit'
 			flash.now[:alert] = "Ensure review is filled and star rating is selected."
 		end
 	end
