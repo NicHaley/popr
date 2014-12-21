@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   def show
     sleep(0.8)
     @user = User.find(params[:id])
-    @ratings = @user.ratings.order(created_at: :desc).limit(5)
+    @ratings = @user.ratings.order(created_at: :desc).page(params[:page]).per(3)
 
 
     if @user.ratings.any?
