@@ -377,6 +377,7 @@ input:focus {
 }
 .search-field:hover {
 	background-color: #BD1E2C;
+	color: white;
 }
 
 /* after button is clicked */
@@ -421,19 +422,23 @@ input:focus {
 #profile-picture {
 	height: 400px;
 	background-color: #FEFEFE;
+	border: 1px solid #dedede;
 }
 
 #profile-content {
 	height: 200px;
-	border: 1px solid #dedede;
 	background-color: #FEFEFE;
+}
+
+#image-profile {
+	margin-top: 10px;
 }
 
 #profile-section {
 	padding: 25px;
 	height: 400px;
-	border: 1px solid #dedede;
 	background-color: #FEFEFE;
+	border: 1px solid #dedede;
 }
 
 #profile-image {

@@ -53,8 +53,7 @@ myMap.init = function() {
 
 				var infoWindow = new google.maps.InfoWindow({
 					map: map,
-					position: pos,
-					content: contentString
+					position: pos
 				});
 
 

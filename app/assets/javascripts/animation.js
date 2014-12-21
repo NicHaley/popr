@@ -1,3 +1,6 @@
+
+//Search button
+
 (function($){
 
 	$(document).ready(function (){
@@ -11,3 +14,5 @@
 	});
 
 })(window.jQuery);
+
+
