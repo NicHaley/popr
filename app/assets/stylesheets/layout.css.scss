@@ -58,6 +58,10 @@ a:focus {
 .top-bar {
 	border-bottom-width: 2px;
 	border-bottom-color: #F5AA4A;
+	width: 100%;
+	position: fixed;
+	z-index: 100;
+	height: 50px;
 }
 
 #movie-title {
@@ -212,16 +216,21 @@ input:focus {
 /* Map Styling */
 
 #map-container {
-	height: 700px;
+	margin-top: 29px;
+	height: 100vh;
 	width: 65%;
 	border-color: #fff;
 	float: left;
 	margin-right:0px;
+	padding: 0px;
+	display: inline-block;
 }
+
 #map-canvas {
-	height: 700px;
+	height: 100vh;
 	width: 100%;
 	margin-right:0px;
+	position: absolute;
 }
 
 #map-container .event ul {
