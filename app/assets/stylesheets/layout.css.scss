@@ -19,8 +19,39 @@ $movie-poster-height: 375px;
 
 /* Welcome page */
 
-.welcome-container {
+.background-image {
 	background-image: url('bg.jpg');
+	background-size: cover;
+	display: block;
+	filter: blur(5px);
+	-webkit-filter: blur(5px);
+	height: 100vh;
+	left: 0;
+	position: fixed;
+	right: 0;
+	z-index: -1;
+}
+
+.front-content {
+	text-align: center;
+	color: black;
+}
+
+a:focus {
+	outline: none;
+}
+
+#panel1, #panel2 {
+	background: rgba(255, 255, 255, 0.45);
+	border-radius: 0px;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+	padding: 20px 40px 10px 40px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+#panel1 > form > div.field > label, #panel2 > form > div.field > label {
+	color: black;
 }
 
 /* Border Styling */
@@ -459,7 +490,7 @@ input:focus {
 	border-top-left-radius: 10px;
 }
 
-#panel1, #panel2, #panel3, #panel4 {
+#p1, #p2, #p3, #p4 {
 	border: 1px solid #dedede;
 	background-color: #FEFEFE;
 	border-bottom-left-radius: 10px;
