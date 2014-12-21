@@ -16,7 +16,7 @@
 <body data-controller="<%= controller_name %>">	
 
 	<div style="border-bottom: 1px solid #e8e8e8;"> 
-		<nav class="top-bar" data-topbar role="navigation">
+		<nav class="top-bar">
 			<ul class="title-area">
 			    <li class="name">
 			    	<h1 class="top-title"><%= link_to 'popr', root_path %></a></h1>
@@ -25,6 +25,7 @@
 			    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
 			</ul>
 
+		<% if current_user %>
 			<section class="top-bar-section">
 			    <!-- Right Nav Section -->
 			    <ul class="right">
@@ -69,6 +70,7 @@
 			      	</li>
 			    </ul>
 			</section>
+			<% end %>
 		</nav>
 	</div>
 

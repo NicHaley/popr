@@ -1,12 +1,49 @@
-<body>
-<h1>Welcome to Popr!</h1>
-	<fieldset>
-	  <legend>Login</legend>
-	  <%= render 'user_sessions/form' %>
-	</fieldset>
+<div class="background-image"></div>
+<div class="front-content">
+	<h3>Welcome to Popr!</h3><br />
+	<p>Popr helps you to organize movie events with the people in your life.<br /><br />To get started, please login or signup.</p><br /><br />
+</div>
 
-	<fieldset>
-	  <legend>Sign Up</legend>
-	  <%= render 'users/form' %>  
-	</fieldset>
-</body>
+<div class="login-signup">
+	<div class="row">
+		<div class="small-6 small-centered columns">
+
+			<dl class="tabs" data-tab>
+			  <dd class="active small-6"><a href="#panel1">Login</a></dd>
+			  <dd class="small-6"><a href="#panel2">Sign Up</a></dd>
+			</dl>
+
+			<div class="tabs-content">
+				<div class="content active" id="panel1">
+					<%= render 'user_sessions/form' %>
+				</div>
+
+				<div class="content" id="panel2">
+				  	<%= render 'users/form' %> 
+				</div> 
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- <dl class="tabs" data-tab>
+  <dd class="active"><a href="#panel1">Tab 1</a></dd>
+  <dd><a href="#panel2">Tab 2</a></dd>
+  <dd><a href="#panel3">Tab 3</a></dd>
+  <dd><a href="#panel4">Tab 4</a></dd>
+</dl>
+<div class="tabs-content">
+  <div class="content active" id="panel1">
+    <p>This is the first panel of the basic tab example. This is the first panel of the basic tab example.</p>
+  </div>
+  <div class="content" id="panel2">
+    <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
+  </div>
+  <div class="content" id="panel3">
+    <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
+  </div>
+  <div class="content" id="panel4">
+    <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
+  </div>
+</div> -->
