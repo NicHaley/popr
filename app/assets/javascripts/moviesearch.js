@@ -95,6 +95,8 @@ $(".search-results").on('click', ".movie-click", function(){
 
     $('#movie-poster').hide().html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' ).slideDown(1000);
     $('.form-window').show();
+    $('.wish-hide').show();
+    $('.review-hide').show();
 
     setTimeout(function(){
         $('html, body').animate({
