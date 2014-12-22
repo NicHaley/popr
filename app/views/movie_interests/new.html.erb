@@ -12,38 +12,47 @@
 			</div>
 		</div>
 
-		<div class="form-window">
-			<div class="card"> 
-				<div class="face front">
-					<div class="movie-text">
-						<div class="movie-title"></div><br />
-						<div class="movie-score"></div><br />
-						<div class="movie-director"></div>
-						<div class="movie-cast"></div>
-						<div class="movie-genre"></div>
-						<div class="movie-mpaa_rating"></div>
-						<div class="movie-runtime"></div>
-					</div><br />
+		<div class="form-section">
+			<div class="form-window">
+				<div class="card"> 
+					<div class="face front">
+						<div class="movie-text">
+							<div class="movie-title"></div><br />
+							<div class="movie-score"></div><br />
+							<div class="movie-director"></div>
+							<div class="movie-cast"></div>
+							<div class="movie-genre"></div>
+							<div class="movie-mpaa_rating"></div>
+							<div class="movie-runtime"></div>
+						</div><br />
 
-					<div class="review-hide">
-						<%= render 'ratings/form' %>
+						<div class="review-hide">
+							<%= render 'ratings/form' %>
+						</div>
+
+						<div>
+							<p id="notice"><%= flash[:notice] %></p>
+								<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
+							<p id="alert"><%= flash[:alert] %></p>
+						</div>
+				
+						<div class="wish-hide">
+							<%= render 'movie_interests/form' %>
+						</div>
+						<div class="form-flip">
+							<img src="/assets/flip_icon.png">
+							<h6>Create Event</h6><br />
+						</div>
+		
 					</div>
 
-					<div>
-						<p id="notice"><%= flash[:notice] %></p>
-							<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
-						<p id="alert"><%= flash[:alert] %></p>
+					<div class="face back">
+						<%= render 'events/form' %>
+						<div class="form-flip">
+						  <img src="/assets/flip_icon.png">
+						  <h6>Movie Info</h6><br />
+						</div>
 					</div>
-			
-					<div class="wish-hide">
-						<%= render 'movie_interests/form' %>
-					</div>
-	
-					<button id="event-button" class="button expand">Create Event</button>
-				</div>
-
-				<div class="face back">
-					<%= render 'events/form' %>
 				</div>
 			</div>
 		</div>

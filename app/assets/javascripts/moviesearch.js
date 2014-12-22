@@ -94,7 +94,7 @@ $(".search-results").on('click', ".movie-click", function(){
   else if ($("body").data("controller") == "movie_interests"){
 
     $('#movie-poster').hide().html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' ).slideDown(1000);
-    $('.form-window').show();
+    $('.form-section').show();
     $('.wish-hide').show();
     $('.review-hide').show();
 
@@ -105,8 +105,8 @@ $(".search-results").on('click', ".movie-click", function(){
       }, 1000);
 
 
-    $('.form-window').click(function(){
-        $(this).find('.card').toggleClass("flipped");
+    $('.form-flip').on("click", function(){
+      $('.card').toggleClass("flipped");
     });
 
     $('#event_rt_id').val($(this).data("id"));
