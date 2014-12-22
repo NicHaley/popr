@@ -13,6 +13,7 @@ class MovieInterestsController < ApplicationController
     @movie_interest = MovieInterest.new
     @user = User.find(params[:user_id])
     @rating = @user.ratings.build
+    @event = Event.new
   end
 
   def create

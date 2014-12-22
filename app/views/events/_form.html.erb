@@ -1,6 +1,7 @@
 <h4>Create Your Event</h4><br />
 
-<%= form_for [@user, @event] do |f|%>
+<%= form_for([@user, @event], url: user_events_path(user_id: current_user), html: {method: :post}) do |f|%>
+
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title, :size => 90 %>

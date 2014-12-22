@@ -34,7 +34,7 @@
 						</div>
 						<div>
 							<p id="notice"><%= flash[:notice] %></p>
-							<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
+								<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
 							<p id="alert"><%= flash[:alert] %></p>
 						</div>
 					</div>
@@ -44,6 +44,14 @@
 						<div class="wish-hide">
 							<%= render 'movie_interests/form' %>
 						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="event-form">
+				<div class="row">
+					<div class="small-10 small-centered columns">
+						<%= render 'events/form' %>
 					</div>
 				</div>
 			</div>

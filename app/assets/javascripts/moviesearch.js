@@ -104,6 +104,7 @@ $(".search-results").on('click', ".movie-click", function(){
         }, 2000);
       }, 1000);
 
+    $('#event_rt_id').val($(this).data("id"));
     $('#movie_interest_rt_id').val($(this).data("id"));
     $('#rating_rt_id').val($(this).data("id"));
     $('#rating_actors').val($(this).data("cast"));
