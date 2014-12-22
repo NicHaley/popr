@@ -104,6 +104,11 @@ $(".search-results").on('click', ".movie-click", function(){
         }, 2000);
       }, 1000);
 
+
+    $('.form-window').click(function(){
+        $(this).find('.card').toggleClass("flipped");
+    });
+
     $('#event_rt_id').val($(this).data("id"));
     $('#movie_interest_rt_id').val($(this).data("id"));
     $('#rating_rt_id').val($(this).data("id"));

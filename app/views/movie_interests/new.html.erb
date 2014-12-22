@@ -1,21 +1,20 @@
 <div class="movie-center">
 	<div class="movie-explore-field">
 
-	<div class="search-window">
-		<div id="search-poster">
-			<div id="search-block">
-				<input type="text" id="search" placeholder="Search for movies">
-				<div class="search-results"></div>
-			</div><br />
+		<div class="search-window">
+			<div id="search-poster">
+				<div id="search-block">
+					<input type="text" id="search" placeholder="Search for movies">
+					<div class="search-results"></div>
+				</div><br />
 
-			<div id="movie-poster"></div>
+				<div id="movie-poster"></div>
+			</div>
 		</div>
-	</div>
 
-	<div class="form-window">
-		<div id="interest-form">
-			<div class="row">
-				<div class="small-8 small-centered columns" id="movie-content-col">	
+		<div class="form-window">
+			<div class="card"> 
+				<div class="face front">
 					<div class="movie-text">
 						<div class="movie-title"></div><br />
 						<div class="movie-score"></div><br />
@@ -25,34 +24,26 @@
 						<div class="movie-mpaa_rating"></div>
 						<div class="movie-runtime"></div>
 					</div><br />
-				</div>
-			</div>
-				<div class="row">
-					<div class="small-10 small-centered columns">
-						<div class="review-hide">
-							<%= render 'ratings/form' %>
-						</div>
-						<div>
-							<p id="notice"><%= flash[:notice] %></p>
-								<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
-							<p id="alert"><%= flash[:alert] %></p>
-						</div>
+
+					<div class="review-hide">
+						<%= render 'ratings/form' %>
 					</div>
-				</div>
-				<div class="row">
-					<div class="small-10 small-centered columns">
-						<div class="wish-hide">
-							<%= render 'movie_interests/form' %>
-						</div>
+
+					<div>
+						<p id="notice"><%= flash[:notice] %></p>
+							<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
+						<p id="alert"><%= flash[:alert] %></p>
 					</div>
-				</div>
-			</div>
 			
-			<div id="event-form">
-				<div class="row">
-					<div class="small-10 small-centered columns">
-						<%= render 'events/form' %>
+					<div class="wish-hide">
+						<%= render 'movie_interests/form' %>
 					</div>
+	
+					<button id="event-button" class="button expand">Create Event</button>
+				</div>
+
+				<div class="face back">
+					<%= render 'events/form' %>
 				</div>
 			</div>
 		</div>
