@@ -100,7 +100,7 @@ $(".search-results").on('click', ".movie-click", function(){
 
     setTimeout(function(){
         $('html, body').animate({
-          scrollTop: $(".form-window").offset().top
+          scrollTop: $(".form-window").offset().top - 30
         }, 2000);
       }, 1000);
 

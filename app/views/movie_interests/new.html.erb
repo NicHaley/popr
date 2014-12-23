@@ -16,6 +16,10 @@
 			<div class="form-window">
 				<div class="card"> 
 					<div class="face front">
+						<div class="form-flip">
+							<img src="/assets/flip_icon.png">
+							<h6>Create Event</h6><br />
+						</div>
 						<div class="movie-text">
 							<div class="movie-title"></div><br />
 							<div class="movie-score"></div><br />
@@ -39,19 +43,15 @@
 						<div class="wish-hide">
 							<%= render 'movie_interests/form' %>
 						</div>
-						<div class="form-flip">
-							<img src="/assets/flip_icon.png">
-							<h6>Create Event</h6><br />
-						</div>
 		
 					</div>
 
 					<div class="face back">
-						<%= render 'events/form' %>
 						<div class="form-flip">
-						  <img src="/assets/flip_icon.png">
-						  <h6>Movie Info</h6><br />
+							<img src="/assets/flip_icon.png">
+							<h6>Movie Info</h6><br />
 						</div>
+						<%= render 'events/form' %>
 					</div>
 				</div>
 			</div>

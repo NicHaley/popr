@@ -39,7 +39,6 @@
 
 						<ul class="dropdown">
 							<li><%= link_to 'My Profile', user_path(current_user) %></li>
-							<li><%= link_to 'Explore Movies', new_user_movie_interest_path(user_id: current_user) %></li>
 							<li><%= link_to 'My Reviews', user_ratings_path(current_user.id) %></li>
 							<li><%= link_to "Logout", logout_path, method: :post %></li>
 				        </ul>
@@ -55,7 +54,7 @@
 					</li>
 					<li id="friend-button"><%= link_to 'Invite Friends', users_path %></li>
 					
-					<li id="event-button"><%= link_to 'Add Event', new_user_event_path(user_id:current_user.id) %></li>
+					<li id="event-button"><%= link_to 'Movies', new_user_movie_interest_path(user_id: current_user) %></li>
 		   		</ul>
 
 			    <ul class="left">
@@ -77,7 +76,6 @@
 	<% unless controller.controller_name == "movie_interests" %>
 		<div>
 			<p id="notice"><%= flash[:notice] %></p>
-			<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
 			<p id="alert"><%= flash[:alert] %></p>
 		</div>
 	<% end %>

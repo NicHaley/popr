@@ -4,8 +4,8 @@ $search-border: #e599a0;
 $rating-border: #BD1E2C;
 
 $search-width: 80%;
-$movie-poster-width: 250px;
-$movie-poster-height: 375px;
+$movie-poster-width: 33vh;
+$movie-poster-height: 50vh;
 
 /* Global Changes */
 #row {
@@ -59,9 +59,7 @@ a:focus {
 	border-bottom-width: 2px;
 	border-bottom-color: #F5AA4A;
 	width: 100%;
-	position: fixed;
 	z-index: 100;
-	height: 50px;
 }
 
 #movie-title {
@@ -184,7 +182,7 @@ a:focus {
 }
 
 .form-flip {
-	text-align: center;
+	text-align: right;
 }
 
 .form-flip:hover {
@@ -267,10 +265,6 @@ input:focus {
 }
 
 /* Map Styling */
-
-.yield-body {
-	margin-top: 50px;
-}
 
 #map-container {
 	height: 100vh;
@@ -509,8 +503,6 @@ input:focus {
 	display: inline-block;
 	background-size: 33px;
 }
-
-
 
 /* Profile Section */
 
