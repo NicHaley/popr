@@ -52,11 +52,6 @@ class EventsController < ApplicationController
     @comment = @event.comments.build
   end
 
-  def new
-    @event = Event.new
-    @user = User.find(params[:user_id])
-  end
-
   def create
     @event = Event.new(event_params)
     @event.host = current_user

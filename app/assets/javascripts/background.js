@@ -5,4 +5,8 @@ $(document).ready(function() {
 	var path = '/assets/'
 	var imageUrl = path + bg;
 	$('.search-window').css('background-image', 'url(' + imageUrl +')');
-});
+
+	$('#search').on("click", function(){
+    	$('.search-window').addClass("blur");
+    });
+});8

@@ -129,15 +129,28 @@ a:focus {
 .search-window {
 	background-size: cover;
 	display: block;
-	// -webkit-filter: blur(1px);
-	height: 100vh;
-	width: 100%;
+	// -webkit-filter: blur(5px);
 	background-position: center; 
 	z-index: -1;
+	position: absolute;
+	height: 100vh;
+	width: 100%;
+}
+
+.search-window.blur {
+	-webkit-filter: blur(10px); 
+	-moz-filter: blur(10px);
+	-o-filter: blur(10px); 
+	-ms-filter: blur(10px); 
+	filter: blur(10px);  
+	filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+	-webkit-transition: 0.3s -webkit-filter linear;
+	-o-transition: 0.3s -o-filter linear;
 }
 
 // Form flip
 .form-section {
+	margin-top: 50px;
 	background-color: #db3442;
 	text-align: center;
 	display: none;

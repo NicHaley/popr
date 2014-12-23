@@ -79,46 +79,33 @@ $(document).on('ready page:load', function() {
 
 
 $(".search-results").on('click', ".movie-click", function(){
-  if ($("body").data("controller") == "events") {
-    $('#event_rt_id').val($(this).data("id"));
-    $('#movie-poster').hide().html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' ).slideDown(1000);
-    $('.form-window').show();
 
-    setTimeout(function(){
-        $('html, body').animate({
-          scrollTop: $(".form-window").offset().top
-        }, 2000);
-      }, 1000);
+  $('#movie-poster').hide().html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' ).fadeIn(1500);
+ 
 
-  }
-  else if ($("body").data("controller") == "movie_interests"){
-
-    $('#movie-poster').hide().html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' ).slideDown(1000);
-    $('.form-section').show();
-    $('.wish-hide').show();
-    $('.review-hide').show();
-
-    setTimeout(function(){
-        $('html, body').animate({
-          scrollTop: $(".form-window").offset().top
-        }, 2000);
-      }, 1000);
+  setTimeout(function(){
+      $('.form-section').fadeIn(1500);
+      $('.wish-hide').show();
+      $('.review-hide').show();
+      $('html, body').animate({
+        scrollTop: $(".form-window").offset().top
+      }, 2000);
+    }, 1000);
 
 
-    $('.form-flip').on("click", function(){
-      $('.card').toggleClass("flipped");
-    });
+  $('.form-flip').on("click", function(){
+    $('.card').toggleClass("flipped");
+  });
 
-    $('#event_rt_id').val($(this).data("id"));
-    $('#movie_interest_rt_id').val($(this).data("id"));
-    $('#rating_rt_id').val($(this).data("id"));
-    $('#rating_actors').val($(this).data("cast"));
-    $('.movie-title').html('<h4>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h4>');
-    $('.movie-cast').html('<i>' + '<strong>Cast - </strong>' + $(this).data("cast") + '</i>');
-    $('.movie-score').html('<img height="50" src="' + $(this).data("icon") + '" />' + '<i id="score-text"><strong> ' + $(this).data("critics_score") + '</strong></i>' );
-    $('.movie-mpaa_rating').html('<i>' + '<strong>Rated - </strong>' + $(this).data("mpaa_rating") + '</i>');
-    $('.movie-runtime').html('<i>' + '<strong>Runtime - </strong>' + $(this).data("runtime") + ' minutes' + '</i>');
-  }
+  $('#event_rt_id').val($(this).data("id"));
+  $('#movie_interest_rt_id').val($(this).data("id"));
+  $('#rating_rt_id').val($(this).data("id"));
+  $('#rating_actors').val($(this).data("cast"));
+  $('.movie-title').html('<h4>' + ($(this).data("title")) + ' (' + ($(this).data("year")) + ')' + '</h4>');
+  $('.movie-cast').html('<i>' + '<strong>Cast - </strong>' + $(this).data("cast") + '</i>');
+  $('.movie-score').html('<img height="50" src="' + $(this).data("icon") + '" />' + '<i id="score-text"><strong> ' + $(this).data("critics_score") + '</strong></i>' );
+  $('.movie-mpaa_rating').html('<i>' + '<strong>Rated - </strong>' + $(this).data("mpaa_rating") + '</i>');
+  $('.movie-runtime').html('<i>' + '<strong>Runtime - </strong>' + $(this).data("runtime") + ' minutes' + '</i>');
 });
 
   $("body").on("click", function(){
