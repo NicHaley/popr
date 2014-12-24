@@ -92,11 +92,6 @@ $(".search-results").on('click', ".movie-click", function(){
       }, 2000);
     }, 1000);
 
-
-  $('.form-flip').on("click", function(){
-    $('.card').toggleClass("flipped");
-  });
-
   $('#event_rt_id').val($(this).data("id"));
   $('#movie_interest_rt_id').val($(this).data("id"));
   $('#rating_rt_id').val($(this).data("id"));
@@ -107,6 +102,11 @@ $(".search-results").on('click', ".movie-click", function(){
   $('.movie-mpaa_rating').html('<i>' + '<strong>Rated - </strong>' + $(this).data("mpaa_rating") + '</i>');
   $('.movie-runtime').html('<i>' + '<strong>Runtime - </strong>' + $(this).data("runtime") + ' minutes' + '</i>');
 });
+
+  $('.form-flip').on("click", function(){
+    $('.card').toggleClass("flipped");
+  });
+
 
   $("body").on("click", function(){
     $(".search-results").html('');
