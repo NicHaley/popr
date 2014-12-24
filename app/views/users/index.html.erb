@@ -4,8 +4,8 @@
 	<div class="row">
 		<div class="small-8 small-centered columns">
 			<%= form_tag(users_path, :method => "get", id: "search-form") do %>
-			  <%= text_field_tag :user_search, params[:user_search], placeholder: "Search Users" %>
-			  <%= submit_tag "Search", :name => nil, class: "button tiny" %>
+			<%= text_field_tag :user_search, params[:user_search], placeholder: "Search Users" %>
+			<%= submit_tag "Search", :name => nil, class: "button tiny" %>
 			<% end %>
 		</div>
 	</div>
@@ -13,19 +13,8 @@
 
 	<div class="row">
 		<div class="small-8 small-centered columns" id="user-list">
-			<div>
-				<% @users.each do |user| %>
-					<% unless user == current_user %>
-						<p>
-							<%= user.first_name %> <%= user.last_name %>
-							<% if current_user.pending_friendship?(current_user, user) %>
-							<i>- Pending</i>
-							<% else %>
-							<%= link_to "+ Add Friend", friendships_path(friend_id: user.id), method: :post %>
-							<% end %>
-						</p>
-					<% end %>
-				<% end %>
+			<div id="friend-list">
+				<%= render :partial => "users" %>
 			</div>
 		</div>
 	</div>
