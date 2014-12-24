@@ -18,7 +18,11 @@
 					<% unless user == current_user %>
 						<p>
 							<%= user.first_name %> <%= user.last_name %>
+							<% if current_user.pending_friendship?(current_user, user) %>
+							<i>- Pending</i>
+							<% else %>
 							<%= link_to "+ Add Friend", friendships_path(friend_id: user.id), method: :post %>
+							<% end %>
 						</p>
 					<% end %>
 				<% end %>
