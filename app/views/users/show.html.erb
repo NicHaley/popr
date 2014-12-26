@@ -48,11 +48,9 @@
 	<div class="row" id:"friend-row">
 		<div class="large-3 small-12 columns" id="friend-section">
 					<% if @user.incoming_friendships != [] %>
-					  <b>Friend Requests</b><br>
-					  <% @user.incoming_friendships.each do |friendship| %>
-					    <%= friendship.user.first_name %> <%= friendship.user.last_name %><br> 
-					    <%= link_to "Accept", friendships_path(friend_id: friendship.user.id),class:"small-caps", method: :post %> <%= link_to "Reject", friendship_path(friendship), data: { confirm: 'Are you sure?' },class:"small-caps", method: :delete %>
-					  <% end %>	
+						<div id="incoming-requests">
+							<%= render :partial => "incoming_friendships" %>
+						</div>
 					  <hr>
 					<% end %>
 
