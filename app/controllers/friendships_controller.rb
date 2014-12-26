@@ -4,6 +4,7 @@ class FriendshipsController < ApplicationController
 		# Create a new friendship user_id of current_user, and friend_id of params (selected in index.html.erb)
 		@friendship = current_user.friendships.build(friend_id: params[:friend_id])
 		@users = User.select{|u| !u.is_friend?(current_user) && u.id != current_user.id}.sort
+		@user = current_user
 		# Check if the friend has created a friendship as well. A mutual friendship is created when the first user's... 
 		# ID matches the friend_id of the second user, and vice verca. Ex. Friendship if: #<Friendship id: 1, user_id: 2, friend_id: 1>
 		# AND #<Friendship id: 2, user_id: 1, friend_id: 2>
