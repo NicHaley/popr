@@ -33,12 +33,6 @@
 						<div class="review-hide">
 							<%= render 'ratings/form' %>
 						</div>
-
-						<div>
-							<p id="notice"><%= flash[:notice] %></p>
-								<%= render :partial => 'layouts/flash' , :locals => { :flash => flash } %>
-							<p id="alert"><%= flash[:alert] %></p>
-						</div>
 				
 						<div class="wish-hide">
 							<%= render 'movie_interests/form' %>
