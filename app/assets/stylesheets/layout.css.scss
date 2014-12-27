@@ -641,7 +641,7 @@ input:focus {
 	}
 }
 
-#error-box {
+#error-box, #success-box {
 	// right: 10%;
 	position: absolute;
 	opacity: 0;
@@ -662,6 +662,8 @@ input:focus {
 #alert {
 	background: rgba(255, 232, 33, 0.9);
 	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 

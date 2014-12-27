@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_path, notice: "Success! Welcome to Popr!"
     else
-      render 'new', notice: "Errors signing up, try again!"
+      redirect_to :back, alert: "Errors signing up, try again!"
     end
   end
 

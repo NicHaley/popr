@@ -55,14 +55,11 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.host = current_user
-    @user = User.find(params[:user_id])
-    @rating = @user.ratings.build
-    @movie_interest = MovieInterest.new
     # @user = User.find(params[:user_id])
     if @event.save
       redirect_to user_event_path(@event.host, @event), notice: "Event successfully created!"
     else
-      render template: 'movie_interests/new', notice: "Error creating event."
+      redirect_to :back
     end
   end
 

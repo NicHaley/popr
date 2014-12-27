@@ -74,10 +74,14 @@
 			</div>
 
 			<% unless controller.controller_name == "movie_interests" %>
-				<% if (flash[:notice] || flash[:alert]) %>
+				<% if (flash[:alert]) %>
 					<div id="error-box">
-						<p id="notice"><%= flash[:notice] %></p>
 						<p id="alert"><%= flash[:alert] %></p>
+					</div>
+				<% end %>
+				<% if (flash[:notice]) %>
+					<div id="success-box">
+						<p id="notice"><%= flash[:notice] %></p>
 					</div>
 				<% end %>
 			<% end %>

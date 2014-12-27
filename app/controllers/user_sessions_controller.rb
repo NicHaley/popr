@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
       redirect_back_or_to(:events, notice: 'Login successful')
     else
       flash.now[:alert] = 'Login failed'
-      render action: 'new'
+      redirect_to :back, alert: "Errors logging in, try again!"
     end
   end
 
