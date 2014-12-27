@@ -641,25 +641,25 @@ input:focus {
 	}
 }
 
-#error-box, #success-box {
+.error-box, .success-box {
 	// right: 10%;
 	position: absolute;
 	opacity: 0;
 	margin: 0px;
 	width: 100%;
 	height: 4vh;
-	z-index: 1000;
-	-webkit-animation: fade 3s;
+	z-index: 10;
+	-webkit-animation: fade 4s;
 }
 
-#notice {
+.notice {
 	background: rgba(44, 232, 97, 0.9);
 	text-align: center;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
 
-#alert {
+.alert {
 	background: rgba(255, 232, 33, 0.9);
 	text-align: center;
 	padding-top: 5px;

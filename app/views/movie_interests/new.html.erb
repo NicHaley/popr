@@ -33,11 +33,11 @@
 						<div class="review-hide">
 							<%= render 'ratings/form' %>
 						</div>
-				
+						
 						<div class="wish-hide">
 							<%= render 'movie_interests/form' %>
 						</div>
-		
+						
 					</div>
 
 					<div class="face back">
@@ -55,27 +55,27 @@
 
 <script id="menu_info" type="x-tmpl-mustache">
 
-	<div data-year="{{year}}" 
-		data-cast="{{cast}}" 
-		data-id="{{id}}" 
-		data-title="{{title}}"
-		data-poster="{{posterOri}}"
-		data-icon = "{{icon}}"
-		data-critics_rating = "{{critics_rating}}" 
-		data-critics_score = "{{critics_score}}"
-		data-genre = "{{genre}}"
-		data-mpaa_rating = "{{mpaa_rating}}"
-		data-runtime = "{{runtime}}"
+<div data-year="{{year}}" 
+data-cast="{{cast}}" 
+data-id="{{id}}" 
+data-title="{{title}}"
+data-poster="{{posterOri}}"
+data-icon = "{{icon}}"
+data-critics_rating = "{{critics_rating}}" 
+data-critics_score = "{{critics_score}}"
+data-genre = "{{genre}}"
+data-mpaa_rating = "{{mpaa_rating}}"
+data-runtime = "{{runtime}}"
 
-		 class="movie-click">
+class="movie-click">
 
-			<img class="img-thumb" 
-	 			align="left" 
-	 			height="80" 
-	 			src="{{posterThumb}}" />
+<img class="img-thumb" 
+align="left" 
+height="80" 
+src="{{posterThumb}}" />
 
-			 	<img id="drop-rating" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
- 	</div>
+<img id="drop-rating" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
+</div>
 </script>
 
 

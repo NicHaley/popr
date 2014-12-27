@@ -59,7 +59,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to user_event_path(@event.host, @event), notice: "Event successfully created!"
     else
-      redirect_to :back
+      redirect_to :back, alert: "There was an error creating your event!"
     end
   end
 
