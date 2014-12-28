@@ -79,10 +79,13 @@ $(document).on('ready page:load', function() {
 
 
 $(".search-results").on('click', ".movie-click", function(){
-
-  $('#movie-poster').hide().html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' ).fadeIn(1500);
+  $('#movie-poster').addClass("fade-in");
+  $('#movie-poster').hide().html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' ).show();
+  
+  setTimeout(function(){ 
+    $('#movie-poster').removeClass("fade-in");
+  }, 1500);
  
-
   setTimeout(function(){
       $('.form-section').fadeIn(1500);
       $("#wish-button").prop('value', 'Add It To My Wish List!');
