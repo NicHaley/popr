@@ -85,8 +85,10 @@ $(".search-results").on('click', ".movie-click", function(){
 
   setTimeout(function(){
       $('.form-section').fadeIn(1500);
-      $('.wish-hide').show();
-      $('.review-hide').show();
+      $("#wish-button").prop('value', 'Add It To My Wish List!');
+      $("#wish-button").attr("disabled", false);
+      $("#rev-button").prop('value', 'Submit Review');
+      $("#rev-button").attr("disabled", false);
       $('html, body').animate({
         scrollTop: $(".form-window").offset().top
       }, 2000);

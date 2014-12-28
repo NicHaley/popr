@@ -2,12 +2,12 @@
      @rating = Rating.new
 %>
 
-$(".review-button").text("Submitting...");
+$("#rev-button").attr("disabled", true);
+$("#rev-button").prop('value', 'Submitting...');
 setTimeout(function(){ 
 	$(".review-hide").html("<%= escape_javascript(render(:partial => '/ratings/form')) %>")
-	$(".review-hide").hide(); 
+	$("#rev-button").prop('value', 'Review Submitted');
+	$("#rev-button").attr("disabled", true);
 }, 1000);
 
 <% end %>
-
-$("#notice").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");

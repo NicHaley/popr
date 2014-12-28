@@ -4,7 +4,5 @@
 		<%= f.hidden_field :wished, value: "true" %>
 		<%= f.hidden_field :rt_id, value: "" %>
 	</div> 
-	<div class="actions wish-button">
-		<%= f.submit "Add it to my Wish List!", class: "button expand" %>
-	</div>
+	<%= f.submit "Add it to my Wish List!", class: "button expand", id: "wish-button" %>
 <% end %>

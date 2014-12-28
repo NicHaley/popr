@@ -2,10 +2,12 @@
      @movie_interest = MovieInterest.new
 %>
 
-$(".wish-button").text("Submitting...");
+$("#wish-button").attr("disabled", true);
+$("#wish-button").prop('value', 'Submitting...');
 setTimeout(function(){ 
 	$(".wish-hide").html("<%= escape_javascript(render(:partial => '/movie_interests/form')) %>")
-	$(".wish-hide").hide(); 
+	$("#wish-button").attr("disabled", true);
+	$("#wish-button").prop('value', 'Added To Wish List');
 }, 1000);
 
 <% end %>
