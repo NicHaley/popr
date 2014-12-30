@@ -33,7 +33,22 @@ $movie-poster-height: 50vh;
 
 .front-content {
 	text-align: center;
-	color: black;
+	color: white;	
+	padding-top: 70px;
+}
+
+.front-content > p:first-child {
+	font-size: 30px;
+	text-shadow: 0.5px 0.5px #424242;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.front-content > p:nth-child(2) {
+	font-size: 20px;
+	text-shadow: 0.5px 0.5px #424242;
+	margin-left: 100px;
+	margin-right: 100px;
 }
 
 a:focus {

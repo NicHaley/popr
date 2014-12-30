@@ -48,7 +48,7 @@ $(document).on('ready page:load', function() {
     $('#rating_directors').val(directors);
   }
 
-  searchCallback = jQuery.throttle(200, searchCallback);
+  searchCallback = jQuery.throttle(140, searchCallback);
 
   // AJAX REQUEST 1
     $("#search").keyup(function(){
@@ -80,7 +80,7 @@ $(document).on('ready page:load', function() {
 
 $(".search-results").on('click', ".movie-click", function(){
   $('#movie-poster').addClass("fade-in");
-  $('#movie-poster').hide().html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' ).show();
+  $('#movie-poster').html('<img id="selected-poster" src="' + $(this).data("poster") + '" />' );
   
   setTimeout(function(){ 
     $('#movie-poster').removeClass("fade-in");
