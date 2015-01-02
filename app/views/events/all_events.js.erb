@@ -1,3 +1,3 @@
-var cords = <%= @nearby_coords.to_json.html_safe %>
-myMap.addMarkers(cords)
-console.log("Nearby Coordinates", cords)
+var coords = <%= @nearby_coords.to_json.html_safe %>
+myMap.addMarkers(coords)
+console.log("Nearby Coordinates", coords)

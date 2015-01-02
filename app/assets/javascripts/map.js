@@ -7,14 +7,6 @@ $(document).on('ready page:load', function() {
 	if ("geolocation" in navigator) {
 		//Initialize the map on page load
 		myMap.init();
-
-		// Retrieve the coords of all events
-		var coords = $('#map-canvas').data('coords');
-
-		if (coords){
-			myMap.addMarkers(coords);
-		}
-
 	}
 });
 
@@ -107,9 +99,14 @@ myMap.addMarkers = function(coords){
 			animation: google.maps.Animation.DROP,
 			icon: image
 		});
+		var infoWindow = new google.maps.InfoWindow({
+			content: coord.title
+		});
+		google.maps.event.addListener(myMarker, 'click', function(){
+			infoWindow.open(map, myMarker)
+		});
 	});
 }
-
 
 
 
