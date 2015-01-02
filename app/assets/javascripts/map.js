@@ -96,12 +96,13 @@ myMap.init = function() {
 //Add markers for other events
 myMap.addMarkers = function(coords){
 
-	var image = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+	var image = "assets/popcorn.png";
 
 	coords.forEach(function(coord){
 		var myMarker = new google.maps.Marker({
 			position: new google.maps.LatLng(coord.latitude, coord.longitude),
 			map: map,
+			animation: google.maps.Animation.DROP,
 			icon: image
 		});
 	});
