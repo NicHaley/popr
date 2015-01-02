@@ -96,7 +96,9 @@ myMap.init = function() {
 //Add markers for other events
 myMap.addMarkers = function(coords){
 
-	var image = "assets/popcorn.png";
+	var image = {
+		url: "assets/popcorn.png"
+	};
 
 	coords.forEach(function(coord){
 		var myMarker = new google.maps.Marker({
