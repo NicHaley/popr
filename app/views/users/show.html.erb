@@ -11,6 +11,18 @@
 					  <p><%=@user.first_name%> <%=@user.last_name%></p>
 					  <p>Joined on: <%=@user.created_at%></p>
 					<% end %>
+					<div>
+						<% if @user.hometown == nil %>
+							<p>No address yet</p>
+						<% else %>
+							<b>Hometown: <%= @user.hometown %></b>
+						<% end %>
+						<% if @user.bio == nil %>
+							<p>No bio yet</p>
+						<% else %>
+							<p><%= @user.bio %></p>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		</div>
