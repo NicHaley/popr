@@ -126,7 +126,7 @@
 		</div>
 		<div class="large-1 columns"></div>
 		<div class="large-8 small-12 columns" id="wish-section">
-			<b>Wishlist</b>
+			<b>Wishlist</b><br /><br />
 				<ul id="featured1 inline-list" data-orbit>
 					<% count = 0 %>
 				  <li>
@@ -135,11 +135,11 @@
 						<% if count % 10 == 0 %>
 							<% return true %>
 						<% else %>
-						<div>
+						<div class="car-img-container">
 							<% sleep(0.2) %>
-							<img src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
+							<img class= "car-img" src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
 							<% if current_user.id == @user.id %>
-									<%= link_to "remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
+									<%= link_to "Remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
 						</div>
 								<% if count % 3 == 0 %>
 								</li>
