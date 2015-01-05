@@ -647,6 +647,19 @@ padding-left: 0;
 	border: 1px solid #dedede;
 	background-color: #FEFEFE;
 	border-radius: 10px;
+	text-align: center;
+}
+
+.car-img {
+	height: 250px;
+	width: 167px;
+}
+
+.car-img-container {
+	height: 300px;
+	width: 167px;
+	display: inline-block;
+	text-align: center;
 }
 
 #slider-caption {

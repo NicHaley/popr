@@ -11,6 +11,18 @@
 					  <p><%=@user.first_name%> <%=@user.last_name%></p>
 					  <p>Joined on: <%=@user.created_at%></p>
 					<% end %>
+					<div>
+						<% if @user.hometown == nil %>
+							<p>No address yet</p>
+						<% else %>
+							<b>Hometown: <%= @user.hometown %></b>
+						<% end %>
+						<% if @user.bio == nil %>
+							<p>No bio yet</p>
+						<% else %>
+							<p><%= @user.bio %></p>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -56,7 +68,17 @@
 					  <hr>
 					<% end %>
 
-					<b>Friends&nbsp;(<%= @user.friendships.length%>)</b><br>
+					<b>Friends&nbsp;(
+						<% friendCount = 0 %>
+						<% @user.friendships.each do |friendship| %>
+							<% if friendship.confirm %>
+								<% friendCount += 1 %>
+							<% end %>
+						<% end %>
+						<%= friendCount %>
+					)
+
+					</b><br>
 						<% @user.friendships.sort{|x,y| x.friend.first_name <=> y.friend.first_name}.each do |friendship| %>
 							<% if friendship.confirm %>
 									<div id="friend-wrapper">
@@ -119,7 +141,7 @@
 		</div>
 		<div class="large-1 columns"></div>
 		<div class="large-8 small-12 columns" id="wish-section">
-			<b>Wishlist</b>
+			<b>Wishlist</b><br /><br />
 				<ul id="featured1 inline-list" data-orbit>
 					<% count = 0 %>
 				  <li>
@@ -128,11 +150,11 @@
 						<% if count % 10 == 0 %>
 							<% return true %>
 						<% else %>
-						<div>
+						<div class="car-img-container">
 							<% sleep(0.2) %>
-							<img src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
+							<img class= "car-img" src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
 							<% if current_user.id == @user.id %>
-									<%= link_to "remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
+									<%= link_to "Remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
 						</div>
 								<% if count % 3 == 0 %>
 								</li>
