@@ -56,7 +56,17 @@
 					  <hr>
 					<% end %>
 
-					<b>Friends&nbsp;(<%= @user.friendships.length%>)</b><br>
+					<b>Friends&nbsp;(
+						<% friendCount = 0 %>
+						<% @user.friendships.each do |friendship| %>
+							<% if friendship.confirm %>
+								<% friendCount += 1 %>
+							<% end %>
+						<% end %>
+						<%= friendCount %>
+					)
+
+					</b><br>
 						<% @user.friendships.sort{|x,y| x.friend.first_name <=> y.friend.first_name}.each do |friendship| %>
 							<% if friendship.confirm %>
 									<div id="friend-wrapper">
