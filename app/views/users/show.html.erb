@@ -18,7 +18,7 @@
 		<div class="large-1 columns"></div>
 
 		<div class="large-8 small-12 columns" id="profile-section">
-    	<h4>Hosted Events</h4>
+    	<h4>Recent Updates</h4>
 	  	<ul>
 		    <% @user.hosted_events.each do |event| %>
 			    <% if event.not_passed %>
@@ -50,17 +50,24 @@
 					<% if @user.incoming_friendships != [] %>
 					  <b>Friend Requests</b><br>
 					  <% @user.incoming_friendships.each do |friendship| %>
-					    <%= friendship.user.first_name %> <%= friendship.user.last_name %><br> 
+					   	<%= friendship.user.first_name %> <%= friendship.user.last_name %> 
 					    <%= link_to "Accept", friendships_path(friend_id: friendship.user.id),class:"small-caps", method: :post %> <%= link_to "Reject", friendship_path(friendship), data: { confirm: 'Are you sure?' },class:"small-caps", method: :delete %>
 					  <% end %>	
 					  <hr>
 					<% end %>
 
-					<b>Friends</b><br>
+					<b>Friends&nbsp;(<%= @user.friendships.length%>)</b><br>
 						<% @user.friendships.sort{|x,y| x.friend.first_name <=> y.friend.first_name}.each do |friendship| %>
 							<% if friendship.confirm %>
-						    		<%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend) %><br>
-						    		<%= link_to "remove", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %><br>
+									<div id="friend-wrapper">
+										<div id="friend-photo">
+										<%= link_to image_tag(friendship.friend.avatar, id:"friend-avatar"), user_path(friendship.user_id)%>
+										</div>
+										<div id="friend-details">
+						    		<%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend), class: "small-marker-caps" %>
+						    		<%= link_to "(-)", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %><br>
+						    		</div>
+						    	</div>
 							<% end %>
 						<% end %>
 		</div>

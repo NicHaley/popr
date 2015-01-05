@@ -7,14 +7,6 @@ $(document).on('ready page:load', function() {
 	if ("geolocation" in navigator) {
 		//Initialize the map on page load
 		myMap.init();
-
-		// Retrieve the coords of all events
-		var coords = $('#map-canvas').data('coords');
-
-		if (coords){
-			myMap.addMarkers(coords);
-		}
-
 	}
 });
 
@@ -96,17 +88,32 @@ myMap.init = function() {
 //Add markers for other events
 myMap.addMarkers = function(coords){
 
-	var image = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+	var image = {
+		url: "assets/popcorn.png"
+	};
 
 	coords.forEach(function(coord){
+
+		var contentWindow = 
+		'<div id="marker-wrapper"> <div id="marker-poster-container"><div id="marker-poster" style="background-image: url('+ 
+		coord.poster+')"></div><div id="marker-time" class="small-caps"><b>'+ coord.time +'</b></div></div><div id="marker-details"><p><b>'+ coord.title + 
+		'</b>&nbsp;(' + coord.commitment + '/' + coord.capacity + ')</p><p class="small-marker-caps">' + 
+		coord.address + '</p><p class="small-marker-caps">' + coord.description + '</p></div></div>'
+
 		var myMarker = new google.maps.Marker({
 			position: new google.maps.LatLng(coord.latitude, coord.longitude),
 			map: map,
+			animation: google.maps.Animation.DROP,
 			icon: image
+		});
+		var infoWindow = new google.maps.InfoWindow({
+			content: contentWindow
+		});
+		google.maps.event.addListener(myMarker, 'click', function(){
+			infoWindow.open(map, myMarker)
 		});
 	});
 }
-
 
 
 

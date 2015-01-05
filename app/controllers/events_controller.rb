@@ -29,9 +29,8 @@ class EventsController < ApplicationController
 
     @current_position = Event.near(c_position, 10, units: :km)
 
-    @friend_check = @current_position.select{|event| event.host.is_friend?(current_user)}
-    @nearby_coords = @friend_check.map {|event| {latitude: event.latitude.to_f, longitude: event.longitude.to_f}}
-
+    @friend_check = @current_position.select{|event| event.host.is_friend?(current_user) && event.not_passed}
+    @nearby_coords = @friend_check.map {|event| {latitude: event.latitude.to_f, longitude: event.longitude.to_f, title: event.title, poster: Movie.find_movie(event.rt_id).poster, commitment: event.commitments.sum(:party_size).to_s, capacity: event.capacity.to_s, address: event.address, time: event.time.strftime("%A, %d %b %Y %l:%M %p"), description: event.description}}
     respond_to do |format|
       format.html
       format.js
