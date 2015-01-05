@@ -620,7 +620,26 @@ input:focus {
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	border-top-right-radius: 10px;
+	width: 667px;
+	height: 400px;	
+	padding: 25px;
 }	
+
+#chart4 svg {
+	margin-top: 90px;
+	margin-bottom: 90px;
+}
+
+.no-pad-right {
+padding-right: 0;
+}
+.no-pad-left{
+padding-left: 0;
+}
+
+/*#tab-section > .column, .columns  {
+	padding: 0px;
+}*/
 
 #wish-section {
 	padding: 25px;
@@ -766,6 +785,7 @@ input:focus {
 	height: 67px;
 	width: 58px;
 }
+
 
 /* Remove close button */
 /*.gm-style-iw + div {

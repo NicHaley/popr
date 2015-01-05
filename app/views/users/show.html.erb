@@ -45,7 +45,7 @@
 
   <br/>
 
-	<div class="row" id:"friend-row">
+	<div class="row" id="friend-row">
 		<div class="large-3 small-12 columns" id="friend-section">
 					<% if @user.incoming_friendships != [] %>
 					  <b>Friend Requests</b><br>
@@ -64,8 +64,11 @@
 										<%= link_to image_tag(friendship.friend.avatar, id:"friend-avatar"), user_path(friendship.user_id)%>
 										</div>
 										<div id="friend-details">
-						    		<%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend), class: "small-marker-caps" %>
-						    		<%= link_to "(-)", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %><br>
+						    		<p><%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend), class: "small-marker-caps" %>
+						    		<%= link_to "(-)", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
+						    		<p class="small-caps"><%= friendship.friend.ratings.length %> reviews | <%= friendship.friend.friendships.length%> friends</p>
+
+						    		<br>
 						    		</div>
 						    	</div>
 							<% end %>
@@ -74,7 +77,7 @@
 
 		<div class="large-1 columns"></div>
 
-		<div class="large-8 small-12 columns" id="tab-section chart-radius">
+		<div class="no-pad-left no-pad-right large-8 small-12 columns" id="tab-section chart-radius">
 			<dl class="tabs" data-tab>
 			  <dd class="active"><a href="#p1" id="left-tab">Ratings</a></dd>
 			  <dd><a href="#p2" id="center-tab">Genres</a></dd>
@@ -145,6 +148,25 @@
 </div>
 
 <script>
+
+	$(document).on('ready page:load', function() {
+		
+		//Insert no data message for empty charts
+
+		if($('#chart4').is(':empty')) { 
+			$("#chart4").append("<h4>No data available</h4>");
+		}
+		if($('#chart').is(':empty')) { 
+			$("#chart").append("<h4>No data available</h4>");
+		}
+		if($('#chart2').is(':empty')) { 
+			$("#chart2").append("<h4>No data available</h4>");
+		}
+		if($('#chart3').is(':empty')) { 
+			$("#chart3").append("<h4>No data available</h4>");
+		}
+	});
+
 	var chart = c3.generate({
 		bindto: '#chart',
 		data: {
@@ -204,5 +226,6 @@ values: [30, 60, 75, 100]
 }
 },
 });
+
 
 </script>
