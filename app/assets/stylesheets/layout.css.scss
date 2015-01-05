@@ -663,6 +663,30 @@ input:focus {
 	line-height: 10px;
 }
 
+#friend-wrapper {
+	height: 67px;
+	width: 200px;
+	margin: 10px;
+}
+
+#friend-photo {
+	height: 67px;
+	width: 58px;
+	float: left;
+}
+
+#friend-details {
+	height: 67px;
+	width: 140px;
+	position: relative;
+	float: right;
+}
+
+#friend-avatar {
+	height: 67px;
+	width: 58px;
+}
+
 /* Remove close button */
 /*.gm-style-iw + div {
 	display: none;
