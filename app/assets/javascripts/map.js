@@ -97,8 +97,8 @@ myMap.addMarkers = function(coords){
 		var contentWindow = 
 		'<div id="marker-wrapper"> <div id="marker-poster-container"><div id="marker-poster" style="background-image: url('+ 
 		coord.poster+')"></div><div id="marker-time" class="small-caps"><b>'+ coord.time +'</b></div></div><div id="marker-details"><p><b>'+ coord.title + 
-		'</b>&nbsp;(' + coord.commitment + '/' + coord.capacity + ')</p><p class="small-caps">' + 
-		coord.time + '</p></div></div>'
+		'</b>&nbsp;(' + coord.commitment + '/' + coord.capacity + ')</p><p class="small-marker-caps">' + 
+		coord.address + '</p><p class="small-marker-caps">' + coord.description + '</p></div></div>'
 
 		var myMarker = new google.maps.Marker({
 			position: new google.maps.LatLng(coord.latitude, coord.longitude),

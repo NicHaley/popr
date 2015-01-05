@@ -613,6 +613,11 @@ input:focus {
 	line-height: 0.5;
 }
 
+.small-marker-caps {
+	font-size: 10pt;
+	line-height: 1;
+}
+
 #remove-friend {
 	line-height: 1.0;
 }
@@ -657,4 +662,9 @@ input:focus {
 	padding-left: 5px;
 	line-height: 10px;
 }
+
+/* Remove close button */
+/*.gm-style-iw + div {
+	display: none;
+}*/
 
