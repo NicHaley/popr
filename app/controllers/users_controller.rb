@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      auto_login(@user)
       redirect_to root_path, notice: "Success! Welcome to Popr!"
     else
       redirect_to :back, alert: "Errors signing up, try again!"
