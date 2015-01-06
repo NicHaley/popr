@@ -88,7 +88,7 @@
 										<div id="friend-details">
 						    		<p><%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend), class: "small-marker-caps" %>
 						    		<%= link_to "(-)", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
-						    		<p class="small-caps"><%= friendship.friend.ratings.length %> reviews | <%= friendship.friend.friendships.length%> friends</p>
+						    		<p class="small-caps">Reviews: <%= friendship.friend.ratings.length %> | Friends: <%= friendCount %></p>
 
 						    		<br>
 						    		</div>
