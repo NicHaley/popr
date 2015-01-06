@@ -72,13 +72,14 @@
 					)
 
 					</b><br>
-						
+		
       <div id="incoming-requests">
 				<%= render :partial => "incoming_friendships" %>
       </div>
-					<div id="current-friends">
-						<%= render :partial => "current_friends" %>
-					</div>
+	<div id="current-friends">
+		<%= render :partial => "current_friends" %>
+	</div>
+
 		</div>
 
 		<div class="large-1 columns"></div>
@@ -140,18 +141,16 @@
 							<% sleep(0.2) %>
 							<img class= "car-img" src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
 							<% if current_user.id == @user.id %>
-
-									<%= link_to "remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
-								<% end %>
-							</div>
-
-								<% if count % 3 == 0 %>
+								<%= link_to "Remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
+							<% end %>
+						</div>
+							<% if count % 3 == 0 %>
 								</li>
 								<li>
 							<% end %>
 						<% end %> 
 				 	<% end %>
-			  	</li>
+				</li>
 			</ul>		
 		</div>
 	</div>
