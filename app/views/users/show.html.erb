@@ -47,13 +47,9 @@
 
 	<div class="row" id:"friend-row">
 		<div class="large-3 small-12 columns" id="friend-section">
-					<% if @user.incoming_friendships != [] %>
-						<div id="incoming-requests">
-							<%= render :partial => "incoming_friendships" %>
-						</div>
-					  <hr>
-					<% end %>
-
+      <div id="incoming-requests">
+				<%= render :partial => "incoming_friendships" %>
+      </div>
 					<b>Friends</b><br>
 					<div id="current-friends">
 						<%= render :partial => "current_friends" %>

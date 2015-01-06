@@ -40,8 +40,10 @@ class FriendshipsController < ApplicationController
 		@friendship2 = Friendship.where(friend_id: current_user.id, user_id: params[:friend_id]).first
 		if @friendship2	
 			@friendship2.destroy
-		end	
-		flash[:notice] = "Friend removed"
-		redirect_to current_user
+		end
+		respond_to do |format|
+			format.html{redirect_to user_path(current_user)}
+			format.js {}	
+		end
 	end
 end
