@@ -5,7 +5,7 @@
 $("#rev-button").attr("disabled", true);
 $("#rev-button").prop('value', 'Submitting...');
 setTimeout(function(){ 
-	$(".review-hide").html("<%= escape_javascript(render(:partial => '/ratings/form')) %>")
+	$(".review-hide").html("<%= escape_javascript(render(:partial => '/ratings/form_new')) %>")
 	$("#rev-button").prop('value', 'Review Submitted');
 	$("#rev-button").attr("disabled", true);
 }, 1000);

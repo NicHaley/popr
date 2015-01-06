@@ -8,9 +8,9 @@
 				<div class="large-12 columns" id="profile-content">
 					<% if current_user == @user %>
 					  <%= link_to "Edit Profile", edit_user_path(@user), class:'small-caps' %> | <%= link_to "Delete Account", user_path(@user), data: { confirm: 'Are you sure?' }, class:'small-caps', method: :delete%>
-					  <p><%=@user.first_name%> <%=@user.last_name%></p>
-					  <p>Joined on: <%=@user.created_at%></p>
-					<% end %>
+          <% end %>
+            <p><%=@user.first_name%> <%=@user.last_name%></p>
+            <p>Joined on: <%=@user.created_at%></p>
 					<div>
 						<% if @user.hometown == nil %>
 							<p>No address yet</p>
@@ -59,14 +59,7 @@
 
 	<div class="row" id="friend-row">
 		<div class="large-3 small-12 columns" id="friend-section">
-					<% if @user.incoming_friendships != [] %>
-					  <b>Friend Requests</b><br>
-					  <% @user.incoming_friendships.each do |friendship| %>
-					   	<%= friendship.user.first_name %> <%= friendship.user.last_name %> 
-					    <%= link_to "Accept", friendships_path(friend_id: friendship.user.id),class:"small-caps", method: :post %> <%= link_to "Reject", friendship_path(friendship), data: { confirm: 'Are you sure?' },class:"small-caps", method: :delete %>
-					  <% end %>	
-					  <hr>
-					<% end %>
+
 
 					<b>Friends&nbsp;(
 						<% friendCount = 0 %>
@@ -79,22 +72,13 @@
 					)
 
 					</b><br>
-						<% @user.friendships.sort{|x,y| x.friend.first_name <=> y.friend.first_name}.each do |friendship| %>
-							<% if friendship.confirm %>
-									<div id="friend-wrapper">
-										<div id="friend-photo">
-										<%= link_to image_tag(friendship.friend.avatar, id:"friend-avatar"), user_path(friendship.user_id)%>
-										</div>
-										<div id="friend-details">
-						    		<p><%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend), class: "small-marker-caps" %>
-						    		<%= link_to "(-)", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
-						    		<p class="small-caps"><%= friendship.friend.ratings.length %> reviews | <%= friendship.friend.friendships.length%> friends</p>
-
-						    		<br>
-						    		</div>
-						    	</div>
-							<% end %>
-						<% end %>
+						
+      <div id="incoming-requests">
+				<%= render :partial => "incoming_friendships" %>
+      </div>
+					<div id="current-friends">
+						<%= render :partial => "current_friends" %>
+					</div>
 		</div>
 
 		<div class="large-1 columns"></div>
@@ -124,7 +108,7 @@
 	</div>
 
 	<br />
-
+<!-- Reviews -->
 	<div class="row" id:"wishlist-row">
 		<div class="large-3 small-12 columns" id="review-section">
 			<div class="row">
@@ -140,6 +124,7 @@
 			</div>
 		</div>
 		<div class="large-1 columns"></div>
+<!-- Wishlist -->
 		<div class="large-8 small-12 columns" id="wish-section">
 			<b>Wishlist</b><br /><br />
 			<ul id="featured1 inline-list" data-orbit>
@@ -150,16 +135,19 @@
 						<% if count % 10 == 0 %>
 							<% return true %>
 						<% else %>
-							<div class="car-img-container">
-								<% sleep(0.2) %>
-								<img class= "car-img" src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
-								<% if current_user.id == @user.id %>
-									<%= link_to "Remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
+
+						<div class="car-img-container">
+							<% sleep(0.2) %>
+							<img class= "car-img" src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
+							<% if current_user.id == @user.id %>
+
+									<%= link_to "remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
 								<% end %>
 							</div>
-							<% if count % 3 == 0 %>
+
+								<% if count % 3 == 0 %>
 								</li>
-								<li>	
+								<li>
 							<% end %>
 						<% end %> 
 				 	<% end %>

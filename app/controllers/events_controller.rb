@@ -78,6 +78,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event.commitments.destroy_all
+    @event.comments.destroy_all
     @event.destroy
     redirect_to root_url, notice: "Event succesfully deleted."
   end
