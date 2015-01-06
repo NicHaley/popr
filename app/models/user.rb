@@ -36,5 +36,9 @@ class User < ActiveRecord::Base
     where("first_name like ?", "%#{query}%") 
   end
 
+  def pending_friendship?(current_user, user) 
+    Friendship.exists?(friend_id: current_user.id, user_id: user.id) || Friendship.exists?(friend_id: user.id, user_id: current_user.id)
+  end
+
 end
 

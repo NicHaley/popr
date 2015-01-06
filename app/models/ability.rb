@@ -13,7 +13,7 @@ class Ability
       can :manage, Comment, :user_id => user.id
       can :manage, MovieInterest, :user_id => user.id
       can :manage, Rating, :user_id => user.id
-      can :manage, Friendship, :user_id => user.id
+      can :manage, Friendship 
       can :read, Event do |ev|
        ev.host.is_friend?(user)
      end

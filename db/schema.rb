@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(version: 20150105202804) do
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
     t.string   "avatar"
-    t.string   "hometown",                        null: false
-    t.text     "bio",                             null: false
+    t.string   "hometown"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
