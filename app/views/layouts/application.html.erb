@@ -44,7 +44,7 @@
 						</ul>
 					</li>	
 
-					<li id="friend-request">
+					<li id="friend-request" class="show-for-medium-up">
 						<div id="friend-container">
 							<%= link_to image_tag("friend_request.png", id:"friend-icon"), user_path(current_user), id:"friend-icon"%>
 							<% if current_user.incoming_friendships.count > 0 %>
