@@ -68,25 +68,24 @@
 	<div class="row" id="friend-row">
 		<div class="large-3 small-12 columns" id="friend-section">
 
+			<b>Friends&nbsp;(
+				<% friendCount = 0 %>
+				<% @user.friendships.each do |friendship| %>
+					<% if friendship.confirm %>
+						<% friendCount += 1 %>
+					<% end %>
+				<% end %>
+				<%= friendCount %>
+			)
 
-					<b>Friends&nbsp;(
-						<% friendCount = 0 %>
-						<% @user.friendships.each do |friendship| %>
-							<% if friendship.confirm %>
-								<% friendCount += 1 %>
-							<% end %>
-						<% end %>
-						<%= friendCount %>
-					)
-
-					</b><br>
+			</b><br>
 		
-    <div id="incoming-requests">
-		<%= render :partial => "incoming_friendships" %>
-    </div>
-	<div id="current-friends">
-		<%= render :partial => "current_friends" %>
-	</div>
+			<div id="incoming-requests">
+				<%= render :partial => "incoming_friendships" %>
+			</div>
+			<div id="current-friends">
+				<%= render :partial => "current_friends" %>
+			</div>
 
 		</div>
 
