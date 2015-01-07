@@ -1,0 +1,4 @@
+<%= link_to image_tag("friend_request.png", id:"friend-icon"), user_path(current_user), id:"friend-icon"%>
+<% if current_user.incoming_friendships.count > 0 %>
+<div id="friend-number">+<%= current_user.incoming_friendships.count %></div>
+<% end %>
