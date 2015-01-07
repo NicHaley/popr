@@ -1,2 +1,5 @@
 $('#review-list').html("<%= j render :partial => 'ratings' %>");
-$('.pagination').replaceWith("<%= j paginate @ratings, :remote => true %>"); 
+$('#ratings-pagination').replaceWith("<%= j paginate @ratings, :remote => true, :param_name => "ratings_page" %>"); 
+
+$('#friends-list').html("<%= j render :partial => 'friends_list' %>");
+$('#friends-pagination').replaceWith("<%= j paginate @friends, :remote => true, :param_name => "friends_page" %>");

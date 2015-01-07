@@ -1,0 +1,18 @@
+<% if @friends %>
+  <% @friends.sort{|x,y| x.friend.first_name <=> y.friend.first_name}.each do |friendship| %>
+    <% if friendship.confirm %>
+        <div id="friend-wrapper">
+          <div id="friend-photo">
+          <%= link_to image_tag(friendship.friend.avatar, id:"friend-avatar"), user_path(friendship.user_id)%>
+          </div>
+          <div id="friend-details">
+          <p><%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend), class: "small-marker-caps" %>
+          <%= link_to "(-)", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
+          <p class="small-caps"><%= friendship.friend.ratings.length %> reviews | <%= friendship.friend.friendships.length%> friends</p>
+
+          <br>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
+<% end %>
