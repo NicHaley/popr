@@ -16,18 +16,14 @@
     <%= f.file_field :avatar %>
   </div>
   <div class="field">
-    <%= f.label :bio %>
-    <%= f.text_area :bio, :size => "25x3", maxlength: 150, class: "message" %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
   </div>
-  <div class="countdown"></div>
   <div class="field">
-    <%= f.label :hometown %>
-    <%= f.text_field :hometown %>
-  </div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>  
   <div class="actions">
     <%= f.submit class: "button expand" %>
   </div>
 <% end %>
-
-
-

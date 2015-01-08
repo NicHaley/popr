@@ -55,7 +55,7 @@ a:focus {
 	outline: none;
 }
 
-#panel1, #panel2 {
+#panel1, #panel2, #panel3, #panel4 {
 	background: rgba(255, 255, 255, 0.45);
 	border-radius: 0px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
@@ -66,6 +66,12 @@ a:focus {
 
 #panel1 > form > div.field > label, #panel2 > form > div.field > label {
 	color: black;
+}
+
+// Edit Page
+
+#editForm {
+	margin-top: 100px;
 }
 
 /* Border Styling */
@@ -631,68 +637,68 @@ input:focus {
 }
 
 .no-pad-right {
-padding-right: 0;
+	padding-right: 0;
 }
 .no-pad-left{
-padding-left: 0;
+	padding-left: 0;
 }
 
 /*#tab-section > .column, .columns  {
 	padding: 0px;
-}*/
+	}*/
 
-#wish-section {
-	padding: 25px;
-	height: 450px;
-	border: 1px solid #dedede;
-	background-color: #FEFEFE;
-	border-radius: 10px;
-	text-align: center;
-}
+	#wish-section {
+		padding: 25px;
+		height: 450px;
+		border: 1px solid #dedede;
+		background-color: #FEFEFE;
+		border-radius: 10px;
+		text-align: center;
+	}
 
-.car-img {
-	height: 250px;
-	width: 167px;
-}
+	.car-img {
+		height: 250px;
+		width: 167px;
+	}
 
-.car-img-container {
-	height: 300px;
-	width: 167px;
-	display: inline-block;
-	text-align: center;
-}
+	.car-img-container {
+		height: 300px;
+		width: 167px;
+		display: inline-block;
+		text-align: center;
+	}
 
-#slider-caption {
-	position: relative;
-}
+	#slider-caption {
+		position: relative;
+	}
 
-#friend-section {
-	padding: 25px;
-	border: 1px solid #dedede;
-	background-color: #FEFEFE;
-	border-radius: 10px;
-}
+	#friend-section {
+		padding: 25px;
+		border: 1px solid #dedede;
+		background-color: #FEFEFE;
+		border-radius: 10px;
+	}
 
-#review-section {
-	padding: 25px;
-	border: 1px solid #dedede;
-	border-radius: 10px;
-	background-color: #FEFEFE;
-}
+	#review-section {
+		padding: 25px;
+		border: 1px solid #dedede;
+		border-radius: 10px;
+		background-color: #FEFEFE;
+	}
 
-.small-caps {
-	font-size: 8pt;
-	line-height: 0.5;
-}
+	.small-caps {
+		font-size: 8pt;
+		line-height: 0.5;
+	}
 
-.small-marker-caps {
-	font-size: 10pt;
-	line-height: 1;
-}
+	.small-marker-caps {
+		font-size: 10pt;
+		line-height: 1;
+	}
 
-#remove-friend {
-	line-height: 1.0;
-}
+	#remove-friend {
+		line-height: 1.0;
+	}
 
 // Error Box
 
@@ -799,10 +805,21 @@ padding-left: 0;
 	width: 58px;
 }
 
+//Countdown in Textarea
+
+.message {
+	margin-bottom: 0px;
+}
+
+.countdown {
+	margin-bottom: 9px;
+	font-size: 10px;
+}
+
 
 /* Remove close button */
 /*.gm-style-iw + div {
 	display: none;
-}*/
+	}*/
 
 

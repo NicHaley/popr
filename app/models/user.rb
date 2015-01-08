@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
 	has_many :inverse_friends, through: :inverse_friendships, source: :user
 	
   authenticates_with_sorcery!
-  validates :password, length: { minimum: 3 }
-  validates :password, confirmation: true
-  validates :password_confirmation, presence: true
+  validates :password, length: { minimum: 3 }, unless:  Proc.new { |a| a.password.blank? }
+  validates :password, confirmation: true, unless:  Proc.new { |a| a.password.blank? }
+  validates :password, presence: true, unless: Proc.new { |a| a.password_confirmation.blank? }
 
   validates :email, uniqueness: true
 

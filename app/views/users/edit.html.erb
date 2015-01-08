@@ -1,2 +1,18 @@
-<h1>Edit Profile</h1>
-<%= render 'form' %>
+<div class="row" id="editForm">
+	<div class="small-6 small-centered columns">
+
+		<dl class="tabs" data-tab>
+			<dd class="active small-6"><a href="#panel3">Update Profile</a></dd>
+			<dd class="small-6"><a href="#panel4">Update Password</a></dd>
+		</dl>
+
+		<div class="tabs-content">
+			<div class="content active" id="panel3">
+				<%= render 'form' %>
+			</div>
+			<div class="content" id="panel4">
+				<%= render 'password_form' %> 
+			</div> 
+		</div>
+	</div>
+</div>
