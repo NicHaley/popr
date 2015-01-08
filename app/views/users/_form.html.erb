@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :bio %>
-    <%= f.text_area :bio, maxlength: 150, class: "message" %>
+    <%= f.text_area :bio, :size => "25x3", maxlength: 150, class: "message" %>
   </div>
   <div class="countdown"></div>
   <div class="field">
@@ -28,7 +28,6 @@
     <%= f.submit class: "button expand" %>
   </div>
 <% end %>
-
 
 
 
