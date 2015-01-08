@@ -59,24 +59,15 @@
 <!-- Friendlist -->
 	<div class="row" id="friend-row">
 		<div class="large-3 small-12 columns" id="friend-section">
+
+    	<div id="current-friends">
+    		<%= render :partial => "current_friends" %>
+    	</div>
+
       <div id="incoming-requests">
-				<%= render :partial => "incoming_friendships" %>
+        <%= render :partial => "incoming_friendships" %>
       </div>
 
-			<b>Friends&nbsp;(
-			<% friendCount = 0 %>
-			<% @user.friendships.each do |friendship| %>
-				<% if friendship.confirm %>
-					<% friendCount += 1 %>
-				<% end %>
-			<% end %>
-			<%= friendCount %>
-					)
-					</b><br>
-
-			<div id="friends-list">
-				<%= render :partial => "friends_list" %>
-			</div>
 			<div id="friends-pagination"><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></div>
 		</div>
 

@@ -1,4 +1,5 @@
 <% if @user.incoming_friendships != [] %>
+  <hr>
   <div id="incoming-requests">
   <b>Friend Requests </b><br>
   <% @user.incoming_friendships.each do |friendship| %>
@@ -6,5 +7,4 @@
     <%= link_to "Accept", friendships_path(friend_id: friendship.user.id),class:"small-caps", method: :post, remote: true %> <%= link_to "Reject", friendship_path(friendship), data: { confirm: 'Are you sure?' },class:"small-caps", method: :delete, remote: true %>
   <% end %> 
   </div>
-  <hr>
 <% end %>

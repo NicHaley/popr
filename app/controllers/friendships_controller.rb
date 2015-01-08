@@ -35,6 +35,7 @@ class FriendshipsController < ApplicationController
 	end
 
 	def destroy
+		@user = current_user
 		@friendship = Friendship.find(params[:id])
 		@friendship.destroy
 		@friendship2 = Friendship.where(friend_id: current_user.id, user_id: params[:friend_id]).first
