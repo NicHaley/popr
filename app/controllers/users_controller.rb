@@ -10,7 +10,8 @@ class UsersController < ApplicationController
       auto_login(@user)
       redirect_to root_path, notice: "Success! Welcome to Popr!"
     else
-      redirect_to :back, alert: "Errors signing up, try again!"
+      flash.now[:alert] = "An error occurred!"
+      render 'events/welcome'
     end
   end
 

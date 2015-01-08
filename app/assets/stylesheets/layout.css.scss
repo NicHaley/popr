@@ -39,14 +39,14 @@ $movie-poster-height: 50vh;
 
 .front-content > p:first-child {
 	font-size: 30px;
-	text-shadow: 0.5px 0.5px #424242;
+	text-shadow: 1px 1px #424242;
 	margin-left: 100px;
 	margin-right: 100px;
 }
 
 .front-content > p:nth-child(2) {
 	font-size: 20px;
-	text-shadow: 0.5px 0.5px #424242;
+	text-shadow: 1px 1px #424242;
 	margin-left: 100px;
 	margin-right: 100px;
 }
@@ -64,7 +64,7 @@ a:focus {
 	border-bottom-right-radius: 10px;
 }
 
-#panel1 > form > div.field > label, #panel2 > form > div.field > label {
+label {
 	color: black;
 }
 
@@ -816,6 +816,29 @@ input:focus {
 	font-size: 10px;
 }
 
+//Error Messages
+
+.error_messages {
+	color: black;
+	padding: 5px 10px 5px 10px;
+	background-color: #ff4949;
+	opacity: 0.85;
+	margin-bottom: 5px;
+}
+
+.error_messages > h5, .error_messages > ul {
+	opacity: 1;
+	color: black;
+}
+
+.error-li {
+	margin-bottom: 5px;
+}
+
+//Other
+#user_avatar {
+	color: black;
+}
 
 /* Remove close button */
 /*.gm-style-iw + div {

@@ -1,4 +1,7 @@
 <%= form_for @user, :html => {:multipart => true} do |f|%>
+
+  <%= render 'user_errors' %>
+
   <div class="field">
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
@@ -7,10 +10,6 @@
     <%= f.label :last_name %>
     <%= f.text_field :last_name %>
   </div>      
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
   <div class="field">
     <%= f.label :avatar %>
     <%= f.file_field :avatar %>
