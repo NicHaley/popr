@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, unless: Proc.new { |a| a.password_confirmation.blank? }
 
   validates :email, uniqueness: true
+  validates :email, presence: true
 
   def is_friend?(user)
     if self.friendships.find_by(friend_id: user.id)
