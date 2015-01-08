@@ -45,7 +45,11 @@ class UsersController < ApplicationController
     sleep(0.8)
     @user = User.find(params[:id])
     @ratings = @user.ratings.order(created_at: :desc).page(params[:ratings_page]).per(3)
-    @friends = @user.friendships.page(params[:friends_page]).per(3)
+    @friends = if params[:friend_search]
+      User.where("LOWER(first_name) LIKE LOWER(?)", "%#{params[:friend_search]}%")
+    else
+      @user.friendships.page(params[:friends_page]).per(3)
+    end
 
 
     if @user.ratings.any?
