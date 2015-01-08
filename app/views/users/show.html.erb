@@ -71,12 +71,12 @@
     	<div id="current-friends">
     		<%= render :partial => "current_friends" %>
     	</div>
+			<div id="friends-pagination"><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></div>
 
       <div id="incoming-requests">
         <%= render :partial => "incoming_friendships" %>
       </div>
 
-			<div id="friends-pagination"><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></div>
 		</div>
 
 		<div class="large-1 columns"></div>
