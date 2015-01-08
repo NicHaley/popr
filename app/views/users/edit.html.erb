@@ -1,18 +1,38 @@
-<div class="row" id="editForm">
-	<div class="small-6 small-centered columns">
+<div id="edit-container">
+	<div class="row">
+		<div class="large-4 medium-4 small-12 columns">
 
-		<dl class="tabs" data-tab>
-			<dd class="active small-6"><a href="#panel3">Update Profile</a></dd>
-			<dd class="small-6"><a href="#panel4">Update Password</a></dd>
-		</dl>
-
-		<div class="tabs-content">
-			<div class="content active" id="panel3">
-				<%= render 'form' %>
+			<div id="edit-avatar-section">
+				<div id="edit-avatar-panel">
+					<%= image_tag @user.avatar_url(:profile), id: 'edit-profile-image'%>
+				</div>
+				<div id="edit-avatar-details">
+					<br>
+					<b><%=@user.first_name%> <%=@user.last_name%></b>
+				</div>
 			</div>
-			<div class="content" id="panel4">
-				<%= render 'password_form' %> 
-			</div> 
+			<dl class="tabs vertical edit-panels" data-tab>
+			  <dd class="active"><a href="#edit-panel1" class="top-edit-panel">Account</a></dd>
+			  <dd><a href="#edit-panel2">Password</a></dd>
+			  <dd><a href="#edit-panel3">Manage Friends</a></dd>
+			  <dd><a href="#edit-panel4" class="bottom-edit-panel">Security and Privacy</a></dd>
+			</dl>
+		</div>
+		<div class="large-8 medium-8 small-12 columns">
+			<div class="tabs-content vertical">
+			  <div class="content active" id="edit-panel1">
+			    <%= render 'form' %>
+			  </div>
+			  <div class="content" id="edit-panel2">
+			    <%= render 'password_form' %> 
+			  </div>
+			  <div class="content" id="edit-panel3">
+			    <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
+			  </div>
+			  <div class="content" id="edit-panel4">
+			    <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
+			  </div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -8,6 +8,7 @@ $movie-poster-width: 33vh;
 $movie-poster-height: 50vh;
 
 /* Global Changes */
+
 #row {
 	width: 100%;
 	margin-top: 0;
@@ -15,6 +16,83 @@ $movie-poster-height: 50vh;
 
 #container {
 	background-color: #F5F5F5;
+}
+
+.remove-lh {
+	line-height: 0.5;
+}
+
+/* Edit Profile */
+#edit-container {
+	width: 100%;
+	height: 100vh;
+	background-image: url('darkshape_bg.gif');
+	padding-top: 30px;
+}
+
+.top-edit-panel {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.bottom-edit-panel {
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+#edit-avatar-section {
+	width: 300px;
+	height: 200px;
+	position: relative;
+	margin-bottom: 15px;
+}
+
+#edit-avatar-panel{
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	position: absolute;
+	background-color: #BD1E2C;
+	border-radius: 5px;
+}
+
+#edit-avatar-details {
+	top:100px;
+	left:0;
+	padding-bottom: 20px;
+	padding-left: 35px;
+	font-size: 15pt;
+	width:100%;
+	height:100px;
+	position: absolute;
+	background: rgb(255, 255, 255);
+	z-index: 10;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+#edit-profile-image {
+	top: 25px;
+	left: 5px;
+	z-index: 15;
+	position: absolute;
+	border-radius: 20px;
+	border-color: rgb(255, 255, 255);
+	border-style: solid;
+	border-width:5px;
+	width: 100px;
+	height: 100px;
+}
+
+#edit-panel1, #edit-panel2, #edit-panel3, #edit-panel4 {
+	background: rgba(255,255,255, 1);
+	border-radius: 5px;
+	padding: 25px;
+}
+
+.edit-panels dd > a {
+		width: 300px;
 }
 
 /* Welcome page */
