@@ -74,11 +74,10 @@
 					)
 					</b><br>
 
-	<div id="friends-list">
-		<%= render :partial => "friends_list" %>
-	</div>
-	<div id="friends-pagination"><%= paginate @friends, :remote => true, :param_name => "friends_page" %></div>
-
+			<div id="friends-list">
+				<%= render :partial => "friends_list" %>
+			</div>
+			<div id="friends-pagination"><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></div>
 		</div>
 
 		<div class="large-1 columns"></div>
@@ -117,7 +116,7 @@
 					<div id="review-list">
 						<%= render :partial => "ratings" %>
 					</div>
-					<div id="ratings-pagination"><%= paginate @ratings, :remote => true, :param_name => "ratings_page" %></div>
+					<div id="ratings-pagination"><%= paginate @ratings, :remote => true, :param_name => "ratings_page", params: {friends_page: params[:friends_page]} %></div>
 				</div>
 				<div class="large-12 columns">
 				</div>
