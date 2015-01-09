@@ -32,7 +32,7 @@ class Event < ActiveRecord::Base
   end
 
   def date_details
-    self.time.strftime("%A, %B %e, %Y ")
+    self.time.strftime("%A, %B %e, %Y @ %l:%M %P ")
   end
 
   def not_passed

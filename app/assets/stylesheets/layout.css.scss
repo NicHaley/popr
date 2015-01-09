@@ -991,20 +991,36 @@ input:focus {
 
 //Edit Event Page
 
-#event-poster {
+#event-page-poster {
 	width: $movie-poster-width;
 	height: $movie-poster-height;
 	padding: 15px;
 	float: left;
 }
 
-#movie-details, #event-details {
+#movie-details, #event-details, #comments, #commit-event {
 	background: rgba(255, 255, 255, 0.45);
 	border-radius: 2px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 	outline: none;
 	padding: 15px;
 	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.edit-buttons {
+	font-size: 10px;
+}
+
+#edit-button {
+	float: right;
+}
+
+#comment-list {
+	clear: both;
+    height: 500px;
+    overflow: scroll;
 }
 
 /* Remove close button */
