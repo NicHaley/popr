@@ -379,6 +379,16 @@ input:focus {
 	margin: 0px;
 }
 
+#review-table tr{
+	border-bottom-width: 2px;
+	border-color: #EEEEEE;
+	border-style: solid;
+}
+
+#review-container {
+	padding-top: 25px;
+}
+
 // Friend Page
 
 #search-form {
