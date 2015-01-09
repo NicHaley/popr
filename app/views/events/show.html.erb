@@ -15,7 +15,7 @@
         <%= link_to "Cancel Event", user_event_path(@event.host, @event), data: { confirm: 'Are you sure you would like to cancel the event?' }, method: :delete, class: "edit-buttons" %>
       <% end %>
     </div>
-  <%= render 'commitments/form' %>
+    <%= render 'commitments/form' %>
   </div>
 
 
@@ -71,7 +71,6 @@
         <% end %>
 
         <div id="comment-list">
-          <h4>Comments</h4>
           <%= render :partial => "comments" %>
         </div>
       <!-- </div>  -->

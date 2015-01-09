@@ -93,7 +93,7 @@ $movie-poster-height: 50vh;
 }
 
 .edit-panels dd > a {
-		width: 300px;
+	width: 300px;
 }
 
 /* Welcome page */
@@ -998,7 +998,7 @@ input:focus {
 	float: left;
 }
 
-#movie-details, #event-details, #comments, #commit-event {
+#movie-details, #event-details, #commit-event, #comment-panel {
 	background: rgba(255, 255, 255, 0.45);
 	border-radius: 2px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
@@ -1007,6 +1007,12 @@ input:focus {
 	text-align: center;
 	margin-top: 15px;
 	margin-bottom: 15px;
+}
+
+#comment-panel {
+	text-align: left;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+	padding: 10px;
 }
 
 .edit-buttons {
@@ -1019,9 +1025,18 @@ input:focus {
 
 #comment-list {
 	clear: both;
-    height: 500px;
-    overflow: scroll;
+	height: 500px;
+	overflow: scroll;
+	padding: 10px;
 }
+
+.delete-button {
+	margin-right: 30px;
+	margin-top: -5px;
+	right: 0;
+	position: absolute;
+}
+
 
 /* Remove close button */
 /*.gm-style-iw + div {
