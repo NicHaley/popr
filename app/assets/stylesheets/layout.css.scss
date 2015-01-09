@@ -196,10 +196,15 @@ label {
 }
 
 // Form flip
-.form-section {
+
+.bg-color {
 	background-color: #db3442;
+}
+
+.form-section {
 	text-align: center;
 	display: none;
+	width: 100%;
 	height: 850px;
 }
 
@@ -207,8 +212,6 @@ label {
 	position: relative;
 	display: inline-block;
 	-webkit-perspective: 1000;
-	width: 600px;
-	height: 700px;
 	text-align: center;
 }
 
@@ -218,7 +221,7 @@ label {
 
 .card {
 	margin: 20px;
-	width: 100%;
+	// width: 100%;
 	height: 100%;
 	-webkit-transform-style: preserve-3d;
 	-webkit-transition: 0.5s;
@@ -229,7 +232,7 @@ label {
 	-webkit-backface-visibility: hidden;
 	z-index: 2;
 	position: absolute;
-	padding: 20px;
+	padding: 40px 150px 20px 10px;
 	background-color: white;
 	border-radius: 2px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
@@ -244,25 +247,70 @@ label {
 	-webkit-transform: rotatey(-180deg);
 }
 
+.movie-title {
+	border-radius: 2px 2px 0px 0px;
+	background-color: #474747;
+	text-align: center;
+	margin: -40px -150px 0px -10px;
+	z-index: 0;
+	border-bottom: 1px solid white;
+}
+
+.movie-title > h4 {
+	color: #d1d1d1;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-family: 'Open Sans Condensed';
+}
+
+
 .form-flip {
-	text-align: right;
+	border-radius: 0px 2px 2px 0px;
+	background-color: #f9f9f9;
+	position: absolute;
+	right: 0;
+	height: 100%;
+	z-index: -10;
+	width: 140px;
+	margin-top: -40px;
+	display: inline-block;
+}
+
+.form-flip > h5 {
+	position: relative;
+	top: 47%;
+	color: #474747;
+	font-family: 'Open Sans Condensed';
+	font-size: 20px;
 }
 
 .form-flip:hover {
 	cursor: pointer;
+	background-color: #474747;
+	-webkit-transition: background-color 250ms linear;
+	-moz-transition: background-color 250ms linear;
+	-o-transition: background-color 250ms linear;
+	-ms-transition: background-color 250ms linear;
+	transition: background-color 250ms linear;
+
+	h5 {
+		color: #f9f9f9;
+		-webkit-transition: color 250ms linear;
+		-moz-transition: color 250ms linear;
+		-o-transition: color 250ms linear;
+		-ms-transition: color 250ms linear;
+		transition: color 250ms linear;
+	}
 }
 
-.form-flip > img {
-	height: 50px;
-	width: 50px;
-	display: inline-block;
-}
-
-.form-flip > h6 {
-	display: inline-block;
-}
+// .form-flip > img {
+// 	height: 50px;
+// 	width: 50px;
+// 	display: inline-block;
+// }
 
 #selected-poster {
+	margin-top: 50px;
 	width: $movie-poster-width;
 	height: $movie-poster-height;
 }
@@ -273,6 +321,12 @@ label {
 	display: inline-block;
 }
 
+.movie-info {
+	text-align: left;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
 .movie-center {
 	text-align: center;
 }
@@ -280,10 +334,16 @@ label {
 // Movie Interests New
 .movie-score > img {
 	height: 50px;
+	vertical-align: text-top;
+	margin: 5px 10px 5px 5px;
+	padding-top: 5px;
 }
 
 #score-text {
-	font-size: 22px;
+	font-size: 45px;
+	display: inline-block;
+	vertical-align: text-top;
+	margin-top: 2px;
 }
 
 #movie-poster-col, #movie-content-col {

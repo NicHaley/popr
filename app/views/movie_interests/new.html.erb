@@ -1,39 +1,39 @@
 <% if (flash[:alert]) %>
-	<div class="error-box">
-		<p class="alert"><%= flash[:alert] %></p>
-	</div>
+<div class="error-box">
+	<p class="alert"><%= flash[:alert] %></p>
+</div>
 <% end %>
 
-<div class="movie-center">
-	<div class="movie-explore-field">
 
-		<div class="overflow"></div>
-		<div class="search-window"></div>
-		<div id="search-poster">
-			<div id="search-block">
-				<input type="text" id="search" placeholder="Search for movies">
-				<div class="search-results"></div>
-			</div><br />
+<div class="movie-explore-field">
 
-			<div id="movie-poster"></div>
-		</div>
+	<div class="overflow"></div>
+	<div class="search-window"></div>
+	<div id="search-poster">
+		<div id="search-block">
+			<input type="text" id="search" placeholder="Search for movies">
+			<div class="search-results"></div>
+		</div><br />
 
-		<div class="form-section">
-			<div class="form-window">
+		<div id="movie-poster"></div>
+	</div>
+
+	<div class="bg-color">
+		<div class="form-section row">
+			<div class="form-window small-8 large-8 small-centered large-centered columns">
 				<div class="card"> 
 					<div class="face front">
-						<div class="form-flip">
-							<img src="/assets/flip_icon.png">
-							<h6>Create Event</h6>
-						</div>
+						<div class="form-flip"><h5>Create Event</h5></div>
 						<div class="movie-text">
 							<div class="movie-title"></div><br />
 							<div class="movie-score"></div><br />
-							<div class="movie-director"></div>
-							<div class="movie-cast"></div>
-							<div class="movie-genre"></div>
-							<div class="movie-mpaa_rating"></div>
-							<div class="movie-runtime"></div>
+							<div class="movie-info">
+								<div class="movie-director"></div>
+								<div class="movie-cast"></div>
+								<div class="movie-genre"></div>
+								<div class="movie-mpaa_rating"></div>
+								<div class="movie-runtime"></div>
+							</div>
 						</div><br />
 
 						<div class="review-hide">
@@ -47,10 +47,11 @@
 					</div>
 
 					<div class="face back">
-						<div class="form-flip">
-							<img src="/assets/flip_icon.png">
-							<h6>Movie Info</h6><br />
-						</div>
+						<div class="form-flip"><h5>Movie Info</h5></div>
+						<div class="movie-title"></div><br />
+<!-- 						<div class="form-flip">
+							<h6>Movie Info!</h6><br />
+						</div><br /> -->
 						<%= render 'events/form' %>
 					</div>
 				</div>
@@ -58,6 +59,7 @@
 		</div>
 	</div>
 </div>
+
 
 <script id="menu_info" type="x-tmpl-mustache">
 
