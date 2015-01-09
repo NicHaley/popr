@@ -989,6 +989,24 @@ input:focus {
 	color: black;
 }
 
+//Edit Event Page
+
+#event-poster {
+	width: $movie-poster-width;
+	height: $movie-poster-height;
+	padding: 15px;
+	float: left;
+}
+
+#movie-details, #event-details {
+	background: rgba(255, 255, 255, 0.45);
+	border-radius: 2px;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+	outline: none;
+	padding: 15px;
+	text-align: center;
+}
+
 /* Remove close button */
 /*.gm-style-iw + div {
 	display: none;
