@@ -15,7 +15,9 @@
         <%= link_to "Cancel Event", user_event_path(@event.host, @event), data: { confirm: 'Are you sure you would like to cancel the event?' }, method: :delete, class: "edit-buttons" %>
       <% end %>
     </div>
-    <%= render 'commitments/form' %>
+    <% if @event.host != current_user %>
+      <%= render 'commitments/form' %>
+    <% end %>
   </div>
 
 

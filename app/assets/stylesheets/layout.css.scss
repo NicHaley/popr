@@ -998,21 +998,22 @@ input:focus {
 	float: left;
 }
 
-#movie-details, #event-details, #commit-event, #comment-panel {
+#movie-details, #event-details, #commit-event, .comment-panel {
 	background: rgba(255, 255, 255, 0.45);
 	border-radius: 2px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 	outline: none;
-	padding: 15px;
+	padding: 10px;
 	text-align: center;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
-#comment-panel {
+.comment-panel {
 	text-align: left;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 	padding: 10px;
+	overflow: auto;
 }
 
 .edit-buttons {
@@ -1037,6 +1038,19 @@ input:focus {
 	position: absolute;
 }
 
+.comment-user {
+	text-align: center;
+}
+
+.comment {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	display: inline-block;
+}
+
+.comment-date {
+	float: right;
+}
 
 /* Remove close button */
 /*.gm-style-iw + div {
