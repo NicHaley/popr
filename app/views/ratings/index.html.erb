@@ -1,28 +1,54 @@
+
 <div class="row">
-	<div class="small-8 small-centered columns">	
-
-		<h3 id="rating-center">All Reviews</h3>
-
-		<h5><small><%= page_entries_info @ratings %></small></h5><br />
-
-		<div id="review-list">
-			<% if @ratings %>
-				<% @ratings.each do |rating| %>
-				<div id="review-summary">
-					<% if rating.id != nil %>
-						<strong><%= Movie.find_movie(rating.rt_id).title %></strong><br /><br />
-						<i><%= rating.review %></i><br />
-						<% width = ((rating.user_score.to_i/5.to_f) * 100.to_i).to_i %><br />
-						<div class="rating_bar">
-							<div class="rating" style= "width:<%= width %>%"></div>
-						</div><br/>
-						<i>Created at: <%= rating.created_at %></i><br /><br /><br />
+	<div class="small-8 small-centered columns" id="review-container">	
+		<h4><center>Reviews</center></h4>
+				<div id="review-list">
+					<% if @ratings %>
+					<center><%= paginate @ratings %><center>
+					<table id="review-table" role="grid">
+						<thead>
+							<tr>
+								<th>Poster</th>
+								<th>Title</th>
+								<th>Year</th>
+								<th>Rating</th>
+								<th>My rating</th>
+								<th>Review</th>
+								<th width="200">Date added</th>
+							</tr>
+						</thead>
+						<tbody>
+						<% @ratings.each do |rating| %>
+							<% if rating.id != nil %>
+								<tr>
+									<% @movie = Movie.find_movie(rating.rt_id) %>
+									<td><%= image_tag(@movie.poster.gsub('det', 'thm'))%></td>
+									<td><%= @movie.title %></td>
+									<td><%= @movie.year %></td>
+									<td><% width = ((rating.user_score.to_i/5.to_f) * 100.to_i).to_i %>
+									<div class="rating_bar">
+									<div class="rating" style= "width:<%= width %>%"></div>
+									</div></td>
+									<td>
+										<% current_user.ratings.each do |current_rating|%>
+											<% if current_rating.rt_id == rating.rt_id %>
+												<% width = ((current_rating.user_score.to_i/5.to_f) * 100.to_i).to_i  %>
+												<div class="rating_bar">
+													<div class="rating" style="width:<%= width %>%"></div>
+												</div>
+											<% end %>
+										<% end %>
+									</td>
+									<td><%= rating.review %></td>
+									<td><%= rating.created_at.strftime("%D, %l:%M %p") %></td>
+								</tr>
+							<% end %>
+						<% end %>
+						</tbody>
+					</table>
 					<% end %>
 				</div>
-				<% end %>
-			<% end %>
-		</div>
 	</div>
 </div>
+<center><h5><small><%= page_entries_info @ratings %></small></h5></center>
 
-<%= paginate @ratings %>

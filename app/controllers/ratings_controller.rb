@@ -4,7 +4,7 @@ class RatingsController < ApplicationController
 
 	def index
 		@user = User.find(params[:user_id])
-		@ratings = @user.ratings.order(created_at: :desc).page(params[:page])
+		@ratings = @user.ratings.order(created_at: :desc).page(params[:page]).per(5)
 	end
 
 	def show

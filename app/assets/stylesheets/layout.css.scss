@@ -442,16 +442,16 @@ input:focus {
 
 #review-list > p {
 	margin: 0px;
-	
 }
 
-#rating-center {
-	text-align: center;
+#review-table tr{
+	border-bottom-width: 2px;
+	border-color: #EEEEEE;
+	border-style: solid;
 }
 
-#review-summary {
-	border-top: 2px solid black;
-	padding-top: 10px;
+#review-container {
+	padding-top: 25px;
 }
 
 // Friend Page
