@@ -1,5 +1,3 @@
-<h4>Create Event</h4>
-
 <%= form_for([@user, @event], url: user_events_path(user_id: current_user), html: {method: :post}) do |f|%>
 
   <div class="field">
@@ -19,9 +17,9 @@
     <%= f.datetime_select :time, :minute_step => 5 %>
   </div>
   <div class="field">
-    <%= f.label :capacity %><br />
+    <%= f.label :capacity %>
     <%= f.number_field :capacity, {min: 1, value: 1} %>
-  </div><br />
+  </div>
 
     <div class="input-container">
       <%= f.hidden_field :rt_id, value: "" %>

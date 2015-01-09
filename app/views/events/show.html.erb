@@ -89,8 +89,9 @@
               </div>
 
               <div class="field">
-                <%= f.text_area :content %>
+                <%= f.text_area :content, :size => "35x3", maxlength: 150, class: "message" %>
               </div>
+              <div class="countdown"></div>
               <div class="actions">
                 <%= f.submit "Add Comment", id: "submit-comment", class: "button radius" %>
               </div>
