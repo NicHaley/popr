@@ -14,7 +14,7 @@
 						<th>Rating</th>
 						<th>My rating</th>
 						<th>Review</th>
-						<th width="200">date added</th>
+						<th width="200">Date added</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -29,7 +29,16 @@
 							<div class="rating_bar">
 							<div class="rating" style= "width:<%= width %>%"></div>
 							</div></td>
-							<td></td>
+							<td>
+								<% current_user.ratings.each do |current_rating|%>
+									<% if current_rating.rt_id == rating.rt_id %>
+										<% width = ((current_rating.user_score.to_i/5.to_f) * 100.to_i).to_i  %>
+										<div class="rating_bar">
+											<div class="rating" style="width:<%= width %>%"></div>
+										</div>
+									<% end %>
+								<% end %>
+							</td>
 							<td><%= rating.review %></td>
 							<td><%= rating.created_at.strftime("%D, %l:%M %p") %></td>
 						</tr>
