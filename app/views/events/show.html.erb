@@ -1,8 +1,8 @@
 <br />
 <div class="row">
   <div class="large-4 columns">
-    <%= image_tag @movie.poster, id: "event-page-poster" %>
     <div class="content" id="movie-details">
+    <%= image_tag @movie.poster, id: "event-page-poster" %>
       <h4><%= @movie.title %> (<%= @movie.year %>)</h4><br />
       <p><b>Critics Rating:</b> <%= @movie.rating[0] %> <b><%= @movie.rating[1] >= 0 ? @movie.rating[1] : "-" %>%</b> 
       </p> 
@@ -38,21 +38,20 @@
         <p><strong>Capacity:</strong> <%= @event.capacity %> </p>
         <p><strong>Confirmed Guests:</strong> <%= @event.commitments.sum(:party_size) %></p>
       </div>
-      <fieldset>
-        <legend>Who's going:</legend>
-        <% if @event.commitments %>
-          <ul class="small-block-grid-3">
-          <% @event.commitments.each do |commitment| %>
-            <% if commitment.id %>
-              <li><p><%= link_to user_path(commitment.user) do %>
-                <%= commitment.user.first_name %> <i><%= commitment.guests %></i>
-                <%= image_tag commitment.user.avatar_url(:thumb), id: "avatar-thumb" %></p></li>
-              <% end %>  
+      <% if @event.commitments %>
+        <ul class="small-block-grid-3">
+        <% @event.commitments.each do |commitment| %>
+          <% if commitment.id %>
+      <div class="attendees">
+            <li><p><%= link_to user_path(commitment.user) do %>
+              <%= commitment.user.first_name %> <i><%= commitment.guests %></i>
+              <%= image_tag commitment.user.avatar_url(:thumb), id: "avatar-thumb" %></p></li>
+        </div>
             <% end %>  
-          <% end %>
-          </ul>
+          <% end %>  
         <% end %>
-      </fieldset>          
+        </ul>
+      <% end %>        
     </div>
   </div>
           

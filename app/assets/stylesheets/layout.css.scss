@@ -995,7 +995,9 @@ input:focus {
 	width: $movie-poster-width;
 	height: $movie-poster-height;
 	padding: 15px;
-	float: left;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #movie-details, #event-details, #commit-event, .comment-panel {
@@ -1042,14 +1044,29 @@ input:focus {
 	text-align: center;
 }
 
+#avatar-thumb {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .comment {
 	margin-top: 10px;
 	margin-bottom: 5px;
 	display: inline-block;
+	word-break: break-all;
 }
 
 .comment-date {
 	float: right;
+}
+
+.attendees {
+	margin: auto;
+	padding: 20px;
+	display: inline-block;
+	list-style-type: none;
+	overflow: scroll;
 }
 
 /* Remove close button */
