@@ -14,7 +14,7 @@ $movie-poster-height: 50vh;
 	margin-top: 0;
 }
 
-#container {
+.container {
 	background-image: url('darkshape_bg.gif');
 	padding-top: 30px;
 }
@@ -1000,14 +1000,13 @@ input:focus {
 	margin-right: auto;
 }
 
-#movie-details, #event-details, #commit-event, .comment-panel {
-	background: rgba(255, 255, 255, 0.45);
+#movie-details, #event-details, #commit-event, .comment-panel, #comments {
+	background: white;
 	border-radius: 2px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 	outline: none;
 	padding: 10px;
 	text-align: center;
-	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
@@ -1028,7 +1027,7 @@ input:focus {
 
 #comment-list {
 	clear: both;
-	height: 500px;
+	height: 300px;
 	overflow: scroll;
 	padding: 10px;
 }
@@ -1063,10 +1062,39 @@ input:focus {
 
 .attendees {
 	margin: auto;
-	padding: 20px;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 	display: inline-block;
 	list-style-type: none;
-	overflow: scroll;
+}
+
+.attendees-container {
+	height: 100px;
+	overflow: auto;
+}
+
+#commitment_party_size {
+	text-align: center;
+}
+
+#cancel-commitment {
+	font-size: 12px;
+}
+
+#empty-comments {
+	font-size: 20px;
+	margin-top: 70px;
+}
+
+#event-details > h2 {
+	border-radius: 2px 2px 0px 0px;
+	margin: -10px -10px 0px -10px;
+	background-color: #474747;
+	color: #d1d1d1;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-family: 'Open Sans Condensed';
 }
 
 /* Remove close button */

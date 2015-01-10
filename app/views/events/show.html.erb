@@ -1,4 +1,4 @@
-<br />
+<div class="container">
 <div class="row">
   <div class="large-4 columns">
     <div class="content" id="movie-details">
@@ -23,40 +23,44 @@
 
   <div class="large-8 small-12 columns">
     <div id="event-details">
-      <h1><%= @event.title %></h1><br />
+      <h2><%= @event.title %></h2><br />
       <h4>Hosted by: <%= link_to user_path(@event.host) do %>
         <%= image_tag @event.host.avatar_url(:thumb), id: "avatar-thumb" %> <%= @event.host.first_name %> <%= @event.host.last_name %>
         <% end %>
       </h4><br />
+      <h5>"<%= @event.description %>"</h5><br />
       <h5><i><strong><%=@event.date_details%></strong></i></h5>
       <h5><%= @event.address %></h5>  
       <% if !@event.not_passed %>
         <b><h5>This event has passed!</h5></b>
       <% end %> 
-      <h5><%= @event.description %></h5>
       <div class="panel">
-        <p><strong>Capacity:</strong> <%= @event.capacity %> </p>
-        <p><strong>Confirmed Guests:</strong> <%= @event.commitments.sum(:party_size) %></p>
-      </div>
-      <% if @event.commitments %>
-        <ul class="small-block-grid-3">
-        <% @event.commitments.each do |commitment| %>
-          <% if commitment.id %>
-      <div class="attendees">
-            <li><p><%= link_to user_path(commitment.user) do %>
-              <%= commitment.user.first_name %> <i><%= commitment.guests %></i>
-              <%= image_tag commitment.user.avatar_url(:thumb), id: "avatar-thumb" %></p></li>
-        </div>
-            <% end %>  
-          <% end %>  
-        <% end %>
-        </ul>
-      <% end %>        
+        <p><strong>Poprs:</strong> <%= @event.commitments.sum(:party_size) %> / <%= @event.capacity %></p>
+        <% if @event.commitments %>
+          <ul class="small-block-grid-3 attendees-container">
+            <% @event.commitments.each do |commitment| %>
+              <% if commitment.id %>
+                <div class="attendees">
+                  <li>
+                    <p>
+                      <%= link_to user_path(commitment.user) do %>
+                        <%= commitment.user.first_name %>
+                        <i><%= commitment.guests %></i>
+                        <%= image_tag commitment.user.avatar_url(:thumb), id: "avatar-thumb" %>
+                      <% end %>
+                    </p>
+                  </li>
+                </div>
+              <% end %>  
+            <% end %>
+          </ul>
+        <% end %> 
+      </div>       
     </div>
   </div>
           
     <div class="large-8 small-12 columns">  
-      <!-- <div id="comments">      -->
+      <div id="comments">     
 
         <%= form_for([@event.host, @event, @comment], :remote => true) do |f| %>
           <div id="comment-form-errors">
@@ -70,14 +74,17 @@
             <%= f.submit "Add Comment", id: "edit-button", class: "button tiny" %>
           </div>
         <% end %>
-
         <div id="comment-list">
+          <% unless @EventComments.any? %>
+            <p id="empty-comments">Leave a comment!</p>
+          <% end %>
           <%= render :partial => "comments" %>
         </div>
-      <!-- </div>  -->
+      </div> 
     </div> 
 
     </div>
+</div>
     <script type="text/javascript">
       $(function() {
        $("#new_comment")

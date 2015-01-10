@@ -38,7 +38,7 @@
           </div>
         <% end %>  
         <% end %>
-        <%= link_to "Cancel", user_commitment_path(current_user, @commitment), method: :delete %>   
+        <%= link_to "Cancel", user_commitment_path(current_user, @commitment), method: :delete, id: "cancel-commitment" %>   
     <% else %>
       <% if @event.commitments.sum(:party_size) != @event.capacity %>   
         <%= form_for([@event, @commitment], url: user_commitments_path(user_id: current_user.id, event_id: params[:id])) do |f| %>
