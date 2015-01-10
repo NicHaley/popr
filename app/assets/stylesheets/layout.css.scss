@@ -1000,7 +1000,7 @@ input:focus {
 	margin-right: auto;
 }
 
-#movie-details, #event-details, #commit-event, .comment-panel, #comments {
+#movie-details, #event-details, #commit-event, .comment-panel, #comments, #edit-event {
 	background: white;
 	border-radius: 2px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
@@ -1083,8 +1083,9 @@ input:focus {
 }
 
 #empty-comments {
-	font-size: 20px;
+	font-size: 30px;
 	margin-top: 70px;
+	font-family: 'Open Sans Condensed';
 }
 
 #event-details > h2 {
@@ -1095,6 +1096,21 @@ input:focus {
 	padding-top: 15px;
 	padding-bottom: 15px;
 	font-family: 'Open Sans Condensed';
+}
+
+#event-details > h5 {
+	padding-right: 100px;
+	padding-left: 100px;
+}
+
+#movie-details > h4 {
+	font-family: 'Open Sans Condensed';
+}
+
+.edit-container {
+	background-image: url('darkshape_bg.gif');
+	height: 100vh;
+	padding-top: 30px;
 }
 
 /* Remove close button */
