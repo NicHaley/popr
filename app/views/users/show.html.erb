@@ -1,4 +1,43 @@
 <div class="container">
+	<div id="avatar-panel"><%= image_tag @user.avatar_url(:profile), id: 'profile-image'%></div>
+	<div class="row" id="status-row">
+		<div class="large-3 medium-2 columns" id="status-space">
+			Hello
+		</div>
+		<div class="large-7 medium-8 columns" id="status-details">
+			<dl class="tabs" data-tab>
+			  <dd class="active"><a href="#p1" id="left-tab">Hosting</a></dd>
+			  <dd><a href="#p2" id="center-tab">Attending</a></dd>
+			  <dd><a href="#p3" id="center-tab">Friends</a></dd>
+			  <dd><a href="#p4" id="center-tab">Reviews</a></dd>
+			  <dd><a href="#p5" id="right-tab">Wishlist</a></dd>
+			</dl>
+		</div>
+		<div class="large-2 medium-2 columns" id="edit-profile-btn">
+			<a class="button tiny radius">Edit Profile</a>
+		</div>
+	</div>
+
+	<div class="row" id="user-content-row">
+		<div class="large-8 columns" id="user-tab-content">
+			<div class="tabs-content">
+				<div class="content active" id="p1">
+				</div>
+				<div class="content" id="p2">
+				</div>
+				<div class="content" id="p3">
+				</div>
+				<div class="content" id="p4">
+				</div>
+				<div class="content" id="p5">
+				</div>
+			</div>
+		</div>
+		<div class="large-4 columns" id="user-add-info">
+			Hello
+		</div>
+	</div>
+
 	<div class="row" id:"profile-row">
 		<div class="large-3 small-12 columns" id="profile-picture">
 			<div class="row">
@@ -158,24 +197,6 @@
 </div>
 
 <script>
-
-	$(document).on('ready page:load', function() {
-		
-		//Insert no data message for empty charts
-
-		if($('#chart4').is(':empty')) { 
-			$("#chart4").append("<h4>No data available</h4>");
-		}
-		if($('#chart').is(':empty')) { 
-			$("#chart").append("<h4>No data available</h4>");
-		}
-		if($('#chart2').is(':empty')) { 
-			$("#chart2").append("<h4>No data available</h4>");
-		}
-		if($('#chart3').is(':empty')) { 
-			$("#chart3").append("<h4>No data available</h4>");
-		}
-	});
 
 	var chart = c3.generate({
 		bindto: '#chart',
