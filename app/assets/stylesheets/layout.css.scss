@@ -502,6 +502,20 @@ input:focus {
 .gm-style label { 
 	width: auto; display: inline; 
 }
+/* Filter Events */
+
+#btntoggle {
+	float: right;
+}
+
+div#slidingDiv
+{
+    border-radius:4px;
+    border:1px solid #333333;
+    margin:5px;
+    padding:5px;
+    height: 300px;
+}
 
 /* All Events */
 #event {

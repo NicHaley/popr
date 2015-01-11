@@ -36,6 +36,9 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bourbon (3.2.3)
+      sass (~> 3.2)
+      thor
     builder (3.2.2)
     c3-rails (0.4.8)
     cancancan (1.9.2)
@@ -197,6 +200,7 @@ DEPENDENCIES
   awesome_print
   better_errors
   binding_of_caller
+  bourbon
   c3-rails
   cancancan (~> 1.9)
   carrierwave

@@ -35,6 +35,7 @@ gem 'c3-rails'
 gem 'd3-rails'
 gem 'gon'
 gem 'kaminari'
+gem 'bourbon'
 
 gem 'geocoder'
 gem 'jquery-ui-rails'
