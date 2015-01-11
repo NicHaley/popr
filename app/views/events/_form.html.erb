@@ -2,12 +2,14 @@
 
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, maxlength: 40, class: "message-title" %>
   </div>
+  <div class="countdown-title"></div>
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_area :description, rows: "2", id: "new-event-description" %>
-  </div>      
+    <%= f.text_area :description, rows: "3", id: "new-event-description", maxlength: 140, class: "message-description" %>
+  </div>
+  <div class="countdown-description"></div>      
   <div class="field">
     <%= f.label :address %>
     <%= f.text_field :address, size: "90" %>

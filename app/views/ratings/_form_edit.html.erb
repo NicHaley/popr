@@ -35,8 +35,9 @@
 </div><br /><br />
 <div class="field">
 	<%= f.label :review %>
-	<%= f.text_area :review, :size => "45x5" %>
+	<%= f.text_area :review, :size => "35x3", maxlength: 140, class: "message" %>
 </div>
+<div class="countdown"></div>
 <div class="field">
 	<%= f.hidden_field :rt_id, value: "" %>
 	<%= f.hidden_field :actors, value: "" %>

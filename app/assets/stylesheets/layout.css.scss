@@ -977,12 +977,12 @@ div#slidingDiv
 
 //Countdown in Textarea
 
-.message {
+.message, .message-description, .message-title {
 	margin-bottom: 9px;
 	resize: none;
 }
 
-.countdown {
+.countdown, .countdown-description, .countdown-title {
 	margin-top: -25px;
 	margin-bottom: 9px;
 	font-size: 10px;
@@ -1111,6 +1111,12 @@ div#slidingDiv
 #empty-comments {
 	font-size: 30px;
 	margin-top: 70px;
+	font-family: 'Open Sans Condensed';
+}
+
+#empty-commitments {
+	margin-top: 10px;
+	font-size: 30px;
 	font-family: 'Open Sans Condensed';
 }
 
