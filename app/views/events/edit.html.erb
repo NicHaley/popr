@@ -1,33 +1,12 @@
-<h1>Edit <%= @event.title %></h1>
-<div class="movie-explore-field">
-  <div id="search-block">
-    <input type="text" id="search" placeholder="Search for movies and TV shows...">
-    <div class="search-results"></div>
-  </div>
-  
-  <div class="movie-info">
-    <div id="movie-poster">
-      <i>No Movie Selected</i>
-    </div>
-
-    <div class="new-event" class="action">
-      <%= render 'form' %>
+<div class="edit-container">
+  <div class="row">
+    <div class="small-7 small-centered columns">
+      <div id="edit-event">
+        <h4>Edit <%= @event.title %></h4><br />
+        <div class="new-event" class="action">
+          <%= render 'form' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-<script id="menu_info" type="x-tmpl-mustache">
-
-  <div data-id="{{id}}" 
-       data-poster="{{posterOri}}"
-
-       class="movie-click">
-
-       <img class="img-thumb" 
-            align="left" 
-            height="58" 
-            src="{{posterThumb}}" />
-
-        <i> <img height="16" src="{{icon}}" /> <i id="movie-title"> {{critics_score}} - <strong> {{title}} ({{year}}) </strong> </i>
-  </div>
-</script>

@@ -46,6 +46,7 @@ class EventsController < ApplicationController
     @commitment = current_user.commitments.find_or_initialize_by(event: @event)
     @movie = Movie.find_movie(@event.rt_id)
     @comment = @event.comments.build
+    @EventComments = @event.comments.all
   end
 
   def create

@@ -1,106 +1,99 @@
+<div class="container">
 <div class="row">
-  <h1><%= @event.title %></h1>
   <div class="large-4 columns">
-    <%= image_tag @movie.poster %>
-    <div class="row">
-    <p><% if current_user == @event.host %>
-      <%= link_to "Edit Event", edit_user_event_path(@event.host, @event), class: "tiny button round" %> <%= link_to "Cancel Event", user_event_path(@event.host, @event), data: { confirm: 'Are you sure?' }, method: :delete, class: "tiny button round"%>
-    <% end %></p> 
+    <div class="content" id="movie-details">
+    <%= image_tag @movie.poster, id: "event-page-poster" %>
+      <h4><%= @movie.title %> (<%= @movie.year %>)</h4><br />
+      <p>
+        <b>Critics Rating:</b> 
+        <% if @movie.rating[0].include?("Fresh") %>
+          <img class="event-critics-score" src="http://d3biamo577v4eu.cloudfront.net/static/images/trademark/fresh.png"> 
+        <% elsif @movie.rating[0].include?("Rotten") %>
+          <img class="event-critics-score" src="http://d3biamo577v4eu.cloudfront.net/static/images/trademark/rotten.png">
+        <% else %>
+          <img class="event-critics-score" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Icon-round-Question_mark.svg/200px-Icon-round-Question_mark.svg.png"> 
+        <% end %>
+        <b><%= @movie.rating[1] >= 0 ? @movie.rating[1] : "-" %>%</b> 
+      </p> 
+      <p><b>Cast:</b> <% @movie.cast.each do |actor| %>
+          <i><%= actor["name"] %> /</i> 
+        <% end %>
+      </p>
+      <% if current_user == @event.host %>
+        <%= link_to "Edit Event", edit_user_event_path(@event.host, @event), class: "edit-buttons" %> | 
+        <%= link_to "Cancel Event", user_event_path(@event.host, @event), data: { confirm: 'Are you sure you would like to cancel the event?' }, method: :delete, class: "edit-buttons" %>
+      <% end %>
     </div>
+    <% if @event.host != current_user %>
+      <%= render 'commitments/form' %>
+    <% end %>
   </div>
 
-  <div class="large-8 columns panel">
-    <div class="large-8 small-12 columns" id="tab-section">
-      <dl class="tabs" data-tab>
-        <dd class="active"><a href="#event-details" id="left-tab">Event</a></dd>
-        <dd><a href="#movie-details" id="center-tab">Movie</a></dd>
-      </dl>
-      <div class="tabs-content">
-        <div class="content active" id="event-details">
-          <h4>Hosted by: <%= link_to user_path(@event.host) do %>
-            <%= image_tag @event.host.avatar_url(:thumb), id: "avatar-thumb" %> <%= @event.host.first_name %> <%= @event.host.last_name %></h4>
+
+  <div class="large-8 small-12 columns">
+    <div id="event-details">
+      <h2><%= @event.title %></h2><br />
+      <h4>Hosted by: <%= link_to user_path(@event.host) do %>
+        <%= image_tag @event.host.avatar_url(:thumb), id: "avatar-thumb" %> <%= @event.host.first_name %> <%= @event.host.last_name %>
+        <% end %>
+      </h4><br />
+      <h5>"<%= @event.description %>"</h5><br />
+      <h5><i><strong><%=@event.date_details%></strong></i></h5>
+      <h5><%= @event.address %></h5>  
+      <% if !@event.not_passed %>
+        <b><h5>This event has passed!</h5></b>
+      <% end %> 
+      <div class="panel">
+        <p><strong>Poprs:</strong> <%= @event.commitments.sum(:party_size) %> / <%= @event.capacity %></p>
+        <% if @event.commitments %>
+          <ul class="small-block-grid-3 attendees-container">
+            <% @event.commitments.each do |commitment| %>
+              <% if commitment.id %>
+                <div class="attendees">
+                  <li>
+                    <p>
+                      <%= link_to user_path(commitment.user) do %>
+                        <%= commitment.user.first_name %>
+                        <i><%= commitment.guests %></i>
+                        <%= image_tag commitment.user.avatar_url(:thumb), id: "avatar-thumb" %>
+                      <% end %>
+                    </p>
+                  </li>
+                </div>
+              <% end %>  
             <% end %>
-            <h5><%= @event.address %></h5>  
-            <% if !@event.not_passed %>
-            <b><h5>This event has passed!</h5></b>
-            <% end %> 
-            <h5><i><strong><%=@event.date_details%></strong></i></h5>
-            <h5><%= @event.description %></h5>
-            <div class="panel">
-              <p>Capacity: <%= @event.capacity %> </p>
-              <p>Confirmed Guests: <%= @event.commitments.sum(:party_size) %></p>
-            </div>
-            <fieldset>
-              <legend>Who's going:</legend>
-              <% if @event.commitments %>
-                <ul class="small-block-grid-3">
-                <% @event.commitments.each do |commitment| %>
-                  <% if commitment.id %>
-                    <li><p><%= link_to user_path(commitment.user) do %>
-                      <%= commitment.user.first_name %> <i><%= commitment.guests %></i>
-                      <%= image_tag commitment.user.avatar_url(:thumb), id: "avatar-thumb" %></p></li>
-                    <% end %>  
-                  <% end %>  
-                <% end %>
-                </ul>
-              <% end %>
-            </fieldset>          
+          </ul>
+        <% end %> 
+      </div>       
+    </div>
+  </div>
+          
+    <div class="large-8 small-12 columns">  
+      <div id="comments">     
+
+        <%= form_for([@event.host, @event, @comment], :remote => true) do |f| %>
+          <div id="comment-form-errors">
+            <%= render :partial => "comment_form_errors" %>
           </div>
-          
-          <div class="content" id="movie-details">
-            <h4>Title: <%= @movie.title %></h4>
-            <h5>Year: <%= @movie.year %></h5>
-            <p><b>Cast:</b> <% @movie.cast.each do |actor| %>
-              <i><%= actor["name"] %> /</i> 
-              <% end %></p>
-              <p><b>Critics Rating:</b> <%= @movie.rating[0] %> <b><%= @movie.rating[1] >= 0 ? @movie.rating[1] : "-" %>%</b> </p>
-              <% if @movie.synopsis != "" %>
-              <p><b>Synopsis:</b> <%= @movie.synopsis %></p>
-              <% else %>
-              <p><b>Synopsis:</b> <i>not available</i></p>
-              <% end %>
-              <% if @movie.consensus != "" %>
-              <p><b>Critics Consensus:</b> <%= @movie.consensus %></p>
-              <%else%>
-              <p><b>Critics Consensus:</b> <i>not available</i></p>
-              <% end %>
-            </div>
+
+          <div class="field">
+            <%= f.text_area :content, :size => "35x3", maxlength: 500, placeholder: "Leave a comment...", class: "message" %>
           </div>
+          <div class="actions">
+            <%= f.submit "Add Comment", id: "edit-button", class: "button tiny" %>
+          </div>
+        <% end %>
+        <div id="comment-list">
+          <% unless @EventComments.any? %>
+            <p id="empty-comments">Leave a comment!</p>
+          <% end %>
+          <%= render :partial => "comments" %>
         </div>
-      </div>
-
-
- 
-
-        <div class="row">
-          
-            <%= render 'commitments/form' %>
-          
-        
-          <div class="large-8 columns">        
-              <div id="comment-list">
-                <%= render :partial => "comments" %>
-              </div>
-              <h4>Add Comment</h4>
-
-              <%= form_for([@event.host, @event, @comment], :remote => true) do |f| %>
-              <div id="comment-form-errors">
-                <%= render :partial => "comment_form_errors" %>
-              </div>
-
-              <div class="field">
-                <%= f.text_area :content, :size => "35x3", maxlength: 150, class: "message" %>
-              </div>
-              <div class="countdown"></div>
-              <div class="actions">
-                <%= f.submit "Add Comment", id: "submit-comment", class: "button radius" %>
-              </div>
-
-              <% end %>
-          </div> 
-        </div>
+      </div> 
+    </div> 
 
     </div>
+</div>
     <script type="text/javascript">
       $(function() {
        $("#new_comment")
