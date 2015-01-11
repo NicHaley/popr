@@ -305,7 +305,6 @@ label {
 
 .card {
 	margin: 20px;
-	// width: 100%;
 	height: 100%;
 	-webkit-transform-style: preserve-3d;
 	-webkit-transition: 0.5s;
@@ -421,6 +420,11 @@ label {
 
 .movie-center {
 	text-align: center;
+}
+
+#event_time_4i, #event_time_5i {
+	display: inline;
+	width: 45%;
 }
 
 // Movie Interests New
@@ -635,9 +639,9 @@ div#slidingDiv
 }
 
 #friend-icon {
-	margin-top:0px;
 	width: 30px;
 	height: 30px;
+	padding: 1px;
 	background-color: #BD1E2C;
 }
 
