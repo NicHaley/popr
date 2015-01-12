@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    sleep(0.8)
+    sleep(0.2)
     @user = User.find(params[:id])
     @ratings = @user.ratings.order(created_at: :desc).page(params[:ratings_page]).per(3)
     @friends = @user.friendships.page(params[:friends_page]).per(3)

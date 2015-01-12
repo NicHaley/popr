@@ -1,69 +1,153 @@
 <div class="container">
-	<div class="row" id:"profile-row">
-		<div class="large-3 small-12 columns" id="profile-picture">
-			<div class="row">
-				<div class="large-12 columns" id="profile-image">
-					<%= image_tag @user.avatar_url(:profile), id: 'image-profile'%>
-				</div>
-				<div class="large-12 columns" id="profile-content">
-					<% if current_user == @user %>
-					  <%= link_to "Edit Profile", edit_user_path(@user), class:'small-caps' %>
-          <% end %>
-            <p><%=@user.first_name%> <%=@user.last_name%></p>
+	<div class="row" id="status-row">
+		<div class="large-3 medium-3 small-12 columns" id="status-space">
+			<%= image_tag @user.avatar_url(:profile), id: 'profile-image'%>
+			<p><b><%=@user.first_name%> <%=@user.last_name%></b></p>
             <p>Joined on: <%=@user.created_at%></p>
-					<div>
-						<% if @user.hometown == nil %>
-							<p>No address yet</p>
-						<% else %>
-							<b>Hometown: <%= @user.hometown %></b>
+			<div>
+				<% if @user.bio == nil %>
+					<p>No bio yet</p>
+				<% else %>
+					<p><%= @user.bio %></p>
+				<% end %>
+				<% if @user.hometown == nil %>
+					<p>No address yet</p>
+				<% else %>
+					<b><%= @user.hometown %></b>
+				<% end %>
+			</div>
+		</div>
+		<div class="large-7 medium-7 small-7 columns" id="status-details">
+			<dl class="tabs" data-tab>
+			  <dd class="active">
+			  	<a href="#p1" id="left-tab">HOSTING</a>
+			  	<% count_host = 0 %>
+			  	<% @user.hosted_events.each do |event| %>
+						<% if event.not_passed %>
+							<% count_host += 1%>
 						<% end %>
-						<% if @user.bio == nil %>
-							<p>No bio yet</p>
-						<% else %>
-							<p><%= @user.bio %></p>
+			  	<% end %>
+					<span class="profile-counts"><center><%= count_host %></center></span>
+			  </dd>
+			  <dd>
+			  	<a href="#p2" id="center-tab">ATTENDING</a>
+			  	<% count_attend = 0 %>
+			  	<% @user.commitments.each do |commitment| %>
+						<% if commitment.event.not_passed %>
+							<% count_attend += 1%>
 						<% end %>
-					</div>
+			  	<% end %>
+					<span class="profile-counts"><center><%= count_attend %></center></span>
+			  </dd>
+			  <dd>
+			  	<a href="#p3" id="center-tab">FREINDS</a>
+					<span class="profile-counts"><center><%= @user.friendships.where(confirm: true).count %></center></span>
+			  </dd>
+			  <dd>
+			  	<a href="#p4" id="center-tab">REVIEWS</a>
+					<span class="profile-counts"><center><%= @user.ratings.length %></center></span>
+			  </dd>
+			  <dd>
+			  	<a href="#p5" id="right-tab">WISHLIST</a>
+			  	<% count_wish = 0 %>
+			  	<% @user.movie_interests.each do |movie_interest| %>
+			  		<% if movie_interest.wished %>
+			  			<% count_wish += 1 %>
+			  		<% end %>
+			  	<% end %>
+			  	<span class="profile-counts"><center><%= count_wish %></center></span>
+			  </dd>
+			</dl>
+		</div>
+		<div class="large-2 medium-2 small-12 columns" id="edit-profile-btn">
+			<% if current_user == @user %>
+				<%= link_to "Edit Profile", edit_user_path(@user), class:"button tiny radius"%>
+      <% end %>
+		</div>
+	</div>
+
+	<div class="row" id="user-content-row">
+		<div class="large-7 medium-7 small-7 columns" id="user-tab-content">
+			<div class="tabs-content">
+				<div class="content active" id="p1">
+				<p>HOSTED EVENTS</p>
+					<ul>
+		  			<% unless @user.hosted_events.empty? %>
+					    <% @user.hosted_events.each do |event| %>
+						    <% if event.not_passed %>
+							    <li>
+							      <%= link_to event.title, user_event_path(@user, event) %>
+							    </li>
+						    <% end %>
+					    <% end %>
+						<% else %>
+							<p><%= @user.first_name %> has no hosted events currently</p>
+						<% end %>
+		  		</ul>
+				</div>
+				<div class="content" id="p2">
+					<p>ATTENDING EVENTS</p>
+					<ul>
+						<% unless @user.commitments.empty? %>
+						  	<% @user.commitments.each do |commitment| %>
+							  	<% if commitment.event.not_passed %>
+								 	<li>
+								    <%= link_to commitment.event.title, user_event_path(commitment.event.host, commitment.event) %>
+								  	</li>
+							 	 <% end %>
+						 	<% end %>
+						<% else %>
+							<p><%= @user.first_name %> is not attending any events currently</p>
+						<% end %>
+					</ul>
+				</div>
+				<div class="content" id="p3">
+				</div>
+				<div class="content" id="p4">
+				</div>
+				<div class="content" id="p5">
+					<div id="wish-section">
+					<b>Wishlist</b><br /><br />
+					<% unless @user.movie_interests.empty? %>
+						<ul id="featured1 inline-list" data-orbit>
+							<% count = 0 %>
+						  	<li>
+								<% @user.movie_interests.each do |movie| %>
+									<% count += 1 %>
+									<% if count % 10 == 0 %>
+										<% return true %>
+									<% else %>
+
+									<div class="car-img-container">
+										<% sleep(0.2) %>
+										<img class= "car-img" src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
+										<% if current_user.id == @user.id %>
+											<%= link_to "Remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
+										<% end %>
+									</div>
+										<% if count % 3 == 0 %>
+											</li>
+											<li>
+										<% end %>
+									<% end %> 
+							 	<% end %>
+							</li>
+						</ul>
+					<% else %>
+						<p>No movie interests yet</p>
+					<% end %>	
+					</div>	
 				</div>
 			</div>
 		</div>
+		<div class="large-2 medium-2 small-12 columns" id="user-add-info">
+			Insert Side Content
+		</div>
+	</div>
 
-		<div class="large-1 columns"></div>
 
-		<div class="large-8 small-12 columns" id="profile-section">
-    	<h4>Recent Updates</h4>
-	  	<ul>
-	  		<% unless @user.hosted_events.empty? %>
-			    <% @user.hosted_events.each do |event| %>
-				    <% if event.not_passed %>
-					    <li>
-					      <%= link_to event.title, user_event_path(@user, event) %>
-					    </li>
-				    <% end %>
-			    <% end %>
-			<% else %>
-				<p><%= @user.first_name %> has no hosted events currently</p>
-			<% end %>
-	  	</ul>
 
-	  	<h4>Joined Events</h4>
-			<ul>
-				<% unless @user.commitments.empty? %>
-				  	<% @user.commitments.each do |commitment| %>
-					  	<% if commitment.event.not_passed %>
-						 	<li>
-						    <%= link_to commitment.event.title, user_event_path(commitment.event.host, commitment.event) %>
-						  	</li>
-					 	 <% end %>
-				 	<% end %>
-				<% else %>
-					<p><%= @user.first_name %> is not attending any events currently</p>
-				<% end %>
-			</ul>
-    </div>
 
-  </div>
-
-  <br/>
 <!-- Friendlist -->
 	<div class="row" id="friend-row">
 		<div class="large-3 small-12 columns" id="friend-section">
@@ -82,26 +166,17 @@
 		<div class="large-1 columns"></div>
 
 		<div class="no-pad-left no-pad-right large-8 small-12 columns" id="tab-section chart-radius">
-			<dl class="tabs" data-tab>
-			  <dd class="active"><a href="#p1" id="left-tab">Ratings</a></dd>
-			  <dd><a href="#p2" id="center-tab">Genres</a></dd>
-			  <dd><a href="#p3" id="center-tab">Actors</a></dd>
-			  <dd><a href="#p4" id="right-tab">Directors</a></dd>
-			</dl>
-			<div class="tabs-content">
-				<div class="content active" id="p1">
+
+
 					<div id="chart4"></div>
-				</div>
-				<div class="content" id="p2">
+
 					<div id="chart"></div>
-				</div>
-				<div class="content" id="p3">
+
 					<div id="chart2"></div>	
-				</div>
-				<div class="content" id="p4">
+
 					<div id="chart3"></div>
-				</div>
-			</div>
+
+
 		</div>
 	</div>
 
@@ -122,60 +197,11 @@
 			</div>
 		</div>
 		<div class="large-1 columns"></div>
-<!-- Wishlist -->
-		<div class="large-8 small-12 columns" id="wish-section">
-			<b>Wishlist</b><br /><br />
-			<% unless @user.movie_interests.empty? %>
-				<ul id="featured1 inline-list" data-orbit>
-					<% count = 0 %>
-				  	<li>
-						<% @user.movie_interests.each do |movie| %>
-							<% count += 1 %>
-							<% if count % 10 == 0 %>
-								<% return true %>
-							<% else %>
 
-							<div class="car-img-container">
-								<% sleep(0.2) %>
-								<img class= "car-img" src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
-								<% if current_user.id == @user.id %>
-									<%= link_to "Remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
-								<% end %>
-							</div>
-								<% if count % 3 == 0 %>
-									</li>
-									<li>
-								<% end %>
-							<% end %> 
-					 	<% end %>
-					</li>
-				</ul>
-			<% else %>
-				<p>No movie interests yet</p>
-			<% end %>		
-		</div>
-	</div>
+	
 </div>
 
 <script>
-
-	$(document).on('ready page:load', function() {
-		
-		//Insert no data message for empty charts
-
-		if($('#chart4').is(':empty')) { 
-			$("#chart4").append("<h4>No data available</h4>");
-		}
-		if($('#chart').is(':empty')) { 
-			$("#chart").append("<h4>No data available</h4>");
-		}
-		if($('#chart2').is(':empty')) { 
-			$("#chart2").append("<h4>No data available</h4>");
-		}
-		if($('#chart3').is(':empty')) { 
-			$("#chart3").append("<h4>No data available</h4>");
-		}
-	});
 
 	var chart = c3.generate({
 		bindto: '#chart',
