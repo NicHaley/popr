@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-load_and_authorize_resource
+  load_and_authorize_resource
   def new
     @user = User.new
   end
@@ -37,10 +37,10 @@ load_and_authorize_resource
 
   def index
     if params[:user_search]
-      @users = User.search(params[:user_search]).order("created_at DESC")
+      @users = User.search(params[:user_search]).sort{|x,y| x.first_name <=> y.first_name}
     else
       @users = User.select{|u| !u.is_friend?(current_user) && u.id != current_user.id}.sort{|x,y| x.first_name <=> y.first_name}
-  end
+    end
   end
 
   def show
