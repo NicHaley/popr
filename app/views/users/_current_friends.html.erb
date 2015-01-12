@@ -34,7 +34,7 @@
     <%= text_field_tag :friend_search, params[:friend_search], placeholder: "Search Friends" %>
     <%= submit_tag "Search" %>
   <% end %>
-  <% if @friends %>
+  <% if @friends != []%>
     <% @friends.sort{|x,y| x.first_name <=> y.first_name}.each do |friendship| %>
       <%# if friendship.confirm %>
           <div id="friend-wrapper">
@@ -57,9 +57,8 @@
             <br>
             </div>
           </div>
-      <%# end %>
-    <% end %>
+      <% end %>
   <% else %>
-  <% end %>
     <p>No results found</p>
+  <% end %>
 <% end %>
