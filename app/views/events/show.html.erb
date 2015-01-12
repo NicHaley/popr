@@ -37,7 +37,9 @@
         <%= image_tag @event.host.avatar_url(:thumb), id: "avatar-thumb" %> <%= @event.host.first_name %> <%= @event.host.last_name %>
         <% end %>
       </h4><br />
-      <h5>"<%= @event.description %>"</h5><br />
+      <% unless @event.description.empty? %>
+        <h5>"<%= @event.description %>"</h5><br />
+      <% end %>
       <h5><i><strong><%=@event.date_details%></strong></i></h5>
       <h5><%= @event.address %></h5>  
       <% if !@event.not_passed %>
@@ -47,20 +49,26 @@
         <p><strong>Poprs:</strong> <%= @event.commitments.sum(:party_size) %> / <%= @event.capacity %></p>
         <% if @event.commitments %>
           <ul class="small-block-grid-3 attendees-container">
-            <% @event.commitments.each do |commitment| %>
-              <% if commitment.id %>
-                <div class="attendees">
-                  <li>
-                    <p>
-                      <%= link_to user_path(commitment.user) do %>
-                        <%= commitment.user.first_name %>
-                        <i><%= commitment.guests %></i>
-                        <%= image_tag commitment.user.avatar_url(:thumb), id: "avatar-thumb" %>
-                      <% end %>
-                    </p>
-                  </li>
-                </div>
-              <% end %>  
+            <% unless @event.commitments.empty? %>
+              <% @event.commitments.each do |commitment| %>
+                <% if commitment.id %>
+                  <div class="attendees">
+                    <li>
+                      <p>
+                        <%= link_to user_path(commitment.user) do %>
+                          <%= commitment.user.first_name %>
+                          <i><%= commitment.guests %></i>
+                          <%= image_tag commitment.user.avatar_url(:thumb), id: "avatar-thumb" %>
+                        <% end %>
+                      </p>
+                    </li>
+                  </div>
+                <% end %>  
+              <% end %>
+            <% else %>
+              <div class="attendees">
+                <p id="empty-commitments">No Poprs Yet!</p>
+              </div>
             <% end %>
           </ul>
         <% end %> 

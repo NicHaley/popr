@@ -1,4 +1,4 @@
-<%= form_for([@user, @event], url: user_events_path(user_id: current_user), html: {method: :post}) do |f|%>
+<%= form_for([@user, @event]) do |f|%>
 
   <div class="field">
     <%= f.label :title %>
@@ -9,7 +9,8 @@
     <%= f.label :description %>
     <%= f.text_area :description, rows: "3", id: "new-event-description", maxlength: 140, class: "message-description" %>
   </div>
-  <div class="countdown-description"></div>      
+  <div class="countdown-description"></div> 
+  </div>      
   <div class="field">
     <%= f.label :address %>
     <%= f.text_field :address, size: "90" %>
@@ -22,9 +23,6 @@
     <%= f.label :capacity %>
     <%= f.number_field :capacity, {min: 1, value: 1} %>
   </div>
-  <div class="input-container">
-    <%= f.hidden_field :rt_id, value: "" %>
-  </div> 
   <div class="actions">
     <%= f.submit class: "button expand" %>
   </div>

@@ -11,7 +11,7 @@
 	<%= javascript_include_tag "vendor/modernizr" %>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Nunito' rel='stylesheet' type='text/css'>
 	<%= csrf_meta_tags %>
-
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body data-controller="<%= controller_name %>">	
 
@@ -54,17 +54,6 @@
 					<li id="event-button"><%= link_to 'Movies', new_user_movie_interest_path(user_id: current_user) %></li>
 						</ul>
 
-						<ul class="left">
-
-							<li class="has-dropdown">
-								<a href="#">Browse&nbsp;&nbsp;&nbsp;</a>
-								<ul class="dropdown">
-									<li><a href="#">Most Recent</a></li>
-									<li><a href="#">Friends</a></li>
-									<li><a href="#">Distance</a></li>
-								</ul>
-							</li>
-						</ul>
 					</section>
 					<% end %>
 				</nav>

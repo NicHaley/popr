@@ -305,7 +305,6 @@ label {
 
 .card {
 	margin: 20px;
-	// width: 100%;
 	height: 100%;
 	-webkit-transform-style: preserve-3d;
 	-webkit-transition: 0.5s;
@@ -329,6 +328,10 @@ label {
 
 .back {
 	-webkit-transform: rotatey(-180deg);
+}
+
+.face > .panel {
+	margin-bottom: 0px;
 }
 
 .movie-title {
@@ -423,7 +426,40 @@ label {
 	text-align: center;
 }
 
+#event_time_4i, #event_time_5i {
+	display: inline;
+	width: 45%;
+}
+
 // Movie Interests New
+
+#wish-button {
+	height: 70px;
+	width: 50px;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	display: inline-block;
+	float: right;
+	outline: none;
+}
+
+#wish-button:after {
+	content: '';
+	display: block;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-bottom: 15px solid transparent;
+	border-bottom-color: white; 
+	position: absolute;
+	bottom: 0;
+}
+
+.movie-score {
+	text-align: left;
+	padding-left: 50px;
+}
+
 .movie-score > img {
 	height: 50px;
 	vertical-align: text-top;
@@ -518,11 +554,11 @@ input:focus {
 
 div#slidingDiv
 {
-    border-radius:4px;
-    border:1px solid #333333;
-    margin:5px;
-    padding:5px;
-    height: 300px;
+	border-radius:4px;
+	border:1px solid #333333;
+	margin:5px;
+	padding:5px;
+	height: 300px;
 }
 
 /* All Events */
@@ -635,9 +671,9 @@ div#slidingDiv
 }
 
 #friend-icon {
-	margin-top:0px;
 	width: 30px;
 	height: 30px;
+	padding: 1px;
 	background-color: #BD1E2C;
 }
 
@@ -973,12 +1009,12 @@ div#slidingDiv
 
 //Countdown in Textarea
 
-.message {
+.message, .message-description, .message-title {
 	margin-bottom: 9px;
 	resize: none;
 }
 
-.countdown {
+.countdown, .countdown-description, .countdown-title {
 	margin-top: -25px;
 	margin-bottom: 9px;
 	font-size: 10px;
@@ -1022,7 +1058,7 @@ div#slidingDiv
 	margin-right: auto;
 }
 
-#movie-details, #event-details, #commit-event, .comment-panel, #comments, #edit-event {
+#movie-details, #event-details, #commit-event, .comment-panel, #comments, #edit-event, #edit-rating {
 	background: white;
 	border-radius: 2px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
@@ -1107,6 +1143,12 @@ div#slidingDiv
 #empty-comments {
 	font-size: 30px;
 	margin-top: 70px;
+	font-family: 'Open Sans Condensed';
+}
+
+#empty-commitments {
+	margin-top: 10px;
+	font-size: 30px;
 	font-family: 'Open Sans Condensed';
 }
 

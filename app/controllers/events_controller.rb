@@ -66,9 +66,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    # @user = User.find(params[:user_id])
-    # @event.update_attribute(:host_id, current_user.id)
-    if @event.update(event_params) 
+    if @event.update_attributes(event_params) 
       redirect_to user_event_path(@event.host, @event), notice: "Event successfully modified!"
     else
       render 'edit', notice: "Error, try again!"
