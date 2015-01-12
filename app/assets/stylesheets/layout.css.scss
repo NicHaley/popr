@@ -914,6 +914,49 @@ dd.active {
 	padding-left: 0;
 }
 
+div.review-container {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #EEEEEE;
+    width: 550px;
+    height: 200px;
+    margin: 50px;
+}
+
+div.title-bar {
+    background-color: #BD1E2C;
+    padding: 4px;
+    border-radius: 5px;
+    width: 50%;
+    height: 35px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    z-index: 10;
+    top: -15px;
+    left: -10px;
+}
+
+div.review-content {
+    font-style: oblique;
+    font-size: 12pt;
+    padding-bottom: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+div.rating_bar {
+	float: right;
+	margin-right: 25px;
+}
+
+div.edit-review-bar {
+	float: right;
+	margin-top: 5px;
+	margin-right: 25px;
+}
+
 /*#tab-section > .column, .columns  {
 	padding: 0px;
 	}*/
@@ -956,7 +999,7 @@ dd.active {
 
 	.small-caps {
 		font-size: 8pt;
-		line-height: 0.5;
+		line-height: 1;
 	}
 
 	.small-marker-caps {

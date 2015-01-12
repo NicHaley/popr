@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :events, except:[:new] do
       resources :comments, only: [:destroy, :update, :create]
     end
-    resources :movie_interests, except: [:index]
+    resources :movie_interests, except: [:index, :show]
     resources :ratings
     resources :commitments, only: [:destroy, :update, :create]
   end

@@ -2,19 +2,24 @@
 	<% @ratings.each do |rating| %>
 	<p>
 		<% if rating.id != nil %>
-			<strong><%= Movie.find_movie(rating.rt_id).title %></strong><br /><br />
-			<i><%= rating.review %></i><br /><br/>
-			<% width = ((rating.user_score.to_i/5.to_f) * 100.to_i).to_i %>
+		<div class="review-container">
+	        <div class="title-bar"><%= Movie.find_movie(rating.rt_id).title %></div>
+	    
+	        <div class="review-content">"<%= rating.review %>"</div>
+
+	        <% width = ((rating.user_score.to_i/5.to_f) * 100.to_i).to_i %>
 			<div class="rating_bar">
 				<div class="rating" style= "width:<%= width %>%"></div>
-			</div><br>
-			<div class="small-caps"><%= rating.created_at %></div>
-			<% if current_user == @user %>
-			<%= link_to "Edit", edit_user_rating_path(@user, rating), class:"small-caps"%>
-			<%= link_to "Remove", user_rating_path(@user, rating), data: { confirm: 'Are you sure?' }, class:"small-caps", method: :delete %>
-			<% end %>
-			<hr>
+			</div><br/>
+			<div class="edit-review-bar small-caps">
+				<%= rating.created_at %><br/>
+				<% if current_user == @user %>
+				<%= link_to "Edit", edit_user_rating_path(@user, rating), class:"small-caps"%>
+				<%= link_to "Remove", user_rating_path(@user, rating), data: { confirm: 'Are you sure?' }, class:"small-caps", method: :delete %>
+				<% end %>
+			</div>
+		</div>
 		<% end %>
-	</p><br />
+	</p>
 	<% end %>
 <% end %>

@@ -1,5 +1,4 @@
 $('#review-list').html("<%= j render :partial => 'ratings' %>");
-$('#ratings-pagination').replaceWith("<%= j paginate @ratings, :remote => true, :param_name => "ratings_page", params: {friends_page: params[:friends_page]} %>"); 
-
+$('#ratings-pagination').replaceWith("<%= j paginate @ratings, :remote => true, :param_name => 'ratings_page', params: {friends_page: params[:friends_page]} %>"); 
+$('#friends-pagination').replaceWith("<%= j paginate @friends, :remote => true, :param_name => 'friends_page', params: {ratings_page: params[:ratings_page]} %>");
 $('#current-friends').html("<%= j render :partial => 'current_friends' %>");
-$('#friends-pagination').replaceWith("<%= j paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %>");
