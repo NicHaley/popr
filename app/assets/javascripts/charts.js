@@ -14,4 +14,10 @@ $(document).on('ready page:load', function() {
 		if($('#chart3').is(':empty')) { 
 			$("#chart3").append("<h4>No data available</h4>");
 		}
-	});
+
+  $('#right-tab').on('click', function (event, tab) {
+    $(document).foundation('orbit', 'reflow');
+  });
+
+});
+

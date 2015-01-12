@@ -939,11 +939,6 @@ div.friend-container {
 	padding: 25px;
 }	
 
-#chart4 svg {
-	margin-top: 90px;
-	margin-bottom: 90px;
-}
-
 .no-pad-right {
 	padding-right: 0;
 }
@@ -992,6 +987,10 @@ div.edit-review-bar {
 	float: right;
 	margin-top: 5px;
 	margin-right: 25px;
+}
+
+#chart svg {
+	width: 300px;
 }
 
 /*#tab-section > .column, .columns  {
