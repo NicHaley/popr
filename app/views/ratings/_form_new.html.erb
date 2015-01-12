@@ -1,6 +1,6 @@
 <%= form_for([@user, @rating], :remote => true) do |f| %>
 
-	<h5>Write a Review</h5>
+	<p><strong>Leave a Review</strong></p>
 
 		<div class="field starRating">
 				<% if @rating.errors.any? %>
@@ -34,7 +34,6 @@
 		<label for="rating5"><span>5</span></label>
 	</div><br /><br />
 	<div class="field">
-		<%= f.label :review %>
 		<%= f.text_area :review, :size => "35x3", maxlength: 150, class: "message" %>
 	</div>
 	<div class="countdown"></div>
