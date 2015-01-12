@@ -19,7 +19,7 @@
 		</div>
 		<div class="large-7 medium-7 small-7 columns" id="status-details">
 			<dl class="tabs" data-tab>
-			  <dd class="active">
+			  <dd class="active animate">
 			  	<a href="#p1" id="left-tab">HOSTING</a>
 			  	<% count_host = 0 %>
 			  	<% @user.hosted_events.each do |event| %>
@@ -29,7 +29,7 @@
 			  	<% end %>
 					<span class="profile-counts"><center><%= count_host %></center></span>
 			  </dd>
-			  <dd>
+			  <dd class="animate">
 			  	<a href="#p2" id="center-tab">ATTENDING</a>
 			  	<% count_attend = 0 %>
 			  	<% @user.commitments.each do |commitment| %>
@@ -39,15 +39,15 @@
 			  	<% end %>
 					<span class="profile-counts"><center><%= count_attend %></center></span>
 			  </dd>
-			  <dd>
+			  <dd class="animate">
 			  	<a href="#p3" id="center-tab">FRIENDS</a>
 					<span class="profile-counts"><center><%= @user.friendships.where(confirm: true).count %></center></span>
 			  </dd>
-			  <dd>
+			  <dd class="animate">
 			  	<a href="#p4" id="center-tab">REVIEWS</a>
 					<span class="profile-counts"><center><%= @user.ratings.length %></center></span>
 			  </dd>
-			  <dd>
+			  <dd class="animate">
 			  	<a href="#p5" id="right-tab">WISHLIST</a>
 			  	<% count_wish = 0 %>
 			  	<% @user.movie_interests.each do |movie_interest| %>
@@ -113,6 +113,7 @@
 			      </div>
 				</div>
 				<div class="content" id="p4">
+					<p>REVIEWS <%= link_to "(view all)", user_ratings_path(@user), class:"small-caps"%></p>
 					<div id="review-list">
 						<%= render :partial => "ratings" %>
 					</div>

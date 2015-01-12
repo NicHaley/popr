@@ -831,7 +831,7 @@ dd {
             transition: 0.5s ease;
 }
 
-dd:hover {
+dd.animate:hover {
     -webkit-transition: 0.5s ease;
             transition: 0.5s ease;
     border-bottom: 5px solid #BD1E2C;
@@ -842,7 +842,7 @@ dd:hover {
     }
 }
 
-dd.active {
+dd.animate.active {
 	border-bottom: 5px solid #BD1E2C;
 }
 
