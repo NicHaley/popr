@@ -40,7 +40,7 @@
 					<span class="profile-counts"><center><%= count_attend %></center></span>
 			  </dd>
 			  <dd>
-			  	<a href="#p3" id="center-tab">FREINDS</a>
+			  	<a href="#p3" id="center-tab">FRIENDS</a>
 					<span class="profile-counts"><center><%= @user.friendships.where(confirm: true).count %></center></span>
 			  </dd>
 			  <dd>
@@ -104,13 +104,13 @@
 				<div class="content" id="p3">
 					<div id="current-friends">
     				<%= render :partial => "current_friends" %>
+    			</div>
 			      <% unless params[:friend_search] %>
 							<div id="friends-pagination"><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></div>
 			      <% end %>
 			      <div id="incoming-requests">
 			        <%= render :partial => "incoming_friendships" %>
 			      </div>
-    			</div>
 				</div>
 				<div class="content" id="p4">
 					<div id="review-list">
