@@ -2,18 +2,19 @@
 
 <p><strong>Leave a Review</strong></p>
 
-	<div class="field starRating">
-			<% if @rating.errors.any? %>
-			<div id="error_explanation">
-			  <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this review from being saved:</h2>
+<div class="field starRating">
+	<% if @rating.errors.any? %>
+		<div id="error_explanation">
+		  <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-			  <ul>
-			    <% @rating.errors.full_messages.each do |message| %>
-			    <li><%= message %></li>
-			    <% end %>
-			  </ul>
-			</div>
-			<% end %>		
+		  <ul>
+		    <% @rating.errors.full_messages.each do |message| %>
+		    <li><%= message %></li>
+		    <% end %>
+		  </ul>
+		</div>
+	<% end %>	
+
 	<div>
 		<div>
 			<div>
