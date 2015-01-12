@@ -1,27 +1,54 @@
 <div class="container">
-	<div id="avatar-panel"><%= image_tag @user.avatar_url(:profile), id: 'profile-image'%></div>
 	<div class="row" id="status-row">
-		<div class="large-3 medium-2 columns" id="status-space">
-			Hello
+		<div class="large-3 medium-3 small-12 columns" id="status-space">
+			<%= image_tag @user.avatar_url(:profile), id: 'profile-image'%>
 		</div>
-		<div class="large-7 medium-8 columns" id="status-details">
+		<div class="large-7 medium-7 small-7 columns" id="status-details">
 			<dl class="tabs" data-tab>
-			  <dd class="active"><a href="#p1" id="left-tab">Hosting</a></dd>
-			  <dd><a href="#p2" id="center-tab">Attending</a></dd>
-			  <dd><a href="#p3" id="center-tab">Friends</a></dd>
-			  <dd><a href="#p4" id="center-tab">Reviews</a></dd>
-			  <dd><a href="#p5" id="right-tab">Wishlist</a></dd>
+			  <dd class="active">
+			  	<a href="#p1" id="left-tab">HOSTING</a>
+			  	<% count = 0 %>
+			  	<% @user.hosted_events.each do |event| %>
+						<% if event.not_passed %>
+							<% count += 1%>
+						<% end %>
+			  	<% end %>
+					<span><%= count %></span>
+			  </dd>
+			  <dd>
+			  	<a href="#p2" id="center-tab">ATTENDING</a>
+			  	<span></span>
+			  </dd>
+			  <dd><a href="#p3" id="center-tab">FREINDS</a></dd>
+			  <dd><a href="#p4" id="center-tab">REVIEWS</a></dd>
+			  <dd><a href="#p5" id="right-tab">WISHLIST</a></dd>
 			</dl>
 		</div>
-		<div class="large-2 medium-2 columns" id="edit-profile-btn">
-			<a class="button tiny radius">Edit Profile</a>
+		<div class="large-2 medium-2 small-2 columns" id="edit-profile-btn">
+			<% if current_user == @user %>
+				<%= link_to "Edit Profile", edit_user_path(@user), class:"button tiny radius"%>
+      <% end %>
 		</div>
 	</div>
 
 	<div class="row" id="user-content-row">
-		<div class="large-8 columns" id="user-tab-content">
+		<div class="large-6 medium-6 columns" id="user-tab-content">
 			<div class="tabs-content">
 				<div class="content active" id="p1">
+				<p>HOSTED EVENTS</p>
+					<ul>
+		  			<% unless @user.hosted_events.empty? %>
+					    <% @user.hosted_events.each do |event| %>
+						    <% if event.not_passed %>
+							    <li>
+							      <%= link_to event.title, user_event_path(@user, event) %>
+							    </li>
+						    <% end %>
+					    <% end %>
+						<% else %>
+							<p><%= @user.first_name %> has no hosted events currently</p>
+						<% end %>
+		  		</ul>
 				</div>
 				<div class="content" id="p2">
 				</div>
@@ -33,7 +60,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="large-4 columns" id="user-add-info">
+		<div class="large-3 medium-3 columns" id="user-add-info">
 			Hello
 		</div>
 	</div>
@@ -41,13 +68,8 @@
 	<div class="row" id:"profile-row">
 		<div class="large-3 small-12 columns" id="profile-picture">
 			<div class="row">
-				<div class="large-12 columns" id="profile-image">
-					<%= image_tag @user.avatar_url(:profile), id: 'image-profile'%>
-				</div>
 				<div class="large-12 columns" id="profile-content">
-					<% if current_user == @user %>
-					  <%= link_to "Edit Profile", edit_user_path(@user), class:'small-caps' %>
-          <% end %>
+
             <p><%=@user.first_name%> <%=@user.last_name%></p>
             <p>Joined on: <%=@user.created_at%></p>
 					<div>
@@ -69,7 +91,7 @@
 		<div class="large-1 columns"></div>
 
 		<div class="large-8 small-12 columns" id="profile-section">
-    	<h4>Recent Updates</h4>
+    	<h4>Host Updates</h4>
 	  	<ul>
 	  		<% unless @user.hosted_events.empty? %>
 			    <% @user.hosted_events.each do |event| %>
@@ -121,26 +143,17 @@
 		<div class="large-1 columns"></div>
 
 		<div class="no-pad-left no-pad-right large-8 small-12 columns" id="tab-section chart-radius">
-			<dl class="tabs" data-tab>
-			  <dd class="active"><a href="#p1" id="left-tab">Ratings</a></dd>
-			  <dd><a href="#p2" id="center-tab">Genres</a></dd>
-			  <dd><a href="#p3" id="center-tab">Actors</a></dd>
-			  <dd><a href="#p4" id="right-tab">Directors</a></dd>
-			</dl>
-			<div class="tabs-content">
-				<div class="content active" id="p1">
+
+
 					<div id="chart4"></div>
-				</div>
-				<div class="content" id="p2">
+
 					<div id="chart"></div>
-				</div>
-				<div class="content" id="p3">
+
 					<div id="chart2"></div>	
-				</div>
-				<div class="content" id="p4">
+
 					<div id="chart3"></div>
-				</div>
-			</div>
+
+
 		</div>
 	</div>
 
