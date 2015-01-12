@@ -17,6 +17,14 @@ class RatingsController < ApplicationController
 	end
 
 	def create
+		@rating = @user.ratings.find_or_create_by(rt_id: params[:rating][:rt_id])
+		if @rating.id 
+			puts "rating exists"
+			@rating.review = params[:rating][:review]
+			@rating.user_score = params[:rating][:user_score]
+			@rating.save
+		else  
+		# @rating.update(rating_params)
 		@rating = @user.ratings.build(rating_params)
 
 		respond_to do |format|
@@ -28,6 +36,7 @@ class RatingsController < ApplicationController
 				format.js {}
 				flash.now[:alert] = "Ensure review is filled and star rating is selected."
 			end
+		end
 		end
 
 	end

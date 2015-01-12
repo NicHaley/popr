@@ -130,10 +130,6 @@ $movie-poster-height: 50vh;
 	margin-right: 100px;
 }
 
-a:focus {
-	outline: none;
-}
-
 #panel1, #panel2, #panel3, #panel4 {
 	background: rgba(255, 255, 255, 0.45);
 	border-radius: 0px;
@@ -141,7 +137,6 @@ a:focus {
 	padding: 20px 40px 10px 40px;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	outline: none;
 }
 
 label {
@@ -152,10 +147,6 @@ label {
 
 #editForm {
 	margin-top: 100px;
-}
-
-.edit_user {
-	outline: none;
 }
 
 /* Border Styling */
@@ -441,7 +432,6 @@ label {
 	text-align: center;
 	display: inline-block;
 	float: right;
-	outline: none;
 }
 
 #wish-button:after {
@@ -476,10 +466,6 @@ label {
 
 #movie-poster-col, #movie-content-col {
 	padding: 0px;
-}
-
-input:focus {
-	outline:none;
 }
 
 // All reviews
@@ -730,7 +716,6 @@ div#slidingDiv
 	padding: .9em 1.8em;
 	border: none;
 	cursor: pointer;
-	outline: none;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
@@ -746,7 +731,6 @@ div#slidingDiv
 /* after button is clicked */
 .search-field.showActive {
 	width: 200px;
-	outline: none;
 	color: #efaa9d;
 	text-align: left;
 	cursor: inherit;
@@ -1171,7 +1155,6 @@ div.edit-review-bar {
 	background: white;
 	border-radius: 2px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-	outline: none;
 	padding: 10px;
 	text-align: center;
 	margin-bottom: 10px;

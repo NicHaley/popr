@@ -1,9 +1,7 @@
 class MovieInterestsController < ApplicationController
   before_filter :set_movie_interest, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
-  
-  def show
-  end
+
 
   def new
     @movie_interest = MovieInterest.new
@@ -25,9 +23,6 @@ class MovieInterestsController < ApplicationController
         format.js{}
       end
     end
-  end
-
-  def edit
   end
 
   def update
