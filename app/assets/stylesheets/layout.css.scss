@@ -752,9 +752,12 @@ div#slidingDiv
 	border-color: rgb(255, 255, 255);
 	border-style: solid;
 	border-width: 4px;
+	width: 70%;
+	height: 70%;
 }
 
 #status-space {
+	padding-left: 30px;
 }
 
 #status-details {
@@ -762,7 +765,7 @@ div#slidingDiv
 }
 
 #edit-profile-btn {
-	margin-top: 20px;
+	margin-top: 15px;
 }
  
 #user-tab-content, #user-add-info {
@@ -773,7 +776,7 @@ div#slidingDiv
 }
 
 #user-add-info {
-	background-color: blue;
+	background-color: #FEFEFE;
 }
 
 #status-row {
@@ -783,31 +786,46 @@ div#slidingDiv
 	height: 70px;
 	background-color: white;
 	border-bottom-style: solid;
-	border-bottom-color: grey;
+	border-bottom-color: #EEEEEE;
 	border-bottom-width: 1px;
 }
 
 #user-content-row {
 	width: 100%;
 	max-width: 100%;
-	height: 500px;
+	height: 100%;
 	background-color: #F5F5F5;
 	border-bottom-style: solid;
-	border-bottom-color: grey;
+	border-bottom-color: #F6F6F6;
 	border-bottom-width: 1px;
+}
+
+dd {
+    border-bottom: 0px solid; 
+    padding-bottom: 2px;
+    -webkit-transition: 0.5s ease;
+            transition: 0.5s ease;
+}
+
+dd:hover {
+    -webkit-transition: 0.5s ease;
+            transition: 0.5s ease;
+    border-bottom: 5px solid #BD1E2C;
+    padding-bottom: 2px;
+    
+    #left-tab, #right-tab, #center-tab {
+    	color: #BD1E2C;	
+    }
+}
+
+dd.active {
+	border-bottom: 5px solid #BD1E2C;
 }
 
 #user-content-section {
 	height: 500px;
 	width: 100%;
 	background-color: white;
-}
-
-#profile-picture {
-	height: 400px;
-	background-color: #FEFEFE;
-	border: 1px solid #dedede;
-	border-radius: 10px;
 }
 
 #profile-content {
@@ -827,21 +845,24 @@ div#slidingDiv
 	border-radius: 10px;
 }
 
-#profile-image {
-	height: 200px;
-	overflow: hidden;
-}
-
 #right-tab, #left-tab, #center-tab {
 	border: 0px;
 	font-size: 8pt;
+	padding-bottom: 2px;
+	color: #555555;
 }
 
-#p1, #p2, #p3, #p4 {
+.profile-counts {
+	color: #BD1E2C;
+}
+
+#p1, #p2, #p3, #p4, #p5 {
 	border: 1px solid #dedede;
+	border-radius: 5px;
 	background-color: #FEFEFE;
-	width: 667px;
-	height: 400px;	
+	width: 700px;
+	min-height: 400px;
+	height: 100%;	
 	padding: 25px;
 }	
 
@@ -864,9 +885,6 @@ div#slidingDiv
 	#wish-section {
 		padding: 25px;
 		height: 450px;
-		border: 1px solid #dedede;
-		background-color: #FEFEFE;
-		border-radius: 10px;
 		text-align: center;
 	}
 
