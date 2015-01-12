@@ -6,10 +6,12 @@
   <% end %>
   <% @friends.sort{|x,y| x.friend.first_name <=> y.friend.first_name}.each do |friendship| %>
     <% if friendship.confirm %>
-        <div id="friend-wrapper">
-          <div id="friend-photo">
+      <div class="friend-container">
+        <div class="top-friend-panel">
           <%= link_to image_tag(friendship.friend.avatar, id:"friend-avatar"), user_path(friendship.user_id)%>
-          </div>
+        </div>
+
+        <div class="mid-friend-panel">
           <div id="friend-details">
           <p><%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend), class: "small-marker-caps" %>
           <%= link_to "(-)", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
@@ -26,6 +28,8 @@
           <br>
           </div>
         </div>
+
+      </div>
     <% end %>
   <% end %>
 <% else %>
@@ -36,26 +40,29 @@
   <% end %>
   <% if @friends != []%>
     <% @friends.sort{|x,y| x.first_name <=> y.first_name}.each do |friendship| %>
-          <div id="friend-wrapper">
-            <div id="friend-photo">
-            <%= link_to image_tag(friendship.avatar, id:"friend-avatar"), user_path(friendship)%>
-            </div>
-            <div id="friend-details">
-            <p><%= link_to friendship.first_name + " " + friendship.last_name, user_path(friendship), class: "small-marker-caps" %>
-            <%= link_to "(-)", friendship_path(friendship, friend_id: friendship.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
-            
-            <% friendCount = 0 %>
-            <% friendship.friendships.each do |friendship2| %>
-              <% if friendship2.confirm %>
-                <% friendCount += 1 %>
-              <% end %>
-            <% end %>
-                
-            <p class="small-caps">Reviews: <%= friendship.ratings.length %> | Friends: <%= friendCount %></p>
+      <div class="friend-container">
+        <div class="top-friend-panel">
+          <%= link_to image_tag(friendship.avatar, id:"friend-avatar"), user_path(friendship)%>
+        </div>
 
-            <br>
-            </div>
+        <div class="mid-friend-panel">
+          <div id="friend-details">
+          <p><%= link_to friendship.first_name + " " + friendship.last_name, user_path(friendship), class: "small-marker-caps" %>
+          <%= link_to "(-)", friendship_path(friendship, friend_id: friendship.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
+          
+          <% friendCount = 0 %>
+          <% friendship.friendships.each do |friendship2| %>
+            <% if friendship2.confirm %>
+              <% friendCount += 1 %>
+            <% end %>
+          <% end %>
+              
+          <p class="small-caps">Reviews: <%= friendship.ratings.length %> | Friends: <%= friendCount %></p>
+
+          <br>
           </div>
+        </div>
+      </div>
       <% end %>
   <% else %>
     <p>No results found</p>

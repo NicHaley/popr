@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     @friends = if params[:friend_search]
       User.where("LOWER(first_name) LIKE LOWER(?) OR LOWER(last_name) LIKE LOWER(?)", "%#{params[:friend_search]}%", "%#{params[:friend_search]}%").select{|u| u.is_friend?(current_user)}
     else
-      @user.friendships.page(params[:friends_page]).per(3)
+      @user.friendships.page(params[:friends_page]).per(6)
     end
 
 

@@ -102,12 +102,22 @@
 					</ul>
 				</div>
 				<div class="content" id="p3">
+					<div id="current-friends">
+    				<%= render :partial => "current_friends" %>
+			      <% unless params[:friend_search] %>
+							<div id="friends-pagination"><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></div>
+			      <% end %>
+			      <div id="incoming-requests">
+			        <%= render :partial => "incoming_friendships" %>
+			      </div>
+    			</div>
 				</div>
 				<div class="content" id="p4">
 					<div id="review-list">
 						<%= render :partial => "ratings" %>
 					</div>
 					<div id="ratings-pagination"><center><%= paginate @ratings, :remote => true, :param_name => "ratings_page", params: {friends_page: params[:friends_page]} %></center></div>
+					<div class="small-caps"><center><%= page_entries_info @ratings %></center></div>
 				</div>
 				<div class="content" id="p5">
 					<div id="wish-section">
@@ -152,30 +162,6 @@
 
 
 
-<!-- Friendlist -->
-	<div class="row" id="friend-row">
-		<div class="large-3 small-12 columns" id="friend-section">
-
-    	<div id="current-friends">
-    		<%= render :partial => "current_friends" %>
-    	</div>
-
-      
-      <% unless params[:friend_search] %>
-			<div id="friends-pagination"><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></div>
-      <% end %>
-    
-      <div id="incoming-requests">
-        <%= render :partial => "incoming_friendships" %>
-      </div>
-
-		</div>
-
-
-		<div class="large-1 columns"></div>
-
-		<div class="no-pad-left no-pad-right large-8 small-12 columns" id="tab-section chart-radius">
-
 
 					<div id="chart4"></div>
 
@@ -186,10 +172,7 @@
 					<div id="chart3"></div>
 
 
-		</div>
-	</div>
 	
-</div>
 
 <script>
 
