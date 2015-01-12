@@ -36,7 +36,6 @@
   <% end %>
   <% if @friends != []%>
     <% @friends.sort{|x,y| x.first_name <=> y.first_name}.each do |friendship| %>
-      <%# if friendship.confirm %>
           <div id="friend-wrapper">
             <div id="friend-photo">
             <%= link_to image_tag(friendship.avatar, id:"friend-avatar"), user_path(friendship)%>
