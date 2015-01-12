@@ -39,7 +39,7 @@ load_and_authorize_resource
     if params[:user_search]
       @users = User.search(params[:user_search]).order("created_at DESC")
     else
-      @users = User.select{|u| !u.is_friend?(current_user) && u.id != current_user.id}.sort
+      @users = User.select{|u| !u.is_friend?(current_user) && u.id != current_user.id}.sort{|x,y| x.first_name <=> y.first_name}
   end
   end
 
