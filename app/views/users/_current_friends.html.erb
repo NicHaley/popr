@@ -4,7 +4,7 @@
     <%= text_field_tag :friend_search, params[:friend_search], placeholder: "Search Friends" %>
     <%= submit_tag "Search" %>
   <% end %>
-  <% @friends.sort{|x,y| x.friend.first_name <=> y.friend.first_name}.each do |friendship| %>
+  <% @friends.each do |friendship| %>
     <% if friendship.confirm %>
       <div class="friend-container">
         <div class="top-friend-panel">
@@ -39,7 +39,7 @@
     <%= submit_tag "Search" %>
   <% end %>
   <% if @friends != []%>
-    <% @friends.sort{|x,y| x.first_name <=> y.first_name}.each do |friendship| %>
+    <% @friends.each do |friendship| %>
       <div class="friend-container">
         <div class="top-friend-panel">
           <%= link_to image_tag(friendship.avatar, id:"friend-avatar"), user_path(friendship)%>

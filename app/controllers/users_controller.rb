@@ -47,10 +47,13 @@ class UsersController < ApplicationController
     sleep(0.2)
     @user = User.find(params[:id])
     @ratings = @user.ratings.order(created_at: :desc).page(params[:ratings_page]).per(3)
-    @friends = if params[:friend_search]
-      User.where("LOWER(first_name) LIKE LOWER(?) OR LOWER(last_name) LIKE LOWER(?)", "%#{params[:friend_search]}%", "%#{params[:friend_search]}%").select{|u| u.is_friend?(current_user)}
+     
+    if params[:friend_search]
+      @friends = User.where("LOWER(first_name) LIKE LOWER(?) OR LOWER(last_name) LIKE LOWER(?)", "%#{params[:friend_search]}%", "%#{params[:friend_search]}%").select{|u| u.is_friend?(current_user)}.sort{|x,y| x.first_name <=> y.first_name}
+      @friends = Kaminari.paginate_array(@friends).page(params[:friends_page]).per(6)
     else
-      @user.friendships.page(params[:friends_page]).per(6)
+      @friends = @user.friendships.sort{|x,y| x.friend.first_name <=> y.friend.first_name}
+      @friends = Kaminari.paginate_array(@friends).page(params[:friends_page]).per(6)
     end
 
 
