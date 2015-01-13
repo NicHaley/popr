@@ -73,7 +73,7 @@
 		<div class="large-7 medium-7 small-7 columns" id="user-tab-content">
 			<div class="tabs-content">
 				<div class="content active" id="p1">
-				<p>HOSTED EVENTS</p>
+				<b>Hosted Events</b>
 					<ul>
 		  			<% unless @user.hosted_events.empty? %>
 					    <% @user.hosted_events.each do |event| %>
@@ -89,7 +89,7 @@
 		  		</ul>
 				</div>
 				<div class="content" id="p2">
-					<p>ATTENDING EVENTS</p>
+					<b>Attending Events</b>
 					<ul>
 						<% unless @user.commitments.empty? %>
 						  	<% @user.commitments.each do |commitment| %>
@@ -108,11 +108,6 @@
 					<div id="current-friends">
     				<%= render :partial => "current_friends" %>
     			</div>
-			    <% unless params[:friend_search] %>
-						<div id="friends-pagination">
-							<center><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></center>
-						</div>
-			    <% end %>
 		      <% if current_user == @user %>
 			      <div id="incoming-requests">
 			        <%= render :partial => "incoming_friendships" %>
@@ -121,44 +116,14 @@
   			</div>
 			
 				<div class="content" id="p4">
-					<center><p>REVIEWS <%= link_to "(view all)", user_ratings_path(@user), class:"small-caps"%></p></center>
+					<center><b>Reviews <%= link_to "(view all)", user_ratings_path(@user), class:"small-caps"%></b></center><br/>
 					<div id="review-list">
 						<%= render :partial => "ratings" %>
 					</div>
-					<div id="ratings-pagination"><center><%= paginate @ratings, :remote => true, :param_name => "ratings_page", params: {friends_page: params[:friends_page]} %></center></div>
-					<div class="small-caps"><center><%= page_entries_info @ratings %></center></div>
 				</div>
 				<div class="content" id="p5">
 					<div id="wish-section">
-						<b>Wishlist</b><br /><br />
-						<% unless @user.movie_interests.empty? %>
-							<ul id="featured1 inline-list" data-orbit>
-								<% count = 0 %>
-							  	<li>
-									<% @user.movie_interests.each do |movie| %>
-										<% count += 1 %>
-										<% if count % 10 == 0 %>
-											<% return true %>
-										<% else %>
-
-										<div class="car-img-container">
-											<% sleep(0.2) %>
-											<img class= "car-img" src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
-											<% if current_user.id == @user.id %>
-												<%= link_to "Remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
-											<% end %>
-										</div>
-											<% if count % 3 == 0 %>
-												</li>
-												<li>
-											<% end %>
-										<% end %> 
-								 	<% end %>
-								</li>
-							</ul>
-						<% else %>
-							<p>No movie interests yet</p>
-						<% end %>	
+						<%= render :partial => "wishlist" %>
 					</div>	
 				</div>
 			</div>

@@ -963,6 +963,7 @@ div.friend-container {
 	width:100%;
 	height:150px;
 	border: 1px solid #EEEEEE;
+	border-top-color: #DE7E7E;
 	position: absolute;
 	background: rgb(255, 255, 255);
 	z-index: 10;
@@ -1014,6 +1015,14 @@ div.friend-container {
 	padding: 25px;
 }	
 
+#friend_search {
+	margin-top: 9px;
+}
+
+#p4 {
+	padding: 50px;
+}
+
 .no-pad-right {
 	padding-right: 0;
 }
@@ -1027,6 +1036,8 @@ div.review-container {
 	border: 1px solid #EEEEEE;
 	width: 550px;
 	height: 200px;
+	margin-bottom: 20px;
+	margin-left: 30px;
 }
 
 div.review-row {
@@ -1045,7 +1056,7 @@ div.title-bar {
 	position: relative;
 	z-index: 10;
 	top: -15px;
-	left: -10px;
+	left: 25%;
 }
 
 div.review-content {
@@ -1400,17 +1411,35 @@ div.edit-review-bar {
 	float: left;
 }
 
+#friend-name {
+	height: 20px;
+	width: 120px;
+	display: inline-block;
+	position: relative;
+	float: right;
+	margin-top: 5px;
+	margin-left: 40px;
+}
+
 #friend-details {
 	height: 67px;
 	width: 140px;
+	display: inline-block;
 	position: relative;
-	float: right;
+	float: left;
+	padding-left: 15px;
+	padding-top: 15px;
 }
 
 #friend-avatar {
-	height: 67px;
+	height: 60px;
 	width: 58px;
-	border-top-left-radius: 5px;
+	border-radius: 5px;
+	border: 2px solid white;
+	position: relative;
+	top: 20px;
+	left: 10px;
+	z-index: 20;
 }
 
 //Countdown in Textarea

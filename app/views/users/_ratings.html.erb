@@ -23,3 +23,7 @@
 	</p>
 	<% end %>
 <% end %>
+
+<div id="ratings-pagination"><center><%= paginate @ratings, :remote => true, :param_name => "ratings_page", params: {friends_page: params[:friends_page]} %></center></div>
+
+<div class="small-caps"><center><%= page_entries_info @ratings %></center></div>
