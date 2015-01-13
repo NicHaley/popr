@@ -8,7 +8,7 @@
     <% if friendship.confirm %>
       <div class="friend-container">
         <div class="top-friend-panel">
-          <%= link_to image_tag(friendship.friend.avatar, id:"friend-avatar"), user_path(friendship.user_id)%>
+          <%= link_to image_tag(friendship.friend.avatar, id:"friend-avatar"), user_path(friendship.friend_id)%>
         </div>
 
         <div class="mid-friend-panel">
