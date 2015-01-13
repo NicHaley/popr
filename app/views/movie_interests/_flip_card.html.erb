@@ -1,0 +1,39 @@
+<div class="form-window small-8 large-8 small-centered large-centered columns">
+	<div class="card"> 
+		<div class="face front">
+			<div class="form-flip"><h5>Create Event →</h5></div>
+			
+			<div class="movie-text">
+				<div class="movie-title"></div>
+
+				<div class="wish-hide">
+					<%= render 'movie_interests/form' %>
+				</div><br />
+
+				<div class="movie-score"></div><br />
+
+				<div class="movie-info">
+					<div class="movie-director"></div>
+					<div class="movie-cast"></div>
+					<div class="movie-genre"></div>
+					<div class="movie-mpaa_rating"></div>
+					<div class="movie-runtime"></div>
+				</div>
+			</div><br />
+
+			<div class="panel">
+				<div class="review-hide">
+					<%= render 'ratings/form_new' %>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="face back">
+			<div class="form-flip"><h5>Movie Info →</h5></div>
+			<div class="movie-title"></div><br />
+			<%= render 'events/form' %>
+		</div>
+
+	</div>
+</div>
