@@ -107,10 +107,11 @@
   				</div>
 		      
 
-		      
-		      <div id="incoming-requests">
-		        <%= render :partial => "incoming_friendships" %>
-		      </div>
+		      <% if current_user == @user %>
+			      <div id="incoming-requests">
+			        <%= render :partial => "incoming_friendships" %>
+			      </div>
+			    <% end %>
 				</div>
 				<div class="content" id="p4">
 					<div id="review-list">
