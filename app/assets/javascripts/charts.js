@@ -19,5 +19,35 @@ $(document).on('ready page:load', function() {
     $(document).foundation('orbit', 'reflow');
   });
 
+  (function($){
+  	$(document).ready(function(){
+	  	$('#graph-toggle').on('click', function(eventObject){
+	  		eventObject.preventDefault();
+	  		$(this).toggleClass('active');
+	  		$('.chart').removeClass('active');
+	  		$('.graph-btn').toggleClass('active');
+	  	});
+	  	$('.graph-btn').hover(function(eventObject){
+	  		$(this).toggleClass('hover');
+	  	});
+	  	$('.btn1').on('click', function(eventObject){
+	  		$('.chart').removeClass('active');
+	  		$('#chart1-box').toggleClass('active');
+	  	});
+	  	$('.btn2').on('click', function(eventObject){
+	  		$('.chart').removeClass('active');
+	  		$('#chart2-box').toggleClass('active');
+	  	});
+	  	$('.btn3').on('click', function(eventObject){
+	  		$('.chart').removeClass('active');
+	  		$('#chart3-box').toggleClass('active');
+	  	});
+	  	$('.btn4').on('click', function(eventObject){
+	  		$('.chart').removeClass('active');
+	  		$('#chart4-box').toggleClass('active');
+	  	});
+  	});
+  })(jQuery);
+
 });
 
