@@ -499,10 +499,62 @@ label {
 	text-align: center;
 }
 
+
+.user-avatar {
+	width: 60px;
+	height: 60px;
+	float: left;
+}
+
+.user-text-container {
+	margin-left: 10px;
+	margin-top: 10px;
+	font-size: 24px;
+	float: left;
+}
+
+.friend-page > h3 {
+	border-radius: 2px 2px 0px 0px;
+	margin: -11px -10px 0px -10px;
+	background-color: #474747;
+	color: #d1d1d1;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-family: 'Open Sans Condensed';
+}
+
+.user-container, .user-container-pending {
+	display: block;
+	clear: both;
+	overflow: auto;
+	padding: 2px;
+	font-family: 'Open Sans Condensed';
+}
+
+.user-container:hover {
+	background-color: #BD1E2C;
+	color: white;
+}
+
+.user-container-pending:hover {
+	background-color: #545454;
+	color: white;
+}
+
 #user-list {
-	border-top: 2px solid black;
 	margin-top: 20px;
 	padding-top: 30px;
+}
+
+.user-add {
+	margin-top: 17px;
+	margin-right: 15px;
+	float: right;
+}
+
+#user_search {
+	text-align: center;
+	height: 40px;
 }
 
 /* Map Styling */
@@ -658,6 +710,8 @@ div#slidingDiv
 
 #friend-list {
 	list-style: none;
+	height: 300px;
+	overflow: auto;
 }
 
 #friend-icon {
@@ -791,7 +845,7 @@ div#slidingDiv
 #edit-profile-btn {
 	margin-top: 15px;
 }
- 
+
 #user-tab-content, #user-add-info {
 	margin-top: 50px;
 }
@@ -825,21 +879,21 @@ div#slidingDiv
 }
 
 dd {
-    border-bottom: 0px solid; 
-    padding-bottom: 2px;
-    -webkit-transition: 0.5s ease;
-            transition: 0.5s ease;
+	border-bottom: 0px solid; 
+	padding-bottom: 2px;
+	-webkit-transition: 0.5s ease;
+	transition: 0.5s ease;
 }
 
 dd:hover {
-    -webkit-transition: 0.5s ease;
-            transition: 0.5s ease;
-    border-bottom: 5px solid #BD1E2C;
-    padding-bottom: 2px;
-    
-    #left-tab, #right-tab, #center-tab {
-    	color: #BD1E2C;	
-    }
+	-webkit-transition: 0.5s ease;
+	transition: 0.5s ease;
+	border-bottom: 5px solid #BD1E2C;
+	padding-bottom: 2px;
+
+	#left-tab, #right-tab, #center-tab {
+		color: #BD1E2C;	
+	}
 }
 
 dd.active {
@@ -847,11 +901,11 @@ dd.active {
 }
 
 div.friend-container {
-    width: 200px;
-    height: 200px;
-    position: relative;
-    display: inline-block;
-    margin: 9px;
+	width: 200px;
+	height: 200px;
+	position: relative;
+	display: inline-block;
+	margin: 9px;
 }
 
 .top-friend-panel{
@@ -860,7 +914,7 @@ div.friend-container {
 	width:100%;
 	height:100%;
 	position: absolute;
-    border-radius: 5px;
+	border-radius: 5px;
 	background-color: #BD1E2C;
 	border: 1px solid #EEEEEE;
 }
@@ -871,7 +925,7 @@ div.friend-container {
 	font-size: 15pt;
 	width:100%;
 	height:150px;
-    border: 1px solid #EEEEEE;
+	border: 1px solid #EEEEEE;
 	position: absolute;
 	background: rgb(255, 255, 255);
 	z-index: 10;
@@ -931,35 +985,35 @@ div.friend-container {
 }
 
 div.review-container {
-    background-color: white;
-    border-radius: 5px;
-    border: 1px solid #EEEEEE;
-    width: 550px;
-    height: 200px;
-    margin: 50px;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid #EEEEEE;
+	width: 550px;
+	height: 200px;
+	margin: 50px;
 }
 
 div.title-bar {
-    background-color: #BD1E2C;
-    padding: 4px;
-    border-radius: 5px;
-    width: 50%;
-    height: 35px;
-    color: white;
-    text-align: center;
-    vertical-align: middle;
-    position: relative;
-    z-index: 10;
-    top: -15px;
-    left: -10px;
+	background-color: #BD1E2C;
+	padding: 4px;
+	border-radius: 5px;
+	width: 50%;
+	height: 35px;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+	position: relative;
+	z-index: 10;
+	top: -15px;
+	left: -10px;
 }
 
 div.review-content {
-    font-style: oblique;
-    font-size: 12pt;
-    padding-bottom: 25px;
-    padding-right: 25px;
-    padding-left: 25px;
+	font-style: oblique;
+	font-size: 12pt;
+	padding-bottom: 25px;
+	padding-right: 25px;
+	padding-left: 25px;
 }
 
 div.rating_bar {
@@ -1181,7 +1235,7 @@ div.edit-review-bar {
 	margin-right: auto;
 }
 
-#movie-details, #event-details, #commit-event, .comment-panel, #comments, #edit-event, #edit-rating {
+#movie-details, #event-details, #commit-event, .comment-panel, #comments, #edit-event, #edit-rating, .friend-page {
 	background: white;
 	border-radius: 2px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
@@ -1293,7 +1347,7 @@ div.edit-review-bar {
 	font-family: 'Open Sans Condensed';
 }
 
-.edit-container {
+.form-container {
 	background-image: url('darkshape_bg.gif');
 	height: 100vh;
 	padding-top: 30px;
@@ -1302,6 +1356,7 @@ div.edit-review-bar {
 .event-critics-score {
 	height: 20px;
 }
+
 
 /* Remove close button */
 /*.gm-style-iw + div {

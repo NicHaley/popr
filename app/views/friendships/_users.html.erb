@@ -1,12 +1,37 @@
 <% @users.each do |user| %>
-<% unless user == current_user %>
-<p>
-  <%= user.first_name %> <%= user.last_name %>
-  <% if current_user.pending_friendship?(current_user, user) %>
-  <i>- Pending</i>
-  <% else %>
-  <%= link_to "+ Add Friend", friendships_path(friend_id: user.id), method: :post, :remote => true %>
-  <% end %>
-</p>
+	<% unless current_user.pending_friendship?(current_user, user) %>
+		<%= link_to(friendships_path(friend_id: user.id), method: :post, :remote => true) do %>
+			<% unless user == current_user %>
+				<div class="user-container">
+					<%= image_tag user.avatar, class: "user-avatar" %>
+				  <div class="user-text-container">
+				  	<%= user.first_name %> <%= user.last_name %>
+				  	<% if user.hometown %>
+			  		 | <%= user.hometown %>
+			  		<% end %>
+				  </div>
+				  <div class="user-add">
+				  	<i class="fa fa-plus-circle"> Add Friend</i>
+				  </div>	
+				</div>
+			<% end %>
+		<% end %>
+	<% else %>
+		<% unless user == current_user %>
+			<div class="user-container-pending">
+				<%= image_tag user.avatar, class: "user-avatar" %>
+			  <div class="user-text-container">
+			  	<%= user.first_name %> <%= user.last_name %>
+			  	<% if user.hometown %>
+			  		 | <%= user.hometown %>
+			  	<% end %>
+			  </div>
+			  <div class="user-add">
+					<i class="fa fa-clock-o"> Pending</i>
+			  </div>	
+			</div>
+		<% end %>
+	<% end %>
 <% end %>
-<% end %>
+
+

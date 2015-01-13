@@ -1,22 +1,21 @@
-<div class="friend-page">
-	<h3>Invite Friends</h3><br />
-
+<div class="form-container">
 	<div class="row">
 		<div class="small-8 small-centered columns">
-			<%= form_tag(users_path, :method => "get", id: "search-form") do %>
-			<%= text_field_tag :user_search, params[:user_search], placeholder: "Search Users" %>
-			<%= submit_tag "Search", :name => nil, class: "button tiny" %>
-			<% end %>
-		</div>
-	</div>
+			<div class="friend-page">
+				<h3>Invite Friends</h3><br /><br />
 
+				<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+					<%= text_field_tag :user_search, params[:user_search], placeholder: "Search Users" %>
+					<%= submit_tag "Search", :name => nil, class: "button tiny" %>
+				<% end %>
+				
+				<hr />
 
-	<div class="row">
-		<div class="small-8 small-centered columns" id="user-list">
-			<div id="friend-list">
-				<%= render :partial => "users" %>
+				<div id="friend-list">
+					<%= render :partial => "users" %>
+				</div>
 			</div>
-		</div>
+		</div> 
 	</div>
 </div>
 
