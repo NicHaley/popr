@@ -69,3 +69,6 @@
   <% end %>
   <%= link_to "Back to all friends", @user_path %>
 <% end %>
+<div id="friends-pagination">
+  <%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %>
+</div>
