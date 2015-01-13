@@ -21,6 +21,7 @@ $movie-poster-height: 50vh;
 .container {
 	background-image: url('darkshape_bg.gif');
 	padding-top: 30px;
+	min-height: 100vh;
 }
 
 .remove-lh {
@@ -474,8 +475,17 @@ label {
 
 // All reviews
 
+#review-list-title {
+	color: #eaeaea;
+	font-family: 'Open Sans Condensed';
+}
+
 #review-list > p {
 	margin: 0px;
+}
+
+#review-table {
+	width: 935px;
 }
 
 #review-table tr{
@@ -484,8 +494,24 @@ label {
 	border-style: solid;
 }
 
+#review-table > thead > tr > th, #review-table > tbody > tr > td {
+	text-align: center;
+}
+
+// #review-table > tbody > tr {
+// 	border-bottom: 1px solid black;
+// } 
+
 #review-container {
 	padding-top: 25px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	width: 100%;
+}
+
+.review-pages-info {
+	margin-bottom: 0px;
+	padding-bottom: 100px;
 }
 
 // Friend Page
@@ -537,7 +563,7 @@ label {
 }
 
 .user-container-pending:hover {
-	background-color: #545454;
+	background-color: #474747;
 	color: white;
 }
 
@@ -990,7 +1016,10 @@ div.review-container {
 	border: 1px solid #EEEEEE;
 	width: 550px;
 	height: 200px;
-	margin: 50px;
+}
+
+div.review-row {
+	max-width: 100%;
 }
 
 div.title-bar {
@@ -1014,6 +1043,11 @@ div.review-content {
 	padding-bottom: 25px;
 	padding-right: 25px;
 	padding-left: 25px;
+}
+
+td.review-poster {
+	width: 100px;
+	padding: 0px;
 }
 
 div.rating_bar {
