@@ -107,13 +107,18 @@
 				<div class="content" id="p3">
 					<div id="current-friends">
     				<%= render :partial => "current_friends" %>
-    			</div>
+
+    				</div>
 			      <% unless params[:friend_search] %>
-							<div id="friends-pagination"><center><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></center></div>
+					<div id="friends-pagination"><center><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></center></div>
 			      <% end %>
+  				</div>
+		    
+		      <% if current_user == @user %>
 			      <div id="incoming-requests">
 			        <%= render :partial => "incoming_friendships" %>
 			      </div>
+			    <% end %>
 				</div>
 				<div class="content" id="p4">
 					<center><p>REVIEWS <%= link_to "(view all)", user_ratings_path(@user), class:"small-caps"%></p></center>

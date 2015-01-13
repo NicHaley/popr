@@ -36,10 +36,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    if params[:user_search]
-      @users = User.search(params[:user_search]).sort{|x,y| x.first_name <=> y.first_name}
+    @users = if params[:user_search]
+      User.where("LOWER(first_name) LIKE LOWER(?) OR LOWER(last_name) LIKE LOWER(?)", "%#{params[:user_search]}%", "%#{params[:user_search]}%").select{|u| !u.is_friend?(current_user)}.sort{|x,y| x.first_name <=> y.first_name}
     else
-      @users = User.select{|u| !u.is_friend?(current_user) && u.id != current_user.id}.sort{|x,y| x.first_name <=> y.first_name}
+      User.select{|u| !u.is_friend?(current_user) && u.id != current_user.id}.sort{|x,y| x.first_name <=> y.first_name}
     end
   end
 
@@ -47,11 +47,17 @@ class UsersController < ApplicationController
     sleep(0.2)
     @user = User.find(params[:id])
     @ratings = @user.ratings.order(created_at: :desc).page(params[:ratings_page]).per(3)
-    @friends = if params[:friend_search]
-      User.where("LOWER(first_name) LIKE LOWER(?) OR LOWER(last_name) LIKE LOWER(?)", "%#{params[:friend_search]}%", "%#{params[:friend_search]}%").select{|u| u.is_friend?(current_user)}
+     
+    if params[:friend_search]
+      @friends = User.where("LOWER(first_name) LIKE LOWER(?) OR LOWER(last_name) LIKE LOWER(?)", "%#{params[:friend_search]}%", "%#{params[:friend_search]}%").select{|u| u.is_friend?(@user)}.sort{|x,y| x.first_name <=> y.first_name}
+      @friends = Kaminari.paginate_array(@friends).page(params[:friends_page]).per(6)
     else
-      @user.friendships.page(params[:friends_page]).per(6)
+      @friends = @user.friendships.sort{|x,y| x.friend.first_name <=> y.friend.first_name}
+      @friends = Kaminari.paginate_array(@friends).page(params[:friends_page]).per(6)
     end
+
+    @user_id = @user.id
+    gon.user_id = @user.id
 
 
     if @user.ratings.any?
