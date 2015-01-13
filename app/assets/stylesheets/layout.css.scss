@@ -984,6 +984,8 @@ div.edit-review-bar {
 	margin-right: 25px;
 }
 
+/* Chart Toggling */
+
 #graph-toggle {
 	position: absolute;
 	left: 95%;
@@ -1100,9 +1102,10 @@ div.edit-review-bar {
 }
 
 #chart2-box, #chart3-box, #chart4-box {
+	transition: all 500ms ease-out;
 	position: absolute;
 	top: 7%;
-	left: 60%;
+	left: 55%;
 	width: 500px;
 	height: 300px;
 	opacity: 0;
@@ -1110,9 +1113,10 @@ div.edit-review-bar {
 }
 
 #chart1-box {
+	transition: all 500ms ease-out;
 	position: absolute;
 	top: 15%;
-	left: 60%;
+	left: 55%;
 	width: 500px;
 	height: 300px;
 	opacity: 0;
@@ -1123,6 +1127,49 @@ div.edit-review-bar {
 	transition: all 500ms ease-out;
 	visibility: visible;
 	opacity: 1;
+}
+
+.graph-label1, .graph-label2, .graph-label3, .graph-label4 {
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+}
+
+.graph-label1 {
+	top: 15%;
+	left: 89%;
+}
+.graph-label2 {
+	top: 20%;
+	left: 92%;
+}
+.graph-label3 {
+	top: 25%;
+	left: 92%;
+}
+.graph-label4 {
+	top: 30%;
+	left: 91%;
+}
+
+.graph-label1.active, .graph-label2.active, .graph-label3.active, .graph-label4.active {
+	transition: all 500ms ease-out;
+	visibility: visible;
+	opacity: 1;
+	color: #EEEEEE;
+}
+
+.graph-label1.active {
+	top: 121px;
+}
+.graph-label2.active {
+	top: 161px;
+}
+.graph-label3.active {
+	top: 201px;
+}
+.graph-label4.active {
+	top: 241px;
 }
 
 /*#tab-section > .column, .columns  {
