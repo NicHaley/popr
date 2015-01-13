@@ -1,7 +1,7 @@
 // $(document).on('ready page:change', (function() {
 $(document).ready(function() {
 // $(document).on("page:change", function() {
-  $('#search-form').submit(function(event) {
+  $('#friend-search-form').submit(function(event) {
     event.preventDefault();
     var searchValue = $('#friend_search').val();
 
@@ -10,7 +10,7 @@ $(document).ready(function() {
 });
 
 $(document).ajaxSuccess(function() {
-   $('#search-form').submit(function(event) {
+   $('#friend-search-form').submit(function(event) {
     event.preventDefault();
     var searchValue = $('#friend_search').val();
 
