@@ -43,7 +43,7 @@
         <div class="mid-friend-panel">
           <div id="friend-details">
           <p><%= link_to friendship.first_name + " " + friendship.last_name, user_path(friendship), class: "small-marker-caps" %>
-          <%= link_to "(-)", friendship_path(friendship, friend_id: friendship.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
+          <%= link_to "(-)", friendship_path(@user.friendships.find_by(friend_id: friendship.id), friend_id: friendship.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
           
           <% friendCount = 0 %>
           <% friendship.friendships.each do |friendship2| %>
