@@ -5,7 +5,7 @@
 				<h3>Invite Friends</h3><br /><br />
 
 				<%= form_tag(users_path, :method => "get", id: "search-form") do %>
-					<%= text_field_tag :user_search, params[:user_search], placeholder: "Search Users" %>
+					<%= text_field_tag :user_search, params[:user_search], placeholder: "Search by first or last name" %>
 					<%= submit_tag "Search", :name => nil, class: "button tiny" %>
 				<% end %>
 				
