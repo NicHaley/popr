@@ -1,79 +1,85 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Popr</title>
-	<%= include_gon %>
-	<%= stylesheet_link_tag    'application', media: 'all' %>
-	<%= javascript_include_tag 'application' %>
-	<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.secrets.google_maps_api}" %>
-	<%= javascript_include_tag "vendor/modernizr" %>
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Nunito' rel='stylesheet' type='text/css'>
-	<%= csrf_meta_tags %>
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-</head>
-<body data-controller="<%= controller_name %>">	
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Popr</title>
+		<%= include_gon %>
+		<%= stylesheet_link_tag    'application', media: 'all' %>
+		<%= javascript_include_tag 'application' %>
+		<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.secrets.google_maps_api}" %>
+		<%= javascript_include_tag "vendor/modernizr" %>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Nunito' rel='stylesheet' type='text/css'>
+		<%= csrf_meta_tags %>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	<body data-controller="<%= controller_name %>">	
 
-	<div style="border-bottom"> 
-		<nav class="top-bar" data-topbar role="navigation">
-			<ul class="title-area">
-				<li class="name">
-					<h1 class="top-title"><%= link_to 'popr', root_path %></a></h1>
-				</li>
-				<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-			</ul>
-
-			<% if current_user %>
-			<section class="top-bar-section">
-				<!-- Right Nav Section -->
-				<ul class="right">
-
-					<li class="has-dropdown">
-						<a href="#">
-							<% if current_user %>
-							<%= image_tag("#{current_user.avatar.thumb}", id: "current-thumb")%> &nbsp;<%= current_user.first_name%>
-							<% end %>
-						</a>
-
-						<ul class="dropdown">
-							<li><%= link_to 'My Profile', user_path(current_user) %></li>
-							<li><%= link_to 'My Reviews', user_ratings_path(current_user.id) %></li>
-							<li><%= link_to "Logout", logout_path, method: :post %></li>
-						</ul>
-					</li>	
-
-					<li id="friend-request" class="show-for-medium-up">
-						<div id="friend-container">
-			        <%= render :partial => "layouts/requests" %>
-						<div>
+		<div style="border-bottom"> 
+			<nav class="top-bar" data-topbar role="navigation">
+				<ul class="title-area">
+					<li class="name">
+						<h1 class="top-title"><%= link_to 'popr', root_path %></a></h1>
 					</li>
-					<li id="friend-button"><%= link_to 'Invite Friends', users_path %></li>
+				<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+					<li class="toggle-topbar menu-icon">
+						<a href="#"><span>Menu</span></a>
+					</li>
+				</ul>
 
-					<li id="event-button"><%= link_to 'Movies', new_user_movie_interest_path(user_id: current_user) %></li>
+				<% if current_user %>
+					<section class="top-bar-section">
+						<!-- Right Nav Section -->
+						<ul class="right">
+
+							<li class="has-dropdown">
+								<a href="#">
+									<% if current_user %>
+									<%= image_tag("#{current_user.avatar.thumb}", id: "current-thumb")%> &nbsp;<%= current_user.first_name%>
+									<% end %>
+								</a>
+
+								<ul class="dropdown">
+									<li><%= link_to 'My Profile', user_path(current_user) %></li>
+									<li><%= link_to 'My Reviews', user_ratings_path(current_user.id) %></li>
+									<li><%= link_to "Logout", logout_path, method: :post %></li>
+								</ul>
+							</li>	
+
+							<li id="friend-request" class="show-for-medium-up">
+								<div id="friend-container">
+					        		<%= render :partial => "layouts/requests" %>
+								</div>
+							</li>
+							
+							<li id="friend-button">
+								<%= link_to 'Invite Friends', users_path %>
+							</li>
+
+							<li id="event-button"><%= link_to 'Movies', new_user_movie_interest_path(user_id: current_user) %>
+							</li>
 						</ul>
 
 					</section>
-					<% end %>
-				</nav>
-			</div>
+				<% end %>
+			</nav>
+		</div>
 
-			<% unless controller.controller_name == "movie_interests" %>
-				<% if (flash[:alert]) %>
-					<div class="error-box">
-						<p class="alert"><%= flash[:alert] %></p>
-					</div>
-				<% end %>
-				<% if (flash[:notice]) %>
-					<div class="success-box">
-						<p class="notice"><%= flash[:notice] %></p>
-					</div>
-				<% end %>
+		<% unless controller.controller_name == "movie_interests" %>
+			<% if (flash[:alert]) %>
+				<div class="error-box">
+					<p class="alert"><%= flash[:alert] %></p>
+				</div>
 			<% end %>
+			<% if (flash[:notice]) %>
+				<div class="success-box">
+					<p class="notice"><%= flash[:notice] %></p>
+				</div>
+			<% end %>
+		<% end %>
 
-			<div class="yield-body">
-				<%= yield %>
-			</div>
-		</body>
-		</html>
+		<div class="yield-body">
+			<%= yield %>
+		</div>
+	</body>
+</html>
