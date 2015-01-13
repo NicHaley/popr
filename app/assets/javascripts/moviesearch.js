@@ -48,7 +48,7 @@ $(document).on('ready page:load', function() {
     $('#rating_directors').val(directors);
   }
 
-  searchCallback = jQuery.throttle(100, searchCallback);
+  searchCallback = jQuery.throttle(250, searchCallback);
 
   // AJAX REQUEST 1
     $("#search").keyup(function(){
@@ -62,6 +62,16 @@ $(document).on('ready page:load', function() {
           success: searchCallback
         });
       }
+
+      setTimeout(function(){
+        if (query.length > 0) {
+          $.ajax({
+            url: moviesSearchUrl + '&q=' + encodeURI(query),
+            dataType: "jsonp",
+            success: searchCallback
+          });
+        }
+      }, 1000);
     });
 
   // AJAX REQUEST 2
