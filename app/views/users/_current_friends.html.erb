@@ -1,3 +1,4 @@
+
 <b>Friends&nbsp;(<%= @user.friendships.where(confirm: true).count %>)</b><br>
 <%= form_tag @user_path, method: :get, authentication: false, id: 'friend-search-form' do %>
   <%= text_field_tag :friend_search, params[:friend_search], placeholder: "Search Friends" %>
@@ -10,22 +11,21 @@
         <div class="top-friend-panel">
           <%= link_to image_tag(friendship.friend.avatar, id:"friend-avatar"), user_path(friendship.friend_id)%>
         </div>
-
         <div class="mid-friend-panel">
+          <div id="friend-name">
+            <p><%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend), class: "small-marker-caps" %>
+            <%= link_to "(-)", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
+            <br>
+          </div>
           <div id="friend-details">
-          <p><%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend), class: "small-marker-caps" %>
-          <%= link_to "(-)", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
-          
-          <% friendCount = 0 %>
-          <% friendship.friend.friendships.each do |friendship2| %>
-            <% if friendship2.confirm %>
-              <% friendCount += 1 %>
+            <% friendCount = 0 %>
+            <% friendship.friend.friendships.each do |friendship2| %>
+              <% if friendship2.confirm %>
+                <% friendCount += 1 %>
+              <% end %>
             <% end %>
-          <% end %>
-              
-          <p class="small-caps">Reviews: <%= friendship.friend.ratings.length %> | Friends: <%= friendCount %></p>
-
-          <br>
+                
+            <p class="small-caps">Reviews: <%= friendship.friend.ratings.length %> | Friends: <%= friendCount %></p>
           </div>
         </div>
 
@@ -39,31 +39,31 @@
         <div class="top-friend-panel">
           <%= link_to image_tag(friendship.avatar, id:"friend-avatar"), user_path(friendship)%>
         </div>
-
         <div class="mid-friend-panel">
-          <div id="friend-details">
-          <p><%= link_to friendship.first_name + " " + friendship.last_name, user_path(friendship), class: "small-marker-caps" %>
-          <%= link_to "(-)", friendship_path(@user.friendships.find_by(friend_id: friendship.id), friend_id: friendship.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
-          
-          <% friendCount = 0 %>
-          <% friendship.friendships.each do |friendship2| %>
-            <% if friendship2.confirm %>
-              <% friendCount += 1 %>
+          <div id="friend-name">
+            <p><%= link_to friendship.first_name + " " + friendship.last_name, user_path(friendship), class: "small-marker-caps" %>
+            <%= link_to "(-)", friendship_path(@user.friendships.find_by(friend_id: friendship.id), friend_id: friendship.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
+            <br>
+          </div>
+          <div id="friend-details">          
+            <% friendCount = 0 %>
+            <% friendship.friendships.each do |friendship2| %>
+              <% if friendship2.confirm %>
+                <% friendCount += 1 %>
+              <% end %>
             <% end %>
-          <% end %>
-              
-          <p class="small-caps">Reviews: <%= friendship.ratings.length %> | Friends: <%= friendCount %></p>
-
-          <br>
+            <p class="small-caps">Reviews: <%= friendship.ratings.length %> | Friends: <%= friendCount %></p>
           </div>
         </div>
       </div>
-      <% end %>
+    <% end %>
   <% else %>
     <p>No results found</p>
   <% end %>
   <%= link_to "Back to all friends", @user_path, id: "back-to-friends" %>
 <% end %>
+<center>
 <div id="friends-pagination">
   <%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %>
 </div>
+</center>
