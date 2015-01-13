@@ -41,6 +41,11 @@ class UsersController < ApplicationController
     else
       User.select{|u| !u.is_friend?(current_user) && u.id != current_user.id}.sort{|x,y| x.first_name <=> y.first_name}
     end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

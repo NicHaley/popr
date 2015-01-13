@@ -35,4 +35,7 @@
 		<% end %>
 	<% end %>
 <% end %>
+<% if params[:user_search] %>
+	<%= link_to "Back to all users", users_path, remote: true %>
+<% end %>
 
