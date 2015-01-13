@@ -28,6 +28,60 @@ $movie-poster-height: 50vh;
 	line-height: 0.5;
 }
 
+/* Notification Tab */
+
+.notification-tab {
+	transition: all 250ms ease-out;
+	width: 200px;
+	height: 0px;
+	overflow-y: scroll;
+	background-color: #333333;
+	position: absolute;
+	top: 5%;
+	left: 83%;
+	padding: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.notification-tab.active {
+	transition: all 250ms ease-out;
+	height: 200px;
+	padding-top: 20px;
+}
+
+.friend-notify {
+	height: 35px;
+	width: 150px;
+}
+
+#notify-friend-image {
+	width: 30px;
+	height: 30px;
+}
+
+.notify-style {
+	color: #BD1E2C;
+}
+
+#notify-friend-avatar {
+	display: inline-block;
+}
+
+#notify-friend-detail {
+	padding-top: 5px;
+	display: inline-block;
+	color: white;
+}
+
+.notify-hr {
+	display: block; 
+	height: 1px;
+    border: 0; 
+    border-top: 1px solid #302f2f; 
+    padding: 0;
+}
+
 /* Edit Profile */
 #edit-container {
 	width: 100%;
