@@ -1,25 +1,28 @@
 <div class="container">
+	<%= render :partial => "chart_toggle" %>
 	<div class="row" id="status-row">
 		<div class="large-3 medium-3 small-12 columns" id="status-space">
 			<%= image_tag @user.avatar_url(:profile), id: 'profile-image'%>
-			<p><b><%=@user.first_name%> <%=@user.last_name%></b></p>
-            <p>Joined on: <%=@user.created_at%></p>
-			<div>
-				<% if @user.bio == nil %>
-					<p>No bio yet</p>
-				<% else %>
-					<p><%= @user.bio %></p>
-				<% end %>
-				<% if @user.hometown == nil %>
-					<p>No address yet</p>
-				<% else %>
-					<b><%= @user.hometown %></b>
-				<% end %>
+			<div id="profile-info">	
+				<p class="profile-name"><b><%=@user.first_name%> <%=@user.last_name%></b></p>
+				<div>
+					<% if @user.bio == nil %>
+						<p>No bio yet</p>
+					<% else %>
+						<p><%= @user.bio %></p>
+					<% end %>
+					<% if @user.hometown == nil %>
+						<p>No address yet</p>
+					<% else %>
+						<b><%= @user.hometown %></b>
+					<% end %>
+				</div><br>
+	      <p class="small-caps">Joined on: <%=@user.created_at%></p>
 			</div>
 		</div>
 		<div class="large-7 medium-7 small-7 columns" id="status-details">
 			<dl class="tabs" data-tab>
-			  <dd class="active">
+			  <dd class="active animate">
 			  	<a href="#p1" id="left-tab">HOSTING</a>
 			  	<% count_host = 0 %>
 			  	<% @user.hosted_events.each do |event| %>
@@ -29,7 +32,7 @@
 			  	<% end %>
 					<span class="profile-counts"><center><%= count_host %></center></span>
 			  </dd>
-			  <dd>
+			  <dd class="animate">
 			  	<a href="#p2" id="center-tab">ATTENDING</a>
 			  	<% count_attend = 0 %>
 			  	<% @user.commitments.each do |commitment| %>
@@ -39,15 +42,15 @@
 			  	<% end %>
 					<span class="profile-counts"><center><%= count_attend %></center></span>
 			  </dd>
-			  <dd>
-			  	<a href="#p3" id="center-tab">FREINDS</a>
+			  <dd class="animate">
+			  	<a href="#p3" id="center-tab">FRIENDS</a>
 					<span class="profile-counts"><center><%= @user.friendships.where(confirm: true).count %></center></span>
 			  </dd>
-			  <dd>
+			  <dd class="animate">
 			  	<a href="#p4" id="center-tab">REVIEWS</a>
 					<span class="profile-counts"><center><%= @user.ratings.length %></center></span>
 			  </dd>
-			  <dd>
+			  <dd class="animate">
 			  	<a href="#p5" id="right-tab">WISHLIST</a>
 			  	<% count_wish = 0 %>
 			  	<% @user.movie_interests.each do |movie_interest| %>
@@ -104,17 +107,16 @@
 				<div class="content" id="p3">
 					<div id="current-friends">
     				<%= render :partial => "current_friends" %>
-  				</div>
-		      <% unless params[:friend_search] %>
-						<div id="friends-pagination">
-							<%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %>
-						</div>
-		      <% end %>
-		      <div id="incoming-requests">
-		        <%= render :partial => "incoming_friendships" %>
-		      </div>
+    			</div>
+			      <% unless params[:friend_search] %>
+							<div id="friends-pagination"><center><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></center></div>
+			      <% end %>
+			      <div id="incoming-requests">
+			        <%= render :partial => "incoming_friendships" %>
+			      </div>
 				</div>
 				<div class="content" id="p4">
+					<center><p>REVIEWS <%= link_to "(view all)", user_ratings_path(@user), class:"small-caps"%></p></center>
 					<div id="review-list">
 						<%= render :partial => "ratings" %>
 					</div>
@@ -154,6 +156,7 @@
 					<% end %>	
 					</div>	
 				</div>
+			
 			</div>
 		</div>
 		<div class="large-2 medium-2 small-12 columns" id="user-add-info">
@@ -165,13 +168,6 @@
 
 
 
-<div id="chart4"></div>
-
-<div id="chart"></div>
-
-<div id="chart2"></div>	
-
-<div id="chart3"></div>
 
 
 	
@@ -185,6 +181,14 @@
 			type: 'donut',
 			hide: true,
       hide: ['Other']
+    },
+    legend: {
+    	position: 'inset',
+    	inset: {
+    		anchor: 'bottom-right',
+    		x:10,
+    		y:100
+    	}
     },
     donut: {
       title: "Favourite Genres",
@@ -200,6 +204,14 @@
 			hide: true,
       hide: ['Other']
     },
+    legend: {
+    	position: 'inset',
+    	inset: {
+    		anchor: 'bottom-right',
+    		x:10,
+    		y:100
+    	}
+    },
     donut: {
       title: "Favourite Actors",
       width: 80
@@ -213,6 +225,14 @@
 			type: 'donut',
 			hide: true,
       hide: ['Other']
+    },
+    legend: {
+    	position: 'inset',
+    	inset: {
+    		anchor: 'bottom-right',
+    		x:10,
+    		y:100
+    	}
     },
     donut: {
       title: "Favourite Directors",
