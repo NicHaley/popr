@@ -755,7 +755,7 @@ div#slidingDiv
 	color: white;
 	font-size: 8pt;
 	position: relative;
-	left: 35px;
+	left: 30px;
 	top: -15px;
 }
 
@@ -860,6 +860,17 @@ div#slidingDiv
 	height: 70%;
 }
 
+.profile-name {
+	color: #BD1E2C;
+	font-size: 16pt;
+}
+
+#profile-info {
+	position: relative;
+	top: -50px;
+	left: 5px;
+}
+
 #status-space {
 	padding-left: 30px;
 }
@@ -922,7 +933,7 @@ dd:hover {
 	}
 }
 
-dd.active {
+dd.animate.active {
 	border-bottom: 5px solid #BD1E2C;
 }
 
@@ -1061,8 +1072,192 @@ div.edit-review-bar {
 	margin-right: 25px;
 }
 
-#chart svg {
-	width: 300px;
+/* Chart Toggling */
+
+#graph-toggle {
+	position: absolute;
+	left: 95%;
+	top: 43%;
+	cursor: pointer;
+	padding: 10px 50px 16px 0px;
+}
+
+
+#graph-toggle span:before {
+	cursor: pointer;
+	height: 10px;
+	width: 3px;
+	background: white;
+	position: absolute;
+	display: block;
+	content: '';
+}
+
+#graph-toggle span:after {
+	cursor: pointer;
+	height: 15px;
+	width: 3px;
+	background: white;
+	position: absolute;
+	display: block;
+	content: '';
+}
+
+#graph-toggle span {
+	cursor: pointer;
+	height: 20px;
+	width: 3px;
+	left: 28px;
+	top:-5px;
+	background: white;
+	position: absolute;
+	display: block;
+	content: '';
+}
+
+#graph-toggle span:before {
+	left: -20px;
+	top: 10px;
+}
+
+#graph-toggle span:after {
+	left: -10px;
+	top: 5px;
+}
+
+#graph-toggle span {
+}
+
+#graph-toggle span,
+#graph-toggle span:before,
+#graph-toggle span:after {
+	transition: all 250ms ease-out;
+}
+
+#graph-toggle.active span {
+	background-color: transparent;
+}
+
+#graph-toggle.active span:before {
+	height: 20px;
+	left:0;
+	top:0;
+	transform: rotate(135deg);
+}
+
+#graph-toggle.active span:after {
+	height: 20px;
+	left:0;
+	top:0;
+	transform: rotate(45deg);
+}
+
+.graph-btn, .btn1 {
+	border-radius: 10px;
+	width: 10px;
+	height: 10px;
+	background: #555555;
+	position: absolute;
+	top: 43%;
+	left: 96.7%;
+	cursor: pointer;
+	visibility: hidden;
+}
+
+.graph-btn.active {
+	transition: all 250ms ease-out;
+	visibility: visible;
+}
+
+.graph-btn.hover {
+	background: #222222;
+}
+
+.btn1.active {
+	top: 130px;
+}
+
+.btn2.active {
+	top: 170px;
+}
+
+.btn3.active {
+	top: 210px;
+}
+
+.btn4.active {
+	top: 250px;
+}
+
+#chart2-box, #chart3-box, #chart4-box {
+	transition: all 500ms ease-out;
+	position: absolute;
+	top: 7%;
+	left: 55%;
+	width: 500px;
+	height: 300px;
+	opacity: 0;
+	visibility: hidden;
+}
+
+#chart1-box {
+	transition: all 500ms ease-out;
+	position: absolute;
+	top: 15%;
+	left: 55%;
+	width: 500px;
+	height: 300px;
+	opacity: 0;
+	visibility: hidden;
+}
+
+#chart1-box.active, #chart2-box.active, #chart3-box.active, #chart4-box.active {
+	transition: all 500ms ease-out;
+	visibility: visible;
+	opacity: 1;
+}
+
+.graph-label1, .graph-label2, .graph-label3, .graph-label4 {
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+}
+
+.graph-label1 {
+	top: 15%;
+	left: 89%;
+}
+.graph-label2 {
+	top: 20%;
+	left: 92%;
+}
+.graph-label3 {
+	top: 25%;
+	left: 92%;
+}
+.graph-label4 {
+	top: 30%;
+	left: 91%;
+}
+
+.graph-label1.active, .graph-label2.active, .graph-label3.active, .graph-label4.active {
+	transition: all 500ms ease-out;
+	visibility: visible;
+	opacity: 1;
+	color: #EEEEEE;
+}
+
+.graph-label1.active {
+	top: 121px;
+}
+.graph-label2.active {
+	top: 161px;
+}
+.graph-label3.active {
+	top: 201px;
+}
+.graph-label4.active {
+	top: 241px;
 }
 
 /*#tab-section > .column, .columns  {
