@@ -107,19 +107,19 @@
 				<div class="content" id="p3">
 					<div id="current-friends">
     				<%= render :partial => "current_friends" %>
-
-    				</div>
-			      <% unless params[:friend_search] %>
-					<div id="friends-pagination"><center><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></center></div>
-			      <% end %>
-  				</div>
-		    
+    			</div>
+			    <% unless params[:friend_search] %>
+						<div id="friends-pagination">
+							<center><%= paginate @friends, :remote => true, :param_name => "friends_page", params: {ratings_page: params[:ratings_page]} %></center>
+						</div>
+			    <% end %>
 		      <% if current_user == @user %>
 			      <div id="incoming-requests">
 			        <%= render :partial => "incoming_friendships" %>
 			      </div>
 			    <% end %>
-				</div>
+  			</div>
+			
 				<div class="content" id="p4">
 					<center><p>REVIEWS <%= link_to "(view all)", user_ratings_path(@user), class:"small-caps"%></p></center>
 					<div id="review-list">
@@ -130,44 +130,44 @@
 				</div>
 				<div class="content" id="p5">
 					<div id="wish-section">
-					<b>Wishlist</b><br /><br />
-					<% unless @user.movie_interests.empty? %>
-						<ul id="featured1 inline-list" data-orbit>
-							<% count = 0 %>
-						  	<li>
-								<% @user.movie_interests.each do |movie| %>
-									<% count += 1 %>
-									<% if count % 10 == 0 %>
-										<% return true %>
-									<% else %>
+						<b>Wishlist</b><br /><br />
+						<% unless @user.movie_interests.empty? %>
+							<ul id="featured1 inline-list" data-orbit>
+								<% count = 0 %>
+							  	<li>
+									<% @user.movie_interests.each do |movie| %>
+										<% count += 1 %>
+										<% if count % 10 == 0 %>
+											<% return true %>
+										<% else %>
 
-									<div class="car-img-container">
-										<% sleep(0.2) %>
-										<img class= "car-img" src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
-										<% if current_user.id == @user.id %>
-											<%= link_to "Remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
-										<% end %>
-									</div>
-										<% if count % 3 == 0 %>
-											</li>
-											<li>
-										<% end %>
-									<% end %> 
-							 	<% end %>
-							</li>
-						</ul>
-					<% else %>
-						<p>No movie interests yet</p>
-					<% end %>	
+										<div class="car-img-container">
+											<% sleep(0.2) %>
+											<img class= "car-img" src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
+											<% if current_user.id == @user.id %>
+												<%= link_to "Remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete %>
+											<% end %>
+										</div>
+											<% if count % 3 == 0 %>
+												</li>
+												<li>
+											<% end %>
+										<% end %> 
+								 	<% end %>
+								</li>
+							</ul>
+						<% else %>
+							<p>No movie interests yet</p>
+						<% end %>	
 					</div>	
 				</div>
-			
 			</div>
 		</div>
 		<div class="large-2 medium-2 small-12 columns" id="user-add-info">
 			Insert Side Content
 		</div>
 	</div>
+</div>
 
 
 
