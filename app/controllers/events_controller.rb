@@ -35,13 +35,6 @@ class EventsController < ApplicationController
 
   end
 
-  def index
-    # Finds all events hosted by user
-    # Finds all events; we'll need to add logic to ensure only events 
-    # of people whom are my friends are displayed 
-    @events = Event.where(host_id: params[:user_id])
-  end
-
   def show
     @commitment = current_user.commitments.find_or_initialize_by(event: @event)
     @movie = Movie.find_movie(@event.rt_id)
@@ -59,7 +52,6 @@ class EventsController < ApplicationController
       redirect_to :back, alert: "There was an error creating your event!"
     end
   end
-
 
   def edit
     @user = User.find(params[:user_id])

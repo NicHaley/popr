@@ -1,26 +1,26 @@
 <% @event.comments.each do |comment| %>
-<% if comment.id %>
-<div class="comment-panel">
-  <div class="large-2 columns">
-    <div class="comment-user">
-      <% if comment.user == @event.host %>
-      <%= image_tag @event.host.avatar_url(:thumb), id: "avatar-thumb" %>
-      <% else %>  
-      <%= image_tag comment.user.avatar_url(:thumb), id: "avatar-thumb" %>
-      <% end %>
-      <%= comment.user.first_name %>
-    </div>
-  </div>
-  <div class="comment large-10 columns">
-    <strong>"<%= comment.content %>"</strong><br />
-    <div class="comment-date">
-      - Posted on <%= comment.pretty_date %>
-      <% if current_user == comment.user %>
-         | <%= link_to "Delete", user_event_comment_path(@event.host, @event, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
-      <% end %>
-    </div>
-  </div>
-</div>       
-<% end %>  
+  <% if comment.id %>
+    <div class="comment-panel">
+      <div class="large-2 columns">
+        <div class="comment-user">
+          <% if comment.user == @event.host %>
+            <%= image_tag @event.host.avatar_url(:thumb), id: "avatar-thumb" %>
+          <% else %>  
+            <%= image_tag comment.user.avatar_url(:thumb), id: "avatar-thumb" %>
+          <% end %>
+            <%= comment.user.first_name %>
+        </div>
+      </div>
+      <div class="comment large-10 columns">
+        <strong>"<%= comment.content %>"</strong><br />
+        <div class="comment-date">
+          - Posted on <%= comment.pretty_date %>
+          <% if current_user == comment.user %>
+             | <%= link_to "Delete", user_event_comment_path(@event.host, @event, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+          <% end %>
+        </div>
+      </div>
+    </div>       
+  <% end %>  
 <% end %>
 

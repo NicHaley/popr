@@ -1,0 +1,22 @@
+<%= image_tag @movie.poster, id: "event-page-poster" %>
+<h4><%= @movie.title %> (<%= @movie.year %>)</h4><br />
+<p>
+  <b>Critics Rating:</b> 
+  <% if @movie.rating[0].include?("Fresh") %>
+    <img class="event-critics-score" src="http://d3biamo577v4eu.cloudfront.net/static/images/trademark/fresh.png"> 
+  <% elsif @movie.rating[0].include?("Rotten") %>
+    <img class="event-critics-score" src="http://d3biamo577v4eu.cloudfront.net/static/images/trademark/rotten.png">
+  <% else %>
+    <img class="event-critics-score" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Icon-round-Question_mark.svg/200px-Icon-round-Question_mark.svg.png"> 
+  <% end %>
+  <b><%= @movie.rating[1] >= 0 ? @movie.rating[1] : "-" %>%</b> 
+</p> 
+<p><b>Cast:</b> 
+  <% @movie.cast.each do |actor| %>
+   <i><%= actor["name"] %> /</i> 
+  <% end %>
+</p>
+<% if current_user == @event.host %>
+  <%= link_to "Edit Event", edit_user_event_path(@event.host, @event), class: "edit-buttons" %> | 
+  <%= link_to "Cancel Event", user_event_path(@event.host, @event), data: { confirm: 'Are you sure you would like to cancel the event?' }, method: :delete, class: "edit-buttons" %>
+<% end %>
