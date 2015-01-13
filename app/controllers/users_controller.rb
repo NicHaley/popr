@@ -36,10 +36,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    if params[:user_search]
-      @users = User.search(params[:user_search]).sort{|x,y| x.first_name <=> y.first_name}
+    @users = if params[:user_search]
+      User.where("LOWER(first_name) LIKE LOWER(?) OR LOWER(last_name) LIKE LOWER(?)", "%#{params[:user_search]}%", "%#{params[:user_search]}%").select{|u| !u.is_friend?(current_user)}.sort{|x,y| x.first_name <=> y.first_name}
     else
-      @users = User.select{|u| !u.is_friend?(current_user) && u.id != current_user.id}.sort{|x,y| x.first_name <=> y.first_name}
+      User.select{|u| !u.is_friend?(current_user) && u.id != current_user.id}.sort{|x,y| x.first_name <=> y.first_name}
     end
   end
 
