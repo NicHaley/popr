@@ -23,17 +23,24 @@ $(document).on('ready page:load', function() {
     $.getScript('/all_events?latitude=' + latitude + '&longitude=' + longitude);
     });
 
-
+$('.spinner').show();
 });
-  });
+});
+
+// $(document).on('ajax:beforeSend', function() {
+//   alert("before");
+//   $('.spinner').show();
+// });
 
 $(document).ajaxSuccess(function() {  
-      $("#event-search-submit")  
-      .val('Search')
-      .removeAttr('disabled');
+  $("#event-search-submit")  
+    .val('Search')
+    .removeAttr('disabled');
 
-
-        $("#near-me-button")
+  $("#near-me-button")
     .html('Near Me')
     .removeAttr('disabled');
+
+  $('.spinner').hide();
+
 });
