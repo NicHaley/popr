@@ -15,7 +15,8 @@
 	</head>
 	<body data-controller="<%= controller_name %>">	
 
-		<div style="border-bottom"> 
+		<div style="border-bottom">
+			<div class="fixed"> 
 			<nav class="top-bar" data-topbar role="navigation">
 				<ul class="title-area">
 					<li class="name">
@@ -63,6 +64,7 @@
 					</section>
 				<% end %>
 			</nav>
+			</div>
 		</div>
 
 		<% unless controller.controller_name == "movie_interests" %>
