@@ -1,5 +1,16 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  skip_load_and_authorize_resource :require_login, :only => [:index, :new, :create, :activate]
+  # load_and_authorize_resource
+
+  def activate
+    if (@user = User.load_from_activation_token(params[:id]))
+      @user.activate!
+      redirect_to(root_path, :notice => 'User was successfully activated.')
+    else
+      not_authenticated
+    end
+  end
+
   def new
     @user = User.new
   end
@@ -8,10 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
 
-      UserMailer.activation_needed_email(@user).deliver
-
-      auto_login(@user)
-      redirect_to root_path, notice: "Success! Welcome to Popr!"
+      redirect_to root_path, notice: "Success! Please check confirmation email"
     else
       flash.now[:alert] = "An error occurred!"
       render 'events/welcome'
@@ -31,7 +39,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      redirect_to user_path(@user), notice: "Changes successful."
+      redirect_to user_path(@user), notice: "Changes successful"
     else
       flash.now[:alert] = "An error occurred!"
       render 'edit'
@@ -55,7 +63,7 @@ class UsersController < ApplicationController
     sleep(0.2)
     @user = User.find(params[:id])
     @ratings = @user.ratings.order(created_at: :desc).page(params[:ratings_page]).per(3)
-     
+
     if params[:friend_search]
       @friends = User.where("LOWER(first_name) LIKE LOWER(?) OR LOWER(last_name) LIKE LOWER(?)", "%#{params[:friend_search]}%", "%#{params[:friend_search]}%").select{|u| u.is_friend?(@user)}.sort{|x,y| x.first_name <=> y.first_name}
       @friends = Kaminari.paginate_array(@friends).page(params[:friends_page]).per(6)
