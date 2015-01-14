@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root "events#welcome"
   
   resources :users do
+    member do
+      get :activate
+    end
     resources :events, except:[:new, :index] do
       resources :comments, only: [:destroy, :update, :create]
     end
@@ -15,6 +18,6 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:destroy, :new, :create]
 
   get 'all_events' => 'events#all_events', :as => :events
-  get 'login' => 'user_sessions#new', :as => :login
+  # get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
 end
