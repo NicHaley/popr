@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body style="text-align: center; background-color: #efefef">
+  	<div style="text-align: center; width: 60%; min-width: 400px; padding: 15px; background-color: white; border-radius: 3px; display: block; margin: auto; ">
+		<%= image_tag 'http://www.reactiongifs.com/wp-content/gallery/yes/yesjacknicholson.gif' %>
+		<hr /><br /> 
+		<h1>Congratulations, <b style="color: #bd1e2c"; ><%= @user.first_name %>!</b></h1>
+		<h3>You have successfully signed up for Popr!<h3><br />
+		<h4>
+			To activate your account, please follow this link:<br /><br />
+			<%= @url %>
+		</h4>
+		<h4>You may then login by entering your account information. Happy popping!</h4><br />
+	</div>
+</body>
+</html>
