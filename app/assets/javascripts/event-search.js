@@ -15,6 +15,5 @@ $(document).ready(function() {
     $.getScript('/all_events?latitude=' + latitude + '&longitude=' + longitude);
     });
 
-    // ?latitude=43.647031299999995&longitude=-79.3872371
   });
 });
