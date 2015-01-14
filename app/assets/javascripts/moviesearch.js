@@ -103,7 +103,7 @@ $(".search-results").on('click', ".movie-click", function(){
       $("#rev-button").prop('value', 'Submit Review');
       $("#rev-button").attr("disabled", false);
       $('html, body').animate({
-        scrollTop: $(".form-window").offset().top
+        scrollTop: $(".form-window").offset().top - 50
       }, 2000);
     }, 1000);
 
