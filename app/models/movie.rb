@@ -18,15 +18,16 @@ class Movie
 
   def self.find_movie(movie_id)
     api_key = ["5z3dxvtjcr5nxmqefqnbh25z", "asufuw64uzqn4pz7pb2v2kkt"]
-    key = 0
+    $key ||= 0
     rotten_api = ""
-    if key == 0
+    if $key == 0
       rotten_api = api_key[0]
-      key = 1
+      $key = 1
     else
       rotten_api = api_key[1]
-      key = 0
+      $key = 0
     end
+
     # The .find_movie function is called on the Movie class in the EventsController
     # show action, and is passed that specific event's rt_id. We pass the response 
     # into JSON.parse() as the Rotten Tomatoes API returns a string.

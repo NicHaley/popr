@@ -1,4 +1,5 @@
 <section class="event">
+	<% if @events != [] %>
 	<% @events.each do |event| %>
 		<% movie = Movie.find_movie(event.rt_id) %>
 		<div id="event-wrapper">
@@ -37,4 +38,11 @@
 			</div>	
 		</div>
 	<% end %>
+	<% else %>
+		<% if params[:search_location] %>
+			No Events at Searched Location
+		<% else %>
+			No Upcoming Events
+		<% end %>
+	<% end %>	
 </section>
