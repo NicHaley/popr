@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+
+      UserMailer.activation_needed_email(@user).deliver
+
       auto_login(@user)
       redirect_to root_path, notice: "Success! Welcome to Popr!"
     else
