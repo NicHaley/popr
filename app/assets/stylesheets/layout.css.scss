@@ -977,14 +977,14 @@ div#slidingDiv
 	border-bottom-width: 1px;
 }
 
-dd {
+dd.animate {
 	border-bottom: 0px solid; 
 	padding-bottom: 2px;
 	-webkit-transition: 0.5s ease;
 	transition: 0.5s ease;
 }
 
-dd:hover {
+dd.animate:hover {
 	-webkit-transition: 0.5s ease;
 	transition: 0.5s ease;
 	border-bottom: 5px solid #BD1E2C;
