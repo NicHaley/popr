@@ -1,3 +1,5 @@
 var coords = <%= @nearby_coords.to_json.html_safe %>
 myMap.addMarkers(coords)
 console.log("Nearby Coordinates", coords)
+$(".event-listing").html("<%= j render 'event' %>")
+// $("#map-container").html("<%= j render 'map' %>")
