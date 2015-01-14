@@ -1,61 +1,61 @@
 <div class="container">
-<div class="row review-row">
-	<div class="small-10 large-10 small-centered columns" id="review-container">	
-		<h3 id="review-list-title"><center>Reviews</center></h3>
-		<div id="review-list">
-			<% if @ratings %>
-				<center><%= paginate @ratings %><center>
-				<table id="review-table" role="grid">
-					<thead>
-						<tr>
-							<th height="50">Poster</th>
-							<th width="140", max-height="50">Title</th>
-							<th width="50", max-height="50">Year</th>
-							<% unless @user.id == current_user.id %>
-								<th width="150", max-height="50">Rating</th>
-							<% end %>
-							<th width="150", max-height="50">My rating</th>
-							<th width="190", max-height="50">Review</th>
-							<th width="50", max-height="50">Date added</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @ratings.each do |rating| %>
-							<% if rating.id != nil %>
-								<tr>
-									<% @movie = Movie.find_movie(rating.rt_id) %>
-									<td class="review-poster"><%= image_tag(@movie.poster.gsub('det', 'thm'))%></td>
-									<td><%= @movie.title %></td>
-									<td><%= @movie.year %></td>
-									<% unless @user.id == current_user.id %>
-										<td><% width = ((rating.user_score.to_i/5.to_f) * 100.to_i).to_i %>
-											<div class="rating_bar">
-											<div class="rating" style= "width:<%= width %>%"></div>
-											</div>
-										</td>
-									<% end %>
-									<td>
-										<% current_user.ratings.each do |current_rating|%>
-											<% if current_rating.rt_id == rating.rt_id %>
-												<% width = ((current_rating.user_score.to_i/5.to_f) * 100.to_i).to_i  %>
+	<div class="row review-row">
+		<div class="small-10 large-10 small-centered columns" id="review-container">	
+			<h3 id="review-list-title"><center>Reviews</center></h3>
+			<div id="review-list">
+				<% if @ratings %>
+					<center><%= paginate @ratings %><center>
+					<table id="review-table" role="grid">
+						<thead>
+							<tr>
+								<th height="50">Poster</th>
+								<th width="140", max-height="50">Title</th>
+								<th width="50", max-height="50">Year</th>
+								<% unless @user.id == current_user.id %>
+									<th width="150", max-height="50">Rating</th>
+								<% end %>
+								<th width="150", max-height="50">My rating</th>
+								<th width="190", max-height="50">Review</th>
+								<th width="50", max-height="50">Date added</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @ratings.each do |rating| %>
+								<% if rating.id != nil %>
+									<tr>
+										<% @movie = Movie.find_movie(rating.rt_id) %>
+										<td class="review-poster"><%= image_tag(@movie.poster.gsub('det', 'thm'))%></td>
+										<td><%= @movie.title %></td>
+										<td><%= @movie.year %></td>
+										<% unless @user.id == current_user.id %>
+											<td><% width = ((rating.user_score.to_i/5.to_f) * 100.to_i).to_i %>
 												<div class="rating_bar">
-													<div class="rating" style="width:<%= width %>%"></div>
+												<div class="rating" style= "width:<%= width %>%"></div>
 												</div>
-											<% end %>
+											</td>
 										<% end %>
-									</td>
-									<td>"<%= rating.review %>"</td>
-									<td><%= rating.created_at.strftime("%D, %l:%M %p") %>
-									</td>
-								</tr>
+										<td>
+											<% current_user.ratings.each do |current_rating|%>
+												<% if current_rating.rt_id == rating.rt_id %>
+													<% width = ((current_rating.user_score.to_i/5.to_f) * 100.to_i).to_i  %>
+													<div class="rating_bar">
+														<div class="rating" style="width:<%= width %>%"></div>
+													</div>
+												<% end %>
+											<% end %>
+										</td>
+										<td>"<%= rating.review %>"</td>
+										<td><%= rating.created_at.strftime("%D, %l:%M %p") %>
+										</td>
+									</tr>
+								<% end %>
 							<% end %>
-						<% end %>
-					</tbody>
-				</table>
-			<% end %>
+						</tbody>
+					</table>
+				<% end %>
+			</div>
 		</div>
 	</div>
-</div>
-<center><h5 class="review-pages-info"><small><%= page_entries_info @ratings %></small></h5></center>
+	<center><h5 class="review-pages-info"><small><%= page_entries_info @ratings %></small></h5></center>
 <div>
 
