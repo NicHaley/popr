@@ -5,27 +5,34 @@
     <%= f.text_field :title, maxlength: 40, class: "message-title" %>
   </div>
   <div class="countdown-title"></div>
+
   <div class="field">
     <%= f.label :description %>
     <%= f.text_area :description, rows: "3", id: "new-event-description", maxlength: 140, class: "message-description" %>
   </div>
-  <div class="countdown-description"></div>      
+  <div class="countdown-description"></div>
+
   <div class="field">
     <%= f.label :address %>
     <%= f.text_field :address, size: "90" %>
   </div>
-    <div class="field">
+
+  <div class="field">
     <%= f.label :time %>
     <%= f.datetime_select :time, :minute_step => 5 %>
   </div>
+
   <div class="field">
     <%= f.label :capacity %>
     <%= f.number_field :capacity, {min: 1, value: 1} %>
   </div>
+
   <div class="input-container">
     <%= f.hidden_field :rt_id, value: "" %>
   </div> 
+
   <div class="actions">
     <%= f.submit class: "button expand" %>
   </div>
+  
 <% end %>
