@@ -24,7 +24,13 @@ class EventsController < ApplicationController
     # Return current position to the map and filter by friends
     c_position = [params[:latitude], params[:longitude]]
 
-    @current_position = Event.near(c_position, 10, units: :km)
+    @current_position = if params[:search_location]
+        Event.near(params[:search_location], 20, units: :km)
+      elsif params[:latitude] && params[:longitude] 
+        Event.near(c_position, 10, units: :km)
+      else
+        Event.all
+      end
 
     @friend_check = @current_position.select{|event| event.host.is_friend?(current_user) && event.not_passed}
     @nearby_coords = @friend_check.map {|event| {latitude: event.latitude.to_f, longitude: event.longitude.to_f, title: event.title, poster: Movie.find_movie(event.rt_id).poster, commitment: event.commitments.sum(:party_size).to_s, capacity: event.capacity.to_s, address: event.address, time: event.time.strftime("%B %d, %Y - %l:%M %p"), description: event.description}}
