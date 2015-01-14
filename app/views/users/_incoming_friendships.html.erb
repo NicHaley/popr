@@ -1,10 +1,16 @@
-<% if @user.incoming_friendships != [] %>
-  <hr>
-  <div id="incoming-requests">
-  <b>Friend Requests </b><br>
-  <% @user.incoming_friendships.each do |friendship| %>
-    <%= friendship.user.first_name %> <%= friendship.user.last_name %><br> 
-    <%= link_to "Accept", friendships_path(friend_id: friendship.user.id),class:"small-caps", method: :post, remote: true %> <%= link_to "Reject", friendship_path(friendship), data: { confirm: 'Are you sure?' },class:"small-caps", method: :delete, remote: true %>
-  <% end %> 
-  </div>
+<% if @current_user.incoming_friendships != [] %>
+  <% current_user.incoming_friendships.each do |friendship| %>
+    <div class="friend-notify">
+      <div id="notify-friend-avatar">
+        <%= image_tag friendship.user.avatar_url(:thumb), id: 'notify-friend-image'%>
+      </div>
+      <div id="notify-friend-detail" class="small-caps">
+        <%= friendship.user.first_name %> <%= friendship.user.last_name %><br> 
+        <%= link_to "Accept", friendships_path(friend_id: friendship.user.id), class:"notify-style", method: :post, remote: true %> <%= link_to "Reject", friendship_path(friendship), data: { confirm: 'Are you sure?' }, class:"notify-style", method: :delete, remote: true %>
+      </div>
+    </div>
+    <hr class="notify-hr">
+  <% end %>
+<% else %>
+  <p>No new requests</p>  
 <% end %>
