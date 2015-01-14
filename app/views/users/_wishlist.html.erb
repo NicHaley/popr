@@ -1,4 +1,3 @@
-<b>Wishlist</b><br /><br />
 <% unless @user.movie_interests.empty? %>
 	<ul id="featured1 inline-list" data-orbit>
 		<% count = 0 %>
@@ -24,5 +23,5 @@
 		</li>
 	</ul>
 <% else %>
-	<p>No movie interests yet</p>
+	<p id="no-data-filler-wish">No movie interests yet</p>
 <% end %>	

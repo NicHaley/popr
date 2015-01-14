@@ -78,10 +78,10 @@ $movie-poster-height: 50vh;
 .notify-hr {
 	display: block; 
 	height: 1px;
-    border: 0; 
-    border-top: 1px solid #302f2f; 
-    padding: 0;
-    margin: 10px;
+	border: 0; 
+	border-top: 1px solid #302f2f; 
+	padding: 0;
+	margin: 10px;
 }
 
 /* Edit Profile */
@@ -911,7 +911,6 @@ div#slidingDiv
 
 #profile-image {
 	top: -100px;
-	left: 90px;
 	z-index: 15;
 	position: relative;
 	border-radius: 15px;
@@ -919,7 +918,36 @@ div#slidingDiv
 	border-style: solid;
 	border-width: 4px;
 	width: 70%;
+	min-width: 150px;
+	min-height: 150px;
 	height: 70%;
+}
+
+
+.section-heading {
+	border-radius: 5px 5px 0px 0px;
+	background-color: #474747;
+	text-align: center;
+	margin: -25px -25px 0px -25px;
+	z-index: 0;
+}
+
+.section-heading > b {
+	color: #d1d1d1;
+	font-family: 'Open Sans Condensed';
+	font-size: 20px;
+}
+
+.no-data-filler {
+	text-align: center;
+	margin-top: 150px;
+	font-family: 'Open Sans Condensed';
+}
+
+#no-data-filler-wish {
+	text-align: center;
+	margin-top: 125px;
+	font-family: 'Open Sans Condensed';
 }
 
 .profile-name {
@@ -930,11 +958,10 @@ div#slidingDiv
 #profile-info {
 	position: relative;
 	top: -50px;
-	left: 5px;
 }
 
 #status-space {
-	padding-left: 30px;
+	padding-left: 80px;
 }
 
 #status-details {
@@ -1079,10 +1106,6 @@ div.friend-container {
 
 #friend_search {
 	margin-top: 9px;
-}
-
-#p4 {
-	padding: 50px;
 }
 
 .no-pad-right {
@@ -1338,8 +1361,9 @@ div.edit-review-bar {
 	}*/
 
 	#wish-section {
+		margin-top: 20px;
 		padding: 25px;
-		height: 450px;
+		height: 350px;
 		text-align: center;
 	}
 

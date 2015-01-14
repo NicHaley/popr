@@ -1,5 +1,6 @@
-
-<b>Friends&nbsp;(<%= @user.friendships.where(confirm: true).count %>)</b><br>
+<div class="section-heading">
+  <b>Friends&nbsp;(<%= @user.friendships.where(confirm: true).count %>)</b>
+</div><br>
 <%= form_tag @user_path, method: :get, authentication: false, id: 'friend-search-form' do %>
   <%= text_field_tag :friend_search, params[:friend_search], placeholder: "Search Friends" %>
   <%= submit_tag "Search" %>
