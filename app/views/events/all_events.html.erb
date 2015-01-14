@@ -5,7 +5,7 @@
 			<div class="wrapper">
 				<%= form_tag(events_path, :method => "get", id: "event-search-form") do %>
 					<%= text_field_tag :search_location, params[:search_location], placeholder: "Search events by location" %>
-					<%= submit_tag "Search", :name => nil, class: "button tiny" %>
+					<%= submit_tag "Search", :name => nil, class: "button tiny", id:"event-search-submit" %>
 					<%= link_to "Near Me", events_path, id:"near-me-button", class:"button tiny" %>
 				<% end %>
 				<center><a id="btnToggle" class="button tiny round">More Filters</a></center>
@@ -15,6 +15,11 @@
 				</div>
 			</div>
 			<div class="event-listing">
+			<div class="spinner">
+			  <div class="bounce1"></div>
+			  <div class="bounce2"></div>
+			  <div class="bounce3"></div>
+			</div>
 			</div>
 		</div>
 	</div>
