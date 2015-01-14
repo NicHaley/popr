@@ -1,4 +1,5 @@
-$(document).ready(function() {
+$(document).on('ready page:load', function() {
+// $(document).ready(function() {
   $('#event-search-form').submit(function(event) {
     event.preventDefault();
     var searchValue = $('#search_location').val();
@@ -8,20 +9,31 @@ $(document).ready(function() {
     $("#event-search-submit")
       .val("Searching ...")
       .attr('disabled', 'disabled');
+  });
 
-  $('#near-me-button').click(function(event) {
+  $('#near-me-button').on('click', function(event) {
     event.preventDefault();
+    $('#near-me-button')
+      .html("Searching ...")
+      .attr('disabled', 'disabled');
+
     navigator.geolocation.getCurrentPosition(function(position){
       var latitude = position.coords.latitude;
       var longitude = position.coords.longitude;  
     $.getScript('/all_events?latitude=' + latitude + '&longitude=' + longitude);
     });
 
-  });
+
 });
-$(document).ajaxSuccess(function() {
-  $("#event-search-submit")
-  .val('Search')
-  .removeAttr('disabled');
   });
+
+$(document).ajaxSuccess(function() {  
+      $("#event-search-submit")  
+      .val('Search')
+      .removeAttr('disabled');
+
+
+        $("#near-me-button")
+    .html('Near Me')
+    .removeAttr('disabled');
 });
