@@ -27,9 +27,6 @@ class Movie
       rotten_api = api_key[1]
       $key = 0
     end
-
-    puts $key
-    puts rotten_api
     # The .find_movie function is called on the Movie class in the EventsController
     # show action, and is passed that specific event's rt_id. We pass the response 
     # into JSON.parse() as the Rotten Tomatoes API returns a string.
