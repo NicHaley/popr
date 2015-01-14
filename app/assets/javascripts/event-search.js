@@ -5,7 +5,9 @@ $(document).ready(function() {
 
     $.getScript('/all_events/?search_location=' + searchValue);
     $('#search_location').val("");
-  });
+    $("#event-search-submit")
+      .val("Searching ...")
+      .attr('disabled', 'disabled');
 
   $('#near-me-button').click(function(event) {
     event.preventDefault();
@@ -15,5 +17,11 @@ $(document).ready(function() {
     $.getScript('/all_events?latitude=' + latitude + '&longitude=' + longitude);
     });
 
+  });
+});
+$(document).ajaxSuccess(function() {
+  $("#event-search-submit")
+  .val('Search')
+  .removeAttr('disabled');
   });
 });
