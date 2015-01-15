@@ -159,6 +159,18 @@ $movie-poster-height: 50vh;
 
 /* Welcome page */
 
+.tabs dd.active.tab-effects a {
+	background-color: #dddddd;
+}
+
+.tabs dd.active.tab-effects a:hover {
+	background-color: #dddddd;
+}
+
+.tabs dd.tab-effects a:hover {
+	background-color: #f4f4f4;
+}
+
 .background-image {
 	background-image: url('bg.jpg');
 	background-size: cover;
@@ -743,9 +755,8 @@ div#slidingDiv
 }
 
 #footer-image {
-	position: absolute;
-	top: 78%;
-	left: 0%;
+	position: fixed;
+	bottom: -5%;
 }
 
 #avatar-thumb {
