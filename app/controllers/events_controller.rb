@@ -68,10 +68,15 @@ class EventsController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:user_id])
     if @event.update_attributes(event_params) 
       redirect_to user_event_path(@event.host, @event), notice: "Event successfully modified!"
     else
-      render 'edit', notice: "Error, try again!"
+      message_string = []
+      @event.errors.messages.each do |message|
+        message_string << message[1][0]
+      end
+       redirect_to :back, alert: ("Event: " + message_string.join(", ").capitalize)
     end
   end
 

@@ -19,7 +19,7 @@
 
   <div class="field">
     <%= f.label :time %>
-    <%= f.datetime_select :time, :minute_step => 5 %>
+    <%= f.datetime_select :time, :minute_step => 5, :start_year => Date.today.year %>
   </div>
 
   <div class="field">
