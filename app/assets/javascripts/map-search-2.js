@@ -31,10 +31,10 @@ $('#event-search-form').submit(function initialize(event) {
 
   // Use the geocoder to geocode the address
   var address = $("#search_location").val();
-  // var address = address.geocode;
   console.log(address);
   geocoder.geocode( { 'address': address }, function(results, status) {
     // If the status of the geocode is OK
+    console.log(results);
     if (status == google.maps.GeocoderStatus.OK) {
       // Change the center and zoom of the map
       searchMap.setCenter(results[0].geometry.location);
@@ -51,6 +51,13 @@ $('#event-search-form').submit(function initialize(event) {
       //     where: "ST_INTERSECTS(lat, RECTANGLE(LATLNG(" + sw.lat() + "," + sw.lng() + "), LATLNG(" + ne.lat() + "," + ne.lng() + ")))"
       //   }
       // });
+      var searchLat = results[0].geometry.location.lat();
+      var searchLng = results[0].geometry.location.lng();
+      var searchPos = new google.maps.LatLng(searchLat, searchLng);
+      var searchMarker = new google.maps.Marker({
+            position: searchPos,
+            map: searchMap
+      });
     } 
   });
 // }
