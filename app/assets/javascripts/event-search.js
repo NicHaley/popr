@@ -7,6 +7,7 @@ $(document).on('ready page:load', function() {
     $("#event-search-submit")
       .val("Searching ...")
       .attr('disabled', 'disabled');
+    $(".event-listing").html("Loading ...");
   });
 
   $('#near-me-button').on('click', function(event) {
@@ -15,6 +16,7 @@ $(document).on('ready page:load', function() {
       .html("Searching ...")
       .attr('disabled', 'disabled');
     $('#search_location').val("");
+    $(".event-listing").html("Loading ...");
     myMap.init();
     navigator.geolocation.getCurrentPosition(function(position){
       var latitude = position.coords.latitude;
