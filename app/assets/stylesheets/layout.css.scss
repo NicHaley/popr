@@ -32,23 +32,32 @@ $movie-poster-height: 50vh;
 
 .notification-tab {
 	transition: all 250ms ease-out;
-	width: 200px;
+	width: 170px;
 	height: 0px;
 	overflow-y: scroll;
 	background-color: #333333;
 	position: fixed;
 	z-index: 30;
 	top: 5%;
-	left: 83%;
+	right: 210px;
 	padding: 0px;
 	padding-left: 10px;
 	padding-right: 10px;
+	color: white;
+	font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	text-align: center;
 }
 
 .notification-tab.active {
 	transition: all 250ms ease-out;
 	height: 200px;
 	padding-top: 20px;
+	font-size: 10px;
+}
+
+#incoming-requests p {
+	margin-top: 75px;
+	font-size: 0.8125rem;
 }
 
 .friend-notify {

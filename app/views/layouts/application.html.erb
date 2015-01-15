@@ -33,6 +33,19 @@
 						<!-- Right Nav Section -->
 						<ul class="right">
 
+							<li id="friend-request" class="show-for-medium-up">
+								<div id="friend-container">
+					        		<%= render :partial => "layouts/requests" %>
+								</div>
+							</li>
+							
+							<li id="friend-button">
+								<%= link_to 'Invite Friends', users_path %>
+							</li>
+
+							<li id="event-button"><%= link_to 'Movies', new_user_movie_interest_path(user_id: current_user) %>
+							</li>
+							
 							<li class="has-dropdown">
 								<a href="#">
 									<% if current_user %>
@@ -46,19 +59,6 @@
 									<li><%= link_to "Logout", logout_path, method: :post %></li>
 								</ul>
 							</li>	
-
-							<li id="friend-request" class="show-for-medium-up">
-								<div id="friend-container">
-					        		<%= render :partial => "layouts/requests" %>
-								</div>
-							</li>
-							
-							<li id="friend-button">
-								<%= link_to 'Invite Friends', users_path %>
-							</li>
-
-							<li id="event-button"><%= link_to 'Movies', new_user_movie_interest_path(user_id: current_user) %>
-							</li>
 						</ul>
 
 					</section>
