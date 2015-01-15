@@ -22,8 +22,8 @@ $(document).on('ready page:load', function() {
     $.getScript('/all_events?latitude=' + latitude + '&longitude=' + longitude);
     });
 
-$('.spinner').show();
-});
+  // $('.spinner').show();
+  });
 });
 
 
@@ -37,6 +37,5 @@ $(document).ajaxSuccess(function() {
     .html('Near Me')
     .removeAttr('disabled');
 
-  $('.spinner').hide();
-
+  // $('.spinner').hide();
 });
