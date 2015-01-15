@@ -4,7 +4,8 @@ class Event < ActiveRecord::Base
   has_many :comments
   has_many :commitments
 
-  validates :title, :presence => true
+  validates :title, presence: { message: "title can't be blank" }
+  validates :address, presence: { message: "address can't be blank" }
   validate :ensure_dates
   
   geocoded_by :address

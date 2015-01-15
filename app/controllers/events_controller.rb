@@ -55,7 +55,11 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to user_event_path(@event.host, @event), notice: "Event successfully created!"
     else
-      redirect_to :back, alert: "There was an error creating your event!"
+      message_string = []
+      @event.errors.messages.each do |message|
+        message_string << message[1][0]
+      end
+      redirect_to :back, alert: ("Event: " + message_string.join(", ").capitalize)
     end
   end
 
