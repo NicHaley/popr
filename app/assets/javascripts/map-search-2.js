@@ -1,4 +1,4 @@
-$(document).ajaxSuccess(function() {  
+$(document).on('ready page:load', function() {
 // var layer;
 // var tableid =  497450;
 var center = new google.maps.LatLng(10, 10);
@@ -34,7 +34,6 @@ $('#event-search-form').submit(function initialize(event) {
   console.log(address);
   geocoder.geocode( { 'address': address }, function(results, status) {
     // If the status of the geocode is OK
-    console.log(results);
     if (status == google.maps.GeocoderStatus.OK) {
       // Change the center and zoom of the map
       searchMap.setCenter(results[0].geometry.location);
@@ -58,6 +57,33 @@ $('#event-search-form').submit(function initialize(event) {
             position: searchPos,
             map: searchMap
       });
+      $(document).ajaxSuccess(function() {  
+        var image = {
+          url: "assets/popcorn.png"
+        };
+        console.log(coords);
+        coords.forEach(function(coord){
+
+          var contentWindow = 
+          '<div id="marker-wrapper"> <div id="marker-poster-container"><div id="marker-poster" style="background-image: url('+ 
+          coord.poster+')"></div><div id="marker-time" class="small-caps"><b>'+ coord.time +'</b></div></div><div id="marker-details"><p><b>'+ coord.title + 
+          '</b>&nbsp;(' + coord.commitment + '/' + coord.capacity + ')</p><p class="small-marker-caps">' + 
+          coord.address + '</p><p class="small-marker-caps">' + coord.description + '</p></div></div>'
+
+          var myMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(coord.latitude, coord.longitude),
+            map: searchMap,
+            animation: google.maps.Animation.DROP,
+            icon: image
+          });
+          var infoWindow = new google.maps.InfoWindow({
+            content: contentWindow
+          });
+          google.maps.event.addListener(myMarker, 'click', function(){
+            infoWindow.open(map, myMarker)
+          });
+        });
+});
     } 
   });
 // }
