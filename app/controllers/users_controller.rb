@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  skip_load_and_authorize_resource :require_login, :only => [:index, :new, :create, :activate]
-  # load_and_authorize_resource
+  skip_load_and_authorize_resource :only => [:new, :create, :activate]
+  skip_before_filter :require_login, :only => [:new, :create, :activate]
+  load_and_authorize_resource
 
   def activate
     if (@user = User.load_from_activation_token(params[:id]))
