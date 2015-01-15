@@ -5,7 +5,7 @@ $(document).on('ready page:load', function() {
     var searchValue = $('#search_location').val();
 
     $.getScript('/all_events/?search_location=' + searchValue);
-    $('#search_location').val("");
+    // $('#search_location').val("");
     $("#event-search-submit")
       .val("Searching ...")
       .attr('disabled', 'disabled');
