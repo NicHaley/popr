@@ -12,9 +12,9 @@
 				</div>
 			</div>
 			<dl class="tabs vertical edit-panels" data-tab>
-			  <dd class="active tab-effects"><a href="#edit-panel1" class="top-edit-panel">Account</a></dd>
+			  <dd class="active tab-effects"><a href="#edit-panel1" class="top-edit-panel">Profile</a></dd>
 			  <dd class="tab-effects"><a href="#edit-panel2">Password</a></dd>
-			  <dd class="tab-effects"><a href="#edit-panel3" class="bottom-edit-panel">Manage Friends</a></dd>
+			  <dd class="tab-effects"><a href="#edit-panel3" class="bottom-edit-panel">Delete Account</a></dd>
 			</dl>
 		</div>
 		<div class="large-8 medium-8 small-12 columns">
@@ -26,7 +26,7 @@
 			    <%= render 'password_form' %> 
 			  </div>
 			  <div class="content" id="edit-panel3">
-			    <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
+				<%= render 'delete_form' %>
 			  </div>
 			</div>
 		</div>

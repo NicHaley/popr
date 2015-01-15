@@ -1,0 +1,6 @@
+<p>Delete Account</p>
+<p class="small-caps remove-lh">Delete your account.</br></br>WARNING: This action is not reversable.</p>
+
+<hr>
+
+<center><%= link_to "Delete Account", user_path(@user), data: { confirm: 'Are you sure you would like to delete your account?' }, class:'small-caps', method: :delete %></center>

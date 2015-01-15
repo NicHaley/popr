@@ -47,10 +47,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = if params[:user_search]
-      User.where("LOWER(first_name) LIKE LOWER(?) OR LOWER(last_name) LIKE LOWER(?)", "%#{params[:user_search]}%", "%#{params[:user_search]}%").select{|u| !u.is_friend?(current_user)}.sort{|x,y| x.first_name <=> y.first_name}
-    else
-      User.select{|u| !u.is_friend?(current_user) && u.id != current_user.id}.sort{|x,y| x.first_name <=> y.first_name}
+    if current_user
+      @users = if params[:user_search]
+        User.where("LOWER(first_name) LIKE LOWER(?) OR LOWER(last_name) LIKE LOWER(?)", "%#{params[:user_search]}%", "%#{params[:user_search]}%").select{|u| !u.is_friend?(current_user)}.sort{|x,y| x.first_name <=> y.first_name}
+      else
+        User.select{|u| !u.is_friend?(current_user) && u.id != current_user.id}.sort{|x,y| x.first_name <=> y.first_name}
+      end
     end
 
     respond_to do |format|
@@ -64,12 +66,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @ratings = @user.ratings.order(created_at: :desc).page(params[:ratings_page]).per(3)
 
-    if params[:friend_search]
-      @friends = User.where("LOWER(first_name) LIKE LOWER(?) OR LOWER(last_name) LIKE LOWER(?)", "%#{params[:friend_search]}%", "%#{params[:friend_search]}%").select{|u| u.is_friend?(@user)}.sort{|x,y| x.first_name <=> y.first_name}
-      @friends = Kaminari.paginate_array(@friends).page(params[:friends_page]).per(6)
-    else
-      @friends = @user.friendships.sort{|x,y| x.friend.first_name <=> y.friend.first_name}
-      @friends = Kaminari.paginate_array(@friends).page(params[:friends_page]).per(6)
+    if current_user
+      if params[:friend_search]
+        @friends = User.where("LOWER(first_name) LIKE LOWER(?) OR LOWER(last_name) LIKE LOWER(?)", "%#{params[:friend_search]}%", "%#{params[:friend_search]}%").select{|u| u.is_friend?(@user)}.sort{|x,y| x.first_name <=> y.first_name}
+        @friends = Kaminari.paginate_array(@friends).page(params[:friends_page]).per(6)
+      else
+        @friends = @user.friendships.sort{|x,y| x.friend.first_name <=> y.friend.first_name}
+        @friends = Kaminari.paginate_array(@friends).page(params[:friends_page]).per(6)
+      end
     end
 
     @user_id = @user.id

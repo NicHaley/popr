@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
     if @user = login(params[:email], params[:password], params[:remember_me])
       redirect_back_or_to(:events, notice: 'Login successful')
     else
-      redirect_to :back, alert: "Errors logging in, try again!"
+      redirect_to :back, alert: "Incorrect login information, please try again!"
     end
   end
 
