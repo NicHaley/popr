@@ -1,66 +1,66 @@
-// $(document).on('ready page:load', function() {
+$(document).on('ready page:load', function() {
 
-//   function searchMap() {
-  
-//   if(navigator.geolocation){
+  var center = new google.maps.LatLng(10, 10);
+  var zoom = 2;
+  var searchMap;
+  var geocoder = new google.maps.Geocoder();
 
-//     //Set the default map settings
-//     var mapOptions = {
-//       zoom: 14,
-//       mapTypeId: google.maps.MapTypeId.ROADMAP
-//     };
+  $('#event-search-form').submit(function initialize(event) {
 
-//     //Set map inside the #map-canvas
-//     if (document.getElementById('map-canvas')!=undefined) {
-//       map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    // Initialize the map
+    searchMap = new google.maps.Map(document.getElementById('map-canvas'), {
+      center: center,
+      zoom: zoom,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    
 
-//       //Set the current position into map
-//       geocoder.geocode( { 'address': <%= params[:search_location] %> }, function(results, status) {
-//       // If the status of the geocode is OK
-//       if (status == google.maps.GeocoderStatus.OK) {
-//       // Change the center and zoom of the map
-//       var pos = results[0].geometry.location
-//       map.setCenter(pos);
-//       map.setZoom(10);
-//       }
-
-
-//         var infoWindow = new google.maps.InfoWindow({
-//           map: map,
-//           position: pos
-//         });
-
-
-//         //Add marker for current position
-//         var marker = new google.maps.Marker({
-//           position: pos,
-//           map: map
-//         });
-
-
-//         google.maps.event.addListener(marker, 'click', function() {
-//           infoWindow.open(map,marker);
-//         });
+    // Use the geocoder to geocode the address
+    var address = $("#search_location").val();
+    console.log(address);
+    geocoder.geocode( { 'address': address }, function(results, status) {
+      // If the status of the geocode is OK
+      if (status == google.maps.GeocoderStatus.OK) {
+        // Change the center and zoom of the map
+        searchMap.setCenter(results[0].geometry.location);
+        searchMap.setZoom(14);
+        
+        var searchLat = results[0].geometry.location.lat();
+        var searchLng = results[0].geometry.location.lng();
+        var searchPos = new google.maps.LatLng(searchLat, searchLng);
+        var searchMarker = new google.maps.Marker({
+              position: searchPos,
+              map: searchMap
+        });
+        $(document).ajaxSuccess(function() {  
+          var image = {
+            url: "assets/popcorn.png"
+          };
+          console.log(coords);
+          coords.forEach(function(coord){
 
 
+            var contentWindow = 
+            '<div id="marker-wrapper"> <div id="marker-poster-container"><div id="marker-poster" style="background-image: url('+ 
+            coord.poster+')"></div><div id="marker-time" class="small-caps"><b>'+ coord.time +'</b></div></div><div id="marker-details"><p><b>'+ coord.title + 
+            '</b>&nbsp;(' + coord.commitment + '/' + coord.capacity + ')</p><p class="small-marker-caps">' + 
+            coord.address + '</p><p class="small-marker-caps">' + coord.description + '</p></div></div>'
 
-
-
-//         $.ajax({
-//           url:"/all_events",
-//           method: "GET",
-//           data: {
-//             latitude: latitude,
-//             longitude: longitude
-//           },
-//           dataType: 'script',
-//         });
-
-//       });
-//     }
-//   } else {
-//       //Browser does not support geolocation
-//       document.getElementById('map-canvas').innerHTML = 'No Geolocation Support.';
-//   }
-// };
-// });
+            var myMarker = new google.maps.Marker({
+              position: new google.maps.LatLng(coord.latitude, coord.longitude),
+              map: searchMap,
+              animation: google.maps.Animation.DROP,
+              icon: image
+            });
+            var infoWindow = new google.maps.InfoWindow({
+              content: contentWindow
+            });
+            google.maps.event.addListener(myMarker, 'click', function(){
+              infoWindow.open(searchMap, myMarker)
+            });
+          });
+        });
+      } 
+    });
+  });
+});

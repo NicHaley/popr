@@ -1,14 +1,13 @@
 $(document).on('ready page:load', function() {
-// $(document).ready(function() {
   $('#event-search-form').submit(function(event) {
     event.preventDefault();
     var searchValue = $('#search_location').val();
 
     $.getScript('/all_events/?search_location=' + searchValue);
-    $('#search_location').val("");
     $("#event-search-submit")
       .val("Searching ...")
       .attr('disabled', 'disabled');
+    $(".event-listing").html("Loading ...");
   });
 
   $('#near-me-button').on('click', function(event) {
@@ -16,21 +15,20 @@ $(document).on('ready page:load', function() {
     $('#near-me-button')
       .html("Searching ...")
       .attr('disabled', 'disabled');
-
+    $('#search_location').val("");
+    $(".event-listing").html("Loading ...");
+    myMap.init();
     navigator.geolocation.getCurrentPosition(function(position){
       var latitude = position.coords.latitude;
       var longitude = position.coords.longitude;  
     $.getScript('/all_events?latitude=' + latitude + '&longitude=' + longitude);
     });
 
-$('.spinner').show();
-});
+  // $('.spinner').show();
+  });
 });
 
-// $(document).on('ajax:beforeSend', function() {
-//   alert("before");
-//   $('.spinner').show();
-// });
+
 
 $(document).ajaxSuccess(function() {  
   $("#event-search-submit")  
@@ -41,6 +39,5 @@ $(document).ajaxSuccess(function() {
     .html('Near Me')
     .removeAttr('disabled');
 
-  $('.spinner').hide();
-
+  // $('.spinner').hide();
 });
