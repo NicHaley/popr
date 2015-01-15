@@ -533,7 +533,7 @@ label {
 
 #review-list-title {
 	color: #eaeaea;
-	font-family: 'Open Sans Condensed';
+	font-family: 'Roboto';
 }
 
 #review-list > p {
@@ -542,6 +542,7 @@ label {
 
 #review-table {
 	width: 935px;
+	border-radius: 5px;
 }
 
 #review-table tr{
@@ -568,6 +569,10 @@ label {
 .review-pages-info {
 	margin-bottom: 0px;
 	padding-bottom: 100px;
+}
+
+.pagination-white span{
+	color: #AAAAAA;
 }
 
 // Friend Page
@@ -923,36 +928,49 @@ div#slidingDiv
 	height: 70%;
 }
 
-
 .section-heading {
 	border-radius: 5px 5px 0px 0px;
-	background-color: #474747;
-	text-align: center;
+	background-color: #FEFEFE;
+	border: 1.5px solid #DDDDDD;
+	border-top-width: 0;
+	border-right: none;
+	border-left: none; 
+	text-align: left;
 	margin: -25px -25px 0px -25px;
 	z-index: 0;
+	padding: 10px 0px 10px 20px;
 }
 
 .section-heading > b {
-	color: #d1d1d1;
-	font-family: 'Open Sans Condensed';
+	color: #BD1E2C;
+	font-family: 'Roboto';
 	font-size: 20px;
 }
 
 .no-data-filler {
 	text-align: center;
 	margin-top: 150px;
-	font-family: 'Open Sans Condensed';
+	font-family: 'Roboto';
 }
 
 #no-data-filler-wish {
 	text-align: center;
 	margin-top: 125px;
-	font-family: 'Open Sans Condensed';
+	font-family: 'Roboto';
 }
 
 .profile-name {
 	color: #BD1E2C;
 	font-size: 16pt;
+	font-family: 'Roboto';
+}
+
+.location-marker{
+	float: left;
+}
+
+.hometown-location {
+	float: left;
 }
 
 #profile-info {
@@ -990,15 +1008,16 @@ div#slidingDiv
 	height: 70px;
 	background-color: white;
 	border-bottom-style: solid;
-	border-bottom-color: #EEEEEE;
-	border-bottom-width: 1px;
+	border-bottom-color: #DDDDDD;
+	border-bottom-width: 1.5px;
 }
 
 #user-content-row {
 	width: 100%;
 	max-width: 100%;
 	height: 100%;
-	background-color: #F5F5F5;
+	background-image: url('white_wall_hash.png');
+	background-color: #FEFEFE;
 	border-bottom-style: solid;
 	border-bottom-color: #F6F6F6;
 	border-bottom-width: 1px;
@@ -1006,7 +1025,7 @@ div#slidingDiv
 
 dd.animate {
 	border-bottom: 0px solid; 
-	padding-bottom: 2px;
+	padding-bottom: 9px;
 	-webkit-transition: 0.5s ease;
 	transition: 0.5s ease;
 }
@@ -1015,7 +1034,7 @@ dd.animate:hover {
 	-webkit-transition: 0.5s ease;
 	transition: 0.5s ease;
 	border-bottom: 5px solid #BD1E2C;
-	padding-bottom: 2px;
+	padding-bottom: 9px;
 
 	#left-tab, #right-tab, #center-tab {
 		color: #BD1E2C;	
@@ -1095,7 +1114,7 @@ div.friend-container {
 }
 
 #p1, #p2, #p3, #p4, #p5 {
-	border: 1px solid #dedede;
+	border: 1.5px solid #DDDDDD;
 	border-radius: 5px;
 	background-color: #FEFEFE;
 	width: 730px;
@@ -1118,11 +1137,10 @@ div.friend-container {
 div.review-container {
 	background-color: white;
 	border-radius: 5px;
-	border: 1px solid #EEEEEE;
-	width: 550px;
+	border: 1.5px solid #DDDDDD;
+	width: 80%;
 	height: 200px;
-	margin-bottom: 20px;
-	margin-left: 30px;
+	margin: 10px 50px 20px 60px;
 }
 
 div.review-row {
@@ -1131,25 +1149,22 @@ div.review-row {
 
 div.title-bar {
 	background-color: #BD1E2C;
-	padding: 4px;
-	border-radius: 5px;
-	width: 50%;
+	border-radius: 5px 5px 0px 0px;
+	padding: 4px 4px 0px 0px;
+	width: 100%;
 	height: 35px;
 	color: white;
+	font-family: 'Roboto';
 	text-align: center;
-	vertical-align: middle;
 	position: relative;
 	z-index: 10;
-	top: -15px;
-	left: 25%;
 }
 
 div.review-content {
 	font-style: oblique;
 	font-size: 12pt;
-	padding-bottom: 25px;
-	padding-right: 25px;
-	padding-left: 25px;
+	padding: 40px;
+	height: 40%;
 }
 
 td.review-poster {
@@ -1392,6 +1407,11 @@ div.edit-review-bar {
 
 	.small-caps {
 		font-size: 8pt;
+		line-height: 1;
+	}
+
+	.medium-caps {
+		font-size: 10pt;
 		line-height: 1;
 	}
 

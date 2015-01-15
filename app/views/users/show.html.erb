@@ -14,7 +14,7 @@
 					<% if @user.hometown == nil %>
 						<p>No address yet</p>
 					<% else %>
-						<b><%= @user.hometown %></b>
+						<div class="location-card"><span class="location-marker"><%= image_tag 'location_marker.png', size:"25" %></span><span class="hometown-location medium-caps"><%= @user.hometown %></span></div>
 					<% end %>
 				</div><br>
 	      <p class="small-caps">Joined on: <%=@user.created_at%></p>

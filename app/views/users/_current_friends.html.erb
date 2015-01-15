@@ -3,7 +3,7 @@
 </div><br>
 <%= form_tag @user_path, method: :get, authentication: false, id: 'friend-search-form' do %>
   <%= text_field_tag :friend_search, params[:friend_search], placeholder: "Search Friends" %>
-  <%= submit_tag "Search" %>
+  <%= submit_tag "Search", class:"button tiny" %>
 <% end %>
 <% unless params[:friend_search] %>
   <% @friends.each do |friendship| %>
