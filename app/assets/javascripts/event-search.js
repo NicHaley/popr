@@ -1,11 +1,9 @@
 $(document).on('ready page:load', function() {
-// $(document).ready(function() {
   $('#event-search-form').submit(function(event) {
     event.preventDefault();
     var searchValue = $('#search_location').val();
 
     $.getScript('/all_events/?search_location=' + searchValue);
-    // $('#search_location').val("");
     $("#event-search-submit")
       .val("Searching ...")
       .attr('disabled', 'disabled');
@@ -16,7 +14,8 @@ $(document).on('ready page:load', function() {
     $('#near-me-button')
       .html("Searching ...")
       .attr('disabled', 'disabled');
-
+    $('#search_location').val("");
+    myMap.init();
     navigator.geolocation.getCurrentPosition(function(position){
       var latitude = position.coords.latitude;
       var longitude = position.coords.longitude;  
@@ -27,10 +26,7 @@ $('.spinner').show();
 });
 });
 
-// $(document).on('ajax:beforeSend', function() {
-//   alert("before");
-//   $('.spinner').show();
-// });
+
 
 $(document).ajaxSuccess(function() {  
   $("#event-search-submit")  
