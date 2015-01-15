@@ -56,8 +56,8 @@ class EventsController < ApplicationController
       redirect_to user_event_path(@event.host, @event), notice: "Event successfully created!"
     else
       message_string = []
-      @event.errors.messages.each do |message|
-        message_string << message[1][0]
+      @event.errors.full_messages.each do |message|
+        message_string << message
       end
       redirect_to :back, alert: ("Event: " + message_string.join(", ").capitalize)
     end
@@ -72,11 +72,8 @@ class EventsController < ApplicationController
     if @event.update_attributes(event_params) 
       redirect_to user_event_path(@event.host, @event), notice: "Event successfully modified!"
     else
-      message_string = []
-      @event.errors.messages.each do |message|
-        message_string << message[1][0]
-      end
-       redirect_to :back, alert: ("Event: " + message_string.join(", ").capitalize)
+      flash.now[:alert] = "An error occurred!"
+      render 'edit'
     end
   end
 

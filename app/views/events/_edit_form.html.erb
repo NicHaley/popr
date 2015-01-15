@@ -1,5 +1,7 @@
 <%= form_for([@user, @event]) do |f|%>
 
+  <%= render 'event_errors' %>
+
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title, maxlength: 40, class: "message-title" %>
