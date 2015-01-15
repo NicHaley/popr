@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :email, presence: true
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   def is_friend?(user)
     if self.friendships.find_by(friend_id: user.id)
       self.friendships.find_by(friend_id: user.id).confirm

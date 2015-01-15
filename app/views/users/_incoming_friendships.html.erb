@@ -4,9 +4,9 @@
       <div id="notify-friend-avatar">
         <%= image_tag friendship.user.avatar_url(:thumb), id: 'notify-friend-image'%>
       </div>
-      <div id="notify-friend-detail" class="small-caps">
-        <%= friendship.user.first_name %> <%= friendship.user.last_name %><br> 
-        <%= link_to "Accept", friendships_path(friend_id: friendship.user.id), class:"notify-style", method: :post, remote: true %> <%= link_to "Reject", friendship_path(friendship), data: { confirm: 'Are you sure?' }, class:"notify-style", method: :delete, remote: true %>
+      <div class="notify-friend-detail small-caps">
+        <%= friendship.user.first_name %> <%= friendship.user.last_name %></br> 
+        <%= link_to "Accept", friendships_path(friend_id: friendship.user.id), class:"notify-style", method: :post, remote: true %> | <%= link_to "Reject", friendship_path(friendship), data: { confirm: 'Are you sure?' }, class:"notify-style", method: :delete, remote: true %>
       </div>
     </div>
     <hr class="notify-hr">

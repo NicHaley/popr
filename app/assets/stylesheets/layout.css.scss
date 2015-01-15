@@ -75,11 +75,12 @@ $movie-poster-height: 50vh;
 }
 
 #notify-friend-avatar {
+	padding: 5px;
 	display: inline-block;
 }
 
-#notify-friend-detail {
-	padding-top: 5px;
+.notify-friend-detail {
+	padding: 5px;
 	display: inline-block;
 	color: white;
 }
