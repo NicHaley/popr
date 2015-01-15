@@ -2,7 +2,7 @@
 	<% @ratings.each do |rating| %>
 	<p>
 		<% if rating.id != nil %>
-		<div class="review-container">
+		<div class="review-entry-container">
 	        <div class="title-bar"><%= Movie.find_movie(rating.rt_id).title %></div>
 	    
 	        <div class="review-content">"<%= rating.review %>"</div>
@@ -12,10 +12,12 @@
 				<div class="rating" style= "width:<%= width %>%"></div>
 			</div><br/>
 			<div class="edit-review-bar small-caps">
-				<%= rating.created_at %><br/>
+				<span><%= rating.created_at %><br/></span>
 				<% if current_user == @user %>
-				<%= link_to "Edit", edit_user_rating_path(@user, rating), class:"small-caps"%>
-				<%= link_to "Remove", user_rating_path(@user, rating), data: { confirm: 'Are you sure?' }, class:"small-caps", method: :delete %>
+				<span class="edit-review-entry">
+					<%= link_to "Edit", edit_user_rating_path(@user, rating), class:"small-caps"%>
+					<%= link_to "Remove", user_rating_path(@user, rating), data: { confirm: 'Are you sure?' }, class:"small-caps", method: :delete %>
+					</span>
 				<% end %>
 			</div>
 		</div>
