@@ -24,7 +24,7 @@
 								<% if rating.id != nil %>
 									<tr>
 										<% @movie = Movie.find_movie(rating.rt_id) %>
-										<td class="review-poster"><%= image_tag(@movie.poster.gsub('det', 'thm'))%></td>
+										<td class="review-poster"><%= image_tag(@movie.poster.gsub('thm', 'det'))%></td>
 										<td><%= @movie.title %></td>
 										<td><%= @movie.year %></td>
 										<% unless @user.id == current_user.id %>
