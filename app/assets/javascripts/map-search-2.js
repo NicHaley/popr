@@ -64,6 +64,11 @@ $('#event-search-form').submit(function initialize(event) {
         console.log(coords);
         coords.forEach(function(coord){
 
+          var infoWindow = new google.maps.InfoWindow({
+          map: searchMap,
+          position: searchPos
+          });
+
           var contentWindow = 
           '<div id="marker-wrapper"> <div id="marker-poster-container"><div id="marker-poster" style="background-image: url('+ 
           coord.poster+')"></div><div id="marker-time" class="small-caps"><b>'+ coord.time +'</b></div></div><div id="marker-details"><p><b>'+ coord.title + 
@@ -80,7 +85,7 @@ $('#event-search-form').submit(function initialize(event) {
             content: contentWindow
           });
           google.maps.event.addListener(myMarker, 'click', function(){
-            infoWindow.open(map, myMarker)
+            infoWindow.open(searchMap, myMarker)
           });
         });
 });
