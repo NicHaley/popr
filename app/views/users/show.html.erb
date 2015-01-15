@@ -70,39 +70,15 @@
 	</div>
 
 	<div class="row" id="user-content-row">
-		<div class="large-7 medium-7 small-7 columns" id="user-tab-content">
+		<div class="large-9 medium-9 small-12 columns" id="user-tab-content">
 			<div class="tabs-content">
 				<div class="content active" id="p1">
 				<div class="section-heading"><b>Hosted Events</b></div>
-					<ul>
-		  			<% unless @user.hosted_events.empty? %>
-					    <% @user.hosted_events.each do |event| %>
-						    <% if event.not_passed %>
-							    <li>
-							      <%= link_to event.title, user_event_path(@user, event) %>
-							    </li>
-						    <% end %>
-					    <% end %>
-						<% else %>
-							<p class="no-data-filler"><%= @user.first_name %> has no hosted events currently</p>
-						<% end %>
-		  		</ul>
+					<%= render :partial => "hosted_events" %>
 				</div>
 				<div class="content" id="p2">
 					<div class="section-heading"><b>Joined Events</b></div>
-					<ul>
-						<% unless @user.commitments.empty? %>
-						  	<% @user.commitments.each do |commitment| %>
-							  	<% if commitment.event.not_passed %>
-								 	<li>
-								    <%= link_to commitment.event.title, user_event_path(commitment.event.host, commitment.event) %>
-								  	</li>
-							 	 <% end %>
-						 	<% end %>
-						<% else %>
-							<p class="no-data-filler"><%= @user.first_name %> is not attending any events currently</p>
-						<% end %>
-					</ul>
+					<%= render :partial => "attending_events" %>
 				</div>
 				<div class="content" id="p3">
 					<div id="current-friends">

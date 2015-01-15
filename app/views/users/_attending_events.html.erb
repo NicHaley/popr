@@ -1,0 +1,27 @@
+<div class="attending-event-container">
+	<% unless @user.commitments.empty? %>
+	  	<% @user.commitments.each do |commitment| %>
+		  	<% if commitment.event.not_passed %>
+		  	<% movie = Movie.find_movie(commitment.event.rt_id) %>
+					<div class="profile-event-container">
+						<div class="event-banner" style="background-image: url(<%= movie.poster.gsub("tmb", "det") %>)">
+						  <%= link_to image_tag(commitment.event.host.avatar, id:"profile-host-avatar"), user_event_path(commitment.event.host, commitment.event)%>
+						</div>
+						<div class="profile-event-title">
+							<center><b><%= link_to commitment.event.title, user_event_path(commitment.event.host, commitment.event) %> in <%= ((commitment.event.time - Time.now)/86400).ceil %> Days</b></center>
+						</div>
+						<div class="profile-event-details">
+							<% commitment.event.attendees.each do |a| %>
+									<%= image_tag("#{a.avatar_url(:thumb)}", id: "attendee-thumb") %>
+									<span class="guests-total medium-caps">
+										<%= Commitment.where(event: commitment.event, user: a).first.guests %>
+									</span>
+							<% end %>
+						</div>
+					</div>
+		 	 <% end %>
+	 	<% end %>
+	<% else %>
+		<p class="no-data-filler"><%= @user.first_name %> is not attending any events currently</p>
+	<% end %>
+</div>

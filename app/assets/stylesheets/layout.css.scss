@@ -1049,6 +1049,7 @@ dd.animate.active {
 	border-bottom: 5px solid #BD1E2C;
 }
 
+
 div.friend-container {
 	width: 200px;
 	height: 200px;
@@ -1117,7 +1118,7 @@ div.friend-container {
 	color: #BD1E2C;
 }
 
-#p1, #p2, #p3, #p4, #p5 {
+#p1, #p3, #p4, #p5 {
 	border: 1.5px solid #DDDDDD;
 	border-radius: 5px;
 	background-color: #FEFEFE;
@@ -1126,6 +1127,16 @@ div.friend-container {
 	height: 100%;	
 	padding: 25px;
 }	
+
+#p2 {
+	border: 1.5px solid #DDDDDD;
+	border-radius: 5px;
+	background-color: #FEFEFE;
+	width: 90%;
+	min-height: 400px;
+	height: 100%;	
+	padding: 25px;
+}
 
 #friend_search {
 	margin-top: 9px;
@@ -1192,6 +1203,79 @@ div.edit-review-bar {
 	margin-right: 25px;
 }
 
+/* Profile Attending Events*/
+
+.profile-event-container {
+	width: 45%;
+	height: 300px;
+	min-width: 250px;
+	display: inline-block;
+	border: 1.5px solid #DDDDDD;
+	border-radius: 5px;
+	margin: 15px;
+}
+
+#profile-host-avatar {
+	top: 45%;
+	left: 30%;
+	position: relative;
+	z-index: 30;
+	width: 40%;
+	height: 100%;
+	border-radius: 5px;
+	border: 5px solid white;
+}
+
+.attending-event-container {
+	width: 100%;
+	height: 100%;
+	padding-top: 30px;
+}
+
+.event-banner {
+	top: 0;
+	left: 0;
+	background-repeat: no-repeat; 
+	background-position: 0px -45px;
+	background-size: 100%;
+	width: 100%;
+	height: 50%;
+	position: relative;
+	padding: 20px 0px 20px 0px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.profile-event-title {
+	width: 100%;
+	height: 27%;
+	color: #BD1E2C;
+	font-size: 13pt;
+	font-family: 'Roboto';
+	background-color: #F9F9F9;
+	border-top: 1.5px solid #DDDDDD;
+	padding: 35px 0px 0px 0px;
+}
+
+.profile-event-details {
+	width: 100%;
+	height: 23%;
+	overflow: hidden;
+	overflow-x: visible;
+	overflow-y: hidden;
+	background-color: #EFEFEF;
+	border-top: 1.5px solid #DDDDDD;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 10px 0px 10px 0px;
+}
+
+#attendee-thumb {
+	width: 50px;
+	height: 50px;
+	margin: 0px 9px 0px 9px;
+	border: 1.5px solid #DDDDDD;
+}
 /* Chart Toggling */
 
 #graph-toggle {

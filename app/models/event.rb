@@ -39,4 +39,7 @@ class Event < ActiveRecord::Base
     self.time >= Time.now
   end
 
+  def time_left 
+    ((self.time.Date - Time.now)/86400).ceil
+  end
 end

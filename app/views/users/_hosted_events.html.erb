@@ -1,0 +1,13 @@
+<ul>
+	<% unless @user.hosted_events.empty? %>
+    <% @user.hosted_events.each do |event| %>
+	    <% if event.not_passed %>
+		    <li>
+		      <%= link_to event.title, user_event_path(@user, event) %>
+		    </li>
+	    <% end %>
+    <% end %>
+	<% else %>
+		<p class="no-data-filler"><%= @user.first_name %> has no hosted events currently</p>
+	<% end %>
+</ul>
