@@ -1601,6 +1601,21 @@ div.edit-review-bar {
 	margin-right: auto;
 }
 
+.edit-title {
+	border-radius: 2px 2px 0px 0px;
+	background-color: #474747;
+	text-align: center;
+	margin: -11px -10px 0px -10px;
+}
+
+.edit-title > h4 {
+	color: #d1d1d1;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-family: 'Open Sans Condensed';
+}
+
+
 #movie-details, #event-details, #commit-event, .comment-panel, #comments, #edit-event, #edit-rating, .friend-page {
 	background: white;
 	border-radius: 2px;
