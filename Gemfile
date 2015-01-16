@@ -37,6 +37,9 @@ gem 'gon'
 gem 'kaminari'
 gem 'bourbon'
 
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise'
+
 gem 'geocoder'
 gem 'jquery-ui-rails'
 

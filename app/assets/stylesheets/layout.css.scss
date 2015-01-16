@@ -423,6 +423,7 @@ label {
 }
 
 .movie-title > h4 {
+	margin: 0px;
 	color: #d1d1d1;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -769,10 +770,6 @@ div#slidingDiv
 	padding: 15px;
 	height: 150px;
 	overflow: hidden;
-}
-
-#event-title p {
-	line-height: 0.5;
 }
 
 #event-attendance {
@@ -1768,6 +1765,7 @@ div.edit-review-bar {
 }
 
 .edit-title > h4 {
+	margin: 0px;
 	color: #d1d1d1;
 	padding-top: 15px;
 	padding-bottom: 15px;
