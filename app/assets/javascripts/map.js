@@ -64,7 +64,6 @@ myMap.init = function() {
 				var latitude = position.coords.latitude;
 				var longitude = position.coords.longitude;	
 
-				console.log("Lat:", latitude, "Long:", longitude);
 
 				$.ajax({
 					url:"/all_events",
