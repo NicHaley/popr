@@ -13,7 +13,13 @@ module Popr
     # -- all .rb files in that directory are automatically loaded.
     # config.serve_static_assets = true
     config.assets.precompile += [
-      'application.scss.css'
+      'application.scss.css',
+      'base.css.scss',
+      'foundation_and_overrides.scss',
+      'layout.css.scss',
+      'responsive-tables.css.scss',
+      'starRating.css.scss',
+      'staticStars.css.scss'
     ]
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
