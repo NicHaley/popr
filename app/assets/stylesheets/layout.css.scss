@@ -775,7 +775,11 @@ div#slidingDiv
 
 #footer-image {
 	position: fixed;
-	bottom: -5%;
+	bottom: -8%;
+}
+
+#footer-image > img {
+	min-width: 100vw;
 }
 
 #avatar-thumb {
