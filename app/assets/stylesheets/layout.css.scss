@@ -99,7 +99,7 @@ $movie-poster-height: 50vh;
 }
 
 /* Edit Profile */
-#edit-container {
+.edit-container {
 	width: 100%;
 	height: 100vh;
 	background-image: url('darkshape_bg.gif');
@@ -368,6 +368,7 @@ label {
 	display: none;
 	width: 100%;
 	height: 850px;
+	min-height: 100vh;
 }
 
 .form-window {
@@ -485,7 +486,6 @@ label {
 #selected-poster {
 	margin-top: 50px;
 	width: $movie-poster-width;
-	height: $movie-poster-height;
 }
 
 .movie-explore-field {
@@ -1725,7 +1725,6 @@ div.edit-review-bar {
 
 #event-page-poster {
 	width: $movie-poster-width;
-	height: $movie-poster-height;
 	padding: 15px;
 	display: block;
 	margin-left: auto;
