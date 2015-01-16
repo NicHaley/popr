@@ -1,19 +1,39 @@
-<ul>
-	<% unless @user.hosted_events.empty? %>
-    <% @user.hosted_events.each do |event| %>
-	    <% if event.not_passed %>
-		    <li>
-		      <%= link_to event.title, user_event_path(@user, event) %>
-		    </li>
-	    <% end %>
-    <% end %>
+<div class="hosting-event-container">
+	<% unless @hosting.empty? %>
+	  	<% @hosting.each do |event| %>
+		  	<% if event.not_passed %>
+		  	<% movie = Movie.find_movie(event.rt_id) %>
+					<div class="profile-event-container">
+						<div class="event-banner" style="background-image: url(<%= movie.poster.gsub("tmb", "det") %>)">
+						</div>
+						<div class="host-profile-event-title">
+							<center><b><%= link_to event.title, user_event_path(@user, event) %> in <%= ((event.time - Time.now)/86400).ceil %> Days</b></center>
+						</div>
+						<div class="profile-event-details">
+							<% if event.attendees != [] %>
+								<% event.attendees.each do |a| %>
+									<%= image_tag("#{a.avatar_url(:thumb)}", id: "attendee-thumb") %>
+									<span class="guests-total medium-caps">
+										<%= event.commitments.where(id: event.id, user: a).first.guests %>
+									</span>
+								<% end %>
+								<% else %>
+									<p>You have no guests confirmed</p>
+							<% end %>
+						</div>
+					</div>
+		 	 <% end %>
+	 	<% end %>
 	<% else %>
 		<p class="no-data-filler">
 			<% if @user == current_user %>
-				You are not currently hosting any events
+					You are not currently hosting any events
 			<% else %>
 				<%= @user.first_name %> has no hosted events currently
 			<% end %>
 		</p>
 	<% end %>
-</ul>
+</div>
+<div id="hosting-pagination"><center><%= paginate @hosting, :remote => true, :param_name => "hosting_page" %></center></div>
+
+<div class="small-caps"><center><%= page_entries_info @hosting %></center></div>

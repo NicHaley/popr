@@ -8,14 +8,14 @@
 			<div id="profile-info">	
 				<p class="profile-name"><b><%=@user.first_name%> <%=@user.last_name%></b></p>
 				<div class="profile-record">
-					<% if @user.bio == nil && current_user.id == @user.id  %>
+					<% if (@user.bio == nil || @user.bio == "") && current_user.id == @user.id  %>
 						<p><%= link_to "Add a bio", edit_user_path(@user) %></p>
 					<% elsif @user.bio == nil%>
 						<p>No record for bio</p>
 					<% else %>
 						<p><%= @user.bio %></p>
 					<% end %>
-					<% if @user.hometown == nil && current_user.id == @user.id %>
+					<% if (@user.hometown == nil || @user.hometown == "") && current_user.id == @user.id %>
 						<p><%= link_to "Add a location", edit_user_path(@user) %></p>
 					<% elsif @user.hometown == nil %>	
 						<p>No record for location</p>
@@ -80,7 +80,9 @@
 			<div class="tabs-content">
 				<div class="content active" id="p1">
 				<div class="section-heading"><b>Hosted Events</b></div>
-					<%= render :partial => "hosted_events" %>
+					<div class="host-list">
+						<%= render :partial => "hosted_events" %>
+					</div>
 				</div>
 				<div class="content" id="p2">
 					<div class="section-heading"><b>Joined Events</b></div>

@@ -78,6 +78,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @attending = @user.commitments.order(created_at: :desc).page(params[:attending_page]).per(4)
+    @hosting = @user.hosted_events.order(created_at: :desc).page(params[:hosting_page]).per(4)
     @ratings = @user.ratings.order(created_at: :desc).page(params[:ratings_page]).per(3)
 
 
