@@ -6,11 +6,4 @@ $(document).ready(function() {
     $.getScript('/users/?user_search=' + searchValue);
     $('#back-to-users').show();
   });
-
-    $('#back-to-users').click(function(event) {
-    event.preventDefault();
-    $.getScript('/users/');
-    $('#back-to-users').hide();
-    $('#user_search').val("");
-  });  
 });
