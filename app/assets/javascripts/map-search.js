@@ -17,13 +17,12 @@ $(document).on('ready page:load', function() {
 
     // Use the geocoder to geocode the address
     var address = $("#search_location").val();
-    console.log(address);
     geocoder.geocode( { 'address': address }, function(results, status) {
       // If the status of the geocode is OK
       if (status == google.maps.GeocoderStatus.OK) {
         // Change the center and zoom of the map
         searchMap.setCenter(results[0].geometry.location);
-        searchMap.setZoom(14);
+        searchMap.setZoom(13);
         
         var searchLat = results[0].geometry.location.lat();
         var searchLng = results[0].geometry.location.lng();
@@ -36,7 +35,7 @@ $(document).on('ready page:load', function() {
           var image = {
             url: "assets/popcorn.png"
           };
-          console.log(coords);
+    
           coords.forEach(function(coord){
 
 
