@@ -79,7 +79,6 @@ $include-html-global-classes: $include-html-classes;
 // $include-html-grid-classes: $include-html-classes;
 // $include-xl-html-grid-classes: false;
 
-// $row-width: rem-calc(1000);
 // $total-columns: 12;
 // $column-gutter: rem-calc(30);
 
@@ -1095,7 +1094,7 @@ $form-label-bottom-margin: 1.5;
 // $reveal-modal-bg: $white;
 // $reveal-position-top: rem-calc(100);
 // $reveal-default-width: 80%;
-// $reveal-max-width: $row-width;
+// $reveal-max-width: 100%;
 // $reveal-modal-padding: rem-calc(20);
 // $reveal-box-shadow: 0 0 10px rgba($black,.4);
 
