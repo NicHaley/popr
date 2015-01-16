@@ -23,7 +23,7 @@ $(document).on('ready page:load', function() {
       if (status == google.maps.GeocoderStatus.OK) {
         // Change the center and zoom of the map
         searchMap.setCenter(results[0].geometry.location);
-        searchMap.setZoom(14);
+        searchMap.setZoom(13);
         
         var searchLat = results[0].geometry.location.lat();
         var searchLng = results[0].geometry.location.lng();
