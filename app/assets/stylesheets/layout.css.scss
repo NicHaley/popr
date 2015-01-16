@@ -1026,10 +1026,16 @@ div#slidingDiv
 	background-color: #FEFEFE;
 }
 
+#chart-row {
+	height: 150px;
+	max-width: 100%;
+	width: 100%;
+	margin-top: 150px;
+}
+
 #status-row {
 	width: 100%;
 	max-width: 100%;
-	margin-top: 300px;
 	height: 70px;
 	background-color: white;
 	border-bottom-style: solid;
@@ -1302,7 +1308,7 @@ div.edit-review-bar {
 #graph-toggle {
 	position: absolute;
 	left: 95%;
-	top: 43%;
+	top: 41%;
 	cursor: pointer;
 	padding: 10px 50px 16px 0px;
 }
@@ -1310,7 +1316,7 @@ div.edit-review-bar {
 .chart-span {
 	position: absolute;
 	left: 94.7%;
-	top: 46.0%;
+	top: 44.0%;
 	font-size: 9pt;
 	font-family: 'Roboto';
 	color: white;
