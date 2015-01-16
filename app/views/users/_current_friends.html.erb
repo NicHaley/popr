@@ -14,10 +14,7 @@
         </div>
         <div class="mid-friend-panel">
           <div id="friend-name">
-            <p><%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend), class: "small-marker-caps" %>
-            <% if @user == current_user %> 
-              <%= link_to "(-)", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></p>
-            <% end %>  
+            <p><%= link_to friendship.friend.first_name + " " + friendship.friend.last_name, user_path(friendship.friend), class: "small-marker-caps" %></p>
             <br>
           </div>
           <div id="friend-details">
@@ -30,6 +27,10 @@
                 
             <p class="small-caps">Reviews: <%= friendship.friend.ratings.length %> | Friends: <%= friendCount %></p>
           </div>
+            <% if @user == current_user %> 
+            <br>
+            <center><%= link_to "Remove Friend", friendship_path(friendship, friend_id: friendship.friend.id), data: { confirm: 'Are you sure?' }, class:"small-caps", id:"remove-friend", method: :delete %></center>
+            <% end %>  
         </div>
 
       </div>

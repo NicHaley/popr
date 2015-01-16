@@ -11,11 +11,15 @@
 							<center><b><%= link_to commitment.event.title, user_event_path(commitment.event.host, commitment.event) %> in <%= ((commitment.event.time - Time.now)/86400).ceil %> Days</b></center>
 						</div>
 						<div class="profile-event-details">
-							<% commitment.event.attendees.each do |a| %>
-									<%= image_tag("#{a.avatar_url(:thumb)}", id: "attendee-thumb") %>
-									<span class="guests-total medium-caps">
-										<%= Commitment.where(event: commitment.event, user: a).first.guests %>
-									</span>
+							<% if commitment.event.attendees != [] %>
+								<% commitment.event.attendees.each do |a| %>
+										<%= image_tag("#{a.avatar_url(:thumb)}", id: "attendee-thumb") %>
+										<span class="guests-total medium-caps">
+											<%= Commitment.where(event: commitment.event, user: a).first.guests %>
+										</span>
+								<% end %>
+							<% else %>
+								<p>You have no guests confirmed</p>
 							<% end %>
 						</div>
 					</div>
