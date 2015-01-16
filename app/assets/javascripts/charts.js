@@ -39,14 +39,17 @@ $(document).on('ready page:load', function() {
 	  	$('.btn2').on('click', function(eventObject){
 	  		$('.chart').removeClass('active');
 	  		$('#chart2-box').toggleClass('active');
+	  		$('#chart-background').toggleClass('active');
 	  	});
 	  	$('.btn3').on('click', function(eventObject){
 	  		$('.chart').removeClass('active');
 	  		$('#chart3-box').toggleClass('active');
+	  		$('#chart-background').toggleClass('active');
 	  	});
 	  	$('.btn4').on('click', function(eventObject){
 	  		$('.chart').removeClass('active');
 	  		$('#chart4-box').toggleClass('active');
+	  		$('#chart-background').toggleClass('active');
 	  	});
 	  	$('.btn1').hover(function(eventObject){
 	  		$('.graph-label1').toggleClass('active');
