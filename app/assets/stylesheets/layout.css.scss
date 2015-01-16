@@ -1426,6 +1426,24 @@ div.edit-review-bar {
 	top: 250px;
 }
 
+#chart-background {
+	transition: all 500ms ease-out;
+	position: absolute;
+	top: 17.5%;
+	left: 67.3%;
+	width: 150px;
+	height: 150px;
+	background-color: white;
+	border-radius: 100px;
+	opacity: 0;
+	visibility: hidden;}
+
+#chart-background.active {
+	transition: all 500ms ease-out;
+	visibility: visible;
+	opacity: 1;
+}
+
 #chart2-box, #chart3-box, #chart4-box {
 	transition: all 500ms ease-out;
 	position: absolute;
@@ -1436,6 +1454,7 @@ div.edit-review-bar {
 	opacity: 0;
 	visibility: hidden;
 }
+
 
 #chart1-box {
 	transition: all 500ms ease-out;
