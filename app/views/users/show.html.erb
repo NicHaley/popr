@@ -7,14 +7,18 @@
 			<%= image_tag @user.avatar_url(:profile), id: 'profile-image'%>
 			<div id="profile-info">	
 				<p class="profile-name"><b><%=@user.first_name%> <%=@user.last_name%></b></p>
-				<div>
-					<% if @user.bio == nil %>
-						<p>No bio yet</p>
+				<div class="profile-record">
+					<% if @user.bio == nil && current_user.id == @user.id  %>
+						<p><%= link_to "Add a bio", edit_user_path(@user) %></p>
+					<% elsif @user.bio == nil%>
+						<p>No record for bio</p>
 					<% else %>
 						<p><%= @user.bio %></p>
 					<% end %>
-					<% if @user.hometown == nil %>
-						<p>No address yet</p>
+					<% if @user.hometown == nil && current_user.id == @user.id %>
+						<p><%= link_to "Add a location", edit_user_path(@user) %></p>
+					<% elsif @user.hometown == nil %>	
+						<p>No record for location</p>
 					<% else %>
 						<div class="location-card"><span class="location-marker"><%= image_tag 'location_marker.png', size:"25" %></span><span class="hometown-location medium-caps"><%= @user.hometown %></span></div>
 					<% end %>
