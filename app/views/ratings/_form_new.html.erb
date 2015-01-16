@@ -45,4 +45,5 @@
 		<%= f.hidden_field :genres, value: "" %>
 	</div> 
 	<%= f.submit "Submit Review", class: "button expand", id: "rev-button" %>
+	<p id="notice"><%= flash[:notice] %></p>
 <% end %>
