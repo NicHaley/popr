@@ -63,9 +63,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    sleep(0.2)
     @user = User.find(params[:id])
+    @attending = @user.commitments.order(created_at: :desc).page(params[:attending_page]).per(4)
     @ratings = @user.ratings.order(created_at: :desc).page(params[:ratings_page]).per(3)
+
 
     if current_user
       if params[:friend_search]
@@ -79,7 +80,6 @@ class UsersController < ApplicationController
 
     @user_id = @user.id
     gon.user_id = @user.id
-
 
     if @user.ratings.any?
       print totalScore = (@user.ratings.all.inject(0){|sum, rating| sum + rating.user_score}).to_f

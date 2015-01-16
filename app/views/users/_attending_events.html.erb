@@ -1,6 +1,6 @@
 <div class="attending-event-container">
-	<% unless @user.commitments.empty? %>
-	  	<% @user.commitments.each do |commitment| %>
+	<% unless @attending.empty? %>
+	  	<% @attending.each do |commitment| %>
 		  	<% if commitment.event.not_passed %>
 		  	<% movie = Movie.find_movie(commitment.event.rt_id) %>
 					<div class="profile-event-container">
@@ -25,3 +25,6 @@
 		<p class="no-data-filler"><%= @user.first_name %> is not attending any events currently</p>
 	<% end %>
 </div>
+<div id="attending-pagination"><center><%= paginate @attending, :remote => true, :param_name => "attending_page" %></center></div>
+
+<div class="small-caps"><center><%= page_entries_info @attending %></center></div>
