@@ -8,6 +8,12 @@
 	    <% end %>
     <% end %>
 	<% else %>
-		<p class="no-data-filler"><%= @user.first_name %> has no hosted events currently</p>
+		<p class="no-data-filler">
+			<% if @user == current_user %>
+				You are not currently hosting any events
+			<% else %>
+				<%= @user.first_name %> has no hosted events currently
+			<% end %>
+		</p>
 	<% end %>
 </ul>

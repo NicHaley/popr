@@ -22,6 +22,12 @@
 		 	 <% end %>
 	 	<% end %>
 	<% else %>
-		<p class="no-data-filler"><%= @user.first_name %> is not attending any events currently</p>
+		<p class="no-data-filler">
+			<% if @user == current_user %>
+				You are not signed up for any events currently
+			<% else %>
+				<%= @user.first_name %> is not attending any events currently
+			<% end %>
+		</p>
 	<% end %>
 </div>
