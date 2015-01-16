@@ -39,10 +39,12 @@
 		</div>
 	<% end %>
 	<% else %>
-		<% if params[:search_location] %>
-			No Events at Searched Location
-		<% else %>
-			No Upcoming Events
-		<% end %>
+		<div id="events-filler">
+			<% if params[:search_location] %>
+				<p>No Events at Searched Location</p>
+			<% else %>
+				<p>No Upcoming Events</p>
+			<% end %>
+		</div>
 	<% end %>	
 </section>
