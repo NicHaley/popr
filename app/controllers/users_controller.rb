@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.hosted_events.each do |event|
       event.commitments.destroy_all
-      event.comment.destroy_all
+      event.comments.destroy_all
     end
     @user.hosted_events.destroy_all
     @user.commitments.destroy_all
