@@ -18,6 +18,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.first_name.capitalize!
+    @user.last_name.capitalize!
     if @user.save
 
       redirect_to root_path, notice: "Success! Please check confirmation email"
@@ -29,6 +31,16 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    @user.hosted_events.each do |event|
+      event.commitments.destroy_all
+    end
+    @user.hosted_events.destroy_all
+    @user.commitments.destroy_all
+    @user.comments.destroy_all
+    @user.movie_interests.destroy_all
+    @user.ratings.destroy_all
+    @user.friendships.destroy_all
+    Friendship.where(friend_id: @user.id).destroy_all
     @user.destroy
     redirect_to root_path, notice: "User deleted :("
   end
