@@ -27,10 +27,10 @@
 								<% event.attendees.each do |a| %>
 									<% if guest_count < 3 %>	
 										<% guest_count += 1%>
-										<%= image_tag("#{a.avatar_url(:thumb)}", id:"avatar-thumb") %>
+										<%= image_tag("#{a.avatar_url(:thumb)}", id:"guest-thumb") %>
 									<% elsif guest_count == 3 %>
 										<% guest_count += 1%>
-										<%= image_tag("extra_user.png", id:"avatar-thumb") %>
+										<%= link_to image_tag("extra_user.png", id:"guest-thumb"), user_event_path(event.host_id, event.id)  %>
 									<% end %>
 								<% end %>
 							</div>
