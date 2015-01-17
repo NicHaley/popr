@@ -174,10 +174,10 @@ $movie-poster-height: 50vh;
 /* Welcome page */
 
 .tabs dd.active.tab-effects a {
-	background-color: #dddddd;
+	background-color: rgb(255,255,255)
 }
 
-.tabs dd.active.tab-effects a:hover {
+.tabs dd.tab-effects a {
 	background-color: #dddddd;
 }
 
@@ -190,7 +190,7 @@ $movie-poster-height: 50vh;
 	background-size: cover;
 	background-position: center;
 	display: block;
-	-webkit-filter: blur(5px);
+	-webkit-filter: blur(0px);
 	height: 100vh;
 	width: 100%;
 	position: fixed;
@@ -203,24 +203,34 @@ $movie-poster-height: 50vh;
 	padding-top: 70px;
 }
 
+.left-welcome-tab {
+	border-top-left-radius: 10px;
+	opacity: 0.9;
+}
+
+.right-welcome-tab {
+	border-top-right-radius: 10px;
+	opacity: 0.9;
+}
+
 .front-content > p:first-child {
 	font-size: 30px;
-	text-shadow: 1px 1px #424242;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 	margin-left: 100px;
 	margin-right: 100px;
 }
 
 .front-content > p:nth-child(2) {
 	font-size: 20px;
-	text-shadow: 1px 1px #424242;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 	margin-left: 100px;
 	margin-right: 100px;
 }
 
-#panel1, #panel2, #panel3, #panel4 {
-	background: rgba(255, 255, 255, 0.45);
+#welcome-panel1, #welcome-panel2 {
+	background: rgba(255, 255, 255, 0.9);
 	border-radius: 0px;
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
 	padding: 20px 40px 10px 40px;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
