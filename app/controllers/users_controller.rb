@@ -96,10 +96,10 @@ class UsersController < ApplicationController
     gon.user_id = @user.id
 
     if @user.ratings.any?
-      print totalScore = (@user.ratings.all.inject(0){|sum, rating| sum + rating.user_score}).to_f
-      print maxScore = ((@user.ratings.all.count) * 5).to_f
-      print averageScore = ((totalScore / maxScore).to_f * 100.0).round(1)
-      print gon.average = ["Average Movie Rating", averageScore]
+      totalScore = (@user.ratings.all.inject(0){|sum, rating| sum + rating.user_score}).to_f
+      maxScore = ((@user.ratings.all.count) * 5).to_f
+      averageScore = ((totalScore / maxScore).to_f * 100.0).round(1)
+      gon.average = ["Average Movie Rating", averageScore]
 
       # Favourite Genres
       def pieData(dataList)
@@ -113,13 +113,13 @@ class UsersController < ApplicationController
         end
       end
 
-      genreList = @user.ratings.all.map{|rating| [] << rating.genres.split(", ").flatten}.flatten
+      genreList = @user.ratings.where('user_score >= 4').map{|rating| [] << rating.genres.split(", ").flatten}.flatten
       gon.genres = pieData(genreList);
 
-      actorsList = @user.ratings.all.map{|rating| [] << rating.actors.split(", ").flatten}.flatten
+      actorsList = @user.ratings.where('user_score >= 4').map{|rating| [] << rating.actors.split(", ").flatten}.flatten
       gon.actors = pieData(actorsList);
 
-      directorsList = @user.ratings.all.map{|rating| [] << rating.directors.split(", ").flatten}.flatten
+      directorsList = @user.ratings.where('user_score >= 4').map{|rating| [] << rating.directors.split(", ").flatten}.flatten
       gon.directors = pieData(directorsList);
     end
 

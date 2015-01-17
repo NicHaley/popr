@@ -28,9 +28,17 @@ $movie-poster-height: 50vh;
 	line-height: 0.5;
 }
 
-/* Input Style */
+// General styling
 
-
+.form-styling > h3 {
+	border-radius: 5px 5px 0px 0px;
+	margin: -26px -25px 0px -25px;
+	background-color: #474747;
+	color: #d1d1d1;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-family: 'Open Sans Condensed';
+}
 
 /* Notification Tab */
 
@@ -102,7 +110,7 @@ $movie-poster-height: 50vh;
 .edit-container {
 	width: 100%;
 	height: 100vh;
-	background-image: url('darkshape_bg.gif');
+	background-image: url('darkshape_bg.jpg');
 	padding-top: 30px;
 }
 
@@ -398,9 +406,9 @@ $movie-poster-height: 50vh;
 	-webkit-backface-visibility: hidden;
 	z-index: 2;
 	position: absolute;
-	padding: 40px 150px 20px 10px;
+	padding: 40px 165px 20px 25px;
 	background-color: white;
-	border-radius: 2px;
+	border-radius: 5px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -418,25 +426,27 @@ $movie-poster-height: 50vh;
 }
 
 .movie-title {
-	border-radius: 2px 2px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
 	background-color: #474747;
 	text-align: center;
-	margin: -40px -150px 0px -10px;
+	margin: -40px -165px 0px -25px;
 	z-index: 0;
 	border-bottom: 1px solid white;
 }
 
-.movie-title > h4 {
+.movie-title > h3 {
 	margin: 0px;
 	color: #d1d1d1;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	font-family: 'Open Sans Condensed';
+	padding-left: 25px;
+	padding-right: 25px;
 }
 
 
 .form-flip {
-	border-radius: 0px 2px 2px 0px;
+	border-radius: 0px 5px 5px 0px;
 	background-color: #e2e2e2;
 	position: absolute;
 	right: 0;
@@ -501,8 +511,8 @@ $movie-poster-height: 50vh;
 
 .movie-info {
 	text-align: left;
-	padding-left: 50px;
-	padding-right: 50px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .movie-center {
@@ -512,6 +522,10 @@ $movie-poster-height: 50vh;
 #event_time_4i, #event_time_5i {
 	display: inline;
 	width: 45%;
+}
+
+#rev-button {
+	margin-bottom: 0px;
 }
 
 // Movie Interests New
@@ -539,7 +553,7 @@ $movie-poster-height: 50vh;
 
 .movie-score {
 	text-align: left;
-	padding-left: 50px;
+	padding-left: 20px;
 }
 
 .movie-score > img {
@@ -605,14 +619,8 @@ $movie-poster-height: 50vh;
 // Friend Page
 
 #search-form {
-	
 	padding-bottom: 20px; 
 }
-
-.friend-page {
-	text-align: center;
-}
-
 
 .user-avatar {
 	width: 60px;
@@ -625,16 +633,6 @@ $movie-poster-height: 50vh;
 	margin-top: 10px;
 	font-size: 24px;
 	float: left;
-}
-
-.friend-page > h3 {
-	border-radius: 2px 2px 0px 0px;
-	margin: -11px -10px 0px -10px;
-	background-color: #474747;
-	color: #d1d1d1;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	font-family: 'Open Sans Condensed';
 }
 
 .user-container, .user-container-pending {
@@ -1038,6 +1036,12 @@ div#slidingDiv
 	max-width: 100%;
 	width: 100%;
 	margin-bottom: 190px;
+}
+
+#chart4 h4, #chart3 h4, #chart2 h4, #chart h4 {
+	margin-top: 110px;
+	margin-left: 200px;
+	color: white;
 }
 
 #status-row {
@@ -1763,33 +1767,17 @@ div.edit-review-bar {
 
 #event-page-poster {
 	width: $movie-poster-width;
-	padding: 15px;
+	padding-bottom: 15px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.edit-title {
-	border-radius: 2px 2px 0px 0px;
-	background-color: #474747;
-	text-align: center;
-	margin: -11px -10px 0px -10px;
-}
-
-.edit-title > h4 {
-	margin: 0px;
-	color: #d1d1d1;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	font-family: 'Open Sans Condensed';
-}
-
-
 #movie-details, #event-details, #commit-event, .comment-panel, #comments, #edit-event, #edit-rating, .friend-page {
 	background: white;
-	border-radius: 2px;
+	border-radius: 5px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-	padding: 10px;
+	padding: 25px;
 	text-align: center;
 	margin-bottom: 10px;
 }
@@ -1878,27 +1866,17 @@ div.edit-review-bar {
 	font-family: 'Open Sans Condensed';
 }
 
-#event-details > h2 {
-	border-radius: 2px 2px 0px 0px;
-	margin: -10px -10px 0px -10px;
-	background-color: #474747;
-	color: #d1d1d1;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	font-family: 'Open Sans Condensed';
-}
-
 #event-details > h5 {
 	padding-right: 100px;
 	padding-left: 100px;
 }
 
-#movie-details > h4 {
+#movie-details > h3 {
 	font-family: 'Open Sans Condensed';
 }
 
 .form-container {
-	background-image: url('darkshape_bg.gif');
+	background-image: url('darkshape_bg.jpg');
 	height: 100vh;
 	padding-top: 30px;
 }
