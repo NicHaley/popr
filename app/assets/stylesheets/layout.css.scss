@@ -29,6 +29,7 @@ and (max-device-width : 480px) {
 	div#footer-image {
 		position: fixed;
 		bottom: 0%;
+		z-index: 10;
 	}
 	div#footer-image > img {
 		min-width: 100vw;
