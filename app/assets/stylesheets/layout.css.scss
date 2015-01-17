@@ -26,6 +26,14 @@ and (max-device-width : 480px) {
 		height: 50vh;
 		margin-right:0px;
 	}
+	div#footer-image {
+		position: fixed;
+		bottom: 0%;
+}
+
+	div#footer-image > img {
+		min-width: 100vw;
+	}
 }
 
 /* Medium Sized Screen */
