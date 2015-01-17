@@ -28,9 +28,17 @@ $movie-poster-height: 50vh;
 	line-height: 0.5;
 }
 
-/* Input Style */
+// General styling
 
-
+.form-styling > h3 {
+	border-radius: 5px 5px 0px 0px;
+	margin: -26px -25px 0px -25px;
+	background-color: #474747;
+	color: #d1d1d1;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-family: 'Open Sans Condensed';
+}
 
 /* Notification Tab */
 
@@ -429,7 +437,7 @@ $movie-poster-height: 50vh;
 	border-bottom: 1px solid white;
 }
 
-.movie-title > h4 {
+.movie-title > h3 {
 	margin: 0px;
 	color: #d1d1d1;
 	padding-top: 15px;
@@ -614,14 +622,8 @@ $movie-poster-height: 50vh;
 // Friend Page
 
 #search-form {
-	
 	padding-bottom: 20px; 
 }
-
-.friend-page {
-	text-align: center;
-}
-
 
 .user-avatar {
 	width: 60px;
@@ -634,16 +636,6 @@ $movie-poster-height: 50vh;
 	margin-top: 10px;
 	font-size: 24px;
 	float: left;
-}
-
-.friend-page > h3 {
-	border-radius: 2px 2px 0px 0px;
-	margin: -11px -10px 0px -10px;
-	background-color: #474747;
-	color: #d1d1d1;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	font-family: 'Open Sans Condensed';
 }
 
 .user-container, .user-container-pending {
@@ -1772,27 +1764,11 @@ div.edit-review-bar {
 
 #event-page-poster {
 	width: $movie-poster-width;
-	padding: 15px;
+	padding-bottom: 15px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
-
-.edit-title {
-	border-radius: 5px 5px 0px 0px;
-	background-color: #474747;
-	text-align: center;
-	margin: -26px -25px 0px -25px;
-}
-
-.edit-title > h4 {
-	margin: 0px;
-	color: #d1d1d1;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	font-family: 'Open Sans Condensed';
-}
-
 
 #movie-details, #event-details, #commit-event, .comment-panel, #comments, #edit-event, #edit-rating, .friend-page {
 	background: white;
@@ -1887,22 +1863,12 @@ div.edit-review-bar {
 	font-family: 'Open Sans Condensed';
 }
 
-#event-details > h2 {
-	border-radius: 2px 2px 0px 0px;
-	margin: -10px -10px 0px -10px;
-	background-color: #474747;
-	color: #d1d1d1;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	font-family: 'Open Sans Condensed';
-}
-
 #event-details > h5 {
 	padding-right: 100px;
 	padding-left: 100px;
 }
 
-#movie-details > h4 {
+#movie-details > h3 {
 	font-family: 'Open Sans Condensed';
 }
 

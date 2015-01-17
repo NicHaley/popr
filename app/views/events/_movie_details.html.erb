@@ -1,5 +1,5 @@
 <%= image_tag @movie.poster, id: "event-page-poster" %>
-<h4><%= @movie.title %> (<%= @movie.year %>)</h4><br />
+<h3><%= @movie.title %> (<%= @movie.year %>)</h3><br />
 <p>
   <b>Critics Rating:</b> 
   <% if @movie.rating[0].include?("Fresh") %>
