@@ -15,7 +15,7 @@
 								<% puts "user id: " + a.id.to_s + ", event id: " + event.id.to_s %>
 									<%= image_tag("#{a.avatar_url(:thumb)}", id: "attendee-thumb") %>
 									<span class="guests-total medium-caps">
-										<%= event.commitments.where(id: event.id, user: a).first.guests %>
+										<%= event.commitments.where(user: a).first.guests %>
 									</span>
 								<% end %>
 								<% else %>
