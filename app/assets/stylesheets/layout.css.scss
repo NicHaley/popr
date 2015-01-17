@@ -173,15 +173,17 @@ $movie-poster-height: 50vh;
 
 /* Welcome page */
 
-.tabs dd.active.tab-effects a {
-	background-color: #dddddd;
+.tabs dd.active.tab-effects {
+	background-color: white;
+	opacity: 0.6;
 }
 
-.tabs dd.active.tab-effects a:hover {
-	background-color: #dddddd;
+.tabs dd.active.tab-effects:hover {
+	background-color: white;
+	opacity: 0.6;
 }
 
-.tabs dd.tab-effects a:hover {
+.tabs dd.tab-effects:hover {
 	background-color: #f4f4f4;
 }
 
@@ -224,10 +226,6 @@ $movie-poster-height: 50vh;
 	padding: 20px 40px 10px 40px;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-}
-
-label {
-	color: black;
 }
 
 // Edit Page

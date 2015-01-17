@@ -620,7 +620,7 @@ $form-spacing: rem-calc(9);
 // $form-label-font-size: rem-calc(14);
 // $form-label-font-weight: $font-weight-normal;
 $form-label-line-height: 1.5;
-// $form-label-font-color: scale-color($black, $lightness: 30%);
+$form-label-font-color: black;
 // $form-label-small-transform: capitalize;
 $form-label-bottom-margin: 1.5;
 // $input-font-family: inherit;
@@ -786,7 +786,7 @@ $form-label-bottom-margin: 1.5;
 // We use these to style the label text
 // $label-font-sizing: rem-calc(11);
 // $label-font-weight: $font-weight-normal;
-// $label-font-color: $oil;
+$label-font-color: black;
 // $label-font-color-alt: $white;
 // $label-font-family: $body-font-family;
 
