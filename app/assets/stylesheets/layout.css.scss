@@ -401,9 +401,9 @@ $movie-poster-height: 50vh;
 	-webkit-backface-visibility: hidden;
 	z-index: 2;
 	position: absolute;
-	padding: 40px 150px 20px 10px;
+	padding: 40px 165px 20px 25px;
 	background-color: white;
-	border-radius: 2px;
+	border-radius: 5px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -421,10 +421,10 @@ $movie-poster-height: 50vh;
 }
 
 .movie-title {
-	border-radius: 2px 2px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
 	background-color: #474747;
 	text-align: center;
-	margin: -40px -150px 0px -10px;
+	margin: -40px -165px 0px -25px;
 	z-index: 0;
 	border-bottom: 1px solid white;
 }
@@ -435,11 +435,13 @@ $movie-poster-height: 50vh;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	font-family: 'Open Sans Condensed';
+	padding-left: 25px;
+	padding-right: 25px;
 }
 
 
 .form-flip {
-	border-radius: 0px 2px 2px 0px;
+	border-radius: 0px 5px 5px 0px;
 	background-color: #e2e2e2;
 	position: absolute;
 	right: 0;
@@ -504,8 +506,8 @@ $movie-poster-height: 50vh;
 
 .movie-info {
 	text-align: left;
-	padding-left: 50px;
-	padding-right: 50px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .movie-center {
@@ -515,6 +517,10 @@ $movie-poster-height: 50vh;
 #event_time_4i, #event_time_5i {
 	display: inline;
 	width: 45%;
+}
+
+#rev-button {
+	margin-bottom: 0px;
 }
 
 // Movie Interests New
@@ -542,7 +548,7 @@ $movie-poster-height: 50vh;
 
 .movie-score {
 	text-align: left;
-	padding-left: 50px;
+	padding-left: 20px;
 }
 
 .movie-score > img {
@@ -1773,10 +1779,10 @@ div.edit-review-bar {
 }
 
 .edit-title {
-	border-radius: 2px 2px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
 	background-color: #474747;
 	text-align: center;
-	margin: -11px -10px 0px -10px;
+	margin: -26px -25px 0px -25px;
 }
 
 .edit-title > h4 {
@@ -1790,9 +1796,9 @@ div.edit-review-bar {
 
 #movie-details, #event-details, #commit-event, .comment-panel, #comments, #edit-event, #edit-rating, .friend-page {
 	background: white;
-	border-radius: 2px;
+	border-radius: 5px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-	padding: 10px;
+	padding: 25px;
 	text-align: center;
 	margin-bottom: 10px;
 }
