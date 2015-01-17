@@ -19,15 +19,19 @@ class Movie
   end
 
   def self.find_movie(movie_id)
-    api_key = ["5z3dxvtjcr5nxmqefqnbh25z", "asufuw64uzqn4pz7pb2v2kkt"]
+    api_key = ["5z3dxvtjcr5nxmqefqnbh25z", "asufuw64uzqn4pz7pb2v2kkt", "49f5w65jyj8b8p5k2n6vbnwn"]
     $key ||= 0
     rotten_api = ""
-    if $key == 0
+    case $key
+    when 0
       rotten_api = api_key[0]
       $key = 1
-    else
+    when 1
       rotten_api = api_key[1]
-      $key = 0
+      $key = 2
+    when 2
+      rotten_api = api_key[2]
+      $key = 0      
     end
 
     # The .find_movie function is called on the Movie class in the EventsController
