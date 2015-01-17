@@ -29,10 +29,22 @@ and (max-device-width : 480px) {
 	div#footer-image {
 		position: fixed;
 		bottom: 0%;
-}
-
+	}
 	div#footer-image > img {
 		min-width: 100vw;
+	}
+	img#guest-thumb {
+		width: 20%;
+		height: 20%;
+		border-radius: 150px;
+		border: 1.5px solid #DDDDDD;
+	}
+
+	img#host-thumb {
+		width: 57%;
+		height: 57%;
+		border-radius: 150px;
+		border: 1.5px solid #BD1E2C;
 	}
 }
 
@@ -808,6 +820,7 @@ div#slidingDiv
 	width: 35%;
 	float: right;
 	border-top: 1.5px solid #DDDDDD;
+	background: no-repeat;
 }
 
 #event-content {
@@ -844,15 +857,15 @@ div#slidingDiv
 }
 
 #guest-thumb {
-	width: 45px;
-	height: 45px;
+	width: 23.2%;
+	height: 23.2%;
 	border-radius: 150px;
 	border: 1.5px solid #DDDDDD;
 }
 
 #host-thumb {
-	width: 45px;
-	height: 45px;
+	width: 70%;
+	height: 70%;
 	border-radius: 150px;
 	border: 1.5px solid #BD1E2C;
 }

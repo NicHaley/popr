@@ -54,6 +54,7 @@ $(document).on('ready page:load', function() {
             var infoWindow = new google.maps.InfoWindow({
               content: contentWindow
             });
+
             google.maps.event.addListener(myMarker, 'click', function(){
               infoWindow.open(searchMap, myMarker)
             });
