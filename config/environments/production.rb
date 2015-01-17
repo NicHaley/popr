@@ -85,7 +85,7 @@ Rails.application.configure do
    :address              => "smtp.mailgun.org",
    :port                 => 587,
    :domain               => 'infinite-woodland-9098.herokuapp.com',
-   :user_name            => 'popr.mailer@gmail.com',
+   :user_name            => 'popr.mailer',
    :password             => 'poppop123',
    :authentication       => :plain,
    :enable_starttls_auto => true,
