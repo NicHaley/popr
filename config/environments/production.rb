@@ -79,15 +79,16 @@ Rails.application.configure do
   config.assets.precompile += %w( vendor/modernizr.js )
 
   config.action_mailer.delivery_method = :smtp
-# SMTP settings for gmail
-config.action_mailer.default_url_options = { :host => 'infinite-woodland-9098.herokuapp.com' }
+  # SMTP settings for gmail
+  config.action_mailer.default_url_options = { :host => 'infinite-woodland-9098.herokuapp.com' }
 
   config.action_mailer.smtp_settings = {
    :address              => "smtp.gmail.com",
    :port                 => 587,
+   :domain               => 'gmail.com',
    :user_name            => 'popr.mailer@gmail.com',
    :password             => 'poppop123',
-   :authentication       => "plain",
+   :authentication       => :plain,
   :enable_starttls_auto => true
   }
 
