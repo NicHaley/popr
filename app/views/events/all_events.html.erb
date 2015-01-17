@@ -1,31 +1,34 @@
-
-<div id="row">
-	<div id="all-event-container">
-		<div class= "large-4 medium-4 small-12 columns" id="side-bar" style="overflow: scroll">
-			<div class="wrapper">
-				<%= form_tag(events_path, :method => "get", id: "event-search-form") do %>
-					<%= text_field_tag :search_location, params[:search_location], placeholder: "Search events by location" %>
-					<%= submit_tag "Search", :name => nil, class: "button tiny", id:"event-search-submit" %>
-					<%= link_to "Near Me", events_path, id:"near-me-button", class:"button tiny" %>
-				<% end %>
-				<!-- <center><a id="btnToggle" class="button tiny round">More Filters</a></center> -->
-				<div id="slidingDiv" style="display:none;">
-					Genres 
-					<hr>
+<div class="page-container">
+	<div id="row">
+		<div class="large-8 medium-12 small-12 columns" id="map-container">	
+			<%= render 'map' %>
+		</div>
+		<div class= "large-4 medium-12 small-12 columns" id="side-bar" style="overflow: scroll">
+			<div id="all-event-container">
+				<div class="wrapper">
+					<center>
+					<%= form_tag(events_path, :method => "get", id: "event-search-form") do %>
+						<%= text_field_tag :search_location, params[:search_location], placeholder: "Search events by location" %>
+						<%= submit_tag "Search", :name => nil, class: "button tiny", id:"event-search-submit" %>
+						<%= link_to "Near Me", events_path, id:"near-me-button", class:"button tiny" %>
+					<% end %>
+					</center>
+					<!-- <center><a id="btnToggle" class="button tiny round">More Filters</a></center> -->
+					<div id="slidingDiv" style="display:none;">
+						Genres 
+						<hr>
+					</div>
+				</div>
+				<div class="event-listing">
+				<div class="spinner">
+				  <div class="bounce1"></div>
+				  <div class="bounce2"></div>
+				  <div class="bounce3"></div>
+				</div>
 				</div>
 			</div>
-			<div class="event-listing">
-			<div class="spinner">
-			  <div class="bounce1"></div>
-			  <div class="bounce2"></div>
-			  <div class="bounce3"></div>
-			</div>
-			</div>
 		</div>
-	</div>
 
-	<div class="large-8 medium-8 small-12 columns" id="map-container">	
-		<%= render 'map' %>
 	</div>
 </div>
 
