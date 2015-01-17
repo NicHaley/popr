@@ -1,6 +1,6 @@
 $('#attending-list').html("<%= j render :partial => 'attending_events' %>");
 $('#attending-pagination').html("<center><%= j paginate @attending, :remote => true, :param_name => 'attending_page'  %><center>");
-$('#host-list').html("<%= j render :partial => 'host_events' %>");
+$('#host-list').html("<%= j render :partial => 'hosted_events' %>");
 $('#host-pagination').html("<center><%= j paginate @hosting, :remote => true, :param_name => 'hosting_page'  %><center>");
 $('#review-list').html("<%= j render :partial => 'ratings' %>");
 $('#ratings-pagination').html("<center><%= j paginate @ratings, :remote => true, :param_name => 'ratings_page', params: {friends_page: params[:friends_page]} %></center>"); 
