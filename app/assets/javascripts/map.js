@@ -111,6 +111,7 @@ myMap.addMarkers = function(coords){
 		google.maps.event.addListener(myMarker, 'click', function(){
 			infoWindow.open(map, myMarker)
 		});
+
 	});
 }
 
