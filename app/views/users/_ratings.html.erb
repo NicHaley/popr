@@ -1,4 +1,4 @@
-<% if @ratings %>
+<% unless @ratings.empty? %>
 	<% @ratings.each do |rating| %>
 	<p>
 		<% if rating.id != nil %>
@@ -24,8 +24,15 @@
 		<% end %>
 	</p>
 	<% end %>
+	<div id="ratings-pagination"><center><%= paginate @ratings, :remote => true, :param_name => "ratings_page", params: {friends_page: params[:friends_page]} %></center></div>
+
+	<div class="small-caps"><center><%= page_entries_info @ratings %></center></div>
+<% else %>
+	<p class="no-data-filler">
+		<% if @user == current_user %>
+			You do not have any reviews currently
+		<% else %>
+			<%= @user.first_name %> does not have any reviews currently
+		<% end %>
+	</p>
 <% end %>
-
-<div id="ratings-pagination"><center><%= paginate @ratings, :remote => true, :param_name => "ratings_page", params: {friends_page: params[:friends_page]} %></center></div>
-
-<div class="small-caps"><center><%= page_entries_info @ratings %></center></div>

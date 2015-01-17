@@ -19,7 +19,7 @@ $movie-poster-height: 50vh;
 }
 
 .container {
-	background-image: url('darkshape_bg.gif');
+	background-image: url('darkshape_bg.jpg');
 	padding-top: 30px;
 	min-height: 100vh;
 }
@@ -565,10 +565,6 @@ $movie-poster-height: 50vh;
 #review-list-title {
 	color: #eaeaea;
 	font-family: 'Roboto';
-}
-
-#review-list > p {
-	margin: 0px;
 }
 
 #review-table {

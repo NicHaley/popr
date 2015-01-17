@@ -25,6 +25,9 @@
 					</div>
 		 	 <% end %>
 	 	<% end %>
+		<div id="hosting-pagination"><center><%= paginate @hosting, :remote => true, :param_name => "hosting_page" %></center></div>
+
+		<div class="small-caps"><center><%= page_entries_info @hosting %></center></div>
 	<% else %>
 		<p class="no-data-filler">
 			<% if @user == current_user %>
@@ -35,6 +38,3 @@
 		</p>
 	<% end %>
 </div>
-<div id="hosting-pagination"><center><%= paginate @hosting, :remote => true, :param_name => "hosting_page" %></center></div>
-
-<div class="small-caps"><center><%= page_entries_info @hosting %></center></div>
