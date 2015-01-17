@@ -218,6 +218,15 @@ and (max-width : 1040px) {
 	width: 300px;
 }
 
+.tabs dd.active.edit-effects a {
+	background-color: rgb(255,255,255)
+}
+
+.tabs dd.edit-effects a {
+	background-color: #dddddd;
+	border-bottom: 1px solid #555555;
+}
+
 /* Welcome page */
 
 
