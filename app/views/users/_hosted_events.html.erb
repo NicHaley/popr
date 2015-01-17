@@ -7,7 +7,9 @@
 						<div class="event-banner" style="background-image: url(<%= movie.poster.gsub("tmb", "det") %>)">
 						</div>
 						<div class="host-profile-event-title">
-							<center><b><%= link_to event.title, user_event_path(@user, event) %> in <%= ((event.time - Time.now)/86400).ceil %> Days</b></center>
+							<center><b><%= link_to user_event_path(@user, event) do %>
+								<%= event.title %> in <%= ((event.time - Time.now)/86400).ceil %> Days</b></center>
+								<% end %>
 						</div>
 						<div class="profile-event-details">
 							<% if event.attendees != [] %>

@@ -8,7 +8,9 @@
 						  <%= link_to image_tag(commitment.event.host.avatar, id:"profile-host-avatar"), user_event_path(commitment.event.host, commitment.event)%>
 						</div>
 						<div class="profile-event-title">
-							<center><b><%= link_to commitment.event.title, user_event_path(commitment.event.host, commitment.event) %> in <%= ((commitment.event.time - Time.now)/86400).ceil %> Days</b></center>
+							<center><b><%= link_to user_event_path(commitment.event.host, commitment.event) do %>
+							<%= commitment.event.title %> in <%= ((commitment.event.time - Time.now)/86400).ceil %> Days</b></center>
+							<% end %>
 						</div>
 						<div class="profile-event-details">
 							<% if commitment.event.attendees != [] %>
