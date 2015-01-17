@@ -25,6 +25,9 @@
 					</div>
 		 	 <% end %>
 	 	<% end %>
+		<div id="attending-pagination"><center><%= paginate @attending, :remote => true, :param_name => "attending_page" %></center></div>
+
+		<div class="small-caps"><center><%= page_entries_info @attending %></center></div>
 	<% else %>
 		<p class="no-data-filler">
 			<% if @user == current_user %>
@@ -35,6 +38,3 @@
 		</p>
 	<% end %>
 </div>
-<div id="attending-pagination"><center><%= paginate @attending, :remote => true, :param_name => "attending_page" %></center></div>
-
-<div class="small-caps"><center><%= page_entries_info @attending %></center></div>
