@@ -13,14 +13,14 @@
 							<p class="small-caps"><%= event.address %></p>
 							<p class="small-caps"><i><%= event.description %></i></p>
 						</span>
-					</div>
-					<div class="large-12 columns" id="event-attendance">
 						<% if event.attendees.include?(current_user) %>
-							<b class="small-caps">You're attending!</b>
+							<b class="small-caps" style="color: #BD1E2C;">You're attending!</b>
 						<% else %>
 							<b class="small-caps"><%= link_to("Join Now!", user_event_path(event.host_id, event.id)) %></b>
 						<% end %>
-						<p class="small-caps">Who's attending?</p>
+					</div>
+					<div class="large-12 columns" id="event-attendance">
+						<p class="small-caps">Who else is attending?</p>
 						<div class = row>
 							<div id="guest-container" class="large-8 columns">
 								<% guest_count = 0 %>

@@ -792,14 +792,14 @@ div#slidingDiv
 	width: 45px;
 	height: 45px;
 	border-radius: 150px;
-	border: 2px solid #F9F9F9;
+	border: 1.5px solid #DDDDDD;
 }
 
 #host-thumb {
 	width: 45px;
 	height: 45px;
 	border-radius: 150px;
-	border: 2px solid #F9F9F9;
+	border: 1.5px solid #BD1E2C;
 }
 
 #side-bar {
@@ -1071,6 +1071,12 @@ div#slidingDiv
 	border-bottom-style: solid;
 	border-bottom-color: #F6F6F6;
 	border-bottom-width: 1px;
+}
+
+.popr-mascot-position1 {
+	position: absolute;
+	top: 90vh;
+	left: 0%;
 }
 
 dd.animate {
