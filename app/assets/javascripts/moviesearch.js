@@ -48,7 +48,7 @@ $(document).on('ready page:load', function() {
     $('#rating_directors').val(directors);
   }
 
-  searchCallback = jQuery.throttle(250, searchCallback);
+  searchCallback = jQuery.throttle(150, searchCallback);
 
   // AJAX REQUEST 1
     $("#search").keyup(function(){
@@ -71,7 +71,7 @@ $(document).on('ready page:load', function() {
             success: searchCallback
           });
         }
-      }, 1000);
+      }, 500);
     });
 
   // AJAX REQUEST 2
