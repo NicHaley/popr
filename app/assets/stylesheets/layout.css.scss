@@ -16,17 +16,35 @@ and (max-device-width : 480px) {
 		height: 50%;	
 	}
 	div#map-container {
-	height: 50vh;
-	border-color: #fff;
-	margin-right:0px;
-	padding: 0px;
-	display: inline-block;
+		height: 50vh;
+		border-color: #fff;
+		margin-right:0px;
+		padding: 0px;
+		display: inline-block;
 	}
 	div #map-container div#map-canvas {
-	height: 50vh;
-	margin-right:0px;
+		height: 50vh;
+		margin-right:0px;
 	}
 }
+
+/* Medium Sized Screen */
+@media only screen 
+and (min-width : 481px) 
+and (max-width : 1040px) {
+	div#map-container {
+		height: 50vh;
+		border-color: #fff;
+		margin-right:0px;
+		padding: 0px;
+		display: inline-block;
+	}
+	div #map-container div#map-canvas {
+		height: 50vh;
+		margin-right:0px;
+	}
+}
+
 
 /* Global Changes */
 
