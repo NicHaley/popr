@@ -12,6 +12,7 @@
 						<div class="profile-event-details">
 							<% if event.attendees != [] %>
 								<% event.attendees.each do |a| %>
+								<% puts "user id: " + a.id + ", event id: " + event.id %>
 									<%= image_tag("#{a.avatar_url(:thumb)}", id: "attendee-thumb") %>
 									<span class="guests-total medium-caps">
 										<%= event.commitments.where(id: event.id, user: a).first.guests %>
