@@ -10,14 +10,14 @@
 				<div class="profile-record">
 					<% if (@user.bio == nil || @user.bio == "") && current_user.id == @user.id  %>
 						<p><%= link_to "Add a bio", edit_user_path(@user) %></p>
-					<% elsif @user.bio == nil%>
+					<% elsif @user.bio == nil || @user.bio == ""%>
 						<p>No record for bio</p>
 					<% else %>
 						<p><%= @user.bio %></p>
 					<% end %>
 					<% if (@user.hometown == nil || @user.hometown == "") && current_user.id == @user.id %>
 						<p><%= link_to "Add a location", edit_user_path(@user) %></p>
-					<% elsif @user.hometown == nil %>	
+					<% elsif @user.hometown == nil || @user.hometown == ""%>	
 						<p>No record for location</p>
 					<% else %>
 						<div class="location-card"><span class="location-marker"><%= image_tag 'location_marker.png', size:"25" %></span><span class="hometown-location medium-caps"><%= @user.hometown %></span></div>
