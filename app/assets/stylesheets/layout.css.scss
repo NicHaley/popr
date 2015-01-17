@@ -7,6 +7,27 @@ $search-width: 80%;
 $movie-poster-width: 33vh;
 $movie-poster-height: 50vh;
 
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+	.popr-logo {
+		width: 50%;
+		height: 50%;	
+	}
+	div#map-container {
+	height: 50vh;
+	border-color: #fff;
+	margin-right:0px;
+	padding: 0px;
+	display: inline-block;
+	}
+	div #map-container div#map-canvas {
+	height: 50vh;
+	margin-right:0px;
+	}
+}
+
 /* Global Changes */
 
 * {
@@ -675,9 +696,7 @@ $movie-poster-height: 50vh;
 
 #map-container {
 	height: 100vh;
-	width: 65%;
 	border-color: #fff;
-	float: left;
 	margin-right:0px;
 	padding: 0px;
 	display: inline-block;
@@ -685,9 +704,7 @@ $movie-poster-height: 50vh;
 
 #map-canvas {
 	height: 100vh;
-	width: 100%;
 	margin-right:0px;
-	position: absolute;
 }
 
 #map-container .event ul {
@@ -718,16 +735,21 @@ div#slidingDiv
 }
 
 /* All Events */
+
+.page-container {
+	width: 100%;
+	height: 100%;
+}
+
 #event {
 	background-color: #f7f2f2;
 }
 
 #all-event-container {
-	float: right;
-	width:35%;
 	margin-top:30px;
 	margin-left:0px;
 	padding:0px;
+	display: inline-block;
 }
 
 #events-filler {
@@ -804,7 +826,6 @@ div#slidingDiv
 
 #side-bar {
 	margin-top: 10px;
-	width: 100%;
 	height: 600px;
 
 }
