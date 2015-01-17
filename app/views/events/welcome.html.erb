@@ -10,16 +10,16 @@
 		<div class="small-6 small-centered columns">
 
 			<dl class="tabs" data-tab>
-				<dd class="active small-6 tab-effects"><a href="#panel1">Login</a></dd>
-				<dd class="small-6 tab-effects"><a href="#panel2">Sign Up</a></dd>
+				<dd class="active small-6 tab-effects"><a href="#welcome-panel1" class="left-welcome-tab">Login</a></dd>
+				<dd class="small-6 tab-effects"><a href="#welcome-panel2" class="right-welcome-tab">Sign Up</a></dd>
 			</dl>
 
 			<div class="tabs-content">
-				<div class="content active" id="panel1">
+				<div class="content active" id="welcome-panel1">
 					<%= render 'user_sessions/form' %>
 				</div>
 
-				<div class="content" id="panel2">
+				<div class="content" id="welcome-panel2">
 				  	<%= render 'users/signup_form' %> 
 				</div> 
 			</div>
