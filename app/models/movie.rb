@@ -7,6 +7,7 @@ class Movie
     # The initialize() method stores insatnce variables of the returned JSON object 
     # values. We only assign values we want to retrieve/ display. This allows us to 
     # call @instance.[attribute] methods on our movies. 
+    puts 'options'
     @title = options['title']
     @year = options['year']
     @poster = options['posters']['original'].gsub("tmb", "det")
