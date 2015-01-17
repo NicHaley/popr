@@ -8,11 +8,11 @@
 					<img class= "car-img" src="<%= Movie.find_movie(movie.rt_id).poster %>" style="float:left; padding-right:5px;" />
 					<% if current_user.id == @user.id %>
 						<%= link_to "Remove", user_movie_interest_path(@user,movie), data: { confirm: 'Are you sure?' }, method: :delete, class:"small-caps" %>
+					<% end %>
 				</div>
 					<% if count % 3 == 0 %>
 						</li>
 						<li>
-					<% end %>
 				<% end %> 
 		 	<% end %>
 		</li>
