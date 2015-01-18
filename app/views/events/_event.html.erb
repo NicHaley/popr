@@ -22,21 +22,23 @@
 					<div class="large-12 columns" id="event-attendance">
 						<p class="small-caps">Who else is attending?</p>
 						<div class = row>
-							<div id="guest-container" class="large-8 columns">
-								<% guest_count = 0 %>
-								<% event.attendees.each do |a| %>
-									<% if guest_count < 3 %>	
-										<% guest_count += 1%>
-										<%= image_tag("#{a.avatar_url(:thumb)}", id:"guest-thumb") %>
-									<% elsif guest_count == 3 %>
-										<% guest_count += 1%>
-										<%= link_to image_tag("extra_user.png", id:"guest-thumb"), user_event_path(event.host_id, event.id)  %>
+							<div class="user-event-container">
+								<div id="guest-container">
+									<% guest_count = 0 %>
+									<% event.attendees.each do |a| %>
+										<% if guest_count < 2 %>	
+											<% guest_count += 1%>
+											<%= image_tag("#{a.avatar_url(:thumb)}", class:"guest-thumb") %>
+										<% elsif guest_count == 2 %>
+											<% guest_count += 1%>
+											<%= link_to image_tag("extra_user.png", class:"guest-thumb"), user_event_path(event.host_id, event.id)  %>
+										<% end %>
 									<% end %>
-								<% end %>
-							</div>
-							<div id="host-container" class="large-4 columns">
-								<%= image_tag("popcorn.png", class:"icon") %>
-								<%= image_tag("#{event.host.avatar.thumb}", id:"host-thumb", class:"hostImage") %>
+								</div>
+								<div id="host-container">
+									<%= image_tag("popcorn.png", class:"icon") %>
+									<%= image_tag("#{event.host.avatar.thumb}", id:"host-thumb", class:"hostImage") %>
+								</div>
 							</div>	
 						</div>			
 					</div>
