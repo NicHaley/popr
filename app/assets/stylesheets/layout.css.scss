@@ -26,14 +26,6 @@ and (max-device-width : 480px) {
 		height: 50vh;
 		margin-right:0px;
 	}
-	div#footer-image {
-		position: fixed;
-		bottom: 0%;
-		z-index: 10;
-	}
-	div#footer-image > img {
-		min-width: 100vw;
-	}
 	img.guest-thumb {
 		width: 40px;
 		height: 40px;
@@ -848,6 +840,7 @@ div#slidingDiv
 }
 
 #footer-image {
+	z-index: 10;
 	position: fixed;
 	bottom: -8%;
 }
@@ -910,7 +903,7 @@ div#slidingDiv
 }
 
 .icon {
-	z-index: 2;
+	z-index: 1;
 	position: relative;
 	left: 20px;
 	top: 18px;
