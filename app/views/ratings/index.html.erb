@@ -25,7 +25,17 @@
 									<tr>
 										<% @movie = Movie.find_movie(rating.rt_id) %>
 										<td class="review-poster"><%= image_tag(@movie.poster.gsub('thm', 'det'))%></td>
-										<td><%= @movie.title %></td>
+										<td>
+											<strong><%= @movie.title %></strong><br />
+											<% if current_user == @user %>
+												<%= link_to edit_user_rating_path(@user, rating), class:"small-caps review-button" do %>
+													<i class="fa fa-pencil"></i>
+												<% end %>
+												<%= link_to user_rating_path(@user, rating), data: { confirm: 'Are you sure?' }, class:"small-caps review-button", method: :delete do %>
+													<i class="fa fa-times"></i>
+												<% end %>
+											<% end %>
+										</td>
 										<td><%= @movie.year %></td>
 										<% unless @user.id == current_user.id %>
 											<td><% width = ((rating.user_score.to_i/5.to_f) * 100.to_i).to_i %>
@@ -44,8 +54,14 @@
 												<% end %>
 											<% end %>
 										</td>
-										<td>"<%= rating.review %>"</td>
-										<td><%= rating.created_at.strftime("%D, %l:%M %p") %>
+										<td>
+											"<%= rating.review %>"
+										</td>
+										<td>
+											<% if current_user == @user %>
+		
+											<% end %>
+											<%= rating.created_at.strftime("%D, %l:%M %p") %>
 										</td>
 									</tr>
 								<% end %>

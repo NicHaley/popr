@@ -1,6 +1,6 @@
 <%= form_for([@user, @rating]) do |f| %>
 
-	<p><strong>Leave a Review</strong></p>
+	<p><strong>Edit Review</strong></p>
 
 	<div class="field starRating">
 		<% if @rating.errors.any? %>
@@ -45,6 +45,6 @@
 		<%= f.hidden_field :genres, value: "" %>
 	</div> 
 	<div class="actions review-button">
-		<%= f.submit "Edit Review", class: "button expand" %>
+		<%= f.submit "Edit Review", class: "button tiny" %>
 	</div>
 <% end %>
