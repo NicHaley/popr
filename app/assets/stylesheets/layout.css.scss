@@ -331,6 +331,7 @@ and (max-width : 1040px) {
 
 .movie-click:hover {
 	background-color: $search-hover;
+	cursor: pointer;
 	#movie-title {
 		color: white;
 	}
