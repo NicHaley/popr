@@ -331,6 +331,7 @@ and (max-width : 1040px) {
 
 .movie-click:hover {
 	background-color: $search-hover;
+	cursor: pointer;
 	#movie-title {
 		color: white;
 	}
@@ -635,6 +636,10 @@ and (max-width : 1040px) {
 
 // All reviews
 
+.review-button {
+	display: inline-block;
+}
+
 #review-list-title {
 	color: #eaeaea;
 	font-family: 'Roboto';
@@ -654,10 +659,6 @@ and (max-width : 1040px) {
 #review-table > thead > tr > th, #review-table > tbody > tr > td {
 	text-align: center;
 }
-
-// #review-table > tbody > tr {
-// 	border-bottom: 1px solid black;
-// } 
 
 #review-container {
 	padding-top: 25px;
