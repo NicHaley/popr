@@ -21,11 +21,29 @@
     width: 100%;
     height: 100%;
   }
+  
+#back {
+  position: absolute;
+  z-index: 10;
+  top: 80%;
+  left: 80%;
+  font-family: 'Arial';
+  text-decoration: none;
+  color: white;
+  transition: 0.5s;
+}
+
+#back:hover {
+  color: #BD1E2C;
+  transition: 0.5s;
+}
+
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/500.html -->
+  <a id="back" href="/">Click to Return</a>
    <div id="container">
     <object id="svg500" data="../app/assets/images/500.svg">
     </object>

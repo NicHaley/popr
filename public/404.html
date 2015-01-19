@@ -26,14 +26,31 @@ svg:hover #stripe.st4{
     fill: #FFF;
     left: 50px;
 }
+
+#back {
+  position: absolute;
+  z-index: 10;
+  top: 80%;
+  left: 80%;
+  font-family: 'Arial';
+  text-decoration: none;
+  color: white;
+  transition: 0.5s;
+}
+
+#back:hover {
+  color: #BD1E2C;
+  transition: 0.5s;
+}
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/404.html -->
-  <div id="container">
-    <object id="svg404" data="../app/assets/images/404.svg">
-    </object>
-  </div>
+  <a id="back" href="/">Click to Return</a>
+    <div id="container">
+      <object id="svg404" data="../app/assets/images/404.svg">
+      </object>
+    </div>
 </body>
 </html>
