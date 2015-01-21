@@ -18,6 +18,7 @@
 /config/secrets.yml
 # Ignore application configuration
 /config/application.yml
+/config/secrets.yml
 .env
 
 public/assets/**
