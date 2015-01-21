@@ -39,7 +39,7 @@ gem 'kaminari'
 gem 'bourbon'
 gem "fog"
 
-gem 'activeadmin', github: 'activeadmin'
+# gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 
 gem 'geocoder'
