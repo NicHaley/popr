@@ -37,6 +37,7 @@ gem 'd3-rails'
 gem 'gon'
 gem 'kaminari'
 gem 'bourbon'
+gem "fog"
 
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
